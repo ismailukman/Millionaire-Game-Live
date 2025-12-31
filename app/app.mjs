@@ -2615,7 +2615,7 @@ function initEvents() {
 
   if (backFromContact) {
     backFromContact.addEventListener("click", () => {
-      setScreen("dashboard");
+      setScreen("landing");
     });
   }
 
