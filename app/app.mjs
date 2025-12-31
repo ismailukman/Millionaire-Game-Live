@@ -2552,7 +2552,6 @@ function initEvents() {
 
   const termsDialog = document.querySelector("#terms-dialog");
   const privacyDialog = document.querySelector("#privacy-dialog");
-  const contactDialog = document.querySelector("#contact-dialog");
 
   if (footerHome) {
     footerHome.addEventListener("click", (e) => {
@@ -2605,10 +2604,10 @@ function initEvents() {
     });
   }
 
-  if (footerContact && contactDialog) {
+  if (footerContact) {
     footerContact.addEventListener("click", (e) => {
       e.preventDefault();
-      contactDialog.showModal();
+      setScreen("contact");
     });
   }
 
@@ -2620,6 +2619,15 @@ function initEvents() {
       const email = newsletterForm.querySelector("input[type='email']").value;
       alert(`Thanks for subscribing with ${email}!\n\nYou'll receive updates about new features and game packs.`);
       newsletterForm.reset();
+    });
+  }
+
+  const contactForm = document.querySelector("#contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Thanks for reaching out! We'll get back to you soon.");
+      contactForm.reset();
     });
   }
 
