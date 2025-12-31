@@ -33,7 +33,8 @@ const screens = {
   classic: document.querySelector("#screen-classic"),
   pricing: document.querySelector("#screen-pricing"),
   leaderboard: document.querySelector("#screen-leaderboard"),
-  achievements: document.querySelector("#screen-achievements")
+  achievements: document.querySelector("#screen-achievements"),
+  contact: document.querySelector("#screen-contact")
 };
 
 const state = {
@@ -2546,6 +2547,7 @@ function initEvents() {
   const footerLeaderboard = document.querySelector("#footer-leaderboard");
   const footerPricing = document.querySelector("#footer-pricing");
   const footerContrast = document.querySelector("#footer-contrast");
+  const backFromContact = document.querySelector("#btn-back-from-contact");
   const footerTerms = document.querySelector("#footer-terms");
   const footerPrivacy = document.querySelector("#footer-privacy");
   const footerContact = document.querySelector("#footer-contact");
@@ -2608,6 +2610,12 @@ function initEvents() {
     footerContact.addEventListener("click", (e) => {
       e.preventDefault();
       setScreen("contact");
+    });
+  }
+
+  if (backFromContact) {
+    backFromContact.addEventListener("click", () => {
+      setScreen("dashboard");
     });
   }
 
