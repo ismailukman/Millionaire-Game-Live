@@ -2134,6 +2134,11 @@ function initEvents() {
   if (dom.demoLogin) {
     dom.demoLogin.addEventListener("click", (event) => {
       event.preventDefault();
+      const passkey = window.prompt("Enter demo passkey");
+      if (passkey !== "Lukman") {
+        alert("Incorrect passkey.");
+        return;
+      }
       dom.loginEmail.value = "demo@wwtbam.local";
       dom.loginName.value = "Demo Host";
       state.user = migrateUserState({
