@@ -1183,7 +1183,7 @@ function getPackById(packId) {
 
 function getPackForSession(session) {
   if (!session) return null;
-  return getPackForSession(session) || session.packSnapshot || defaultPack;
+  return getPackById(session.packId) || session.packSnapshot || defaultPack;
 }
 
 function getSession() {
