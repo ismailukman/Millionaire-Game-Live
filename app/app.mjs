@@ -101,6 +101,8 @@ const dom = {
   defaultCategoryGrid: document.querySelector("#default-category-grid"),
   defaultCategoryDialog: document.querySelector("#default-category-dialog"),
   defaultCategoryDialogGrid: document.querySelector("#default-category-dialog-grid"),
+  defaultCategoryLoad: document.querySelector("#btn-category-load"),
+  defaultCategoryStart: document.querySelector("#btn-category-start"),
   createSession: document.querySelector("#btn-host-session"),
   createPack: document.querySelector("#btn-create-pack"),
   savePack: document.querySelector("#btn-save-pack"),
@@ -2251,17 +2253,13 @@ function initEvents() {
   dom.playDefault.addEventListener("click", () => {
     ensureDefaultPack();
     if (dom.defaultCategoryDialog && dom.defaultCategoryDialogGrid) {
-      renderCategoryCards(dom.defaultCategoryDialogGrid, {
-        selectedId: state.selectedDefaultCategoryId,
-        onSelect: (category) => {
-          const session = createSession(defaultPack, "CLASSIC");
-          if (!session) return;
-          dom.defaultCategoryDialog.close();
-          renderHost();
-          setScreen("host");
-          startClassic(session.id);
-        }
-      });
+      const renderDialogCards = () => {
+        renderCategoryCards(dom.defaultCategoryDialogGrid, {
+          selectedId: state.selectedDefaultCategoryId,
+          onSelect: () => renderDialogCards()
+        });
+      };
+      renderDialogCards();
       dom.defaultCategoryDialog.showModal();
       return;
     }
@@ -2271,6 +2269,34 @@ function initEvents() {
     setScreen("host");
     startClassic(session.id);
   });
+
+  if (dom.defaultCategoryLoad && dom.defaultCategoryDialog) {
+    dom.defaultCategoryLoad.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (!state.selectedDefaultCategoryId) {
+        alert("Choose a category first.");
+        return;
+      }
+      dom.defaultCategoryDialog.close();
+    });
+  }
+
+  if (dom.defaultCategoryStart && dom.defaultCategoryDialog) {
+    dom.defaultCategoryStart.addEventListener("click", (event) => {
+      event.preventDefault();
+      const category = getDefaultCategoryById(state.selectedDefaultCategoryId);
+      if (!category) {
+        alert("Choose a category first.");
+        return;
+      }
+      const session = createSession(defaultPack, "CLASSIC");
+      if (!session) return;
+      dom.defaultCategoryDialog.close();
+      renderHost();
+      setScreen("host");
+      startClassic(session.id);
+    });
+  }
 
   dom.goDashboard.addEventListener("click", () => {
     setScreen("dashboard");
