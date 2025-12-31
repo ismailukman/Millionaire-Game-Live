@@ -28,6 +28,7 @@
         <button id="btn-achievements" class="ghost">⭐ Achievements</button>
       </nav>
       <div class="topbar-actions">
+        <span id="live-indicator" class="live-indicator">Live: Off</span>
         <button id="btn-upgrade" class="ghost">💎 Upgrade</button>
         <button id="btn-sound" class="ghost">🔇 Sound Off</button>
         <button id="btn-timed" class="ghost">⏱ Timer Off</button>
@@ -567,6 +568,16 @@
       </div>
     </dialog>
 
+    <script>
+      window.firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "ismailukman-829d8.firebaseapp.com",
+        projectId: "ismailukman-829d8",
+        storageBucket: "ismailukman-829d8.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
+    </script>
     <script type="module" src="app.mjs"></script>
   </body>
 </html>

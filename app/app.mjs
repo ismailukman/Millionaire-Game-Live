@@ -12,6 +12,17 @@ import {
 import { audioManager } from "./audio.mjs";
 import { ParticleSystem } from "./particles.mjs";
 import { achievementDefinitions, updateAchievements, getAchievementProgress } from "./achievements.mjs";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  onSnapshot,
+  collection
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const screens = {
   landing: document.querySelector("#screen-landing"),
@@ -30,10 +41,26 @@ const state = {
   packs: [],
   sessions: {},
   activeSessionId: null,
+  activeParticipantId: null,
   timedMode: false,
   liveMode: false,
   timerSeconds: 10,
   editingPackId: null
+};
+
+const firebaseState = {
+  app: null,
+  auth: null,
+  db: null,
+  user: null,
+  ready: false,
+  initPromise: null
+};
+
+const liveListeners = {
+  session: null,
+  participants: null,
+  submissions: null
 };
 
 const storageKeys = {
@@ -59,6 +86,7 @@ const dom = {
   soundToggle: document.querySelector("#btn-sound"),
   timedToggle: document.querySelector("#btn-timed"),
   liveToggle: document.querySelector("#btn-live"),
+  liveIndicator: document.querySelector("#live-indicator"),
   themeToggle: document.querySelector("#btn-theme"),
   timerDialog: document.querySelector("#timer-dialog"),
   timerDialogInput: document.querySelector("#timer-dialog-input"),
@@ -143,6 +171,302 @@ function safeParse(json, fallback) {
     console.warn("Failed to parse saved state, resetting.", err);
     return fallback;
   }
+}
+
+function getFirebaseConfig() {
+  const config = window.firebaseConfig;
+  if (!config || !config.apiKey) {
+    return null;
+  }
+  return config;
+}
+
+function toMillis(value) {
+  if (!value) return null;
+  if (typeof value.toMillis === "function") {
+    return value.toMillis();
+  }
+  return value;
+}
+
+async function ensureFirebaseReady() {
+  if (firebaseState.ready) return true;
+  if (firebaseState.initPromise) return firebaseState.initPromise;
+  const config = getFirebaseConfig();
+  if (!config) {
+    console.warn("Firebase config missing; live mode disabled.");
+    return false;
+  }
+
+  firebaseState.initPromise = (async () => {
+    firebaseState.app = initializeApp(config);
+    firebaseState.auth = getAuth(firebaseState.app);
+    firebaseState.db = getFirestore(firebaseState.app);
+    if (!firebaseState.auth.currentUser) {
+      await signInAnonymously(firebaseState.auth);
+    }
+    firebaseState.user = firebaseState.auth.currentUser;
+    firebaseState.ready = true;
+    return true;
+  })().catch((err) => {
+    console.error("Firebase init failed:", err);
+    firebaseState.initPromise = null;
+    return false;
+  });
+
+  return firebaseState.initPromise;
+}
+
+function stopLiveListeners() {
+  if (liveListeners.session) liveListeners.session();
+  if (liveListeners.participants) liveListeners.participants();
+  if (liveListeners.submissions) liveListeners.submissions();
+  liveListeners.session = null;
+  liveListeners.participants = null;
+  liveListeners.submissions = null;
+}
+
+function ensureSessionShell(sessionId, packId) {
+  if (!state.sessions[sessionId]) {
+    state.sessions[sessionId] = {
+      id: sessionId,
+      packId: packId || null,
+      mode: "FFF",
+      status: "waiting",
+      createdAt: Date.now(),
+      configSnapshot: {},
+      currentState: {
+        level: 1,
+        questionOrder: [],
+        usedLifelines: [],
+        disabledOptions: []
+      },
+      participants: {},
+      fffSubmissions: {},
+      winnerParticipantId: null,
+      fffRoundId: null,
+      fffQuestion: null
+    };
+  }
+  if (packId && !state.sessions[sessionId].packId) {
+    state.sessions[sessionId].packId = packId;
+  }
+  return state.sessions[sessionId];
+}
+
+function applyRemoteSessionData(sessionId, data) {
+  const session = ensureSessionShell(sessionId, data.packId);
+  session.mode = data.mode || session.mode;
+  session.status = data.status || session.status;
+  session.packId = data.packId || session.packId;
+  session.winnerParticipantId = data.winnerParticipantId || null;
+  session.fffRoundId = data.fffRoundId || session.fffRoundId;
+  session.fffQuestion = data.fffQuestion || session.fffQuestion;
+  session.fffStartTime = toMillis(data.fffStartTime) || session.fffStartTime || null;
+  session.fffTimerSeconds = data.fffTimerSeconds ?? session.fffTimerSeconds ?? null;
+  session.createdAt = toMillis(data.createdAt) || session.createdAt;
+  return session;
+}
+
+function renderLiveSessionIfNeeded() {
+  const screen = getActiveScreenName();
+  if (screen === "host") {
+    renderHost();
+  } else if (screen === "participant" && state.activeParticipantId) {
+    renderParticipant(state.activeSessionId, state.activeParticipantId);
+  }
+}
+
+function subscribeToLiveSession(sessionId) {
+  stopLiveListeners();
+  const sessionRef = doc(firebaseState.db, "sessions", sessionId);
+  liveListeners.session = onSnapshot(sessionRef, (snapshot) => {
+    if (!snapshot.exists()) {
+      dom.participantStatus.textContent = "Session not found.";
+      return;
+    }
+    applyRemoteSessionData(sessionId, snapshot.data());
+    state.activeSessionId = sessionId;
+    saveState();
+    renderLiveSessionIfNeeded();
+  });
+
+  liveListeners.participants = onSnapshot(
+    collection(firebaseState.db, "sessions", sessionId, "participants"),
+    (snapshot) => {
+      const session = ensureSessionShell(sessionId);
+      session.participants = {};
+      snapshot.forEach((docSnap) => {
+        session.participants[docSnap.id] = docSnap.data();
+      });
+      saveState();
+      renderLiveSessionIfNeeded();
+    }
+  );
+
+  liveListeners.submissions = onSnapshot(
+    collection(firebaseState.db, "sessions", sessionId, "submissions"),
+    (snapshot) => {
+      const session = ensureSessionShell(sessionId);
+      session.fffSubmissions = {};
+      snapshot.forEach((docSnap) => {
+        session.fffSubmissions[docSnap.id] = docSnap.data();
+      });
+      saveState();
+      renderLiveSessionIfNeeded();
+    }
+  );
+}
+
+async function createLiveSession(pack, mode) {
+  if (!pack) {
+    alert("No pack selected. Please choose a pack from the dashboard.");
+    return null;
+  }
+  const ready = await ensureFirebaseReady();
+  if (!ready) {
+    alert("Firebase is not configured. Add firebaseConfig in index.html.");
+    return null;
+  }
+
+  const fffQuestion = getFFFQuestion(pack);
+  if (!fffQuestion) {
+    alert("No FFF question available in this pack.");
+    return null;
+  }
+
+  const sessionId = makeId("S");
+  const sessionPayload = {
+    id: sessionId,
+    packId: pack.id,
+    mode,
+    status: "waiting",
+    createdAt: Date.now(),
+    hostUid: firebaseState.user?.uid || null,
+    fffQuestion: {
+      promptText: fffQuestion.promptText,
+      options: fffQuestion.options || null,
+      orderItems: fffQuestion.orderItems || null
+    },
+    fffRoundId: makeId("R"),
+    winnerParticipantId: null
+  };
+
+  await setDoc(doc(firebaseState.db, "sessions", sessionId), sessionPayload);
+  applyRemoteSessionData(sessionId, sessionPayload);
+  state.activeSessionId = sessionId;
+  subscribeToLiveSession(sessionId);
+  return state.sessions[sessionId];
+}
+
+async function joinLiveSession(sessionId, name) {
+  const ready = await ensureFirebaseReady();
+  if (!ready) {
+    return { ok: false, message: "Firebase is not configured." };
+  }
+
+  const sessionRef = doc(firebaseState.db, "sessions", sessionId);
+  const snapshot = await getDoc(sessionRef);
+  if (!snapshot.exists()) {
+    return { ok: false, message: "Session not found." };
+  }
+
+  applyRemoteSessionData(sessionId, snapshot.data());
+  state.activeSessionId = sessionId;
+  state.activeParticipantId = firebaseState.user?.uid || makeId("P");
+
+  const deviceHash = hashDevice(`${navigator.userAgent}-${name}`);
+  await setDoc(
+    doc(firebaseState.db, "sessions", sessionId, "participants", state.activeParticipantId),
+    {
+      id: state.activeParticipantId,
+      name,
+      deviceIdHash: deviceHash,
+      joinedAt: Date.now()
+    },
+    { merge: true }
+  );
+
+  subscribeToLiveSession(sessionId);
+  return { ok: true, participantId: state.activeParticipantId, session: state.sessions[sessionId] };
+}
+
+async function submitLiveFFF(sessionId, participantId, order) {
+  const session = state.sessions[sessionId];
+  if (!session || !participantId) return;
+  if (session.fffSubmissions[participantId]) return;
+
+  const pack = getPackById(session.packId);
+  const question = getFFFQuestion(pack);
+  let isCorrect = null;
+  if (question && question.correctOption) {
+    isCorrect = order === question.correctOption;
+  } else if (question && question.correctOrder) {
+    isCorrect = JSON.stringify(order) === JSON.stringify(question.correctOrder);
+  }
+
+  const submittedAt = Date.now();
+  const startTime = session.fffStartTime || submittedAt;
+  await setDoc(doc(firebaseState.db, "sessions", sessionId, "submissions", participantId), {
+    id: makeId("S"),
+    participantId,
+    isCorrect,
+    submittedAt,
+    latencyMs: submittedAt - startTime,
+    answerPayload: order,
+    roundId: session.fffRoundId || null
+  });
+}
+
+async function startLiveFFF(sessionId) {
+  const session = state.sessions[sessionId];
+  if (!session) return;
+  const roundId = makeId("R");
+  await updateDoc(doc(firebaseState.db, "sessions", sessionId), {
+    status: "live",
+    fffStartTime: Date.now(),
+    fffTimerSeconds: Number(dom.timerSeconds.value) || 20,
+    fffRoundId: roundId,
+    winnerParticipantId: null
+  });
+}
+
+async function computeLiveFFFWinner(sessionId) {
+  const session = state.sessions[sessionId];
+  if (!session) return;
+  const pack = getPackById(session.packId);
+  const question = getFFFQuestion(pack);
+  const submissions = Object.values(session.fffSubmissions || {}).filter((submission) => {
+    if (!session.fffRoundId) return true;
+    return submission.roundId === session.fffRoundId;
+  });
+  if (submissions.length === 0) return;
+  if (!question) return;
+
+  const scored = submissions.map((submission) => {
+    let isCorrect = submission.isCorrect;
+    if (isCorrect === null || isCorrect === undefined) {
+      if (question.correctOption) {
+        isCorrect = submission.answerPayload === question.correctOption;
+      } else if (question.correctOrder) {
+        isCorrect = JSON.stringify(submission.answerPayload) === JSON.stringify(question.correctOrder);
+      } else {
+        isCorrect = false;
+      }
+    }
+    return { ...submission, isCorrect };
+  });
+
+  scored.sort((a, b) => {
+    if (a.isCorrect !== b.isCorrect) {
+      return a.isCorrect ? -1 : 1;
+    }
+    return a.latencyMs - b.latencyMs;
+  });
+  const winner = scored[0];
+  await updateDoc(doc(firebaseState.db, "sessions", sessionId), {
+    winnerParticipantId: winner.participantId
+  });
 }
 
 function ensureDefaultPack() {
@@ -278,6 +602,10 @@ function loadState() {
   state.liveMode = savedLive === "true";
   state.timerSeconds = savedTimer ? Number(savedTimer) || 10 : 10;
 
+  if (state.liveMode && !getFirebaseConfig()) {
+    state.liveMode = false;
+  }
+
   ensureDefaultPack();
 
   // Save migrated state
@@ -369,6 +697,12 @@ function updateTimedButton() {
 function updateLiveButton() {
   if (!dom.liveToggle) return;
   dom.liveToggle.textContent = state.liveMode ? "📡 Live On" : "📡 Live Off";
+}
+
+function updateLiveIndicator() {
+  if (!dom.liveIndicator) return;
+  dom.liveIndicator.textContent = state.liveMode ? "Live: On" : "Live: Off";
+  dom.liveIndicator.classList.toggle("on", state.liveMode);
 }
 
 function updateTimerSecondsField() {
@@ -703,7 +1037,9 @@ function createSession(pack, mode) {
     },
     participants: {},
     fffSubmissions: {},
-    winnerParticipantId: null
+    winnerParticipantId: null,
+    fffRoundId: null,
+    fffQuestion: null
   };
   state.sessions[sessionId] = session;
   state.activeSessionId = sessionId;
@@ -744,7 +1080,7 @@ function renderHost() {
     return;
   }
   const pack = getPackById(session.packId);
-  dom.hostSessionTitle.textContent = pack ? pack.title : "Host Session";
+  dom.hostSessionTitle.textContent = pack ? pack.title : "Live Session";
   dom.hostSessionMeta.textContent = `${session.mode} • ${session.status}`;
   dom.hostSessionCode.textContent = session.id;
   const joinUrl = `${window.location.origin}${window.location.pathname}?view=participant&session=${session.id}`;
@@ -768,7 +1104,7 @@ function renderHost() {
 }
 
 function renderHostFFF(session, pack) {
-  const fffQuestion = getFFFQuestion(pack);
+  const fffQuestion = getFFFQuestion(pack) || session.fffQuestion;
   if (!fffQuestion) {
     dom.hostLive.textContent = "No FFF question available in this pack.";
     return;
@@ -792,7 +1128,7 @@ function renderHostFFF(session, pack) {
 
   const participantCount = Object.keys(session.participants).length;
   const tally = getFFFTally(session, fffQuestion);
-  const results = Object.entries(fffQuestion.options || {}).map(([key, label]) => {
+  const results = Object.entries(fffQuestion.options || {}).map(([key]) => {
     const count = tally[key] || 0;
     const pct = tally.total ? Math.round((count / tally.total) * 100) : 0;
     return `
@@ -809,7 +1145,7 @@ function renderHostFFF(session, pack) {
     <div>Participants: ${participantCount}</div>
     <div>Submissions: ${Object.keys(session.fffSubmissions).length}</div>
     <div class="status">Winner: ${session.winnerParticipantId ? session.participants[session.winnerParticipantId].name : "Pending"}</div>
-    <div class="fff-results">${results}</div>
+    <div class="fff-results">${results || ""}</div>
   `;
 }
 
@@ -1269,12 +1605,20 @@ function showPhoneAFriendDialog(question, level, correctOption = question.correc
   }, { once: true });
 }
 
-function startFFF(sessionId) {
+async function startFFF(sessionId) {
   const session = state.sessions[sessionId];
   if (!session) return;
+
+  if (state.liveMode) {
+    await startLiveFFF(sessionId);
+    audioManager.play("fastestFinger");
+    return;
+  }
+
   session.status = "live";
   session.fffSubmissions = {};
   session.winnerParticipantId = null;
+  session.fffRoundId = makeId("R");
   session.fffStartTime = Date.now();
   session.fffTimerSeconds = Number(dom.timerSeconds.value) || 20;
 
@@ -1284,14 +1628,23 @@ function startFFF(sessionId) {
   renderHost();
 }
 
-function computeFFFWinner(sessionId) {
+async function computeFFFWinner(sessionId) {
   const session = state.sessions[sessionId];
   const pack = getPackById(session.packId);
-  const question = getFFFQuestion(pack);
-  const submissions = Object.values(session.fffSubmissions);
+  const question = getFFFQuestion(pack) || session.fffQuestion;
+  const submissions = Object.values(session.fffSubmissions).filter((submission) => {
+    if (!session.fffRoundId) return true;
+    return submission.roundId === session.fffRoundId;
+  });
   if (!question || submissions.length === 0) {
     return;
   }
+
+  if (state.liveMode) {
+    await computeLiveFFFWinner(sessionId);
+    return;
+  }
+
   submissions.sort((a, b) => {
     if (a.isCorrect !== b.isCorrect) {
       return a.isCorrect ? -1 : 1;
@@ -1304,7 +1657,20 @@ function computeFFFWinner(sessionId) {
   renderHost();
 }
 
-function joinSession(sessionId, name) {
+async function joinSession(sessionId, name) {
+  if (!state.liveMode && !state.sessions[sessionId]) {
+    const ready = await ensureFirebaseReady();
+    if (ready) {
+      state.liveMode = true;
+      localStorage.setItem(storageKeys.liveMode, String(state.liveMode));
+      updateLiveButton();
+      updateLiveIndicator();
+      return joinLiveSession(sessionId, name);
+    }
+  } else if (state.liveMode) {
+    return joinLiveSession(sessionId, name);
+  }
+
   const session = state.sessions[sessionId];
   if (!session) return { ok: false, message: "Session not found." };
 
@@ -1328,13 +1694,21 @@ function joinSession(sessionId, name) {
     joinedAt: Date.now(),
     isWinner: false
   };
+  state.activeSessionId = sessionId;
+  state.activeParticipantId = participantId;
   saveState();
   return { ok: true, participantId, session };
 }
 
-function submitFFF(sessionId, participantId, order) {
+async function submitFFF(sessionId, participantId, order) {
   const session = state.sessions[sessionId];
   if (!session || session.fffSubmissions[participantId]) return;
+
+  if (state.liveMode) {
+    await submitLiveFFF(sessionId, participantId, order);
+    return;
+  }
+
   const pack = getPackById(session.packId);
   const question = getFFFQuestion(pack);
   let isCorrect = false;
@@ -1350,7 +1724,8 @@ function submitFFF(sessionId, participantId, order) {
     isCorrect,
     submittedAt,
     latencyMs: submittedAt - session.fffStartTime,
-    answerPayload: order
+    answerPayload: order,
+    roundId: session.fffRoundId || null
   };
   saveState();
 }
@@ -1363,13 +1738,16 @@ function renderParticipant(sessionId, participantId) {
   }
   const pack = getPackById(session.packId);
   dom.participantMeta.textContent = `Session ${session.id} • ${session.status}`;
-  const question = getFFFQuestion(pack);
+  const question = getFFFQuestion(pack) || session.fffQuestion;
   if (!question) {
     dom.participantFFF.textContent = "No FFF question in this pack.";
     return;
   }
 
   dom.participantFFF.innerHTML = "";
+  if (session.status !== "live") {
+    dom.participantStatus.textContent = "Waiting for host to start...";
+  }
   const prompt = document.createElement("div");
   prompt.className = "question";
   prompt.textContent = question.promptText;
@@ -1382,8 +1760,8 @@ function renderParticipant(sessionId, participantId) {
       const btn = document.createElement("button");
       btn.className = "secondary";
       btn.textContent = `${key}: ${value}`;
-      btn.onclick = () => {
-        submitFFF(sessionId, participantId, key);
+      btn.onclick = async () => {
+        await submitFFF(sessionId, participantId, key);
         dom.participantStatus.textContent = `Voted ${key}.`;
         list.querySelectorAll("button").forEach((b) => (b.disabled = true));
       };
@@ -1396,11 +1774,11 @@ function renderParticipant(sessionId, participantId) {
       const btn = document.createElement("button");
       btn.className = "secondary";
       btn.textContent = item;
-      btn.onclick = () => {
+      btn.onclick = async () => {
         selections.push(item);
         btn.disabled = true;
         if (selections.length === 4) {
-          submitFFF(sessionId, participantId, selections);
+          await submitFFF(sessionId, participantId, selections);
           dom.participantStatus.textContent = "Submitted!";
         }
       };
@@ -1409,6 +1787,15 @@ function renderParticipant(sessionId, participantId) {
   }
 
   dom.participantFFF.append(prompt, list);
+
+  if (session.status !== "live") {
+    list.querySelectorAll("button").forEach((b) => (b.disabled = true));
+  }
+
+  if (session.fffSubmissions?.[participantId]) {
+    dom.participantStatus.textContent = "Submitted!";
+    list.querySelectorAll("button").forEach((b) => (b.disabled = true));
+  }
 }
 
 function getFFFQuestion(pack) {
@@ -1421,6 +1808,9 @@ function getFFFTally(session, question) {
     return tally;
   }
   Object.values(session.fffSubmissions || {}).forEach((submission) => {
+    if (session.fffRoundId && submission.roundId !== session.fffRoundId) {
+      return;
+    }
     if (submission.answerPayload && tally[submission.answerPayload] !== undefined) {
       tally[submission.answerPayload] += 1;
       tally.total += 1;
@@ -1733,10 +2123,19 @@ function initEvents() {
   }
 
   if (dom.liveToggle) {
-    dom.liveToggle.addEventListener("click", () => {
-      state.liveMode = !state.liveMode;
+    dom.liveToggle.addEventListener("click", async () => {
+      const nextMode = !state.liveMode;
+      if (nextMode) {
+        const ready = await ensureFirebaseReady();
+        if (!ready) {
+          alert("Firebase is not configured. Add firebaseConfig in index.html.");
+          return;
+        }
+      }
+      state.liveMode = nextMode;
       localStorage.setItem(storageKeys.liveMode, String(state.liveMode));
       updateLiveButton();
+      updateLiveIndicator();
     });
   }
 
@@ -1809,11 +2208,13 @@ function initEvents() {
     savePack();
   });
 
-  dom.createSession.addEventListener("click", () => {
+  dom.createSession.addEventListener("click", async () => {
     const packId = dom.packSelect.value;
     const mode = dom.modeSelect.value;
     const pack = getPackById(packId);
-    const session = createSession(pack, mode);
+    const session = state.liveMode && mode === "FFF"
+      ? await createLiveSession(pack, mode)
+      : createSession(pack, mode);
     if (!session) return;
     renderHost();
     setScreen("host");
@@ -1845,22 +2246,28 @@ function initEvents() {
     setScreen("builder");
   });
 
-  dom.endSession.addEventListener("click", () => {
+  dom.endSession.addEventListener("click", async () => {
     const session = getSession();
     if (!session) return;
-    session.status = "ended";
-    saveState();
+    if (state.liveMode) {
+      await updateDoc(doc(firebaseState.db, "sessions", session.id), {
+        status: "ended"
+      });
+    } else {
+      session.status = "ended";
+      saveState();
+    }
     setScreen("dashboard");
   });
 
-  dom.participantJoin.addEventListener("click", () => {
+  dom.participantJoin.addEventListener("click", async () => {
     const code = dom.participantCode.value.trim().toUpperCase();
     const name = dom.participantName.value.trim();
     if (!code || !name) {
       dom.participantStatus.textContent = "Enter a session code and name.";
       return;
     }
-    const result = joinSession(code, name);
+    const result = await joinSession(code, name);
     if (!result.ok) {
       dom.participantStatus.textContent = result.message;
       return;
@@ -2003,9 +2410,13 @@ function initFromUrl() {
 }
 
 loadState();
+if (state.liveMode) {
+  ensureFirebaseReady();
+}
 updateLoginButton();
 updateTimedButton();
 updateLiveButton();
+updateLiveIndicator();
 renderLanding();
 renderPackList();
 resetBuilder();
