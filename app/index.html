@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Who Wants to be a Millionaire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+    <div class="bg-glow"></div>
+    <div class="lightning-effects">
+      <div class="lightning-beam beam-1"></div>
+      <div class="lightning-beam beam-2"></div>
+      <div class="lightning-beam beam-3"></div>
+    </div>
+    <header class="topbar">
+      <div class="brand">
+        <button id="btn-home" class="brand-logo" aria-label="Home">
+          <img src="assets/wwtbam-logo.gif" alt="WWTBAM logo" />
+        </button>
+      </div>
+      <nav class="topbar-nav">
+        <button id="btn-leaderboard" class="ghost">🏆 Leaderboard</button>
+        <button id="btn-achievements" class="ghost">⭐ Achievements</button>
+      </nav>
+      <div class="topbar-actions">
+        <button id="btn-upgrade" class="ghost">💎 Upgrade</button>
+        <button id="btn-sound" class="ghost">🔇 Sound Off</button>
+        <button id="btn-timed" class="ghost">⏱ Timer Off</button>
+        <button id="btn-live" class="ghost">📡 Live Off</button>
+        <button id="btn-login" class="ghost">Login</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section id="screen-landing" class="screen active">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">Play. Host. Build.</p>
+            <h1>Run a Millionaire game show, with cinematic energy fully customizable.</h1>
+            <p class="subtext">
+              Host Classic rounds, spin up Fastest Finger First, or create custom game packs in minutes.
+            </p>
+            <div class="cta-row">
+              <button id="btn-play-default" class="primary">Play Default Pack</button>
+              <button id="btn-go-dashboard" class="secondary">Creator Dashboard</button>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <p class="card-title prize-title">Prize</p>
+              <ul class="ladder-preview" id="landing-ladder"></ul>
+              <p class="card-footnote">Customizable currency, lifelines, and themes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-dashboard" class="screen">
+        <div class="panel">
+          <div class="panel-head classic-header">
+            <h2>Creator Dashboard</h2>
+            <p>Build packs, customize ladders, and host live sessions.</p>
+          </div>
+          <div class="panel-body grid-2">
+            <div class="card">
+              <h3>My Packs</h3>
+              <div id="pack-list" class="stack"></div>
+              <button id="btn-create-pack" class="secondary">Create Pack</button>
+            </div>
+            <div class="card">
+              <h3>Host Session</h3>
+              <label class="field">
+                <span>Pack</span>
+                <select id="host-pack-select"></select>
+              </label>
+              <label class="field">
+                <span>Mode</span>
+                <select id="host-mode-select">
+                  <option value="FFF">Fastest Finger First</option>
+                  <option value="CLASSIC">Classic</option>
+                </select>
+              </label>
+              <button id="btn-host-session" class="primary">Create Session</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-builder" class="screen">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Game Builder</h2>
+            <p>Upload a CSV, tweak lifelines, and save your custom pack.</p>
+          </div>
+          <div class="panel-body grid-2">
+            <div class="card">
+              <label class="field">
+                <span>Pack Title</span>
+                <input id="builder-title" type="text" placeholder="Trivia Night" />
+              </label>
+              <label class="field">
+                <span>Description</span>
+                <textarea id="builder-description" rows="3" placeholder="Add a short summary..."></textarea>
+              </label>
+              <label class="field">
+                <span>Currency Symbol</span>
+                <input id="builder-currency" type="text" value="$" maxlength="3" />
+              </label>
+              <div class="ladder-editor">
+                <p class="field-label">Prize Ladder (15 levels)</p>
+                <div id="builder-ladder" class="ladder-grid"></div>
+              </div>
+              <div class="message-editor">
+                <p class="field-label">Game Over Messages</p>
+                <label class="field">
+                  <span>Win Title</span>
+                  <input id="builder-win-title" type="text" placeholder="Congratulations!" />
+                </label>
+                <label class="field">
+                  <span>Win Message</span>
+                  <input id="builder-win-message" type="text" placeholder="You are a millionaire!" />
+                </label>
+                <label class="field">
+                  <span>Lose Title</span>
+                  <input id="builder-lose-title" type="text" placeholder="Game Over" />
+                </label>
+                <label class="field">
+                  <span>Lose Message</span>
+                  <input id="builder-lose-message" type="text" placeholder="Better luck next time!" />
+                </label>
+                <label class="field">
+                  <span>Walk Away Title</span>
+                  <input id="builder-walk-title" type="text" placeholder="Well Played!" />
+                </label>
+                <label class="field">
+                  <span>Walk Away Message</span>
+                  <input id="builder-walk-message" type="text" placeholder="You walked away with:" />
+                </label>
+              </div>
+            </div>
+            <div class="card">
+              <label class="field">
+                <span>Import CSV</span>
+                <input id="builder-csv" type="file" accept=".csv" />
+              </label>
+              <a class="template-link" href="assets/question_template.csv" download>Download CSV template</a>
+              <div id="builder-preview" class="preview"></div>
+              <div class="lifelines">
+                <p class="field-label">Lifelines</p>
+                <label class="field inline">
+                  <span>50:50</span>
+                  <input id="lifeline-fifty" type="text" value="50:50" />
+                </label>
+                <label class="field inline">
+                  <span>Ask the Audience</span>
+                  <input id="lifeline-audience" type="text" value="Ask the Audience" />
+                </label>
+                <label class="field inline">
+                  <span>Phone a Friend</span>
+                  <input id="lifeline-phone" type="text" value="Phone a Friend" />
+                </label>
+              </div>
+              <button id="btn-save-pack" class="primary">Save Pack</button>
+              <button id="btn-cancel-builder" class="ghost">Back</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-host" class="screen">
+        <div class="panel">
+          <div class="panel-head host-head">
+            <div>
+              <h2 id="host-session-title">Host Session</h2>
+              <p id="host-session-meta"></p>
+            </div>
+            <button id="btn-end-session" class="ghost">End Session</button>
+          </div>
+          <div class="panel-body grid-2">
+            <div class="card">
+              <h3>Join Info</h3>
+              <div class="qr-card">
+                <img id="qr-image" class="qr-image" alt="Join QR code" />
+                <div>
+                  <p class="code" id="host-session-code"></p>
+                  <button id="btn-copy-link" class="secondary">Copy Join Link</button>
+                </div>
+              </div>
+              <div class="timer-toggle">
+                <label>
+                  <input id="toggle-timer" type="checkbox" />
+                  Enable Timer
+                </label>
+                <input id="timer-seconds" type="number" min="10" max="90" value="30" />
+              </div>
+              <div id="host-controls" class="stack"></div>
+            </div>
+            <div class="card">
+              <h3>Live Board</h3>
+              <div id="host-live" class="live-board"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-participant" class="screen">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Participant Console</h2>
+            <p id="participant-session-meta">Join a Fastest Finger First round.</p>
+          </div>
+          <div class="panel-body grid-2">
+            <div class="card">
+              <label class="field">
+                <span>Session Code</span>
+                <input id="participant-code" type="text" placeholder="AB12CD" />
+              </label>
+              <label class="field">
+                <span>Your Name</span>
+                <input id="participant-name" type="text" placeholder="Alex" />
+              </label>
+              <button id="btn-participant-join" class="primary">Join Session</button>
+              <div id="participant-status" class="status"></div>
+            </div>
+            <div class="card">
+              <h3>Fastest Finger</h3>
+              <div id="participant-fff" class="stack"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-classic" class="screen">
+        <div class="panel">
+          <div class="panel-head classic-header">
+            <div class="classic-header-block">
+              <div class="classic-title-row">
+                <h2 id="classic-pack-title">Classic Round</h2>
+                <div id="classic-timer" class="timer"></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body grid-2 classic-layout">
+            <div class="card classic-board">
+              <div id="classic-question" class="question"></div>
+              <div id="classic-options" class="options"></div>
+              <div id="classic-feedback" class="feedback"></div>
+              <div class="lifeline-row" id="classic-lifelines">
+                <button id="btn-walk-away" class="ghost">🚪 Walk Away</button>
+              </div>
+            </div>
+            <div class="card ladder-card">
+              <div class="ladder-card-head">
+                <h3>Prize Ladder</h3>
+                <p id="classic-meta"></p>
+              </div>
+              <ol id="classic-ladder" class="ladder"></ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-pricing" class="screen">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Choose Your Plan</h2>
+            <p>Unlock more features, host bigger sessions, and customize your experience.</p>
+          </div>
+          <div class="panel-body">
+            <div class="pricing-grid">
+              <!-- FREE Tier -->
+              <div class="pricing-card">
+                <div class="pricing-header">
+                  <h3>Free</h3>
+                  <div class="pricing-price">
+                    <span class="price-amount">$0</span>
+                    <span class="price-period">Forever</span>
+                  </div>
+                </div>
+                <ul class="pricing-features">
+                  <li>✓ No custom packs</li>
+                  <li>✓ 10 participants per session</li>
+                  <li>✓ All game modes</li>
+                  <li>✓ Basic lifelines</li>
+                  <li>✓ Local leaderboard</li>
+                </ul>
+                <button class="pricing-button secondary" data-tier="FREE">Current Plan</button>
+              </div>
+
+              <!-- PRO Tier -->
+              <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-header">
+                  <h3>Pro</h3>
+                  <div class="pricing-price">
+                    <span class="price-amount">$9.99</span>
+                    <span class="price-period">/month</span>
+                  </div>
+                </div>
+                <ul class="pricing-features">
+                  <li>✓ 10 custom packs</li>
+                  <li>✓ 100 participants per session</li>
+                  <li>✓ Custom branding & themes</li>
+                  <li>✓ Advanced analytics</li>
+                  <li>✓ Global leaderboard access</li>
+                  <li>✓ Priority email support</li>
+                </ul>
+                <button class="pricing-button primary" data-tier="PRO">Upgrade to Pro</button>
+              </div>
+
+              <!-- ENTERPRISE Tier -->
+              <div class="pricing-card">
+                <div class="pricing-header">
+                  <h3>Enterprise</h3>
+                  <div class="pricing-price">
+                    <span class="price-amount">$49.99</span>
+                    <span class="price-period">/month</span>
+                  </div>
+                </div>
+                <ul class="pricing-features">
+                  <li>✓ Unlimited custom packs</li>
+                  <li>✓ Unlimited participants</li>
+                  <li>✓ White-label branding</li>
+                  <li>✓ Advanced analytics & exports</li>
+                  <li>✓ API access</li>
+                  <li>✓ Dedicated support</li>
+                  <li>✓ Custom integrations</li>
+                </ul>
+                <button class="pricing-button primary" data-tier="ENTERPRISE">Upgrade to Enterprise</button>
+              </div>
+            </div>
+            <div class="pricing-footer">
+              <button id="btn-back-from-pricing" class="ghost">← Back to Dashboard</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-leaderboard" class="screen">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Leaderboard</h2>
+            <p>Top players on this device</p>
+          </div>
+          <div class="panel-body">
+            <div class="leaderboard-filters">
+              <button class="filter-button active" data-filter="totalWinnings">💰 Total Winnings</button>
+              <button class="filter-button" data-filter="gamesWon">🏆 Most Wins</button>
+              <button class="filter-button" data-filter="fastestWin">⚡ Fastest Win</button>
+              <button class="filter-button" data-filter="highestLevel">📈 Highest Level</button>
+            </div>
+            <div class="leaderboard-container">
+              <table class="leaderboard-table" id="leaderboard-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Score</th>
+                    <th>Games</th>
+                    <th>Achievements</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                  <!-- Populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+            <div class="leaderboard-footer">
+              <button id="btn-back-from-leaderboard" class="ghost">← Back</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-achievements" class="screen">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Achievements</h2>
+            <p id="achievements-progress">Unlock achievements by playing games</p>
+          </div>
+          <div class="panel-body">
+            <div class="stats-summary">
+              <div class="stat-card">
+                <div class="stat-value" id="stat-games-played">0</div>
+                <div class="stat-label">Games Played</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="stat-games-won">0</div>
+                <div class="stat-label">Games Won</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="stat-total-winnings">$0</div>
+                <div class="stat-label">Total Winnings</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="stat-highest-level">0</div>
+                <div class="stat-label">Highest Level</div>
+              </div>
+            </div>
+            <div class="achievements-grid" id="achievements-grid">
+              <!-- Populated by JavaScript -->
+            </div>
+            <div class="achievements-footer">
+              <button id="btn-back-from-achievements" class="ghost">← Back</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-new">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About</h3>
+          <p>Experience the thrill of the iconic game show. Host your own sessions, create custom question packs, and compete for the top spot on the leaderboard.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 3.667h-3.533v7.98H9.101z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#" id="footer-home">Home</a></li>
+            <li><a href="#" id="footer-dashboard">Dashboard</a></li>
+            <li><a href="#" id="footer-leaderboard">Leaderboard</a></li>
+            <li><a href="#" id="footer-pricing">Pricing</a></li>
+            <li><a href="#" id="footer-contrast">High Contrast</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Get updates on new features and game packs.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Your email" required />
+            <button type="submit" class="secondary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Who Wants to be a Millionaire. Built for demo purposes.</p>
+      </div>
+    </footer>
+
+    <dialog id="login-dialog">
+      <form method="dialog" class="dialog-card">
+        <h3>Login / Register</h3>
+        <label class="field">
+          <span>Email</span>
+          <input id="login-email" type="email" placeholder="you@example.com" required />
+        </label>
+        <label class="field">
+          <span>Display Name</span>
+          <input id="login-name" type="text" placeholder="Host" required />
+        </label>
+        <menu>
+          <button value="cancel" class="ghost">Cancel</button>
+          <button id="btn-demo-login" value="default" class="secondary">Use Demo</button>
+          <button id="btn-login-save" value="default" class="primary">Save</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="audience-dialog">
+      <div class="dialog-card lifeline-dialog">
+        <h3>📊 Ask the Audience</h3>
+        <p class="lifeline-prompt">The audience has voted:</p>
+        <div id="audience-manual" class="audience-manual">
+          <div class="audience-input">
+            <label>A</label>
+            <input type="number" min="0" max="100" data-option="A" />
+          </div>
+          <div class="audience-input">
+            <label>B</label>
+            <input type="number" min="0" max="100" data-option="B" />
+          </div>
+          <div class="audience-input">
+            <label>C</label>
+            <input type="number" min="0" max="100" data-option="C" />
+          </div>
+          <div class="audience-input">
+            <label>D</label>
+            <input type="number" min="0" max="100" data-option="D" />
+          </div>
+          <button id="audience-apply" class="secondary">Apply Votes</button>
+        </div>
+        <div id="audience-results" class="audience-bars"></div>
+        <menu>
+          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+        </menu>
+      </div>
+    </dialog>
+
+    <dialog id="phone-dialog">
+      <div class="dialog-card lifeline-dialog">
+        <h3>📞 Phone a Friend</h3>
+        <p class="lifeline-prompt">Calling your friend...</p>
+        <div id="phone-timer" class="phone-countdown">60</div>
+        <div id="phone-manual" class="phone-manual">
+          <label>Suggested Answer</label>
+          <input id="phone-manual-input" type="text" maxlength="1" placeholder="A-D" />
+          <button id="phone-apply" class="secondary">Apply Suggestion</button>
+        </div>
+        <div id="phone-message" class="phone-message"></div>
+        <menu>
+          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+        </menu>
+      </div>
+    </dialog>
+
+    <dialog id="timer-dialog">
+      <form method="dialog" class="dialog-card">
+        <h3>⏱ Timer Settings</h3>
+        <label class="field">
+          <span>Seconds per question (5-90)</span>
+          <input id="timer-dialog-input" type="number" min="5" max="90" value="10" />
+        </label>
+        <menu>
+          <button id="timer-dialog-cancel" value="cancel" class="ghost">Cancel</button>
+          <button id="timer-dialog-apply" value="default" class="primary">Apply</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="gameover-dialog">
+      <div class="dialog-card gameover-dialog">
+        <div class="ribbon-burst" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div id="gameover-icon" class="gameover-icon"></div>
+        <h2 id="gameover-title">Game Over</h2>
+        <p id="gameover-message" class="gameover-message"></p>
+        <div id="gameover-prize" class="gameover-prize"></div>
+        <menu>
+          <button value="cancel" class="primary" onclick="window.restartClassic?.()">Play Again</button>
+          <button value="cancel" class="ghost" onclick="this.closest('dialog').close(); window.location.href='index.html'">Close</button>
+        </menu>
+      </div>
+    </dialog>
+
+    <script type="module" src="app.mjs"></script>
+  </body>
+</html>
