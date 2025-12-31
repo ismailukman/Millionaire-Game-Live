@@ -554,6 +554,17 @@
       </form>
     </dialog>
 
+    <dialog id="default-category-dialog">
+      <div class="dialog-card">
+        <h3>Choose a Category</h3>
+        <p class="subtext">Pick a theme for this round. 15 questions are drawn randomly.</p>
+        <div id="default-category-dialog-grid" class="category-grid"></div>
+        <menu>
+          <button value="cancel" class="ghost" onclick="this.closest('dialog').close()">Cancel</button>
+        </menu>
+      </div>
+    </dialog>
+
     <dialog id="gameover-dialog">
       <div class="dialog-card gameover-dialog">
         <div class="ribbon-burst" aria-hidden="true">

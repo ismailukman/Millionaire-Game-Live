@@ -99,6 +99,8 @@ const dom = {
   modeSelect: document.querySelector("#host-mode-select"),
   defaultCategorySection: document.querySelector("#default-category-section"),
   defaultCategoryGrid: document.querySelector("#default-category-grid"),
+  defaultCategoryDialog: document.querySelector("#default-category-dialog"),
+  defaultCategoryDialogGrid: document.querySelector("#default-category-dialog-grid"),
   createSession: document.querySelector("#btn-host-session"),
   createPack: document.querySelector("#btn-create-pack"),
   savePack: document.querySelector("#btn-save-pack"),
@@ -655,18 +657,14 @@ function buildCategoryPack(category) {
   };
 }
 
-function renderDefaultCategoryPicker() {
-  if (!dom.defaultCategorySection || !dom.defaultCategoryGrid || !dom.packSelect) return;
-  const isDefault = dom.packSelect.value === defaultPack.id;
-  dom.defaultCategorySection.style.display = isDefault ? "block" : "none";
-  if (!isDefault) return;
-
-  dom.defaultCategoryGrid.innerHTML = "";
+function renderCategoryCards(target, { onSelect, selectedId } = {}) {
+  if (!target) return;
+  target.innerHTML = "";
   defaultCategoryDecks.forEach((category) => {
     const card = document.createElement("button");
     card.type = "button";
     card.className = "category-card";
-    if (state.selectedDefaultCategoryId === category.id) {
+    if (selectedId === category.id) {
       card.classList.add("selected");
     }
     card.innerHTML = `
@@ -676,10 +674,22 @@ function renderDefaultCategoryPicker() {
     `;
     card.addEventListener("click", () => {
       setSelectedDefaultCategory(category.id);
+      if (onSelect) {
+        onSelect(category);
+        return;
+      }
       renderDefaultCategoryPicker();
     });
-    dom.defaultCategoryGrid.appendChild(card);
+    target.appendChild(card);
   });
+}
+
+function renderDefaultCategoryPicker() {
+  if (!dom.defaultCategorySection || !dom.defaultCategoryGrid || !dom.packSelect) return;
+  const isDefault = dom.packSelect.value === defaultPack.id;
+  dom.defaultCategorySection.style.display = isDefault ? "block" : "none";
+  if (!isDefault) return;
+  renderCategoryCards(dom.defaultCategoryGrid, { selectedId: state.selectedDefaultCategoryId });
 }
 
 // Subscription & Feature Gating Functions
@@ -2240,6 +2250,21 @@ function initEvents() {
 
   dom.playDefault.addEventListener("click", () => {
     ensureDefaultPack();
+    if (dom.defaultCategoryDialog && dom.defaultCategoryDialogGrid) {
+      renderCategoryCards(dom.defaultCategoryDialogGrid, {
+        selectedId: state.selectedDefaultCategoryId,
+        onSelect: (category) => {
+          const session = createSession(defaultPack, "CLASSIC");
+          if (!session) return;
+          dom.defaultCategoryDialog.close();
+          renderHost();
+          setScreen("host");
+          startClassic(session.id);
+        }
+      });
+      dom.defaultCategoryDialog.showModal();
+      return;
+    }
     const session = createSession(defaultPack, "CLASSIC");
     if (!session) return;
     renderHost();
