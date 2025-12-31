@@ -195,6 +195,11 @@ dialog {
   box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.35);
 }
 
+.status-success {
+  color: #22c55e;
+  font-weight: 600;
+}
+
 
 .shell {
   padding: 20px 48px 80px;

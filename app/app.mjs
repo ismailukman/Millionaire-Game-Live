@@ -2256,6 +2256,7 @@ function initEvents() {
     if (dom.defaultCategoryDialog && dom.defaultCategoryDialogGrid) {
       if (dom.defaultCategoryStatus) {
         dom.defaultCategoryStatus.textContent = "";
+        dom.defaultCategoryStatus.classList.remove("status-success");
       }
       const renderDialogCards = () => {
         renderCategoryCards(dom.defaultCategoryDialogGrid, {
@@ -2283,6 +2284,7 @@ function initEvents() {
       }
       if (dom.defaultCategoryStatus) {
         dom.defaultCategoryStatus.textContent = "Load successful.";
+        dom.defaultCategoryStatus.classList.add("status-success");
       }
     });
   }
