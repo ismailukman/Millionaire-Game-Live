@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "ismailukman-829d8"
-  }
+  },
+  "targets": {
+    "ismailukman-829d8": {
+      "hosting": {
+        "millionaire-game-live": [
+          "millionaire-game-live"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

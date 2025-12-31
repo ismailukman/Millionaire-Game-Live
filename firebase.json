@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "app",
+    "target": "millionaire-game-live",
     "ignore": [
       "firebase.json",
       "**/.*",
