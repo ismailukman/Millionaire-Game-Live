@@ -1,4 +1,4 @@
-import { defaultPack, subscriptionTiers } from "./data.mjs";
+import { defaultPack, defaultCategoryDecks, subscriptionTiers } from "./data.mjs";
 import {
   makeId,
   shuffle,
@@ -42,6 +42,7 @@ const state = {
   sessions: {},
   activeSessionId: null,
   activeParticipantId: null,
+  selectedDefaultCategoryId: null,
   timedMode: false,
   liveMode: false,
   timerSeconds: 10,
@@ -69,7 +70,8 @@ const storageKeys = {
   sessions: "wwtbam_sessions",
   timedMode: "wwtbam_timed_mode",
   liveMode: "wwtbam_live_mode",
-  timerSeconds: "wwtbam_timer_seconds"
+  timerSeconds: "wwtbam_timer_seconds",
+  defaultCategory: "wwtbam_default_category"
 };
 
 const dom = {
@@ -95,6 +97,8 @@ const dom = {
   packList: document.querySelector("#pack-list"),
   packSelect: document.querySelector("#host-pack-select"),
   modeSelect: document.querySelector("#host-mode-select"),
+  defaultCategorySection: document.querySelector("#default-category-section"),
+  defaultCategoryGrid: document.querySelector("#default-category-grid"),
   createSession: document.querySelector("#btn-host-session"),
   createPack: document.querySelector("#btn-create-pack"),
   savePack: document.querySelector("#btn-save-pack"),
@@ -395,7 +399,7 @@ async function submitLiveFFF(sessionId, participantId, order) {
   if (!session || !participantId) return;
   if (session.fffSubmissions[participantId]) return;
 
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   const question = getFFFQuestion(pack);
   let isCorrect = null;
   if (question && question.correctOption) {
@@ -433,7 +437,7 @@ async function startLiveFFF(sessionId) {
 async function computeLiveFFFWinner(sessionId) {
   const session = state.sessions[sessionId];
   if (!session) return;
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   const question = getFFFQuestion(pack);
   const submissions = Object.values(session.fffSubmissions || {}).filter((submission) => {
     if (!session.fffRoundId) return true;
@@ -593,6 +597,7 @@ function loadState() {
   const savedTimed = localStorage.getItem(storageKeys.timedMode);
   const savedLive = localStorage.getItem(storageKeys.liveMode);
   const savedTimer = localStorage.getItem(storageKeys.timerSeconds);
+  const savedCategory = localStorage.getItem(storageKeys.defaultCategory);
 
   state.user = savedUser ? migrateUserState(safeParse(savedUser, null)) : null;
   state.packs = safeParse(savedPacks, [defaultPack]);
@@ -600,6 +605,7 @@ function loadState() {
   state.timedMode = savedTimed === "true";
   state.liveMode = savedLive === "true";
   state.timerSeconds = savedTimer ? Number(savedTimer) || 10 : 10;
+  state.selectedDefaultCategoryId = savedCategory || defaultCategoryDecks[0]?.id || null;
 
   if (state.liveMode && !getFirebaseConfig()) {
     state.liveMode = false;
@@ -617,6 +623,63 @@ function saveState() {
   localStorage.setItem(storageKeys.user, JSON.stringify(state.user));
   localStorage.setItem(storageKeys.packs, JSON.stringify(state.packs));
   localStorage.setItem(storageKeys.sessions, JSON.stringify(state.sessions));
+}
+
+function setSelectedDefaultCategory(categoryId) {
+  state.selectedDefaultCategoryId = categoryId;
+  if (categoryId) {
+    localStorage.setItem(storageKeys.defaultCategory, categoryId);
+  } else {
+    localStorage.removeItem(storageKeys.defaultCategory);
+  }
+}
+
+function getDefaultCategoryById(categoryId) {
+  return defaultCategoryDecks.find((category) => category.id === categoryId) || null;
+}
+
+function buildCategoryPack(category) {
+  const selected = shuffle(category.questions).slice(0, 15).map((question, index) => ({
+    ...question,
+    id: `${category.id}_${index + 1}_${makeId("Q")}`,
+    level: index + 1
+  }));
+  const fffQuestion = defaultPack.questions.find((q) => q.type === "FFF");
+  const questions = fffQuestion ? [...selected, fffQuestion] : selected;
+  return {
+    ...defaultPack,
+    id: `${defaultPack.id}_${category.id}`,
+    title: `${defaultPack.title} • ${category.title}`,
+    description: category.subtitle,
+    questions
+  };
+}
+
+function renderDefaultCategoryPicker() {
+  if (!dom.defaultCategorySection || !dom.defaultCategoryGrid || !dom.packSelect) return;
+  const isDefault = dom.packSelect.value === defaultPack.id;
+  dom.defaultCategorySection.style.display = isDefault ? "block" : "none";
+  if (!isDefault) return;
+
+  dom.defaultCategoryGrid.innerHTML = "";
+  defaultCategoryDecks.forEach((category) => {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "category-card";
+    if (state.selectedDefaultCategoryId === category.id) {
+      card.classList.add("selected");
+    }
+    card.innerHTML = `
+      <strong>${category.title}</strong>
+      <span class="subtext">${category.subtitle}</span>
+      <span class="meta">45 questions • 15 random per game</span>
+    `;
+    card.addEventListener("click", () => {
+      setSelectedDefaultCategory(category.id);
+      renderDefaultCategoryPicker();
+    });
+    dom.defaultCategoryGrid.appendChild(card);
+  });
 }
 
 // Subscription & Feature Gating Functions
@@ -753,6 +816,7 @@ function renderPackList() {
     option.textContent = pack.title;
     dom.packSelect.appendChild(option);
   });
+  renderDefaultCategoryPicker();
 }
 
 function renderPricing() {
@@ -913,7 +977,7 @@ function updateGameStats(type, sessionId) {
   const session = state.sessions[sessionId];
   if (!session) return;
 
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   if (!pack) return;
 
   const stats = state.user.stats;
@@ -1014,18 +1078,28 @@ function createSession(pack, mode) {
     alert("No pack selected. Please choose a pack from the dashboard.");
     return null;
   }
+  let resolvedPack = pack;
+  if (pack.id === defaultPack.id && mode === "CLASSIC") {
+    const category = getDefaultCategoryById(state.selectedDefaultCategoryId);
+    if (!category) {
+      alert("Choose a category for the default pack.");
+      return null;
+    }
+    resolvedPack = buildCategoryPack(category);
+  }
   const sessionId = makeId("S");
-  const configSnapshot = JSON.parse(JSON.stringify(pack.config));
+  const configSnapshot = JSON.parse(JSON.stringify(resolvedPack.config));
   const session = {
     id: sessionId,
-    packId: pack.id,
+    packId: resolvedPack.id,
     mode,
     status: "waiting",
     createdAt: Date.now(),
     configSnapshot,
+    packSnapshot: resolvedPack,
     currentState: {
       level: 1,
-      questionOrder: buildQuestionOrder(pack),
+      questionOrder: buildQuestionOrder(resolvedPack),
       usedLifelines: [],
       disabledOptions: []
     },
@@ -1064,6 +1138,11 @@ function getPackById(packId) {
   return state.packs.find((pack) => pack.id === packId);
 }
 
+function getPackForSession(session) {
+  if (!session) return null;
+  return getPackForSession(session) || session.packSnapshot || defaultPack;
+}
+
 function getSession() {
   return state.sessions[state.activeSessionId];
 }
@@ -1073,7 +1152,7 @@ function renderHost() {
   if (!session) {
     return;
   }
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   dom.hostSessionTitle.textContent = pack ? pack.title : "Live Session";
   dom.hostSessionMeta.textContent = `${session.mode} • ${session.status}`;
   dom.hostSessionCode.textContent = session.id;
@@ -1171,7 +1250,7 @@ function renderClassic() {
   if (!session) {
     return;
   }
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   if (!pack) {
     dom.classicQuestion.textContent = "Pack data missing. Reload the page to restore the default pack.";
     return;
@@ -1298,7 +1377,7 @@ function startClassic(sessionId) {
   session.currentState.locked = false;
   session.currentState.optionShuffle = {};
   session.currentState.shuffleSeed = Math.random().toString(36).slice(2);
-  session.currentState.questionOrder = buildQuestionOrder(getPackById(session.packId));
+  session.currentState.questionOrder = buildQuestionOrder(getPackForSession(session));
   session.startedAt = Date.now(); // Track game start time for stats
   if (state.timedMode) {
     session.currentState.timerSeconds = state.timerSeconds;
@@ -1345,7 +1424,7 @@ function stopTimer() {
 
 function submitAnswerClassic(sessionId, selected) {
   const session = state.sessions[sessionId];
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   const question = getCurrentQuestion(pack, session);
   if (!question || session.currentState.locked) return;
   stopTimer();
@@ -1437,7 +1516,7 @@ function submitAnswerClassic(sessionId, selected) {
 
 function useLifeline(sessionId, lifelineKey) {
   const session = state.sessions[sessionId];
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   const question = getCurrentQuestion(pack, session);
   if (!question || session.currentState.usedLifelines.includes(lifelineKey)) {
     return;
@@ -1624,7 +1703,7 @@ async function startFFF(sessionId) {
 
 async function computeFFFWinner(sessionId) {
   const session = state.sessions[sessionId];
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   const question = getFFFQuestion(pack) || session.fffQuestion;
   const submissions = Object.values(session.fffSubmissions).filter((submission) => {
     if (!session.fffRoundId) return true;
@@ -1702,7 +1781,7 @@ async function submitFFF(sessionId, participantId, order) {
     return;
   }
 
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   const question = getFFFQuestion(pack);
   let isCorrect = false;
   if (question && question.correctOption) {
@@ -1729,7 +1808,7 @@ function renderParticipant(sessionId, participantId) {
     dom.participantStatus.textContent = "Session not found.";
     return;
   }
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   dom.participantMeta.textContent = `Session ${session.id} • ${session.status}`;
   const question = getFFFQuestion(pack) || session.fffQuestion;
   if (!question) {
@@ -1815,7 +1894,7 @@ function getFFFTally(session, question) {
 function handleWalkAway() {
   const session = getSession();
   if (!session) return;
-  const pack = getPackById(session.packId);
+  const pack = getPackForSession(session);
   const levelIndex = Math.max(0, session.currentState.level - 2);
   const prize = levelIndex >= 0 ? pack.config.amounts[levelIndex] : 0;
   session.currentState.feedback = `Walked away with ${formatMoney(pack.config.currencySymbol, prize)}.`;
@@ -1856,7 +1935,7 @@ function showGameOverDialog(type, prize, currencySymbol) {
   const message = dom.gameoverMessage;
   const prizeDiv = dom.gameoverPrize;
   const session = getSession();
-  const pack = session ? getPackById(session.packId) : null;
+  const pack = session ? getPackForSession(session) : null;
   const messages = pack?.config?.messages || {};
 
   // Clear previous classes
@@ -2210,6 +2289,10 @@ function initEvents() {
     if (!session) return;
     renderHost();
     setScreen("host");
+  });
+
+  dom.packSelect.addEventListener("change", () => {
+    renderDefaultCategoryPicker();
   });
 
   dom.packList.addEventListener("click", (event) => {
