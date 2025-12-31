@@ -103,6 +103,7 @@ const dom = {
   defaultCategoryDialogGrid: document.querySelector("#default-category-dialog-grid"),
   defaultCategoryLoad: document.querySelector("#btn-category-load"),
   defaultCategoryStart: document.querySelector("#btn-category-start"),
+  defaultCategoryStatus: document.querySelector("#default-category-status"),
   createSession: document.querySelector("#btn-host-session"),
   createPack: document.querySelector("#btn-create-pack"),
   savePack: document.querySelector("#btn-save-pack"),
@@ -2253,6 +2254,9 @@ function initEvents() {
   dom.playDefault.addEventListener("click", () => {
     ensureDefaultPack();
     if (dom.defaultCategoryDialog && dom.defaultCategoryDialogGrid) {
+      if (dom.defaultCategoryStatus) {
+        dom.defaultCategoryStatus.textContent = "";
+      }
       const renderDialogCards = () => {
         renderCategoryCards(dom.defaultCategoryDialogGrid, {
           selectedId: state.selectedDefaultCategoryId,
@@ -2277,7 +2281,9 @@ function initEvents() {
         alert("Choose a category first.");
         return;
       }
-      dom.defaultCategoryDialog.close();
+      if (dom.defaultCategoryStatus) {
+        dom.defaultCategoryStatus.textContent = "Load successful.";
+      }
     });
   }
 
