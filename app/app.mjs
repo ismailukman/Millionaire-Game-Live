@@ -99,6 +99,9 @@ const dom = {
   modeSelect: document.querySelector("#host-mode-select"),
   defaultCategorySection: document.querySelector("#default-category-section"),
   defaultCategoryGrid: document.querySelector("#default-category-grid"),
+  defaultCategoryDashboardStatus: document.querySelector("#default-category-dashboard-status"),
+  defaultCategoryLoadDashboard: document.querySelector("#btn-category-load-dashboard"),
+  defaultCategoryStartDashboard: document.querySelector("#btn-category-start-dashboard"),
   defaultCategoryDialog: document.querySelector("#default-category-dialog"),
   defaultCategoryDialogGrid: document.querySelector("#default-category-dialog-grid"),
   defaultCategoryLoad: document.querySelector("#btn-category-load"),
@@ -639,6 +642,14 @@ function setSelectedDefaultCategory(categoryId) {
   }
 }
 
+function ensureDefaultCategorySelection() {
+  if (state.selectedDefaultCategoryId) return;
+  const fallback = defaultCategoryDecks[0]?.id;
+  if (fallback) {
+    setSelectedDefaultCategory(fallback);
+  }
+}
+
 function getDefaultCategoryById(categoryId) {
   return defaultCategoryDecks.find((category) => category.id === categoryId) || null;
 }
@@ -658,6 +669,20 @@ function buildCategoryPack(category) {
     description: category.subtitle,
     questions
   };
+}
+
+function startDefaultCategoryGame() {
+  ensureDefaultCategorySelection();
+  const category = getDefaultCategoryById(state.selectedDefaultCategoryId);
+  if (!category) {
+    alert("Choose a category first.");
+    return;
+  }
+  const session = createSession(defaultPack, "CLASSIC");
+  if (!session) return;
+  renderHost();
+  setScreen("host");
+  startClassic(session.id);
 }
 
 function renderCategoryCards(target, { onSelect, selectedId } = {}) {
@@ -692,6 +717,11 @@ function renderDefaultCategoryPicker() {
   const isDefault = dom.packSelect.value === defaultPack.id;
   dom.defaultCategorySection.style.display = isDefault ? "block" : "none";
   if (!isDefault) return;
+  if (dom.defaultCategoryDashboardStatus) {
+    dom.defaultCategoryDashboardStatus.textContent = "";
+    dom.defaultCategoryDashboardStatus.classList.remove("status-success");
+  }
+  ensureDefaultCategorySelection();
   renderCategoryCards(dom.defaultCategoryGrid, { selectedId: state.selectedDefaultCategoryId });
 }
 
@@ -2258,6 +2288,7 @@ function initEvents() {
         dom.defaultCategoryStatus.textContent = "";
         dom.defaultCategoryStatus.classList.remove("status-success");
       }
+      ensureDefaultCategorySelection();
       const renderDialogCards = () => {
         renderCategoryCards(dom.defaultCategoryDialogGrid, {
           selectedId: state.selectedDefaultCategoryId,
@@ -2292,17 +2323,26 @@ function initEvents() {
   if (dom.defaultCategoryStart && dom.defaultCategoryDialog) {
     dom.defaultCategoryStart.addEventListener("click", (event) => {
       event.preventDefault();
-      const category = getDefaultCategoryById(state.selectedDefaultCategoryId);
-      if (!category) {
-        alert("Choose a category first.");
-        return;
-      }
-      const session = createSession(defaultPack, "CLASSIC");
-      if (!session) return;
       dom.defaultCategoryDialog.close();
-      renderHost();
-      setScreen("host");
-      startClassic(session.id);
+      startDefaultCategoryGame();
+    });
+  }
+
+  if (dom.defaultCategoryLoadDashboard) {
+    dom.defaultCategoryLoadDashboard.addEventListener("click", (event) => {
+      event.preventDefault();
+      ensureDefaultCategorySelection();
+      if (dom.defaultCategoryDashboardStatus) {
+        dom.defaultCategoryDashboardStatus.textContent = "Load successful.";
+        dom.defaultCategoryDashboardStatus.classList.add("status-success");
+      }
+    });
+  }
+
+  if (dom.defaultCategoryStartDashboard) {
+    dom.defaultCategoryStartDashboard.addEventListener("click", (event) => {
+      event.preventDefault();
+      startDefaultCategoryGame();
     });
   }
 
