@@ -82,6 +82,10 @@ const dom = {
   homeButton: document.querySelector("#btn-home"),
   demoLogin: document.querySelector("#btn-demo-login"),
   saveLogin: document.querySelector("#btn-login-save"),
+  demoPasskeyDialog: document.querySelector("#demo-passkey-dialog"),
+  demoPasskeyInput: document.querySelector("#demo-passkey-input"),
+  demoPasskeyStatus: document.querySelector("#demo-passkey-status"),
+  demoPasskeySubmit: document.querySelector("#btn-demo-passkey-submit"),
   leaderboardButton: document.querySelector("#btn-leaderboard"),
   achievementsButton: document.querySelector("#btn-achievements"),
   upgradeButton: document.querySelector("#btn-upgrade"),
@@ -2131,30 +2135,56 @@ function initEvents() {
     updateLoginButton();
   });
 
+  function applyDemoLogin() {
+    dom.loginEmail.value = "demo@wwtbam.local";
+    dom.loginName.value = "Demo Host";
+    state.user = migrateUserState({
+      email: dom.loginEmail.value,
+      displayName: dom.loginName.value,
+      createdAt: Date.now()
+    });
+    state.user.subscription = {
+      tier: "PRO",
+      startDate: Date.now(),
+      expiresAt: Date.now() + (30 * 24 * 60 * 60 * 1000),
+      features: subscriptionTiers.PRO.limits
+    };
+    saveState();
+    updateLoginButton();
+    dom.loginDialog.close();
+  }
+
   if (dom.demoLogin) {
     dom.demoLogin.addEventListener("click", (event) => {
       event.preventDefault();
-      const passkey = window.prompt("Enter demo passkey");
+      if (dom.demoPasskeyStatus) {
+        dom.demoPasskeyStatus.textContent = "";
+        dom.demoPasskeyStatus.classList.remove("status-success");
+      }
+      if (dom.demoPasskeyInput) {
+        dom.demoPasskeyInput.value = "";
+      }
+      dom.demoPasskeyDialog?.showModal();
+    });
+  }
+
+  if (dom.demoPasskeySubmit && dom.demoPasskeyDialog) {
+    dom.demoPasskeySubmit.addEventListener("click", (event) => {
+      event.preventDefault();
+      const passkey = dom.demoPasskeyInput?.value || "";
       if (passkey !== "Lukman") {
-        alert("Incorrect passkey.");
+        if (dom.demoPasskeyStatus) {
+          dom.demoPasskeyStatus.textContent = "Incorrect passkey.";
+          dom.demoPasskeyStatus.classList.remove("status-success");
+        }
         return;
       }
-      dom.loginEmail.value = "demo@wwtbam.local";
-      dom.loginName.value = "Demo Host";
-      state.user = migrateUserState({
-        email: dom.loginEmail.value,
-        displayName: dom.loginName.value,
-        createdAt: Date.now()
-      });
-      state.user.subscription = {
-        tier: "PRO",
-        startDate: Date.now(),
-        expiresAt: Date.now() + (30 * 24 * 60 * 60 * 1000),
-        features: subscriptionTiers.PRO.limits
-      };
-      saveState();
-      updateLoginButton();
-      dom.loginDialog.close();
+      if (dom.demoPasskeyStatus) {
+        dom.demoPasskeyStatus.textContent = "Passkey accepted.";
+        dom.demoPasskeyStatus.classList.add("status-success");
+      }
+      dom.demoPasskeyDialog.close();
+      applyDemoLogin();
     });
   }
 

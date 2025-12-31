@@ -498,6 +498,21 @@
       </form>
     </dialog>
 
+    <dialog id="demo-passkey-dialog">
+      <form method="dialog" class="dialog-card">
+        <h3>Demo Passkey</h3>
+        <label class="field">
+          <span>Passkey</span>
+          <input id="demo-passkey-input" type="password" placeholder="Enter passkey" autocomplete="off" />
+        </label>
+        <p id="demo-passkey-status" class="subtext"></p>
+        <menu>
+          <button value="cancel" class="ghost">Cancel</button>
+          <button id="btn-demo-passkey-submit" value="default" class="primary">Continue</button>
+        </menu>
+      </form>
+    </dialog>
+
     <dialog id="audience-dialog">
       <div class="dialog-card lifeline-dialog">
         <h3>📊 Ask the Audience</h3>
