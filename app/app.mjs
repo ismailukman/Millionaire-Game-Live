@@ -86,7 +86,6 @@ const dom = {
   soundToggle: document.querySelector("#btn-sound"),
   timedToggle: document.querySelector("#btn-timed"),
   liveToggle: document.querySelector("#btn-live"),
-  liveIndicator: document.querySelector("#live-indicator"),
   themeToggle: document.querySelector("#btn-theme"),
   timerDialog: document.querySelector("#timer-dialog"),
   timerDialogInput: document.querySelector("#timer-dialog-input"),
@@ -699,11 +698,6 @@ function updateLiveButton() {
   dom.liveToggle.textContent = state.liveMode ? "📡 Live On" : "📡 Live Off";
 }
 
-function updateLiveIndicator() {
-  if (!dom.liveIndicator) return;
-  dom.liveIndicator.textContent = state.liveMode ? "Live: On" : "Live: Off";
-  dom.liveIndicator.classList.toggle("on", state.liveMode);
-}
 
 function updateTimerSecondsField() {
   if (dom.timerSeconds) {
@@ -1664,7 +1658,6 @@ async function joinSession(sessionId, name) {
       state.liveMode = true;
       localStorage.setItem(storageKeys.liveMode, String(state.liveMode));
       updateLiveButton();
-      updateLiveIndicator();
       return joinLiveSession(sessionId, name);
     }
   } else if (state.liveMode) {
@@ -2135,7 +2128,6 @@ function initEvents() {
       state.liveMode = nextMode;
       localStorage.setItem(storageKeys.liveMode, String(state.liveMode));
       updateLiveButton();
-      updateLiveIndicator();
     });
   }
 
@@ -2416,7 +2408,6 @@ if (state.liveMode) {
 updateLoginButton();
 updateTimedButton();
 updateLiveButton();
-updateLiveIndicator();
 renderLanding();
 renderPackList();
 resetBuilder();
