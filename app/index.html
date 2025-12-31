@@ -457,10 +457,9 @@
         <div class="footer-section">
           <h3>Legal</h3>
           <ul class="footer-links">
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Cookie Policy</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#" id="footer-terms">Terms of Service</a></li>
+            <li><a href="#" id="footer-privacy">Privacy Policy</a></li>
+            <li><a href="#" id="footer-contact">Contact Us</a></li>
           </ul>
         </div>
 
@@ -511,6 +510,48 @@
           <button id="btn-demo-passkey-submit" value="default" class="primary">Continue</button>
         </menu>
       </form>
+    </dialog>
+
+    <dialog id="terms-dialog">
+      <div class="dialog-card legal-dialog">
+        <h3>Terms of Service</h3>
+        <p class="subtext">Last updated: 2025-01-01</p>
+        <p>By using this app, you agree to use it for lawful, respectful, and fair play.</p>
+        <p><strong>Use of service:</strong> You are responsible for your sessions, content, and any shared links.</p>
+        <p><strong>Content:</strong> Question packs you create or upload must be original or properly licensed.</p>
+        <p><strong>Availability:</strong> We may update, pause, or discontinue features at any time.</p>
+        <p><strong>Liability:</strong> This demo is provided "as is" without warranties.</p>
+        <menu>
+          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+        </menu>
+      </div>
+    </dialog>
+
+    <dialog id="privacy-dialog">
+      <div class="dialog-card legal-dialog">
+        <h3>Privacy Policy</h3>
+        <p class="subtext">Last updated: 2025-01-01</p>
+        <p>This app stores limited session data to run games and improve the experience.</p>
+        <p><strong>Local data:</strong> Your preferences and packs may be stored in your browser.</p>
+        <p><strong>Session data:</strong> Live sessions may store join codes, votes, and timestamps.</p>
+        <p><strong>No sale of data:</strong> We do not sell your personal data.</p>
+        <p><strong>Contact:</strong> Reach out if you want data removed.</p>
+        <menu>
+          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+        </menu>
+      </div>
+    </dialog>
+
+    <dialog id="contact-dialog">
+      <div class="dialog-card legal-dialog">
+        <h3>Contact Us</h3>
+        <p class="subtext">We usually respond within 2 business days.</p>
+        <p>Email: <a href="mailto:hello@millionaire-game.live">hello@millionaire-game.live</a></p>
+        <p>For support, include your session code and a brief description of the issue.</p>
+        <menu>
+          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+        </menu>
+      </div>
     </dialog>
 
     <dialog id="audience-dialog">

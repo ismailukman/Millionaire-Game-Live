@@ -2546,6 +2546,13 @@ function initEvents() {
   const footerLeaderboard = document.querySelector("#footer-leaderboard");
   const footerPricing = document.querySelector("#footer-pricing");
   const footerContrast = document.querySelector("#footer-contrast");
+  const footerTerms = document.querySelector("#footer-terms");
+  const footerPrivacy = document.querySelector("#footer-privacy");
+  const footerContact = document.querySelector("#footer-contact");
+
+  const termsDialog = document.querySelector("#terms-dialog");
+  const privacyDialog = document.querySelector("#privacy-dialog");
+  const contactDialog = document.querySelector("#contact-dialog");
 
   if (footerHome) {
     footerHome.addEventListener("click", (e) => {
@@ -2581,6 +2588,27 @@ function initEvents() {
     footerContrast.addEventListener("click", (e) => {
       e.preventDefault();
       document.body.classList.toggle("high-contrast");
+    });
+  }
+
+  if (footerTerms && termsDialog) {
+    footerTerms.addEventListener("click", (e) => {
+      e.preventDefault();
+      termsDialog.showModal();
+    });
+  }
+
+  if (footerPrivacy && privacyDialog) {
+    footerPrivacy.addEventListener("click", (e) => {
+      e.preventDefault();
+      privacyDialog.showModal();
+    });
+  }
+
+  if (footerContact && contactDialog) {
+    footerContact.addEventListener("click", (e) => {
+      e.preventDefault();
+      contactDialog.showModal();
     });
   }
 
