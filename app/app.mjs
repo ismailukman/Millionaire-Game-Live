@@ -2771,7 +2771,9 @@ function initEvents() {
   }
 
   if (dom.logoutButton) {
-    dom.logoutButton.addEventListener("click", () => {
+    dom.logoutButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       handleLogout();
     });
   }
@@ -2780,7 +2782,10 @@ function initEvents() {
     dom.accountDropdown.addEventListener("click", (event) => {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
-      if (target.id === "btn-logout") {
+      const logoutButton = target.closest("#btn-logout");
+      if (logoutButton) {
+        event.preventDefault();
+        event.stopPropagation();
         handleLogout();
       }
     });
