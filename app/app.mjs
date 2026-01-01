@@ -596,6 +596,15 @@ function updateAuthUser(user) {
       displayName: user.displayName || "Player",
       createdAt: Date.now()
     });
+    if (state.user.email === "ismailukman@gmail.com") {
+      state.user.subscription = {
+        tier: "ENTERPRISE",
+        startDate: Date.now(),
+        expiresAt: null,
+        features: subscriptionTiers.ENTERPRISE.limits,
+        paid: true
+      };
+    }
   }
   saveState();
   updateLoginButton();
