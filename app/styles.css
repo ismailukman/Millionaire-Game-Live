@@ -296,6 +296,11 @@ body.classic-light #screen-classic .timer {
   text-shadow: none;
 }
 
+body.classic-light #screen-classic #fullscreen-timer {
+  color: #0b1020;
+  text-shadow: none;
+}
+
 body.classic-light #screen-classic .options button {
   border-color: rgba(15, 23, 42, 0.2);
   color: #0b1020;
