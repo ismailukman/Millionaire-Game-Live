@@ -1441,11 +1441,12 @@ function renderAdminPanel() {
     return;
   }
   state.adminUsers.forEach((user, index) => {
+    const docId = user.id || user.email;
     const row = document.createElement("div");
     row.className = "admin-row";
     row.innerHTML = `
       <span>${user.email || ""}</span>
-      <span>${user.name || ""}</span>
+      <span><input type="text" value="${user.name || ""}" data-index="${index}" /></span>
       <span>
         <select data-index="${index}">
           <option value="GUEST">Guest</option>
@@ -1455,21 +1456,31 @@ function renderAdminPanel() {
         </select>
       </span>
       <span class="admin-actions">
+        <button class="ghost" data-action="save" data-index="${index}">Save</button>
         <button class="ghost" data-action="remove" data-index="${index}">Remove</button>
       </span>
     `;
     const select = row.querySelector("select");
     if (select) {
       select.value = user.tier || "FREE";
-      select.addEventListener("change", async (event) => {
-        const nextTier = event.target.value;
-        await updateAdminUserTier(user.email, nextTier);
-      });
     }
     const removeButton = row.querySelector("[data-action=\"remove\"]");
     if (removeButton) {
       removeButton.addEventListener("click", async () => {
-        await removeAdminUser(user.email);
+        await removeAdminUser(docId);
+      });
+    }
+    const saveButton = row.querySelector("[data-action=\"save\"]");
+    if (saveButton) {
+      saveButton.addEventListener("click", async () => {
+        const nameInput = row.querySelector("input");
+        const nextName = nameInput ? nameInput.value.trim() : "";
+        const nextTier = select ? select.value : user.tier || "FREE";
+        await updateAdminUser(docId, {
+          email: user.email,
+          name: nextName,
+          tier: nextTier
+        });
       });
     }
     dom.adminUserTable.appendChild(row);
@@ -1514,22 +1525,24 @@ async function upsertAdminUser(payload) {
   }, { merge: true });
 }
 
-async function updateAdminUserTier(email, tier) {
-  if (!email) return;
+async function updateAdminUser(docId, payload) {
+  if (!docId) return;
   const ready = await ensureFirebaseReady({ allowAnonymous: false });
   if (!ready || !firebaseState.db) return;
-  const userDoc = doc(firebaseState.db, "users", email.toLowerCase());
+  const userDoc = doc(firebaseState.db, "users", docId.toLowerCase());
   await updateDoc(userDoc, {
-    tier,
+    email: payload.email?.toLowerCase() || docId.toLowerCase(),
+    name: payload.name || "",
+    tier: payload.tier || "FREE",
     updatedAt: Date.now()
   });
 }
 
-async function removeAdminUser(email) {
-  if (!email) return;
+async function removeAdminUser(docId) {
+  if (!docId) return;
   const ready = await ensureFirebaseReady({ allowAnonymous: false });
   if (!ready || !firebaseState.db) return;
-  const userDoc = doc(firebaseState.db, "users", email.toLowerCase());
+  const userDoc = doc(firebaseState.db, "users", docId.toLowerCase());
   await deleteDoc(userDoc);
 }
 

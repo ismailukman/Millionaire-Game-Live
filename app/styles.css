@@ -1860,6 +1860,15 @@ button:hover::after {
   width: 100%;
 }
 
+.admin-row input {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--ink);
+}
+
 .admin-actions {
   display: flex;
   gap: 6px;
