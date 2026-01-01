@@ -260,6 +260,13 @@ body.classic-light #screen-classic .options button {
   background: rgba(15, 23, 42, 0.03);
 }
 
+body.classic-light #screen-classic .classic-header-controls button,
+body.classic-light #screen-classic .fullscreen-controls button {
+  color: #0b1020;
+  border-color: rgba(15, 23, 42, 0.3);
+  background: rgba(15, 23, 42, 0.03);
+}
+
 body.classic-light #screen-classic .question,
 body.classic-light #screen-classic .feedback {
   color: #0b1020;
