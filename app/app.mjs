@@ -619,6 +619,11 @@ function resumeAudioForScreen() {
   audioManager.playBackground("mainTheme");
 }
 
+function setDayMode(isDay) {
+  document.body.classList.toggle("lights-off", !isDay);
+  updateLightsButton();
+}
+
 function initParticles() {
   const userPrefs = state.user?.preferences || {
     particlesEnabled: true,
@@ -856,6 +861,9 @@ function setScreen(name) {
 
   updateTimedAvailability();
   updateLiveAvailability();
+  if (name === "classic") {
+    setDayMode(true);
+  }
 
   // Play appropriate background music based on screen
   if (!audioManager.isMuted) {
