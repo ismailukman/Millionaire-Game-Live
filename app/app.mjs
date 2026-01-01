@@ -221,7 +221,8 @@ function toMillis(value) {
   return value;
 }
 
-async function ensureFirebaseReady() {
+async function ensureFirebaseReady(options = {}) {
+  const { allowAnonymous = true } = options;
   if (firebaseState.ready) return true;
   if (firebaseState.initPromise) return firebaseState.initPromise;
   const config = getFirebaseConfig();
@@ -245,11 +246,18 @@ async function ensureFirebaseReady() {
       });
       firebaseState.authListenerAttached = true;
     }
-    if (!firebaseState.auth.currentUser) {
-      await signInAnonymously(firebaseState.auth);
+    if (!firebaseState.auth.currentUser && allowAnonymous) {
+      try {
+        await signInAnonymously(firebaseState.auth);
+      } catch (err) {
+        console.warn("Anonymous auth failed:", err);
+        firebaseState.lastInitError = "anonymous";
+        return false;
+      }
     }
     firebaseState.user = firebaseState.auth.currentUser;
     firebaseState.ready = true;
+    firebaseState.lastInitError = null;
     return true;
   })().catch((err) => {
     console.error("Firebase init failed:", err);
@@ -2184,7 +2192,7 @@ function savePack() {
 function initEvents() {
   dom.loginButton.addEventListener("click", () => {
     if (state.user) {
-      ensureFirebaseReady().then((ready) => {
+      ensureFirebaseReady({ allowAnonymous: false }).then((ready) => {
         if (ready && firebaseState.auth) {
           signOut(firebaseState.auth).catch((err) => console.warn("Sign out failed", err));
         }
@@ -2213,10 +2221,12 @@ function initEvents() {
 
   dom.saveLogin.addEventListener("click", async (event) => {
     event.preventDefault();
-    const ready = await ensureFirebaseReady();
+    const ready = await ensureFirebaseReady({ allowAnonymous: false });
     if (!ready || !firebaseState.auth) {
       if (firebaseState.lastInitError === "config") {
         setAuthStatus("Firebase config missing. Refresh the page.");
+      } else if (firebaseState.lastInitError === "anonymous") {
+        setAuthStatus("Anonymous auth is disabled. Enable it in Firebase.");
       } else {
         setAuthStatus("Firebase failed to initialize. Check network or console.");
       }
@@ -2262,15 +2272,17 @@ function initEvents() {
 
   if (dom.authReset) {
     dom.authReset.addEventListener("click", async () => {
-      const ready = await ensureFirebaseReady();
+      const ready = await ensureFirebaseReady({ allowAnonymous: false });
       if (!ready || !firebaseState.auth) {
-      if (firebaseState.lastInitError === "config") {
-        setAuthStatus("Firebase config missing. Refresh the page.");
-      } else {
-        setAuthStatus("Firebase failed to initialize. Check network or console.");
+        if (firebaseState.lastInitError === "config") {
+          setAuthStatus("Firebase config missing. Refresh the page.");
+        } else if (firebaseState.lastInitError === "anonymous") {
+          setAuthStatus("Anonymous auth is disabled. Enable it in Firebase.");
+        } else {
+          setAuthStatus("Firebase failed to initialize. Check network or console.");
+        }
+        return;
       }
-      return;
-    }
       const email = dom.loginEmail.value.trim();
       if (!email) {
         setAuthStatus("Enter your email first.");
