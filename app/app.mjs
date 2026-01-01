@@ -1086,6 +1086,12 @@ function updateLoginButton() {
   updateModeAvailability();
 }
 
+function clearLocalUser() {
+  state.user = null;
+  localStorage.removeItem(storageKeys.user);
+  updateLoginButton();
+}
+
 function formatDateLabel(timestamp) {
   if (!timestamp) return "—";
   try {
@@ -1140,6 +1146,28 @@ function openAccountDialog() {
       : "—";
   }
   dom.accountDialog.showModal();
+}
+
+async function handleLogout() {
+  closeAccountDropdown();
+  if (firebaseState.auth?.currentUser) {
+    try {
+      await signOut(firebaseState.auth);
+    } catch (err) {
+      console.warn("Sign out failed", err);
+    }
+  } else {
+    const ready = await ensureFirebaseReady({ allowAnonymous: false });
+    if (ready && firebaseState.auth?.currentUser) {
+      try {
+        await signOut(firebaseState.auth);
+      } catch (err) {
+        console.warn("Sign out failed", err);
+      }
+    }
+  }
+  firebaseState.user = null;
+  clearLocalUser();
 }
 
 function updateTimedButton() {
@@ -2627,25 +2655,8 @@ function initEvents() {
   }
 
   if (dom.logoutButton) {
-    dom.logoutButton.addEventListener("click", async () => {
-      closeAccountDropdown();
-      if (firebaseState.auth) {
-        try {
-          await signOut(firebaseState.auth);
-        } catch (err) {
-          console.warn("Sign out failed", err);
-        }
-      } else {
-        ensureFirebaseReady({ allowAnonymous: false }).then((ready) => {
-          if (ready && firebaseState.auth) {
-            signOut(firebaseState.auth).catch((err) => console.warn("Sign out failed", err));
-          }
-        });
-      }
-      firebaseState.user = null;
-      state.user = null;
-      saveState();
-      updateLoginButton();
+    dom.logoutButton.addEventListener("click", () => {
+      handleLogout();
     });
   }
 
