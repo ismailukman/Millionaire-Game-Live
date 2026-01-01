@@ -1019,7 +1019,8 @@ function renderDefaultCategoryPicker() {
 
 // Subscription & Feature Gating Functions
 function getUserTier() {
-  return state.user?.subscription?.tier || "FREE";
+  if (!state.user) return "GUEST";
+  return state.user.subscription?.tier || "FREE";
 }
 
 function getUserLimits() {
@@ -1209,6 +1210,10 @@ async function handleLogout() {
   }
   firebaseState.user = null;
   clearLocalUser();
+  state.liveMode = false;
+  localStorage.setItem(storageKeys.liveMode, String(state.liveMode));
+  updateLiveButton();
+  setScreen("landing");
 }
 
 function updateTimedButton() {
@@ -1284,7 +1289,8 @@ function updateLiveAvailability() {
 
 function updateModeAvailability() {
   if (!dom.modeSelect) return;
-  const isFreeTier = getUserTier() === "FREE";
+  const tier = getUserTier();
+  const isFreeTier = tier === "FREE" || tier === "GUEST";
   const fffOption = dom.modeSelect.querySelector("option[value=\"FFF\"]");
   if (!fffOption) return;
   fffOption.disabled = isFreeTier;
@@ -2746,6 +2752,7 @@ function initEvents() {
 
   if (dom.loginCancel) {
     dom.loginCancel.addEventListener("click", () => {
+      dom.loginDialog?.close();
       setScreen("landing");
     });
   }
@@ -3090,7 +3097,7 @@ function initEvents() {
       setScreen("pricing");
       return;
     }
-    if (mode === "FFF" && getUserTier() === "FREE") {
+    if (mode === "FFF" && getUserTier() !== "PRO" && getUserTier() !== "ENTERPRISE") {
       alert("Fastest Finger First is not available on the Free tier. Upgrade to unlock this mode.");
       setScreen("pricing");
       return;
