@@ -388,16 +388,16 @@ async function createLiveSession(pack, mode) {
     return null;
   }
 
-  const fffQuestion = getFFFQuestion(pack);
+  const fffQuestion = getRandomDefaultFFFQuestion();
   if (!fffQuestion) {
-    alert("No FFF question available in this pack.");
+    alert("No valid Fastest Finger question available.");
     return null;
   }
 
   const sessionId = makeId("S");
   const sessionPayload = {
     id: sessionId,
-    packId: pack.id,
+    packId: defaultPack.id,
     mode,
     status: "waiting",
     createdAt: Date.now(),
@@ -405,7 +405,8 @@ async function createLiveSession(pack, mode) {
     fffQuestion: {
       promptText: fffQuestion.promptText,
       options: fffQuestion.options || null,
-      orderItems: fffQuestion.orderItems || null
+      orderItems: fffQuestion.orderItems || null,
+      correctOption: fffQuestion.correctOption || null
     },
     fffRoundId: makeId("R"),
     winnerParticipantId: null
@@ -456,7 +457,7 @@ async function submitLiveFFF(sessionId, participantId, order) {
   if (session.fffSubmissions[participantId]) return;
 
   const pack = getPackForSession(session);
-  const question = getFFFQuestion(pack);
+  const question = getFFFQuestion(pack) || session.fffQuestion;
   let isCorrect = null;
   if (question && question.correctOption) {
     isCorrect = order === question.correctOption;
@@ -494,7 +495,7 @@ async function computeLiveFFFWinner(sessionId) {
   const session = state.sessions[sessionId];
   if (!session) return;
   const pack = getPackForSession(session);
-  const question = getFFFQuestion(pack);
+  const question = getFFFQuestion(pack) || session.fffQuestion;
   const submissions = Object.values(session.fffSubmissions || {}).filter((submission) => {
     if (!session.fffRoundId) return true;
     return submission.roundId === session.fffRoundId;
@@ -773,6 +774,12 @@ function buildCategoryPack(category) {
     description: category.subtitle,
     questions
   };
+}
+
+function getRandomDefaultFFFQuestion() {
+  const pool = defaultPack.questions.filter((q) => q.type === "MCQ" && q.options);
+  if (!pool.length) return null;
+  return shuffle(pool)[0];
 }
 
 function startDefaultCategoryGame() {
