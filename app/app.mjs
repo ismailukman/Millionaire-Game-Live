@@ -2139,12 +2139,8 @@ function renderParticipant(sessionId, participantId) {
     return;
   }
   if (session.mode === "CLASSIC") {
-    if (participantId === session.winnerParticipantId) {
-      setScreen("classic");
-      renderClassic();
-    } else {
-      dom.participantStatus.textContent = "Hot seat in progress. Please wait.";
-    }
+    setScreen("classic");
+    renderClassic();
     return;
   }
   const pack = getPackForSession(session);
