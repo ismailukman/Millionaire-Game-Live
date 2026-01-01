@@ -176,9 +176,6 @@ dialog {
   display: flex;
 }
 
-.account-menu:hover .account-dropdown {
-  display: flex;
-}
 
 .account-dropdown button {
   width: 100%;

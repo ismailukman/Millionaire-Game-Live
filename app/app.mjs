@@ -2743,16 +2743,6 @@ function initEvents() {
     }
   });
 
-  if (dom.accountMenu) {
-    dom.accountMenu.addEventListener("mouseenter", () => {
-      if (state.user) {
-        dom.accountDropdown?.classList.add("active");
-      }
-    });
-    dom.accountMenu.addEventListener("mouseleave", () => {
-      closeAccountDropdown();
-    });
-  }
 
   if (dom.loginCancel) {
     dom.loginCancel.addEventListener("click", () => {
