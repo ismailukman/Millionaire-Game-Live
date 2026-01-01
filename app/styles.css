@@ -169,9 +169,14 @@ dialog {
   border: 1px solid var(--outline);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
   z-index: 5;
+  pointer-events: auto;
 }
 
 .account-dropdown.active {
+  display: flex;
+}
+
+.account-menu:hover .account-dropdown {
   display: flex;
 }
 
@@ -199,6 +204,11 @@ dialog {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
+}
+
+.category-card.locked {
+  opacity: 0.5;
+  border-style: dashed;
 }
 
 .category-actions {

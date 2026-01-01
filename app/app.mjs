@@ -888,11 +888,35 @@ function setSelectedDefaultCategory(categoryId) {
 }
 
 function ensureDefaultCategorySelection() {
-  if (state.selectedDefaultCategoryId) return;
-  const fallback = defaultCategoryDecks[0]?.id;
+  if (state.selectedDefaultCategoryId) {
+    const current = getDefaultCategoryById(state.selectedDefaultCategoryId);
+    if (current && isCategoryAllowed(current)) {
+      return;
+    }
+  }
+  const allowed = getAllowedCategoryIds();
+  const fallback = allowed[0];
   if (fallback) {
     setSelectedDefaultCategory(fallback);
   }
+}
+
+function getAllowedCategoryIds() {
+  const visible = getPackVisibilityLimit();
+  if (visible === 1) {
+    return defaultCategoryDecks.filter((category) => category.title === "Animals").map((category) => category.id);
+  }
+  if (visible === 2) {
+    return defaultCategoryDecks
+      .filter((category) => ["Animals", "Science & Nature"].includes(category.title))
+      .map((category) => category.id);
+  }
+  return defaultCategoryDecks.map((category) => category.id);
+}
+
+function isCategoryAllowed(category) {
+  if (!category) return false;
+  return getAllowedCategoryIds().includes(category.id);
 }
 
 function getDefaultCategoryById(categoryId) {
@@ -900,6 +924,10 @@ function getDefaultCategoryById(categoryId) {
 }
 
 function buildCategoryPack(category) {
+  if (!isCategoryAllowed(category)) {
+    alert(state.user ? "Upgrade to more access." : "Login to unlock more packs.");
+    return defaultPack;
+  }
   const selected = shuffle(category.questions).slice(0, 15).map((question, index) => ({
     ...question,
     id: `${category.id}_${index + 1}_${makeId("Q")}`,
@@ -939,10 +967,17 @@ function startDefaultCategoryGame() {
 function renderCategoryCards(target, { onSelect, selectedId } = {}) {
   if (!target) return;
   target.innerHTML = "";
+  const visible = getPackVisibilityLimit();
+  const allowedTitles = visible === 1
+    ? ["Animals"]
+    : visible === 2
+      ? ["Animals", "Science & Nature"]
+      : defaultCategoryDecks.map((category) => category.title);
   defaultCategoryDecks.forEach((category) => {
     const card = document.createElement("button");
     card.type = "button";
-    card.className = "category-card";
+    const locked = !allowedTitles.includes(category.title);
+    card.className = locked ? "category-card locked" : "category-card";
     if (selectedId === category.id) {
       card.classList.add("selected");
     }
@@ -952,6 +987,11 @@ function renderCategoryCards(target, { onSelect, selectedId } = {}) {
       <span class="meta">45 questions • 15 random per game</span>
     `;
     card.addEventListener("click", () => {
+      if (locked) {
+        alert(state.user ? "Upgrade to more access." : "Login to unlock more packs.");
+        setScreen("pricing");
+        return;
+      }
       setSelectedDefaultCategory(category.id);
       if (onSelect) {
         onSelect(category);
@@ -2701,6 +2741,17 @@ function initEvents() {
       closeAccountDropdown();
     }
   });
+
+  if (dom.accountMenu) {
+    dom.accountMenu.addEventListener("mouseenter", () => {
+      if (state.user) {
+        dom.accountDropdown?.classList.add("active");
+      }
+    });
+    dom.accountMenu.addEventListener("mouseleave", () => {
+      closeAccountDropdown();
+    });
+  }
 
   if (dom.loginCancel) {
     dom.loginCancel.addEventListener("click", () => {
