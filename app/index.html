@@ -378,6 +378,48 @@
         </div>
       </section>
 
+      <section id="screen-payment" class="screen">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Complete Payment</h2>
+            <p>Select a payment method to activate your plan.</p>
+          </div>
+          <div class="panel-body">
+            <div class="card payment-summary">
+              <h3 id="payment-tier-name">Plan</h3>
+              <p class="subtext" id="payment-tier-desc"></p>
+              <div class="payment-price">
+                <span id="payment-tier-price"></span>
+              </div>
+              <ul id="payment-tier-features" class="pricing-features"></ul>
+            </div>
+            <div class="card payment-methods">
+              <h3>Payment Methods</h3>
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="apple_pay" />
+                <span>Apple Pay</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="google_pay" />
+                <span>Google Pay</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="card" />
+                <span>Card (Visa/Mastercard)</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="paypal" />
+                <span>PayPal</span>
+              </label>
+              <div class="payment-actions">
+                <button id="btn-payment-back" class="ghost">Cancel</button>
+                <button id="btn-payment-confirm" class="primary">Pay Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="screen-leaderboard" class="screen">
         <div class="panel">
           <div class="panel-head">

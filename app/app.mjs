@@ -41,6 +41,7 @@ const screens = {
   participant: document.querySelector("#screen-participant"),
   classic: document.querySelector("#screen-classic"),
   pricing: document.querySelector("#screen-pricing"),
+  payment: document.querySelector("#screen-payment"),
   leaderboard: document.querySelector("#screen-leaderboard"),
   achievements: document.querySelector("#screen-achievements"),
   contact: document.querySelector("#screen-contact")
@@ -56,7 +57,8 @@ const state = {
   timedMode: false,
   liveMode: false,
   timerSeconds: 10,
-  editingPackId: null
+  editingPackId: null,
+  paymentTier: null
 };
 
 const firebaseState = {
@@ -208,6 +210,12 @@ const dom = {
   gameoverMessage: document.querySelector("#gameover-message"),
   gameoverPrize: document.querySelector("#gameover-prize"),
   backFromPricing: document.querySelector("#btn-back-from-pricing"),
+  paymentTierName: document.querySelector("#payment-tier-name"),
+  paymentTierDesc: document.querySelector("#payment-tier-desc"),
+  paymentTierPrice: document.querySelector("#payment-tier-price"),
+  paymentTierFeatures: document.querySelector("#payment-tier-features"),
+  paymentConfirm: document.querySelector("#btn-payment-confirm"),
+  paymentBack: document.querySelector("#btn-payment-back"),
   leaderboardBody: document.querySelector("#leaderboard-body"),
   backFromLeaderboard: document.querySelector("#btn-back-from-leaderboard"),
   achievementsGrid: document.querySelector("#achievements-grid"),
@@ -1311,6 +1319,25 @@ function updateLiveAvailability() {
   dom.liveToggle.disabled = !onLanding || inActiveGame;
   dom.liveToggle.classList.toggle("locked-action", isLocked);
   dom.liveToggle.setAttribute("aria-disabled", String(isLocked));
+}
+
+function populatePaymentScreen(tierId) {
+  const tier = subscriptionTiers[tierId];
+  if (!tier) return;
+  if (dom.paymentTierName) dom.paymentTierName.textContent = tier.name;
+  if (dom.paymentTierDesc) dom.paymentTierDesc.textContent = tier.description || "";
+  if (dom.paymentTierPrice) dom.paymentTierPrice.textContent = tier.priceLabel || "$0";
+  if (dom.paymentTierFeatures) {
+    dom.paymentTierFeatures.innerHTML = "";
+    (tier.features || []).forEach((feature) => {
+      const li = document.createElement("li");
+      li.textContent = `✓ ${feature}`;
+      dom.paymentTierFeatures.appendChild(li);
+    });
+  }
+  document.querySelectorAll('input[name="payment-method"]').forEach((input) => {
+    input.checked = false;
+  });
 }
 
 function updateModeAvailability() {
@@ -3238,23 +3265,24 @@ function initEvents() {
         return;
       }
 
-      if (tier !== "FREE" && !state.user.subscription.paid) {
-        alert("Upgrade requires payment. Please complete checkout to unlock this plan.");
+      if (tier === "FREE") {
+        state.user.subscription = {
+          tier: tier,
+          startDate: Date.now(),
+          expiresAt: null,
+          features: subscriptionTiers[tier].limits,
+          paid: false
+        };
+        saveState();
+        updateLoginButton();
+        alert("Your plan has been updated to Free.");
+        setScreen("dashboard");
         return;
       }
 
-      state.user.subscription = {
-        tier: tier,
-        startDate: Date.now(),
-        expiresAt: tier === "FREE" ? null : Date.now() + (30 * 24 * 60 * 60 * 1000),
-        features: subscriptionTiers[tier].limits,
-        paid: tier !== "FREE"
-      };
-      saveState();
-      updateLoginButton();
-
-      alert(`Successfully upgraded to ${subscriptionTiers[tier].name}!\n\n${subscriptionTiers[tier].features.join('\n')}`);
-      setScreen("dashboard");
+      state.paymentTier = tier;
+      populatePaymentScreen(tier);
+      setScreen("payment");
     });
   });
 
@@ -3262,6 +3290,41 @@ function initEvents() {
   dom.backFromLeaderboard.addEventListener("click", () => {
     setScreen("landing");
   });
+
+  if (dom.paymentBack) {
+    dom.paymentBack.addEventListener("click", () => {
+      state.paymentTier = null;
+      setScreen("pricing");
+    });
+  }
+
+  if (dom.paymentConfirm) {
+    dom.paymentConfirm.addEventListener("click", () => {
+      if (!state.user || !state.paymentTier) {
+        alert("Select a plan first.");
+        setScreen("pricing");
+        return;
+      }
+      const method = document.querySelector('input[name="payment-method"]:checked');
+      if (!method) {
+        alert("Select a payment method to continue.");
+        return;
+      }
+      const tier = state.paymentTier;
+      state.user.subscription = {
+        tier: tier,
+        startDate: Date.now(),
+        expiresAt: Date.now() + (30 * 24 * 60 * 60 * 1000),
+        features: subscriptionTiers[tier].limits,
+        paid: true
+      };
+      saveState();
+      updateLoginButton();
+      state.paymentTier = null;
+      alert(`Payment successful. ${subscriptionTiers[tier].name} is now active.`);
+      setScreen("dashboard");
+    });
+  }
 
   // Leaderboard filter buttons
   document.querySelectorAll(".filter-button[data-filter]").forEach(button => {
