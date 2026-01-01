@@ -99,6 +99,28 @@ const dom = {
   authRegisterToggle: document.querySelector("#btn-auth-register"),
   authReset: document.querySelector("#btn-password-reset"),
   loginButton: document.querySelector("#btn-login"),
+  accountMenu: document.querySelector("#account-menu"),
+  accountDropdown: document.querySelector("#account-dropdown"),
+  accountButton: document.querySelector("#btn-account"),
+  logoutButton: document.querySelector("#btn-logout"),
+  accountCancel: document.querySelector("#btn-account-cancel"),
+  accountDialog: document.querySelector("#account-dialog"),
+  accountName: document.querySelector("#account-name"),
+  accountEmail: document.querySelector("#account-email"),
+  accountOrg: document.querySelector("#account-org"),
+  accountPhone: document.querySelector("#account-phone"),
+  accountCountry: document.querySelector("#account-country"),
+  accountCity: document.querySelector("#account-city"),
+  accountZip: document.querySelector("#account-zip"),
+  accountBillingName: document.querySelector("#account-billing-name"),
+  accountAddress: document.querySelector("#account-address"),
+  accountTax: document.querySelector("#account-tax"),
+  accountPaymentMethod: document.querySelector("#account-payment-method"),
+  accountTier: document.querySelector("#account-tier"),
+  accountPayment: document.querySelector("#account-payment"),
+  accountExpires: document.querySelector("#account-expires"),
+  accountSave: document.querySelector("#btn-account-save"),
+  accountClose: document.querySelector("#btn-account-close"),
   homeButton: document.querySelector("#btn-home"),
   loginCancel: document.querySelector("#btn-login-cancel"),
   saveLogin: document.querySelector("#btn-login-save"),
@@ -557,7 +579,7 @@ async function submitLiveFFF(sessionId, participantId, order) {
   if (session.fffSubmissions[participantId]) return;
 
   const pack = getPackForSession(session);
-  const question = getFFFQuestion(pack) || session.fffQuestion;
+  const question = getActiveFFFQuestion(session, pack);
   let isCorrect = null;
   if (question && question.correctOption) {
     isCorrect = order === question.correctOption;
@@ -595,7 +617,7 @@ async function computeLiveFFFWinner(sessionId) {
   const session = state.sessions[sessionId];
   if (!session) return;
   const pack = getPackForSession(session);
-  const question = getFFFQuestion(pack) || session.fffQuestion;
+  const question = getActiveFFFQuestion(session, pack);
   const submissions = Object.values(session.fffSubmissions || {}).filter((submission) => {
     if (!session.fffRoundId) return true;
     return submission.roundId === session.fffRoundId;
@@ -697,7 +719,8 @@ function updateAuthUser(user) {
       displayName: user.displayName || "Player",
       createdAt: Date.now()
     });
-    if (state.user.email === "ismailukman@gmail.com") {
+    if (state.user.email === "echoscholarly@gmail.com") {
+      state.user.displayName = "SuperAdmin";
       state.user.subscription = {
         tier: "ENTERPRISE",
         startDate: Date.now(),
@@ -797,6 +820,19 @@ function migrateUserState(user) {
       particlesEnabled: true,
       particleDensity: "medium",
       animationSpeed: 1.0
+    };
+  }
+
+  if (!user.profile) {
+    user.profile = {
+      organization: "",
+      phone: "",
+      country: "",
+      city: "",
+      zip: "",
+      billingName: "",
+      address: "",
+      taxId: ""
     };
   }
 
@@ -983,6 +1019,7 @@ function setScreen(name) {
 
   updateTimedAvailability();
   updateLiveAvailability();
+  updateClassicLayoutForSession();
   if (name === "classic") {
     setClassicLight(true);
   }
@@ -998,6 +1035,13 @@ function setScreen(name) {
   }
 }
 
+function updateClassicLayoutForSession() {
+  const session = getSession();
+  if (screens.classic) {
+    screens.classic.classList.toggle("fff-session", session?.mode === "FFF");
+  }
+}
+
 function updateLoginButton() {
   if (state.user) {
     const tier = state.user.subscription?.tier || "FREE";
@@ -1006,6 +1050,65 @@ function updateLoginButton() {
   } else {
     dom.loginButton.textContent = "Login";
   }
+  closeAccountDropdown();
+  updateModeAvailability();
+}
+
+function formatDateLabel(timestamp) {
+  if (!timestamp) return "—";
+  try {
+    return new Date(timestamp).toLocaleDateString();
+  } catch (err) {
+    return "—";
+  }
+}
+
+function closeAccountDropdown() {
+  if (dom.accountDropdown) {
+    dom.accountDropdown.classList.remove("active");
+  }
+}
+
+function toggleAccountDropdown() {
+  if (!dom.accountDropdown) return;
+  dom.accountDropdown.classList.toggle("active");
+}
+
+function openAccountDialog() {
+  if (!dom.accountDialog || !state.user) return;
+  const subscription = state.user.subscription || { tier: "FREE", paid: false };
+  if (dom.accountName) dom.accountName.value = state.user.displayName || "Player";
+  if (dom.accountEmail) dom.accountEmail.value = state.user.email || "";
+  const profile = state.user.profile || {};
+  if (dom.accountOrg) dom.accountOrg.value = profile.organization || "";
+  if (dom.accountPhone) dom.accountPhone.value = profile.phone || "";
+  if (dom.accountCountry) dom.accountCountry.value = profile.country || "";
+  if (dom.accountCity) dom.accountCity.value = profile.city || "";
+  if (dom.accountZip) dom.accountZip.value = profile.zip || "";
+  if (dom.accountBillingName) dom.accountBillingName.value = profile.billingName || "";
+  if (dom.accountAddress) dom.accountAddress.value = profile.address || "";
+  if (dom.accountTax) dom.accountTax.value = profile.taxId || "";
+  if (dom.accountPaymentMethod) {
+    dom.accountPaymentMethod.value = subscription.tier === "FREE"
+      ? "Not required"
+      : subscription.paid
+        ? "External billing"
+        : "Payment required";
+  }
+  if (dom.accountTier) dom.accountTier.textContent = subscription.tier || "FREE";
+  if (dom.accountPayment) {
+    dom.accountPayment.textContent = subscription.tier === "FREE"
+      ? "Free"
+      : subscription.paid
+        ? "Paid"
+        : "Payment Required";
+  }
+  if (dom.accountExpires) {
+    dom.accountExpires.textContent = subscription.expiresAt
+      ? formatDateLabel(subscription.expiresAt)
+      : "—";
+  }
+  dom.accountDialog.showModal();
 }
 
 function updateTimedButton() {
@@ -1076,6 +1179,17 @@ function updateLiveAvailability() {
   dom.liveToggle.disabled = !onLanding || inActiveGame;
 }
 
+function updateModeAvailability() {
+  if (!dom.modeSelect) return;
+  const isFreeTier = getUserTier() === "FREE";
+  const fffOption = dom.modeSelect.querySelector("option[value=\"FFF\"]");
+  if (!fffOption) return;
+  fffOption.disabled = isFreeTier;
+  if (fffOption.disabled && dom.modeSelect.value === "FFF") {
+    dom.modeSelect.value = "CLASSIC";
+  }
+}
+
 function renderLanding() {
   if (!dom.landingLadder) return;
   dom.landingLadder.innerHTML = "";
@@ -1109,6 +1223,7 @@ function renderPackList() {
     dom.packSelect.appendChild(option);
   });
   renderDefaultCategoryPicker();
+  updateModeAvailability();
 }
 
 function renderPricing() {
@@ -1133,6 +1248,7 @@ function renderPricing() {
       }
     }
   });
+  updateModeAvailability();
 }
 
 function renderLeaderboard(filterBy = "totalWinnings") {
@@ -1465,14 +1581,14 @@ function renderHost() {
   dom.hostLive.innerHTML = "";
 
   if (session.mode === "FFF") {
-    renderHostFFF(session, pack);
+    renderHostFFF(session, pack, joinUrl);
   } else {
     renderHostClassicStatus(session, pack);
   }
 }
 
-function renderHostFFF(session, pack) {
-  const fffQuestion = getFFFQuestion(pack) || session.fffQuestion;
+function renderHostFFF(session, pack, joinUrl) {
+  const fffQuestion = getActiveFFFQuestion(session, pack);
   if (!fffQuestion) {
     dom.hostLive.textContent = "No FFF question available in this pack.";
     return;
@@ -1508,11 +1624,24 @@ function renderHostFFF(session, pack) {
     `;
   }).join("");
 
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(joinUrl)}`;
+  const winnerName = session.winnerParticipantId && session.participants?.[session.winnerParticipantId]
+    ? session.participants[session.winnerParticipantId].name
+    : "Pending";
   dom.hostLive.innerHTML = `
-    <div class="question"><strong>FFF:</strong> ${fffQuestion.promptText}</div>
-    <div>Participants: ${participantCount}</div>
-    <div>Submissions: ${Object.keys(session.fffSubmissions).length}</div>
-    <div class="status">Winner: ${session.winnerParticipantId ? session.participants[session.winnerParticipantId].name : "Pending"}</div>
+    <div class="fff-layout">
+      <div>
+        <div class="question"><strong>FFF:</strong> ${fffQuestion.promptText}</div>
+        <div>Participants: ${participantCount}</div>
+        <div>Submissions: ${Object.keys(session.fffSubmissions).length}</div>
+        <div class="status">Winner: ${winnerName}</div>
+      </div>
+      <div class="fff-qr">
+        <img src="${qrUrl}" alt="Join QR code" />
+        <div class="status">Scan to join FFF</div>
+        <div class="code">${session.id}</div>
+      </div>
+    </div>
     <div class="fff-results">${results || ""}</div>
   `;
 }
@@ -1545,6 +1674,7 @@ function renderClassic() {
   if (!session) {
     return;
   }
+  updateClassicLayoutForSession();
   const pack = getPackForSession(session);
   if (!pack) {
     dom.classicQuestion.textContent = "Pack data missing. Reload the page to restore the default pack.";
@@ -2151,7 +2281,7 @@ function renderParticipant(sessionId, participantId) {
   }
   const pack = getPackForSession(session);
   dom.participantMeta.textContent = `Session ${session.id} • ${session.status}`;
-  const question = getFFFQuestion(pack) || session.fffQuestion;
+  const question = getActiveFFFQuestion(session, pack);
   if (!question) {
     dom.participantFFF.textContent = "No FFF question in this pack.";
     return;
@@ -2213,6 +2343,13 @@ function renderParticipant(sessionId, participantId) {
 
 function getFFFQuestion(pack) {
   return pack?.questions?.find((q) => q.type === "FFF") || null;
+}
+
+function getActiveFFFQuestion(session, pack) {
+  if (state.liveMode && session?.fffQuestion) {
+    return session.fffQuestion;
+  }
+  return getFFFQuestion(pack) || session?.fffQuestion || null;
 }
 
 function getFFFTally(session, question) {
@@ -2411,6 +2548,22 @@ function savePack() {
 function initEvents() {
   dom.loginButton.addEventListener("click", () => {
     if (state.user) {
+      toggleAccountDropdown();
+      return;
+    }
+    dom.loginDialog.showModal();
+  });
+
+  if (dom.accountButton) {
+    dom.accountButton.addEventListener("click", () => {
+      closeAccountDropdown();
+      openAccountDialog();
+    });
+  }
+
+  if (dom.logoutButton) {
+    dom.logoutButton.addEventListener("click", () => {
+      closeAccountDropdown();
       ensureFirebaseReady({ allowAnonymous: false }).then((ready) => {
         if (ready && firebaseState.auth) {
           signOut(firebaseState.auth).catch((err) => console.warn("Sign out failed", err));
@@ -2419,9 +2572,56 @@ function initEvents() {
       state.user = null;
       saveState();
       updateLoginButton();
-      return;
+    });
+  }
+
+  if (dom.accountCancel) {
+    dom.accountCancel.addEventListener("click", () => {
+      closeAccountDropdown();
+    });
+  }
+
+  if (dom.accountSave) {
+    dom.accountSave.addEventListener("click", async (event) => {
+      event.preventDefault();
+      if (!state.user) return;
+      const nextName = dom.accountName?.value.trim();
+      if (nextName) {
+        state.user.displayName = nextName;
+      }
+      state.user.profile = {
+        ...(state.user.profile || {}),
+        organization: dom.accountOrg?.value.trim() || "",
+        phone: dom.accountPhone?.value.trim() || "",
+        country: dom.accountCountry?.value.trim() || "",
+        city: dom.accountCity?.value.trim() || "",
+        zip: dom.accountZip?.value.trim() || "",
+        billingName: dom.accountBillingName?.value.trim() || "",
+        address: dom.accountAddress?.value.trim() || "",
+        taxId: dom.accountTax?.value.trim() || ""
+      };
+      saveState();
+      updateLoginButton();
+      const ready = await ensureFirebaseReady({ allowAnonymous: false });
+      if (ready && firebaseState.auth?.currentUser && nextName) {
+        updateProfile(firebaseState.auth.currentUser, { displayName: nextName })
+          .catch((err) => console.warn("Profile update failed", err));
+      }
+      dom.accountDialog?.close();
+    });
+  }
+
+  if (dom.accountClose) {
+    dom.accountClose.addEventListener("click", () => {
+      dom.accountDialog?.close();
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (!dom.accountMenu || !dom.accountDropdown) return;
+    if (!dom.accountMenu.contains(event.target)) {
+      closeAccountDropdown();
     }
-    dom.loginDialog.showModal();
   });
 
   if (dom.loginCancel) {
@@ -2746,6 +2946,11 @@ function initEvents() {
   dom.createSession.addEventListener("click", async () => {
     const packId = dom.packSelect.value;
     const mode = dom.modeSelect.value;
+    if (mode === "FFF" && getUserTier() === "FREE") {
+      alert("Fastest Finger First is not available on the Free tier. Upgrade to unlock this mode.");
+      setScreen("pricing");
+      return;
+    }
     const pack = getPackById(packId);
     const session = state.liveMode && mode === "FFF"
       ? await createLiveSession(pack, mode)

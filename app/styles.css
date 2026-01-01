@@ -151,6 +151,35 @@ dialog {
   gap: 12px;
 }
 
+.account-menu {
+  position: relative;
+}
+
+.account-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+  padding: 10px;
+  border-radius: 14px;
+  background: var(--panel);
+  border: 1px solid var(--outline);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.account-dropdown.active {
+  display: flex;
+}
+
+.account-dropdown button {
+  width: 100%;
+  justify-content: flex-start;
+}
+
 .topbar-actions button:disabled {
   opacity: 0.35;
   cursor: not-allowed;
@@ -820,6 +849,42 @@ button:hover::after {
   gap: 14px;
 }
 
+.fff-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  align-items: start;
+  gap: 18px;
+}
+
+.fff-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  min-width: 160px;
+}
+
+.fff-qr img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .fff-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .fff-qr {
+    width: 100%;
+  }
+}
+
 .fff-results {
   display: grid;
   gap: 10px;
@@ -845,6 +910,14 @@ button:hover::after {
   display: block;
   height: 100%;
   background: linear-gradient(90deg, var(--accent), #f97316);
+}
+
+#screen-classic.fff-session .ladder-card {
+  display: none;
+}
+
+#screen-classic.fff-session .classic-layout {
+  grid-template-columns: 1fr;
 }
 
 .question {
@@ -1056,6 +1129,37 @@ button:hover::after {
   border: 1px solid var(--outline);
   padding: 20px;
   color: var(--ink);
+}
+
+.account-meta {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.account-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.account-fields .field {
+  margin-bottom: 0;
+}
+
+.account-fields .field.full {
+  grid-column: 1 / -1;
+}
+
+.account-meta .meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
 }
 
 .dialog-card menu {

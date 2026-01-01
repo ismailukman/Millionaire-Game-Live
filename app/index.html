@@ -33,7 +33,14 @@
         <button id="btn-sound" class="ghost">🔇 Sound Off</button>
         <button id="btn-timed" class="ghost">⏱ Timer Off</button>
         <button id="btn-live" class="ghost">📡 Live Off</button>
-        <button id="btn-login" class="ghost">Login</button>
+        <div class="account-menu" id="account-menu">
+          <button id="btn-login" class="ghost">Login</button>
+          <div id="account-dropdown" class="account-dropdown">
+            <button id="btn-account" class="ghost">Account</button>
+            <button id="btn-logout" class="ghost">Logout</button>
+            <button id="btn-account-cancel" class="ghost">Cancel</button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -575,6 +582,90 @@
           <button id="btn-login-cancel" value="cancel" class="ghost">Cancel</button>
           <button id="btn-password-reset" type="button" class="ghost">Forgot Password</button>
           <button id="btn-login-save" value="default" class="primary">Login</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="account-dialog">
+      <form method="dialog" class="dialog-card">
+        <h3>Account</h3>
+        <p class="subtext">Manage your profile, tier, and billing details.</p>
+        <label class="field">
+          <span>Display Name</span>
+          <input id="account-name" type="text" placeholder="Host name" />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input id="account-email" type="email" disabled />
+        </label>
+        <div class="account-fields">
+          <label class="field">
+            <span>Organization</span>
+            <input id="account-org" type="text" placeholder="Company or group" />
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input id="account-phone" type="tel" placeholder="+1 555 000 0000" />
+          </label>
+          <label class="field">
+            <span>Country</span>
+            <select id="account-country">
+              <option value="">Select country</option>
+              <option value="NG">Nigeria</option>
+              <option value="GH">Ghana</option>
+              <option value="KE">Kenya</option>
+              <option value="ZA">South Africa</option>
+              <option value="US">United States</option>
+              <option value="GB">United Kingdom</option>
+              <option value="CA">Canada</option>
+              <option value="FR">France</option>
+              <option value="DE">Germany</option>
+              <option value="IN">India</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>City</span>
+            <input id="account-city" type="text" placeholder="City" />
+          </label>
+          <label class="field">
+            <span>ZIP / Postal Code</span>
+            <input id="account-zip" type="text" placeholder="ZIP / Postal code" />
+          </label>
+          <label class="field">
+            <span>Billing Name</span>
+            <input id="account-billing-name" type="text" placeholder="Billing contact" />
+          </label>
+          <label class="field full">
+            <span>Billing Address</span>
+            <textarea id="account-address" rows="2" placeholder="Street, ZIP"></textarea>
+          </label>
+          <label class="field">
+            <span>Tax/VAT ID</span>
+            <input id="account-tax" type="text" placeholder="Optional" />
+          </label>
+          <label class="field">
+            <span>Payment Method</span>
+            <input id="account-payment-method" type="text" disabled />
+          </label>
+        </div>
+        <div class="account-meta">
+          <div class="meta-row">
+            <span>Tier</span>
+            <strong id="account-tier"></strong>
+          </div>
+          <div class="meta-row">
+            <span>Payment</span>
+            <strong id="account-payment"></strong>
+          </div>
+          <div class="meta-row">
+            <span>Expires</span>
+            <strong id="account-expires"></strong>
+          </div>
+        </div>
+        <p class="subtext">Payment details are managed through your billing provider.</p>
+        <menu>
+          <button id="btn-account-close" value="cancel" class="ghost">Cancel</button>
+          <button id="btn-account-save" value="default" class="primary">Save</button>
         </menu>
       </form>
     </dialog>
