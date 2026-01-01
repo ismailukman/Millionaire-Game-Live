@@ -81,12 +81,14 @@ const dom = {
   loginName: document.querySelector("#login-name"),
   loginButton: document.querySelector("#btn-login"),
   homeButton: document.querySelector("#btn-home"),
+  loginCancel: document.querySelector("#btn-login-cancel"),
   demoLogin: document.querySelector("#btn-demo-login"),
   saveLogin: document.querySelector("#btn-login-save"),
   demoPasskeyDialog: document.querySelector("#demo-passkey-dialog"),
   demoPasskeyInput: document.querySelector("#demo-passkey-input"),
   demoPasskeyStatus: document.querySelector("#demo-passkey-status"),
   demoPasskeySubmit: document.querySelector("#btn-demo-passkey-submit"),
+  demoPasskeyCancel: document.querySelector("#btn-demo-passkey-cancel"),
   leaderboardButton: document.querySelector("#btn-leaderboard"),
   achievementsButton: document.querySelector("#btn-achievements"),
   upgradeButton: document.querySelector("#btn-upgrade"),
@@ -2126,6 +2128,12 @@ function initEvents() {
     dom.loginDialog.showModal();
   });
 
+  if (dom.loginCancel) {
+    dom.loginCancel.addEventListener("click", () => {
+      setScreen("landing");
+    });
+  }
+
   dom.saveLogin.addEventListener("click", () => {
     state.user = migrateUserState({
       email: dom.loginEmail.value,
@@ -2166,6 +2174,13 @@ function initEvents() {
         dom.demoPasskeyInput.value = "";
       }
       dom.demoPasskeyDialog?.showModal();
+    });
+  }
+
+  if (dom.demoPasskeyCancel) {
+    dom.demoPasskeyCancel.addEventListener("click", () => {
+      dom.demoPasskeyDialog?.close();
+      setScreen("landing");
     });
   }
 
