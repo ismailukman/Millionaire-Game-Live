@@ -219,6 +219,7 @@ dialog {
 body.classic-light #screen-classic {
   background: #f7f7fb;
   color: #0b1020;
+  border-radius: 28px;
 }
 
 body.classic-light #screen-classic .panel,
