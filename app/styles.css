@@ -223,9 +223,10 @@ body.classic-light #screen-classic {
 
 body.classic-light #screen-classic .panel,
 body.classic-light #screen-classic .card {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.18);
   color: #0b1020;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
 }
 
 body.classic-light #screen-classic .classic-title-row,
@@ -236,13 +237,15 @@ body.classic-light #screen-classic #classic-meta {
 }
 
 body.classic-light #screen-classic .lifeline-row button {
-  border-color: rgba(15, 23, 42, 0.3);
+  border-color: rgba(15, 23, 42, 0.25);
   color: #0b1020;
-  background: rgba(15, 23, 42, 0.06);
+  background: rgba(15, 23, 42, 0.04);
 }
 
 body.classic-light #screen-classic .ladder li {
   color: #0b1020;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.12);
 }
 
 body.classic-light #screen-classic .timer {
@@ -252,6 +255,26 @@ body.classic-light #screen-classic .timer {
 body.classic-light #screen-classic .options button {
   border-color: rgba(15, 23, 42, 0.2);
   color: #0b1020;
+  background: rgba(15, 23, 42, 0.03);
+}
+
+body.classic-light #screen-classic .question,
+body.classic-light #screen-classic .feedback {
+  color: #0b1020;
+}
+
+body.classic-light #screen-classic .ladder li.active {
+  background: rgba(246, 185, 59, 0.25);
+  border-color: rgba(246, 185, 59, 0.7);
+}
+
+body.classic-light #screen-classic .ladder li.safe {
+  background: rgba(52, 211, 153, 0.18);
+  border-color: rgba(52, 211, 153, 0.6);
+}
+
+body.classic-light #screen-classic .ladder li.completed {
+  opacity: 0.8;
 }
 
 body.classic-light .lightning-effects,
