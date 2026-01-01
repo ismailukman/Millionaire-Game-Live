@@ -1587,8 +1587,14 @@ function renderClassic() {
   Object.entries(shuffled.options).forEach(([key, value]) => {
     const btn = document.createElement("button");
     btn.className = "secondary";
-    btn.disabled = disabled.has(key) || session.currentState.locked || lockInputs;
+    const isEliminated = disabled.has(key);
+    btn.disabled = isEliminated || session.currentState.locked || lockInputs;
     btn.textContent = `${key}: ${value}`;
+    if (isEliminated) {
+      btn.classList.add("eliminated");
+    } else if (lockInputs) {
+      btn.classList.add("readonly");
+    }
     btn.onclick = () => submitAnswerClassic(session.id, key);
     dom.classicOptions.appendChild(btn);
   });
