@@ -412,7 +412,7 @@ export const defaultCategoryDecks = [
       { id: "math_42", type: "MCQ", promptText: "Solve: x^2 = 49.", options: { A: "5", B: "6", C: "7", D: "8" }, correctOption: "C" },
       { id: "math_43", type: "MCQ", promptText: "What is the expected value of a fair six-sided die?", options: { A: "2.5", B: "3", C: "3.5", D: "4" }, correctOption: "C" },
       { id: "math_44", type: "MCQ", promptText: "Which angle is greater than 90 degrees?", options: { A: "Acute", B: "Right", C: "Obtuse", D: "Straight" }, correctOption: "C" },
-      { id: "math_45", type: "MCQ", promptText: "How many sides does a hexagon have?", image: "assets/questions/hexagon.svg", imageAlt: "Hexagon", options: { A: "5", B: "6", C: "7", D: "8" }, correctOption: "B" }
+      { id: "math_45", type: "MCQ", promptText: "How many sides does a hexagon have?", options: { A: "5", B: "6", C: "7", D: "8" }, correctOption: "B" }
     ]
   },
   {
@@ -452,7 +452,7 @@ export const defaultCategoryDecks = [
       { id: "apt_30", type: "MCQ", promptText: "Find the next number: 7, 14, 28, 56, ?", options: { A: "63", B: "70", C: "98", D: "112" }, correctOption: "D" },
       { id: "apt_31", type: "MCQ", promptText: "If all roses are flowers and some flowers fade, then some roses:", options: { A: "Fade", B: "Are blue", C: "Are trees", D: "Are animals" }, correctOption: "A" },
       { id: "apt_32", type: "MCQ", promptText: "Which is the next even number after 48?", options: { A: "49", B: "50", C: "51", D: "52" }, correctOption: "B" },
-      { id: "apt_33", type: "MCQ", promptText: "How many dots are shown?", image: "assets/questions/dice-5.svg", imageAlt: "Die showing five dots", options: { A: "4", B: "5", C: "6", D: "7" }, correctOption: "B" },
+      { id: "apt_33", type: "MCQ", promptText: "How many dots are shown?", options: { A: "4", B: "5", C: "6", D: "7" }, correctOption: "B" },
       { id: "apt_34", type: "MCQ", promptText: "If it is raining, the ground is wet. It is raining. Therefore:", options: { A: "The ground is wet", B: "The ground is dry", C: "The sun is out", D: "It is snowing" }, correctOption: "A" },
       { id: "apt_35", type: "MCQ", promptText: "Choose the odd one out.", options: { A: "Square", B: "Rectangle", C: "Circle", D: "Triangle" }, correctOption: "C" },
       { id: "apt_36", type: "MCQ", promptText: "Find the next number: 4, 7, 10, 13, ?", options: { A: "15", B: "16", C: "17", D: "18" }, correctOption: "C" },
