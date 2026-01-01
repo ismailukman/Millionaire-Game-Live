@@ -425,6 +425,7 @@ export const subscriptionTiers = {
     priceLabel: "Free Forever",
     description: "Perfect for casual play",
     features: [
+      "2 free packs",
       "No custom packs",
       "10 participants per session",
       "All core game modes",
@@ -446,7 +447,9 @@ export const subscriptionTiers = {
     priceLabel: "$9.99/month",
     description: "For serious hosts",
     features: [
-      "10 custom packs",
+      "All free packs",
+      "5 custom packs",
+      "Live sessions",
       "100 participants per session",
       "Custom branding",
       "Advanced analytics",
@@ -454,7 +457,7 @@ export const subscriptionTiers = {
       "Export game data"
     ],
     limits: {
-      maxPacks: 10,
+      maxPacks: 5,
       maxParticipants: 100,
       customBranding: true,
       analytics: true,
@@ -469,7 +472,9 @@ export const subscriptionTiers = {
     priceLabel: "$49.99/month",
     description: "For organizations",
     features: [
-      "Unlimited custom packs",
+      "All free packs",
+      "100 custom packs",
+      "Live sessions",
       "Unlimited participants",
       "White-label branding",
       "Advanced analytics & reporting",
@@ -478,7 +483,7 @@ export const subscriptionTiers = {
       "Dedicated account manager"
     ],
     limits: {
-      maxPacks: Infinity,
+      maxPacks: 100,
       maxParticipants: Infinity,
       customBranding: true,
       analytics: true,
