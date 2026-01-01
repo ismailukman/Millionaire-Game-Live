@@ -324,6 +324,9 @@ function applyRemoteSessionData(sessionId, data) {
   session.fffStartTime = toMillis(data.fffStartTime) || session.fffStartTime || null;
   session.fffTimerSeconds = data.fffTimerSeconds ?? session.fffTimerSeconds ?? null;
   session.createdAt = toMillis(data.createdAt) || session.createdAt;
+  if (data.classicState) {
+    session.currentState = { ...session.currentState, ...data.classicState };
+  }
   return session;
 }
 
@@ -372,6 +375,11 @@ function subscribeToLiveSession(sessionId) {
         session.fffSubmissions[docSnap.id] = docSnap.data();
       });
       saveState();
+      if (session.mode === "FFF" && session.status === "live" && !session.winnerParticipantId) {
+        if (firebaseState.user?.uid && session.hostUid === firebaseState.user.uid) {
+          computeLiveFFFWinner(sessionId);
+        }
+      }
       renderLiveSessionIfNeeded();
     }
   );
@@ -417,6 +425,98 @@ async function createLiveSession(pack, mode) {
   state.activeSessionId = sessionId;
   subscribeToLiveSession(sessionId);
   return state.sessions[sessionId];
+}
+
+async function startLiveClassic(sessionId) {
+  const session = state.sessions[sessionId];
+  if (!session) return;
+  const pack = defaultPack;
+  const classicState = {
+    level: 1,
+    questionOrder: buildQuestionOrder(pack),
+    usedLifelines: [],
+    lifelinesUsed: [],
+    disabledOptions: [],
+    feedback: "",
+    feedbackTone: "",
+    locked: false
+  };
+  if (state.timedMode || (dom.toggleTimer && dom.toggleTimer.checked)) {
+    classicState.timerSeconds = state.timerSeconds;
+  }
+  await updateDoc(doc(firebaseState.db, "sessions", sessionId), {
+    mode: "CLASSIC",
+    status: "live",
+    classicState
+  });
+}
+
+async function submitLiveClassicAnswer(sessionId, selected) {
+  const session = state.sessions[sessionId];
+  if (!session) return;
+  const pack = defaultPack;
+  const question = getCurrentQuestion(pack, session);
+  if (!question || session.currentState.locked) return;
+
+  const shuffled = getShuffledQuestion(session, question);
+  const correct = selected === shuffled.correctOption;
+  const nextState = { ...session.currentState };
+  nextState.locked = true;
+  nextState.feedback = correct ? "Correct!" : "Incorrect.";
+  nextState.feedbackTone = correct ? "good" : "bad";
+
+  if (correct) {
+    if (nextState.level >= 15) {
+      nextState.feedback = "You are a millionaire!";
+      nextState.feedbackTone = "good";
+      await updateDoc(doc(firebaseState.db, "sessions", sessionId), {
+        status: "ended",
+        classicState: nextState
+      });
+      return;
+    }
+    nextState.level += 1;
+    nextState.disabledOptions = [];
+    nextState.feedback = "";
+    if (nextState.timerSeconds !== undefined) {
+      nextState.timerSeconds = state.timerSeconds;
+    }
+  } else {
+    nextState.locked = true;
+    await updateDoc(doc(firebaseState.db, "sessions", sessionId), {
+      status: "ended",
+      classicState: nextState
+    });
+    return;
+  }
+
+  await updateDoc(doc(firebaseState.db, "sessions", sessionId), {
+    classicState: nextState
+  });
+}
+
+async function useLiveClassicLifeline(sessionId, lifelineKey) {
+  const session = state.sessions[sessionId];
+  if (!session) return;
+  const pack = defaultPack;
+  const question = getCurrentQuestion(pack, session);
+  if (!question || session.currentState.usedLifelines.includes(lifelineKey)) {
+    return;
+  }
+
+  const shuffled = getShuffledQuestion(session, question);
+  const nextState = { ...session.currentState };
+  nextState.usedLifelines = [...(nextState.usedLifelines || []), lifelineKey];
+  nextState.lifelinesUsed = [...(nextState.lifelinesUsed || []), lifelineKey];
+
+  if (lifelineKey === "fifty_fifty") {
+    const incorrect = Object.keys(shuffled.options).filter((key) => key !== shuffled.correctOption);
+    nextState.disabledOptions = shuffle(incorrect).slice(0, 2);
+  }
+
+  await updateDoc(doc(firebaseState.db, "sessions", sessionId), {
+    classicState: nextState
+  });
 }
 
 async function joinLiveSession(sessionId, name) {
@@ -1480,10 +1580,14 @@ function renderClassic() {
   dom.classicQuestion.textContent = question.promptText;
   dom.classicOptions.innerHTML = "";
   const disabled = new Set(session.currentState.disabledOptions || []);
+  const isLiveClassic = state.liveMode && session.mode === "CLASSIC";
+  const isWinner = state.activeParticipantId && session.winnerParticipantId === state.activeParticipantId;
+  const isHost = firebaseState.user?.uid && session.hostUid === firebaseState.user.uid;
+  const lockInputs = isLiveClassic && (!isWinner || isHost);
   Object.entries(shuffled.options).forEach(([key, value]) => {
     const btn = document.createElement("button");
     btn.className = "secondary";
-    btn.disabled = disabled.has(key) || session.currentState.locked;
+    btn.disabled = disabled.has(key) || session.currentState.locked || lockInputs;
     btn.textContent = `${key}: ${value}`;
     btn.onclick = () => submitAnswerClassic(session.id, key);
     dom.classicOptions.appendChild(btn);
@@ -1507,7 +1611,7 @@ function renderClassic() {
     btn.className = "ghost";
     const icon = lifelineIcons[life.key] || "⭐";
     btn.textContent = `${icon} ${life.displayName}`;
-    btn.disabled = session.currentState.usedLifelines.includes(life.key) || session.currentState.locked;
+    btn.disabled = session.currentState.usedLifelines.includes(life.key) || session.currentState.locked || lockInputs;
     btn.onclick = () => useLifeline(session.id, life.key);
     dom.classicLifelines.appendChild(btn);
   });
@@ -1535,6 +1639,9 @@ function getCurrentQuestion(pack, session) {
 }
 
 function getShuffledQuestion(session, question) {
+  if (state.liveMode && session?.mode === "CLASSIC") {
+    return { options: question.options, correctOption: question.correctOption };
+  }
   if (!session.currentState.optionShuffle) {
     session.currentState.optionShuffle = {};
   }
@@ -1562,6 +1669,10 @@ function getShuffledQuestion(session, question) {
 function startClassic(sessionId) {
   const session = state.sessions[sessionId];
   if (!session) return;
+  if (state.liveMode && session.mode === "FFF") {
+    startLiveClassic(sessionId);
+    return;
+  }
   session.mode = "CLASSIC";
   session.status = "live";
   session.currentState.level = 1;
@@ -1598,16 +1709,31 @@ function startTimer() {
     return;
   }
   activeTimer = setInterval(() => {
+    if (state.liveMode && session.mode === "CLASSIC") {
+      if (!firebaseState.user?.uid || session.hostUid !== firebaseState.user.uid) {
+        return;
+      }
+    }
     session.currentState.timerSeconds -= 1;
     if (session.currentState.timerSeconds <= 0) {
       session.currentState.timerSeconds = 0;
       saveState();
       stopTimer();
       submitAnswerClassic(session.id, "TIMEOUT");
+      if (state.liveMode && session.mode === "CLASSIC") {
+        updateDoc(doc(firebaseState.db, "sessions", session.id), {
+          classicState: { ...session.currentState }
+        });
+      }
       return;
     }
     saveState();
     renderClassic();
+    if (state.liveMode && session.mode === "CLASSIC") {
+      updateDoc(doc(firebaseState.db, "sessions", session.id), {
+        classicState: { ...session.currentState }
+      });
+    }
   }, 1000);
 }
 
@@ -1620,6 +1746,10 @@ function stopTimer() {
 
 function submitAnswerClassic(sessionId, selected) {
   const session = state.sessions[sessionId];
+  if (state.liveMode && session?.mode === "CLASSIC") {
+    submitLiveClassicAnswer(sessionId, selected);
+    return;
+  }
   const pack = getPackForSession(session);
   const question = getCurrentQuestion(pack, session);
   if (!question || session.currentState.locked) return;
@@ -1712,6 +1842,10 @@ function submitAnswerClassic(sessionId, selected) {
 
 function useLifeline(sessionId, lifelineKey) {
   const session = state.sessions[sessionId];
+  if (state.liveMode && session?.mode === "CLASSIC") {
+    useLiveClassicLifeline(sessionId, lifelineKey);
+    return;
+  }
   const pack = getPackForSession(session);
   const question = getCurrentQuestion(pack, session);
   if (!question || session.currentState.usedLifelines.includes(lifelineKey)) {
@@ -2002,6 +2136,15 @@ function renderParticipant(sessionId, participantId) {
   const session = state.sessions[sessionId];
   if (!session) {
     dom.participantStatus.textContent = "Session not found.";
+    return;
+  }
+  if (session.mode === "CLASSIC") {
+    if (participantId === session.winnerParticipantId) {
+      setScreen("classic");
+      renderClassic();
+    } else {
+      dom.participantStatus.textContent = "Hot seat in progress. Please wait.";
+    }
     return;
   }
   const pack = getPackForSession(session);
