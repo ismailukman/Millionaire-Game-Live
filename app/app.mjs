@@ -2540,7 +2540,7 @@ function initEvents() {
 
   // Leaderboard screen navigation
   dom.backFromLeaderboard.addEventListener("click", () => {
-    setScreen("dashboard");
+    setScreen("landing");
   });
 
   // Leaderboard filter buttons
@@ -2553,7 +2553,7 @@ function initEvents() {
 
   // Achievements screen navigation
   dom.backFromAchievements.addEventListener("click", () => {
-    setScreen("dashboard");
+    setScreen("landing");
   });
 
   // Footer quick links navigation
