@@ -1402,11 +1402,23 @@ function renderPackList() {
 }
 
 function renderPricing() {
-  const currentTier = state.user?.subscription?.tier || "FREE";
+  const currentTier = getUserTier();
 
   // Update all pricing buttons based on current tier
   document.querySelectorAll(".pricing-button[data-tier]").forEach(button => {
     const tier = button.dataset.tier;
+
+    if (currentTier === "GUEST") {
+      if (tier === "FREE") {
+        button.textContent = "Login to select";
+        button.className = "pricing-button ghost";
+      } else {
+        const tierName = subscriptionTiers[tier].name;
+        button.textContent = `Login to upgrade to ${tierName}`;
+        button.className = "pricing-button primary";
+      }
+      return;
+    }
 
     if (tier === currentTier) {
       button.textContent = "Current Plan";
