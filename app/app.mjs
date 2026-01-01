@@ -176,6 +176,7 @@ const dom = {
   fullscreenButton: document.querySelector("#btn-fullscreen"),
   fullscreenSound: document.querySelector("#btn-fullscreen-sound"),
   fullscreenLights: document.querySelector("#btn-fullscreen-lights"),
+  fullscreenTimer: document.querySelector("#fullscreen-timer"),
   walkAway: document.querySelector("#btn-walk-away"),
   gameoverDialog: document.querySelector("#gameover-dialog"),
   gameoverIcon: document.querySelector("#gameover-icon"),
@@ -907,7 +908,20 @@ function updateSoundButtons() {
 function updateLightsButton() {
   if (!dom.fullscreenLights) return;
   const lightsOn = !document.body.classList.contains("lights-off");
-  dom.fullscreenLights.textContent = lightsOn ? "💡 Lights On" : "💡 Lights Off";
+  dom.fullscreenLights.textContent = lightsOn ? "💡 Day Mode" : "🌙 Night Mode";
+}
+
+function updateFullscreenTimer() {
+  if (!dom.fullscreenTimer) return;
+  const session = getSession();
+  const seconds = session?.currentState?.timerSeconds;
+  if (typeof seconds === "number") {
+    dom.fullscreenTimer.textContent = `Timer: ${Math.max(0, seconds)}s`;
+    dom.fullscreenTimer.style.display = "inline-flex";
+  } else {
+    dom.fullscreenTimer.textContent = "";
+    dom.fullscreenTimer.style.display = "none";
+  }
 }
 
 function updateTimedAvailability() {
@@ -1470,6 +1484,7 @@ function renderClassic() {
   } else {
     dom.classicTimer.textContent = "";
   }
+  updateFullscreenTimer();
 }
 
 function getCurrentQuestion(pack, session) {
@@ -2834,6 +2849,7 @@ updateTimedButton();
 updateLiveButton();
 updateSoundButtons();
 updateLightsButton();
+updateFullscreenTimer();
 renderLanding();
 renderPackList();
 resetBuilder();
