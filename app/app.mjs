@@ -29,6 +29,7 @@ import {
   setDoc,
   getDoc,
   updateDoc,
+  deleteDoc,
   onSnapshot,
   collection
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -88,8 +89,6 @@ const storageKeys = {
   liveMode: "wwtbam_live_mode",
   timerSeconds: "wwtbam_timer_seconds",
   defaultCategory: "wwtbam_default_category"
-  ,
-  adminUsers: "wwtbam_admin_users"
 };
 
 const dom = {
@@ -248,6 +247,7 @@ let lastRenderedLevel = null;
 let inactivityTimer = null;
 
 const INACTIVITY_LIMIT_MS = 30 * 60 * 1000;
+let adminUsersUnsubscribe = null;
 
 function safeParse(json, fallback) {
   if (!json) return fallback;
@@ -883,7 +883,6 @@ function loadState() {
   const savedLive = localStorage.getItem(storageKeys.liveMode);
   const savedTimer = localStorage.getItem(storageKeys.timerSeconds);
   const savedCategory = localStorage.getItem(storageKeys.defaultCategory);
-  const savedAdminUsers = localStorage.getItem(storageKeys.adminUsers);
 
   state.user = savedUser ? migrateUserState(safeParse(savedUser, null)) : null;
   state.packs = safeParse(savedPacks, [defaultPack]);
@@ -892,7 +891,6 @@ function loadState() {
   state.liveMode = savedLive === "true";
   state.timerSeconds = savedTimer ? Number(savedTimer) || 10 : 10;
   state.selectedDefaultCategoryId = savedCategory || defaultCategoryDecks[0]?.id || null;
-  state.adminUsers = safeParse(savedAdminUsers, []);
 
   if (state.liveMode && !getFirebaseConfig()) {
     state.liveMode = false;
@@ -910,7 +908,6 @@ function saveState() {
   localStorage.setItem(storageKeys.user, JSON.stringify(state.user));
   localStorage.setItem(storageKeys.packs, JSON.stringify(state.packs));
   localStorage.setItem(storageKeys.sessions, JSON.stringify(state.sessions));
-  localStorage.setItem(storageKeys.adminUsers, JSON.stringify(state.adminUsers));
 }
 
 function setSelectedDefaultCategory(categoryId) {
@@ -1124,6 +1121,11 @@ function setScreen(name) {
     if (!node) return;
     node.classList.toggle("active", key === name);
   });
+
+  if (name !== "admin" && adminUsersUnsubscribe) {
+    adminUsersUnsubscribe();
+    adminUsersUnsubscribe = null;
+  }
 
   if (name === "landing") {
     state.timedMode = false;
@@ -1459,33 +1461,76 @@ function renderAdminPanel() {
     const select = row.querySelector("select");
     if (select) {
       select.value = user.tier || "FREE";
-      select.addEventListener("change", (event) => {
+      select.addEventListener("change", async (event) => {
         const nextTier = event.target.value;
-        state.adminUsers[index].tier = nextTier;
-        saveState();
-        if (state.user && state.user.email === user.email) {
-          state.user.subscription = {
-            tier: nextTier === "GUEST" ? "FREE" : nextTier,
-            startDate: Date.now(),
-            expiresAt: nextTier === "FREE" ? null : Date.now() + (30 * 24 * 60 * 60 * 1000),
-            features: subscriptionTiers[nextTier === "GUEST" ? "FREE" : nextTier].limits,
-            paid: nextTier === "FREE" ? false : true
-          };
-          saveState();
-          updateLoginButton();
-        }
+        await updateAdminUserTier(user.email, nextTier);
       });
     }
     const removeButton = row.querySelector("[data-action=\"remove\"]");
     if (removeButton) {
-      removeButton.addEventListener("click", () => {
-        state.adminUsers.splice(index, 1);
-        saveState();
-        renderAdminPanel();
+      removeButton.addEventListener("click", async () => {
+        await removeAdminUser(user.email);
       });
     }
     dom.adminUserTable.appendChild(row);
   });
+}
+
+async function startAdminUsersListener() {
+  if (!isSuperAdmin()) {
+    alert("Admin access only.");
+    return;
+  }
+  const ready = await ensureFirebaseReady({ allowAnonymous: false });
+  if (!ready || !firebaseState.db) {
+    alert("Firebase is not configured. Add firebaseConfig in index.html.");
+    return;
+  }
+  if (adminUsersUnsubscribe) {
+    adminUsersUnsubscribe();
+  }
+  adminUsersUnsubscribe = onSnapshot(collection(firebaseState.db, "users"), (snapshot) => {
+    state.adminUsers = [];
+    snapshot.forEach((docSnap) => {
+      state.adminUsers.push({ id: docSnap.id, ...docSnap.data() });
+    });
+    renderAdminPanel();
+  });
+}
+
+async function upsertAdminUser(payload) {
+  const ready = await ensureFirebaseReady({ allowAnonymous: false });
+  if (!ready || !firebaseState.db) {
+    alert("Firebase is not configured. Add firebaseConfig in index.html.");
+    return;
+  }
+  const email = payload.email.toLowerCase();
+  const userDoc = doc(firebaseState.db, "users", email);
+  await setDoc(userDoc, {
+    email,
+    name: payload.name || "",
+    tier: payload.tier || "FREE",
+    updatedAt: Date.now()
+  }, { merge: true });
+}
+
+async function updateAdminUserTier(email, tier) {
+  if (!email) return;
+  const ready = await ensureFirebaseReady({ allowAnonymous: false });
+  if (!ready || !firebaseState.db) return;
+  const userDoc = doc(firebaseState.db, "users", email.toLowerCase());
+  await updateDoc(userDoc, {
+    tier,
+    updatedAt: Date.now()
+  });
+}
+
+async function removeAdminUser(email) {
+  if (!email) return;
+  const ready = await ensureFirebaseReady({ allowAnonymous: false });
+  if (!ready || !firebaseState.db) return;
+  const userDoc = doc(firebaseState.db, "users", email.toLowerCase());
+  await deleteDoc(userDoc);
 }
 
 function renderPricing() {
@@ -2875,7 +2920,7 @@ function initEvents() {
         return;
       }
       setScreen("admin");
-      renderAdminPanel();
+      startAdminUsersListener();
     });
   }
 
@@ -2935,7 +2980,7 @@ function initEvents() {
   }
 
   if (dom.adminAdd) {
-    dom.adminAdd.addEventListener("click", () => {
+    dom.adminAdd.addEventListener("click", async () => {
       if (!isSuperAdmin()) {
         alert("Admin access only.");
         return;
@@ -2947,15 +2992,7 @@ function initEvents() {
         alert("Email is required.");
         return;
       }
-      const existingIndex = state.adminUsers.findIndex((entry) => entry.email === email);
-      const payload = { email, name: name || "", tier };
-      if (existingIndex >= 0) {
-        state.adminUsers[existingIndex] = payload;
-      } else {
-        state.adminUsers.push(payload);
-      }
-      saveState();
-      renderAdminPanel();
+      await upsertAdminUser({ email, name: name || "", tier });
       if (dom.adminUserEmail) dom.adminUserEmail.value = "";
       if (dom.adminUserName) dom.adminUserName.value = "";
     });
@@ -2963,7 +3000,7 @@ function initEvents() {
 
   if (dom.adminRefresh) {
     dom.adminRefresh.addEventListener("click", () => {
-      renderAdminPanel();
+      startAdminUsersListener();
     });
   }
 
