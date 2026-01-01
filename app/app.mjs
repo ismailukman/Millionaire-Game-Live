@@ -2776,6 +2776,11 @@ function initEvents() {
       event.stopPropagation();
       handleLogout();
     });
+    dom.logoutButton.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      handleLogout();
+    });
   }
 
   if (dom.accountDropdown) {

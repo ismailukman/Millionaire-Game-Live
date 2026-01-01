@@ -168,7 +168,7 @@ dialog {
   background: var(--panel);
   border: 1px solid var(--outline);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-  z-index: 5;
+  z-index: 10;
   pointer-events: auto;
 }
 
@@ -180,6 +180,8 @@ dialog {
 .account-dropdown button {
   width: 100%;
   justify-content: flex-start;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .topbar-actions button:disabled {
