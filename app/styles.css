@@ -1866,6 +1866,29 @@ button:hover::after {
     justify-self: stretch;
     padding-right: 20px;
   }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pricing-card {
+    padding: 24px 20px;
+  }
+
+  .pricing-card.featured,
+  .pricing-card.featured:hover {
+    transform: none;
+  }
+
+  .pricing-header h3 {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  .price-amount {
+    font-size: 36px;
+  }
 }
 
 @media (max-width: 980px) {
