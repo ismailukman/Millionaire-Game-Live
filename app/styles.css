@@ -909,7 +909,7 @@ button:hover::after {
 }
 
 .classic-board #btn-walk-away {
-  margin-top: 12px;
+  margin-top: 0;
   align-self: center;
 }
 
