@@ -42,6 +42,7 @@ const screens = {
   classic: document.querySelector("#screen-classic"),
   pricing: document.querySelector("#screen-pricing"),
   payment: document.querySelector("#screen-payment"),
+  admin: document.querySelector("#screen-admin"),
   leaderboard: document.querySelector("#screen-leaderboard"),
   achievements: document.querySelector("#screen-achievements"),
   contact: document.querySelector("#screen-contact")
@@ -58,7 +59,8 @@ const state = {
   liveMode: false,
   timerSeconds: 10,
   editingPackId: null,
-  paymentTier: null
+  paymentTier: null,
+  adminUsers: []
 };
 
 const firebaseState = {
@@ -86,6 +88,8 @@ const storageKeys = {
   liveMode: "wwtbam_live_mode",
   timerSeconds: "wwtbam_timer_seconds",
   defaultCategory: "wwtbam_default_category"
+  ,
+  adminUsers: "wwtbam_admin_users"
 };
 
 const dom = {
@@ -121,6 +125,14 @@ const dom = {
   accountExpires: document.querySelector("#account-expires"),
   accountSave: document.querySelector("#btn-account-save"),
   accountClose: document.querySelector("#btn-account-close"),
+  adminPanelButton: document.querySelector("#btn-admin-panel"),
+  adminUserEmail: document.querySelector("#admin-user-email"),
+  adminUserName: document.querySelector("#admin-user-name"),
+  adminUserTier: document.querySelector("#admin-user-tier"),
+  adminUserTable: document.querySelector("#admin-user-table"),
+  adminAdd: document.querySelector("#btn-admin-add"),
+  adminRefresh: document.querySelector("#btn-admin-refresh"),
+  adminBack: document.querySelector("#btn-admin-back"),
   homeButton: document.querySelector("#btn-home"),
   loginCancel: document.querySelector("#btn-login-cancel"),
   saveLogin: document.querySelector("#btn-login-save"),
@@ -214,7 +226,6 @@ const dom = {
   paymentTierName: document.querySelector("#payment-tier-name"),
   paymentTierDesc: document.querySelector("#payment-tier-desc"),
   paymentTierPrice: document.querySelector("#payment-tier-price"),
-  paymentTierFeatures: document.querySelector("#payment-tier-features"),
   paymentConfirm: document.querySelector("#btn-payment-confirm"),
   paymentBack: document.querySelector("#btn-payment-back"),
   leaderboardBody: document.querySelector("#leaderboard-body"),
@@ -859,6 +870,11 @@ function applySuperAdminOverrides(user) {
   };
 }
 
+function isSuperAdmin() {
+  const email = state.user?.email || "";
+  return email.toLowerCase() === "echoscholarly@gmail.com";
+}
+
 function loadState() {
   const savedUser = localStorage.getItem(storageKeys.user);
   const savedPacks = localStorage.getItem(storageKeys.packs);
@@ -867,6 +883,7 @@ function loadState() {
   const savedLive = localStorage.getItem(storageKeys.liveMode);
   const savedTimer = localStorage.getItem(storageKeys.timerSeconds);
   const savedCategory = localStorage.getItem(storageKeys.defaultCategory);
+  const savedAdminUsers = localStorage.getItem(storageKeys.adminUsers);
 
   state.user = savedUser ? migrateUserState(safeParse(savedUser, null)) : null;
   state.packs = safeParse(savedPacks, [defaultPack]);
@@ -875,6 +892,7 @@ function loadState() {
   state.liveMode = savedLive === "true";
   state.timerSeconds = savedTimer ? Number(savedTimer) || 10 : 10;
   state.selectedDefaultCategoryId = savedCategory || defaultCategoryDecks[0]?.id || null;
+  state.adminUsers = safeParse(savedAdminUsers, []);
 
   if (state.liveMode && !getFirebaseConfig()) {
     state.liveMode = false;
@@ -892,6 +910,7 @@ function saveState() {
   localStorage.setItem(storageKeys.user, JSON.stringify(state.user));
   localStorage.setItem(storageKeys.packs, JSON.stringify(state.packs));
   localStorage.setItem(storageKeys.sessions, JSON.stringify(state.sessions));
+  localStorage.setItem(storageKeys.adminUsers, JSON.stringify(state.adminUsers));
 }
 
 function setSelectedDefaultCategory(categoryId) {
@@ -1225,6 +1244,9 @@ function openAccountDialog() {
       ? formatDateLabel(subscription.expiresAt)
       : "—";
   }
+  if (dom.adminPanelButton) {
+    dom.adminPanelButton.style.display = isSuperAdmin() ? "inline-flex" : "none";
+  }
   dom.accountDialog.showModal();
 }
 
@@ -1335,16 +1357,8 @@ function populatePaymentScreen(tierId) {
   if (dom.paymentTierName) dom.paymentTierName.textContent = tier.name;
   if (dom.paymentTierDesc) dom.paymentTierDesc.textContent = tier.description || "";
   if (dom.paymentTierPrice) dom.paymentTierPrice.textContent = tier.priceLabel || "$0";
-  if (dom.paymentTierFeatures) {
-    dom.paymentTierFeatures.innerHTML = "";
-    (tier.features || []).forEach((feature) => {
-      const li = document.createElement("li");
-      li.textContent = `✓ ${feature}`;
-      dom.paymentTierFeatures.appendChild(li);
-    });
-  }
-  document.querySelectorAll('input[name="payment-method"]').forEach((input) => {
-    input.checked = false;
+  document.querySelectorAll(".payment-option").forEach((option) => {
+    option.classList.remove("selected");
   });
 }
 
@@ -1407,6 +1421,71 @@ function renderPackList() {
   }
   renderDefaultCategoryPicker();
   updateModeAvailability();
+}
+
+function renderAdminPanel() {
+  if (!dom.adminUserTable) return;
+  if (!isSuperAdmin()) {
+    alert("Admin access only.");
+    setScreen("landing");
+    return;
+  }
+  dom.adminUserTable.innerHTML = "";
+  if (!Array.isArray(state.adminUsers) || state.adminUsers.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "subtext";
+    empty.textContent = "No users added yet.";
+    dom.adminUserTable.appendChild(empty);
+    return;
+  }
+  state.adminUsers.forEach((user, index) => {
+    const row = document.createElement("div");
+    row.className = "admin-row";
+    row.innerHTML = `
+      <span>${user.email || ""}</span>
+      <span>${user.name || ""}</span>
+      <span>
+        <select data-index="${index}">
+          <option value="GUEST">Guest</option>
+          <option value="FREE">Free</option>
+          <option value="PRO">Pro</option>
+          <option value="ENTERPRISE">Enterprise</option>
+        </select>
+      </span>
+      <span class="admin-actions">
+        <button class="ghost" data-action="remove" data-index="${index}">Remove</button>
+      </span>
+    `;
+    const select = row.querySelector("select");
+    if (select) {
+      select.value = user.tier || "FREE";
+      select.addEventListener("change", (event) => {
+        const nextTier = event.target.value;
+        state.adminUsers[index].tier = nextTier;
+        saveState();
+        if (state.user && state.user.email === user.email) {
+          state.user.subscription = {
+            tier: nextTier === "GUEST" ? "FREE" : nextTier,
+            startDate: Date.now(),
+            expiresAt: nextTier === "FREE" ? null : Date.now() + (30 * 24 * 60 * 60 * 1000),
+            features: subscriptionTiers[nextTier === "GUEST" ? "FREE" : nextTier].limits,
+            paid: nextTier === "FREE" ? false : true
+          };
+          saveState();
+          updateLoginButton();
+        }
+      });
+    }
+    const removeButton = row.querySelector("[data-action=\"remove\"]");
+    if (removeButton) {
+      removeButton.addEventListener("click", () => {
+        state.adminUsers.splice(index, 1);
+        saveState();
+        renderAdminPanel();
+      });
+    }
+    dom.adminUserTable.appendChild(row);
+  });
 }
 
 function renderPricing() {
@@ -2788,6 +2867,18 @@ function initEvents() {
     });
   }
 
+  if (dom.adminPanelButton) {
+    dom.adminPanelButton.addEventListener("click", () => {
+      dom.accountDialog?.close();
+      if (!isSuperAdmin()) {
+        alert("Admin access only.");
+        return;
+      }
+      setScreen("admin");
+      renderAdminPanel();
+    });
+  }
+
   if (dom.logoutButton) {
     dom.logoutButton.addEventListener("click", (event) => {
       event.preventDefault();
@@ -2840,6 +2931,45 @@ function initEvents() {
           .catch((err) => console.warn("Profile update failed", err));
       }
       dom.accountDialog?.close();
+    });
+  }
+
+  if (dom.adminAdd) {
+    dom.adminAdd.addEventListener("click", () => {
+      if (!isSuperAdmin()) {
+        alert("Admin access only.");
+        return;
+      }
+      const email = dom.adminUserEmail?.value.trim().toLowerCase();
+      const name = dom.adminUserName?.value.trim();
+      const tier = dom.adminUserTier?.value || "FREE";
+      if (!email) {
+        alert("Email is required.");
+        return;
+      }
+      const existingIndex = state.adminUsers.findIndex((entry) => entry.email === email);
+      const payload = { email, name: name || "", tier };
+      if (existingIndex >= 0) {
+        state.adminUsers[existingIndex] = payload;
+      } else {
+        state.adminUsers.push(payload);
+      }
+      saveState();
+      renderAdminPanel();
+      if (dom.adminUserEmail) dom.adminUserEmail.value = "";
+      if (dom.adminUserName) dom.adminUserName.value = "";
+    });
+  }
+
+  if (dom.adminRefresh) {
+    dom.adminRefresh.addEventListener("click", () => {
+      renderAdminPanel();
+    });
+  }
+
+  if (dom.adminBack) {
+    dom.adminBack.addEventListener("click", () => {
+      setScreen("landing");
     });
   }
 
@@ -3331,26 +3461,24 @@ function initEvents() {
         setScreen("pricing");
         return;
       }
-      const method = document.querySelector('input[name="payment-method"]:checked');
+      const method = document.querySelector(".payment-option.selected");
       if (!method) {
         alert("Select a payment method to continue.");
         return;
       }
       const tier = state.paymentTier;
-      state.user.subscription = {
-        tier: tier,
-        startDate: Date.now(),
-        expiresAt: Date.now() + (30 * 24 * 60 * 60 * 1000),
-        features: subscriptionTiers[tier].limits,
-        paid: true
-      };
-      saveState();
-      updateLoginButton();
       state.paymentTier = null;
-      alert(`Payment successful. ${subscriptionTiers[tier].name} is now active.`);
-      setScreen("dashboard");
+      alert(`Request submitted for ${subscriptionTiers[tier].name}.\n\nWe will email ismailukman@gmail.com with your subscription details. Your request will be reviewed and an update will be provided.`);
+      setScreen("pricing");
     });
   }
+
+  document.querySelectorAll(".payment-option").forEach((option) => {
+    option.addEventListener("click", () => {
+      document.querySelectorAll(".payment-option").forEach((btn) => btn.classList.remove("selected"));
+      option.classList.add("selected");
+    });
+  });
 
   // Leaderboard filter buttons
   document.querySelectorAll(".filter-button[data-filter]").forEach(button => {

@@ -382,36 +382,75 @@
             <p>Select a payment method to activate your plan.</p>
           </div>
           <div class="panel-body">
-            <div class="card payment-summary">
-              <h3 id="payment-tier-name">Plan</h3>
-              <p class="subtext" id="payment-tier-desc"></p>
-              <div class="payment-price">
-                <span id="payment-tier-price"></span>
+            <div class="payment-grid">
+              <div class="card payment-summary">
+                <p class="subtext">Selected plan</p>
+                <h3 id="payment-tier-name">Plan</h3>
+                <p class="subtext" id="payment-tier-desc"></p>
+                <div class="payment-price">
+                  <span id="payment-tier-price"></span>
+                </div>
+                <p class="subtext">We will review your request and confirm activation by email.</p>
               </div>
-              <ul id="payment-tier-features" class="pricing-features"></ul>
+              <div class="card payment-methods">
+                <h3>Payment Method</h3>
+                <button class="payment-option" type="button" data-method="apple_pay">Apple Pay</button>
+                <button class="payment-option" type="button" data-method="google_pay">Google Pay</button>
+                <button class="payment-option" type="button" data-method="card">Card (Visa/Mastercard)</button>
+                <button class="payment-option" type="button" data-method="paypal">PayPal</button>
+                <div class="payment-actions">
+                  <button id="btn-payment-back" class="ghost">Cancel</button>
+                  <button id="btn-payment-confirm" class="primary">Request Upgrade</button>
+                </div>
+              </div>
             </div>
-            <div class="card payment-methods">
-              <h3>Payment Methods</h3>
-              <label class="payment-option">
-                <input type="radio" name="payment-method" value="apple_pay" />
-                <span>Apple Pay</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-admin" class="screen">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Admin Panel</h2>
+            <p>Assign tiers to users and manage access.</p>
+          </div>
+          <div class="panel-body grid-2">
+            <div class="card">
+              <h3>Add or Update User</h3>
+              <label class="field">
+                <span>Email</span>
+                <input id="admin-user-email" type="email" placeholder="user@example.com" />
               </label>
-              <label class="payment-option">
-                <input type="radio" name="payment-method" value="google_pay" />
-                <span>Google Pay</span>
+              <label class="field">
+                <span>Name</span>
+                <input id="admin-user-name" type="text" placeholder="User name" />
               </label>
-              <label class="payment-option">
-                <input type="radio" name="payment-method" value="card" />
-                <span>Card (Visa/Mastercard)</span>
+              <label class="field">
+                <span>Tier</span>
+                <select id="admin-user-tier">
+                  <option value="GUEST">Guest</option>
+                  <option value="FREE">Free</option>
+                  <option value="PRO">Pro</option>
+                  <option value="ENTERPRISE">Enterprise</option>
+                </select>
               </label>
-              <label class="payment-option">
-                <input type="radio" name="payment-method" value="paypal" />
-                <span>PayPal</span>
-              </label>
-              <div class="payment-actions">
-                <button id="btn-payment-back" class="ghost">Cancel</button>
-                <button id="btn-payment-confirm" class="primary">Pay Now</button>
+              <button id="btn-admin-add" class="primary">Save User</button>
+            </div>
+            <div class="card">
+              <div class="admin-table-head">
+                <h3>Users</h3>
+                <button id="btn-admin-refresh" class="ghost">Refresh</button>
               </div>
+              <div class="admin-table">
+                <div class="admin-row admin-row-head">
+                  <span>Email</span>
+                  <span>Name</span>
+                  <span>Tier</span>
+                  <span>Actions</span>
+                </div>
+                <div id="admin-user-table"></div>
+              </div>
+              <button id="btn-admin-back" class="ghost">← Back to Home</button>
             </div>
           </div>
         </div>
@@ -709,6 +748,7 @@
         </div>
         <p class="subtext">Payment details are managed through your billing provider.</p>
         <menu>
+          <button id="btn-admin-panel" type="button" class="secondary">Admin Panel</button>
           <button id="btn-account-close" value="cancel" class="ghost">Cancel</button>
           <button id="btn-account-save" value="default" class="primary">Save</button>
         </menu>

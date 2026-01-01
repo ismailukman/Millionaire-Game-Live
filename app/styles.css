@@ -1782,6 +1782,12 @@ button:hover::after {
   border-top: 1px solid var(--outline);
 }
 
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
 .payment-summary {
   margin-bottom: 16px;
 }
@@ -1801,7 +1807,7 @@ button:hover::after {
 .payment-option {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1809,8 +1815,9 @@ button:hover::after {
   cursor: pointer;
 }
 
-.payment-option input {
-  margin: 0;
+.payment-option.selected {
+  border-color: rgba(246, 185, 59, 0.6);
+  box-shadow: 0 0 0 2px rgba(246, 185, 59, 0.2);
 }
 
 .payment-actions {
@@ -1818,6 +1825,44 @@ button:hover::after {
   justify-content: flex-end;
   gap: 12px;
   margin-top: 8px;
+}
+
+.admin-table {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.admin-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 13px;
+}
+
+.admin-row-head {
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+}
+
+.admin-row select {
+  width: 100%;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 6px;
 }
 
 /* ========================================
