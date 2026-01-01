@@ -66,7 +66,8 @@ const firebaseState = {
   user: null,
   ready: false,
   initPromise: null,
-  authListenerAttached: false
+  authListenerAttached: false,
+  lastInitError: null
 };
 
 const liveListeners = {
@@ -226,6 +227,7 @@ async function ensureFirebaseReady() {
   const config = getFirebaseConfig();
   if (!config) {
     console.warn("Firebase config missing; live mode disabled.");
+    firebaseState.lastInitError = "config";
     return false;
   }
 
@@ -252,6 +254,7 @@ async function ensureFirebaseReady() {
   })().catch((err) => {
     console.error("Firebase init failed:", err);
     firebaseState.initPromise = null;
+    firebaseState.lastInitError = err;
     return false;
   });
 
@@ -2212,7 +2215,11 @@ function initEvents() {
     event.preventDefault();
     const ready = await ensureFirebaseReady();
     if (!ready || !firebaseState.auth) {
-      setAuthStatus("Firebase is not configured.");
+      if (firebaseState.lastInitError === "config") {
+        setAuthStatus("Firebase config missing. Refresh the page.");
+      } else {
+        setAuthStatus("Firebase failed to initialize. Check network or console.");
+      }
       return;
     }
 
@@ -2257,9 +2264,13 @@ function initEvents() {
     dom.authReset.addEventListener("click", async () => {
       const ready = await ensureFirebaseReady();
       if (!ready || !firebaseState.auth) {
-        setAuthStatus("Firebase is not configured.");
-        return;
+      if (firebaseState.lastInitError === "config") {
+        setAuthStatus("Firebase config missing. Refresh the page.");
+      } else {
+        setAuthStatus("Firebase failed to initialize. Check network or console.");
       }
+      return;
+    }
       const email = dom.loginEmail.value.trim();
       if (!email) {
         setAuthStatus("Enter your email first.");
