@@ -225,6 +225,9 @@ let particleSystem = null;
 let pendingTimerToggle = false;
 let authMode = "login";
 let lastRenderedLevel = null;
+let inactivityTimer = null;
+
+const INACTIVITY_LIMIT_MS = 30 * 60 * 1000;
 
 function safeParse(json, fallback) {
   if (!json) return fallback;
@@ -725,6 +728,7 @@ function updateAuthUser(user) {
   }
   saveState();
   updateLoginButton();
+  resetInactivityTimer();
 }
 
 function getActiveScreenName() {
@@ -1134,6 +1138,24 @@ function clearLocalUser() {
   updateLoginButton();
 }
 
+function resetInactivityTimer() {
+  if (inactivityTimer) {
+    clearTimeout(inactivityTimer);
+  }
+  if (!state.user) return;
+  inactivityTimer = setTimeout(() => {
+    handleLogout();
+  }, INACTIVITY_LIMIT_MS);
+}
+
+function startInactivityTracking() {
+  const events = ["mousemove", "mousedown", "keydown", "touchstart", "scroll"];
+  events.forEach((eventName) => {
+    window.addEventListener(eventName, resetInactivityTimer, { passive: true });
+  });
+  resetInactivityTimer();
+}
+
 function formatDateLabel(timestamp) {
   if (!timestamp) return "—";
   try {
@@ -1210,6 +1232,10 @@ async function handleLogout() {
   }
   firebaseState.user = null;
   clearLocalUser();
+  if (inactivityTimer) {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = null;
+  }
   state.liveMode = false;
   localStorage.setItem(storageKeys.liveMode, String(state.liveMode));
   updateLiveButton();
@@ -2689,6 +2715,7 @@ function savePack() {
 }
 
 function initEvents() {
+  startInactivityTracking();
   dom.loginButton.addEventListener("click", () => {
     if (state.user) {
       toggleAccountDropdown();
