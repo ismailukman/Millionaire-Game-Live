@@ -152,6 +152,7 @@ const dom = {
   savePack: document.querySelector("#btn-save-pack"),
   cancelBuilder: document.querySelector("#btn-cancel-builder"),
   playDefault: document.querySelector("#btn-play-default"),
+  selectPack: document.querySelector("#btn-select-pack"),
   goDashboard: document.querySelector("#btn-go-dashboard"),
   builderTitle: document.querySelector("#builder-title"),
   builderDescription: document.querySelector("#builder-description"),
@@ -926,7 +927,7 @@ function getDefaultCategoryById(categoryId) {
 
 function buildCategoryPack(category) {
   if (!isCategoryAllowed(category)) {
-    alert(state.user ? "Upgrade to more access." : "Login to unlock more packs.");
+    alert(state.user ? "Upgrade to more access." : "Login to use this feature.");
     return defaultPack;
   }
   const selected = shuffle(category.questions).slice(0, 15).map((question, index) => ({
@@ -989,7 +990,7 @@ function renderCategoryCards(target, { onSelect, selectedId } = {}) {
     `;
     card.addEventListener("click", () => {
       if (locked) {
-        alert(state.user ? "Upgrade to more access." : "Login to unlock more packs.");
+        alert(state.user ? "Upgrade to more access." : "Login to use this feature.");
         setScreen("pricing");
         return;
       }
@@ -1314,7 +1315,7 @@ function renderPackList() {
   dom.packList.innerHTML = "";
   const packs = getOrderedPacks();
   const limit = getPackVisibilityLimit();
-  const lockMessage = state.user ? "Upgrade to more access." : "Login to unlock more packs.";
+      const lockMessage = state.user ? "Upgrade to more access." : "Login to use this feature.";
   packs.forEach((pack, index) => {
     const locked = index >= limit;
     const card = document.createElement("div");
@@ -3002,28 +3003,33 @@ function initEvents() {
 
   dom.playDefault.addEventListener("click", () => {
     ensureDefaultPack();
-    if (dom.defaultCategoryDialog && dom.defaultCategoryDialogGrid) {
-      if (dom.defaultCategoryStatus) {
-        dom.defaultCategoryStatus.textContent = "";
-        dom.defaultCategoryStatus.classList.remove("status-success");
-      }
-      ensureDefaultCategorySelection();
-      const renderDialogCards = () => {
-        renderCategoryCards(dom.defaultCategoryDialogGrid, {
-          selectedId: state.selectedDefaultCategoryId,
-          onSelect: () => renderDialogCards()
-        });
-      };
-      renderDialogCards();
-      dom.defaultCategoryDialog.showModal();
-      return;
+    const animals = defaultCategoryDecks.find((category) => category.title === "Animals");
+    if (animals) {
+      setSelectedDefaultCategory(animals.id);
     }
-    const session = createSession(defaultPack, "CLASSIC");
-    if (!session) return;
-    renderHost();
-    setScreen("host");
-    startClassic(session.id);
+    startDefaultCategoryGame();
   });
+
+  if (dom.selectPack) {
+    dom.selectPack.addEventListener("click", () => {
+      ensureDefaultPack();
+      if (dom.defaultCategoryDialog && dom.defaultCategoryDialogGrid) {
+        if (dom.defaultCategoryStatus) {
+          dom.defaultCategoryStatus.textContent = "";
+          dom.defaultCategoryStatus.classList.remove("status-success");
+        }
+        ensureDefaultCategorySelection();
+        const renderDialogCards = () => {
+          renderCategoryCards(dom.defaultCategoryDialogGrid, {
+            selectedId: state.selectedDefaultCategoryId,
+            onSelect: () => renderDialogCards()
+          });
+        };
+        renderDialogCards();
+        dom.defaultCategoryDialog.showModal();
+      }
+    });
+  }
 
   if (dom.defaultCategoryLoad && dom.defaultCategoryDialog) {
     dom.defaultCategoryLoad.addEventListener("click", (event) => {
@@ -3101,7 +3107,7 @@ function initEvents() {
     const packId = dom.packSelect.value;
     const mode = dom.modeSelect.value;
     if (!isPackAllowed(packId)) {
-      alert(state.user ? "Upgrade to access more packs." : "Login to unlock more packs.");
+      alert(state.user ? "Upgrade to access more packs." : "Login to use this feature.");
       setScreen("pricing");
       return;
     }
