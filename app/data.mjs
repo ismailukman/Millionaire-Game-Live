@@ -320,13 +320,13 @@ export const defaultCategoryDecks = [
       { id: "kids_2", type: "MCQ", promptText: "Which color is the sky on a clear day?", options: { A: "Blue", B: "Green", C: "Red", D: "Purple" }, correctOption: "A" },
       { id: "kids_3", type: "MCQ", promptText: "Which animal says \"meow\"?", options: { A: "Dog", B: "Cat", C: "Cow", D: "Sheep" }, correctOption: "B" },
       { id: "kids_4", type: "MCQ", promptText: "What do bees make?", options: { A: "Milk", B: "Honey", C: "Bread", D: "Cheese" }, correctOption: "B" },
-      { id: "kids_5", type: "MCQ", promptText: "Which planet do we live on?", image: "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg", imageAlt: "Earth from space", options: { A: "Mars", B: "Earth", C: "Jupiter", D: "Venus" }, correctOption: "B" },
+      { id: "kids_5", type: "MCQ", promptText: "Which planet do we live on?", image: "assets/questions/earth.jpg", imageAlt: "Earth from space", options: { A: "Mars", B: "Earth", C: "Jupiter", D: "Venus" }, correctOption: "B" },
       { id: "kids_6", type: "MCQ", promptText: "How many legs does a spider have?", options: { A: "6", B: "8", C: "10", D: "12" }, correctOption: "B" },
       { id: "kids_7", type: "MCQ", promptText: "Which shape has three sides?", options: { A: "Square", B: "Triangle", C: "Circle", D: "Rectangle" }, correctOption: "B" },
       { id: "kids_8", type: "MCQ", promptText: "Which season is the coldest?", options: { A: "Spring", B: "Summer", C: "Autumn", D: "Winter" }, correctOption: "D" },
       { id: "kids_9", type: "MCQ", promptText: "What is H2O commonly called?", options: { A: "Salt", B: "Water", C: "Oxygen", D: "Sugar" }, correctOption: "B" },
-      { id: "kids_10", type: "MCQ", promptText: "Which fruit is yellow and curved?", image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg", imageAlt: "Banana", options: { A: "Apple", B: "Banana", C: "Orange", D: "Grape" }, correctOption: "B" },
-      { id: "kids_11", type: "MCQ", promptText: "Which animal is known as the king of the jungle?", image: "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg", imageAlt: "Lion", options: { A: "Elephant", B: "Lion", C: "Giraffe", D: "Zebra" }, correctOption: "B" },
+      { id: "kids_10", type: "MCQ", promptText: "Which fruit is yellow and curved?", image: "assets/questions/banana.jpg", imageAlt: "Banana", options: { A: "Apple", B: "Banana", C: "Orange", D: "Grape" }, correctOption: "B" },
+      { id: "kids_11", type: "MCQ", promptText: "Which animal is known as the king of the jungle?", image: "assets/questions/lion.jpg", imageAlt: "Lion", options: { A: "Elephant", B: "Lion", C: "Giraffe", D: "Zebra" }, correctOption: "B" },
       { id: "kids_12", type: "MCQ", promptText: "What do plants need to grow?", options: { A: "Sunlight", B: "Candy", C: "Snow", D: "Sand" }, correctOption: "A" },
       { id: "kids_13", type: "MCQ", promptText: "Which month comes after June?", options: { A: "May", B: "July", C: "August", D: "April" }, correctOption: "B" },
       { id: "kids_14", type: "MCQ", promptText: "How many hours are in a day?", options: { A: "12", B: "18", C: "24", D: "30" }, correctOption: "C" },
@@ -338,7 +338,7 @@ export const defaultCategoryDecks = [
       { id: "kids_20", type: "MCQ", promptText: "Which animal lives in water and has gills?", options: { A: "Dog", B: "Fish", C: "Cat", D: "Bird" }, correctOption: "B" },
       { id: "kids_21", type: "MCQ", promptText: "What color are stop signs?", options: { A: "Green", B: "Yellow", C: "Red", D: "Blue" }, correctOption: "C" },
       { id: "kids_22", type: "MCQ", promptText: "Which planet is closest to the Sun?", options: { A: "Mercury", B: "Earth", C: "Mars", D: "Jupiter" }, correctOption: "A" },
-      { id: "kids_23", type: "MCQ", promptText: "Which object is used to write?", image: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Pencil.jpg", imageAlt: "Pencil", options: { A: "Fork", B: "Pencil", C: "Plate", D: "Cup" }, correctOption: "B" },
+      { id: "kids_23", type: "MCQ", promptText: "Which object is used to write?", image: "assets/questions/pencil.jpg", imageAlt: "Pencil", options: { A: "Fork", B: "Pencil", C: "Plate", D: "Cup" }, correctOption: "B" },
       { id: "kids_24", type: "MCQ", promptText: "How many continents are there?", options: { A: "5", B: "6", C: "7", D: "8" }, correctOption: "C" },
       { id: "kids_25", type: "MCQ", promptText: "Which animal carries its baby in a pouch?", options: { A: "Kangaroo", B: "Tiger", C: "Horse", D: "Sheep" }, correctOption: "A" },
       { id: "kids_26", type: "MCQ", promptText: "Which instrument has black and white keys?", options: { A: "Drum", B: "Piano", C: "Flute", D: "Guitar" }, correctOption: "B" },
@@ -360,7 +360,7 @@ export const defaultCategoryDecks = [
       { id: "kids_42", type: "MCQ", promptText: "Which planet has rings?", options: { A: "Saturn", B: "Mars", C: "Mercury", D: "Earth" }, correctOption: "A" },
       { id: "kids_43", type: "MCQ", promptText: "Which part of a plant is usually green?", options: { A: "Leaf", B: "Root", C: "Stem", D: "Seed" }, correctOption: "A" },
       { id: "kids_44", type: "MCQ", promptText: "Which device is used to take photos?", options: { A: "Camera", B: "Hammer", C: "Lantern", D: "Whistle" }, correctOption: "A" },
-      { id: "kids_45", type: "MCQ", promptText: "Which fruit is shown?", image: "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg", imageAlt: "Apple", options: { A: "Apple", B: "Orange", C: "Pear", D: "Peach" }, correctOption: "A" }
+      { id: "kids_45", type: "MCQ", promptText: "Which fruit is shown?", image: "assets/questions/apple.jpg", imageAlt: "Apple", options: { A: "Apple", B: "Orange", C: "Pear", D: "Peach" }, correctOption: "A" }
     ]
   },
   {
@@ -412,7 +412,7 @@ export const defaultCategoryDecks = [
       { id: "math_42", type: "MCQ", promptText: "Solve: x^2 = 49.", options: { A: "5", B: "6", C: "7", D: "8" }, correctOption: "C" },
       { id: "math_43", type: "MCQ", promptText: "What is the expected value of a fair six-sided die?", options: { A: "2.5", B: "3", C: "3.5", D: "4" }, correctOption: "C" },
       { id: "math_44", type: "MCQ", promptText: "Which angle is greater than 90 degrees?", options: { A: "Acute", B: "Right", C: "Obtuse", D: "Straight" }, correctOption: "C" },
-      { id: "math_45", type: "MCQ", promptText: "How many sides does a hexagon have?", image: "https://upload.wikimedia.org/wikipedia/commons/3/33/Regular_hexagon.svg", imageAlt: "Hexagon", options: { A: "5", B: "6", C: "7", D: "8" }, correctOption: "B" }
+      { id: "math_45", type: "MCQ", promptText: "How many sides does a hexagon have?", image: "assets/questions/hexagon.svg", imageAlt: "Hexagon", options: { A: "5", B: "6", C: "7", D: "8" }, correctOption: "B" }
     ]
   },
   {
@@ -452,7 +452,7 @@ export const defaultCategoryDecks = [
       { id: "apt_30", type: "MCQ", promptText: "Find the next number: 7, 14, 28, 56, ?", options: { A: "63", B: "70", C: "98", D: "112" }, correctOption: "D" },
       { id: "apt_31", type: "MCQ", promptText: "If all roses are flowers and some flowers fade, then some roses:", options: { A: "Fade", B: "Are blue", C: "Are trees", D: "Are animals" }, correctOption: "A" },
       { id: "apt_32", type: "MCQ", promptText: "Which is the next even number after 48?", options: { A: "49", B: "50", C: "51", D: "52" }, correctOption: "B" },
-      { id: "apt_33", type: "MCQ", promptText: "How many dots are shown?", image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Dice-5-b.svg", imageAlt: "Die showing five dots", options: { A: "4", B: "5", C: "6", D: "7" }, correctOption: "B" },
+      { id: "apt_33", type: "MCQ", promptText: "How many dots are shown?", image: "assets/questions/dice-5.svg", imageAlt: "Die showing five dots", options: { A: "4", B: "5", C: "6", D: "7" }, correctOption: "B" },
       { id: "apt_34", type: "MCQ", promptText: "If it is raining, the ground is wet. It is raining. Therefore:", options: { A: "The ground is wet", B: "The ground is dry", C: "The sun is out", D: "It is snowing" }, correctOption: "A" },
       { id: "apt_35", type: "MCQ", promptText: "Choose the odd one out.", options: { A: "Square", B: "Rectangle", C: "Circle", D: "Triangle" }, correctOption: "C" },
       { id: "apt_36", type: "MCQ", promptText: "Find the next number: 4, 7, 10, 13, ?", options: { A: "15", B: "16", C: "17", D: "18" }, correctOption: "C" },
