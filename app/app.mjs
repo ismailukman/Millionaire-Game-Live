@@ -986,6 +986,34 @@ function getUserLimits() {
   return tierData?.limits || subscriptionTiers.FREE.limits;
 }
 
+function getPackVisibilityLimit() {
+  if (!state.user) return 1;
+  const tier = getUserTier();
+  if (tier === "FREE") return 2;
+  return Infinity;
+}
+
+function getOrderedPacks() {
+  const ordered = [];
+  const others = [];
+  state.packs.forEach((pack) => {
+    if (pack.id === defaultPack.id) {
+      ordered.push(pack);
+    } else {
+      others.push(pack);
+    }
+  });
+  return ordered.concat(others);
+}
+
+function isPackAllowed(packId) {
+  const packs = getOrderedPacks();
+  const limit = getPackVisibilityLimit();
+  const index = packs.findIndex((pack) => pack.id === packId);
+  if (index === -1) return false;
+  return index < limit;
+}
+
 function canCreatePack() {
   if (!state.user) return false;
   const limits = getUserLimits();
@@ -1207,23 +1235,36 @@ function renderLanding() {
 function renderPackList() {
   if (!dom.packList || !dom.packSelect) return;
   dom.packList.innerHTML = "";
-  state.packs.forEach((pack) => {
+  const packs = getOrderedPacks();
+  const limit = getPackVisibilityLimit();
+  const lockMessage = state.user ? "Upgrade to more access." : "Login to unlock more packs.";
+  packs.forEach((pack, index) => {
+    const locked = index >= limit;
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = locked ? "card locked" : "card";
     card.innerHTML = `
       <strong>${pack.title}</strong>
       <p class="subtext">${pack.description || "No description"}</p>
-      <button class="secondary pack-edit" data-pack-id="${pack.id}">Edit Pack</button>
+      <button class="secondary pack-edit" data-pack-id="${pack.id}" ${locked ? "disabled" : ""}>Edit Pack</button>
+      ${locked ? `<p class="lock-note">${lockMessage}</p>` : ""}
     `;
     dom.packList.appendChild(card);
   });
   dom.packSelect.innerHTML = "";
-  state.packs.forEach((pack) => {
+  packs.forEach((pack, index) => {
+    const locked = index >= limit;
     const option = document.createElement("option");
     option.value = pack.id;
-    option.textContent = pack.title;
+    option.textContent = locked ? `${pack.title} (Upgrade)` : pack.title;
+    option.disabled = locked;
     dom.packSelect.appendChild(option);
   });
+  if (!isPackAllowed(dom.packSelect.value)) {
+    const firstAllowed = packs.find((pack, index) => index < limit);
+    if (firstAllowed) {
+      dom.packSelect.value = firstAllowed.id;
+    }
+  }
   renderDefaultCategoryPicker();
   updateModeAvailability();
 }
@@ -2950,6 +2991,11 @@ function initEvents() {
   dom.createSession.addEventListener("click", async () => {
     const packId = dom.packSelect.value;
     const mode = dom.modeSelect.value;
+    if (!isPackAllowed(packId)) {
+      alert(state.user ? "Upgrade to access more packs." : "Login to unlock more packs.");
+      setScreen("pricing");
+      return;
+    }
     if (mode === "FFF" && getUserTier() === "FREE") {
       alert("Fastest Finger First is not available on the Free tier. Upgrade to unlock this mode.");
       setScreen("pricing");
