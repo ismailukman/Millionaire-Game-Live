@@ -178,7 +178,9 @@ dialog {
   display: none;
   width: 100%;
   justify-content: center;
+  align-items: center;
   gap: 12px;
+  margin-bottom: 12px;
 }
 
 #classic-layout:fullscreen {
@@ -203,7 +205,6 @@ dialog {
 
 #classic-layout:fullscreen .fullscreen-controls {
   display: flex;
-  grid-column: 1 / -1;
 }
 
 #classic-layout:fullscreen .classic-board {

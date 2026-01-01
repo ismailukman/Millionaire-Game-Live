@@ -177,6 +177,7 @@ const dom = {
   fullscreenSound: document.querySelector("#btn-fullscreen-sound"),
   fullscreenLights: document.querySelector("#btn-fullscreen-lights"),
   fullscreenTimer: document.querySelector("#fullscreen-timer"),
+  fullscreenExit: document.querySelector("#btn-fullscreen-exit"),
   classicLights: document.querySelector("#btn-lights"),
   walkAway: document.querySelector("#btn-walk-away"),
   gameoverDialog: document.querySelector("#gameover-dialog"),
@@ -2766,6 +2767,14 @@ function initEvents() {
     });
     document.addEventListener("fullscreenchange", updateFullscreenLabel);
     updateFullscreenLabel();
+  }
+
+  if (dom.fullscreenExit) {
+    dom.fullscreenExit.addEventListener("click", () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
   }
 
   if (dom.fullscreenSound) {
