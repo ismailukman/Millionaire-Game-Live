@@ -215,7 +215,8 @@ const dom = {
   statGamesWon: document.querySelector("#stat-games-won"),
   statTotalWinnings: document.querySelector("#stat-total-winnings"),
   statHighestLevel: document.querySelector("#stat-highest-level"),
-  backFromAchievements: document.querySelector("#btn-back-from-achievements")
+  backFromAchievements: document.querySelector("#btn-back-from-achievements"),
+  dashboardHome: document.querySelector("#btn-dashboard-home")
 };
 
 let activeTimer = null;
@@ -2010,7 +2011,7 @@ function quitGame() {
       classicState: { ...session.currentState }
     }).catch((err) => console.warn("Failed to end live session", err));
   }
-  setScreen("dashboard");
+  setScreen("landing");
 }
 
 function submitAnswerClassic(sessionId, selected) {
@@ -2982,6 +2983,12 @@ function initEvents() {
     setScreen("achievements");
     renderAchievements();
   });
+
+  if (dom.dashboardHome) {
+    dom.dashboardHome.addEventListener("click", () => {
+      setScreen("landing");
+    });
+  }
 
   dom.upgradeButton.addEventListener("click", () => {
     setScreen("pricing");
