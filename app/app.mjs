@@ -991,7 +991,7 @@ function renderCategoryCards(target, { onSelect, selectedId } = {}) {
     card.addEventListener("click", () => {
       if (locked) {
         alert(state.user ? "Upgrade to more access." : "Login to use this feature.");
-        setScreen("pricing");
+        setScreen(state.user ? "pricing" : "landing");
         return;
       }
       setSelectedDefaultCategory(category.id);
@@ -3108,7 +3108,7 @@ function initEvents() {
     const mode = dom.modeSelect.value;
     if (!isPackAllowed(packId)) {
       alert(state.user ? "Upgrade to access more packs." : "Login to use this feature.");
-      setScreen("pricing");
+      setScreen(state.user ? "pricing" : "landing");
       return;
     }
     if (mode === "FFF" && getUserTier() !== "PRO" && getUserTier() !== "ENTERPRISE") {
