@@ -190,6 +190,7 @@ const dom = {
   classicPackTitle: document.querySelector("#classic-pack-title"),
   classicMeta: document.querySelector("#classic-meta"),
   classicQuestion: document.querySelector("#classic-question"),
+  classicQuestionImage: document.querySelector("#classic-question-image"),
   classicOptions: document.querySelector("#classic-options"),
   classicFeedback: document.querySelector("#classic-feedback"),
   classicLifelines: document.querySelector("#classic-lifelines"),
@@ -1105,6 +1106,13 @@ function setScreen(name) {
     node.classList.toggle("active", key === name);
   });
 
+  if (name === "landing") {
+    state.timedMode = false;
+    localStorage.setItem(storageKeys.timedMode, String(state.timedMode));
+    updateTimedButton();
+    stopTimer();
+  }
+
   updateTimedAvailability();
   updateLiveAvailability();
   updateClassicLayoutForSession();
@@ -1898,6 +1906,16 @@ function renderClassic() {
   }
   const shuffled = getShuffledQuestion(session, question);
   dom.classicQuestion.textContent = question.promptText;
+  if (dom.classicQuestionImage) {
+    if (question.image) {
+      dom.classicQuestionImage.src = question.image;
+      dom.classicQuestionImage.alt = question.imageAlt || question.promptText || "Question image";
+      dom.classicQuestionImage.style.display = "block";
+    } else {
+      dom.classicQuestionImage.removeAttribute("src");
+      dom.classicQuestionImage.style.display = "none";
+    }
+  }
   dom.classicOptions.innerHTML = "";
   const disabled = new Set(session.currentState.disabledOptions || []);
   const isLiveClassic = state.liveMode && session.mode === "CLASSIC";
@@ -2837,6 +2855,17 @@ function initEvents() {
       closeAccountDropdown();
     }
   });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    const logoutButton = target.closest("#btn-logout");
+    if (logoutButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      handleLogout();
+    }
+  }, true);
 
 
   if (dom.loginCancel) {

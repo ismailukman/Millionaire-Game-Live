@@ -153,6 +153,7 @@ dialog {
 
 .account-menu {
   position: relative;
+  pointer-events: auto;
 }
 
 .account-dropdown {
@@ -182,6 +183,11 @@ dialog {
   justify-content: flex-start;
   pointer-events: auto;
   cursor: pointer;
+}
+
+.account-dropdown button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
 }
 
 .topbar-actions button:disabled {
@@ -955,6 +961,17 @@ button:hover::after {
   border-radius: 16px;
   border-left: 4px solid var(--accent);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.question-image {
+  display: none;
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 16px;
+  margin: 0 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .classic-header {
