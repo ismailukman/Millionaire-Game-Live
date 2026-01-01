@@ -650,8 +650,11 @@ function migrateUserState(user) {
       tier: "FREE",
       startDate: Date.now(),
       expiresAt: null,
-      features: subscriptionTiers.FREE.limits
+      features: subscriptionTiers.FREE.limits,
+      paid: false
     };
+  } else if (user.subscription.paid === undefined) {
+    user.subscription.paid = false;
   }
 
   // Add stats if missing
@@ -1009,6 +1012,9 @@ function renderPricing() {
       const tierName = subscriptionTiers[tier].name;
       button.textContent = `Upgrade to ${tierName}`;
       button.className = "pricing-button primary";
+      if (!state.user?.subscription?.paid) {
+        button.textContent = `Upgrade to ${tierName} (Payment Required)`;
+      }
     }
   });
 }
@@ -2670,12 +2676,17 @@ function initEvents() {
         return;
       }
 
-      // Simulate subscription upgrade
+      if (tier !== "FREE" && !state.user.subscription.paid) {
+        alert("Upgrade requires payment. Please complete checkout to unlock this plan.");
+        return;
+      }
+
       state.user.subscription = {
         tier: tier,
         startDate: Date.now(),
-        expiresAt: tier === "FREE" ? null : Date.now() + (30 * 24 * 60 * 60 * 1000), // 30 days for paid tiers
-        features: subscriptionTiers[tier].limits
+        expiresAt: tier === "FREE" ? null : Date.now() + (30 * 24 * 60 * 60 * 1000),
+        features: subscriptionTiers[tier].limits,
+        paid: tier !== "FREE"
       };
       saveState();
       updateLoginButton();
