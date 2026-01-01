@@ -177,6 +177,7 @@ const dom = {
   fullscreenSound: document.querySelector("#btn-fullscreen-sound"),
   fullscreenLights: document.querySelector("#btn-fullscreen-lights"),
   fullscreenTimer: document.querySelector("#fullscreen-timer"),
+  classicLights: document.querySelector("#btn-lights"),
   walkAway: document.querySelector("#btn-walk-away"),
   gameoverDialog: document.querySelector("#gameover-dialog"),
   gameoverIcon: document.querySelector("#gameover-icon"),
@@ -622,6 +623,7 @@ function resumeAudioForScreen() {
 function setDayMode(isDay) {
   document.body.classList.toggle("lights-off", !isDay);
   updateLightsButton();
+  updateClassicLightsButton();
 }
 
 function initParticles() {
@@ -917,6 +919,12 @@ function updateLightsButton() {
   if (!dom.fullscreenLights) return;
   const lightsOn = !document.body.classList.contains("lights-off");
   dom.fullscreenLights.textContent = lightsOn ? "💡 Day Mode" : "🌙 Night Mode";
+}
+
+function updateClassicLightsButton() {
+  if (!dom.classicLights) return;
+  const lightsOn = !document.body.classList.contains("lights-off");
+  dom.classicLights.textContent = lightsOn ? "💡 Day Mode" : "🌙 Night Mode";
 }
 
 function updateFullscreenTimer() {
@@ -2777,6 +2785,14 @@ function initEvents() {
     });
   }
 
+  if (dom.classicLights) {
+    dom.classicLights.addEventListener("click", () => {
+      document.body.classList.toggle("lights-off");
+      updateLightsButton();
+      updateClassicLightsButton();
+    });
+  }
+
   if (footerTerms && termsDialog) {
     footerTerms.addEventListener("click", (e) => {
       e.preventDefault();
@@ -2858,6 +2874,7 @@ updateLiveButton();
 updateSoundButtons();
 updateLightsButton();
 updateFullscreenTimer();
+updateClassicLightsButton();
 renderLanding();
 renderPackList();
 resetBuilder();
