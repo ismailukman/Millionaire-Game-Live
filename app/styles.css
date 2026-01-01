@@ -401,6 +401,10 @@ body:not(.classic-light) .bg-glow {
   align-items: center;
 }
 
+.hero > div:first-child {
+  padding-left: 40px;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -2249,6 +2253,10 @@ button:hover::after {
 @media (max-width: 760px) {
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .hero > div:first-child {
+    padding-left: 0;
   }
 
   .hero-card-inner {
