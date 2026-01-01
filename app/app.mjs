@@ -3298,7 +3298,7 @@ function initEvents() {
 
   // Pricing screen navigation
   dom.backFromPricing.addEventListener("click", () => {
-    setScreen("dashboard");
+    setScreen("landing");
   });
 
   // Handle pricing button clicks (upgrade tier simulation)

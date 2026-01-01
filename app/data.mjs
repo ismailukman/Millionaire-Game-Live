@@ -603,11 +603,9 @@ export const subscriptionTiers = {
     priceLabel: "$9.99/month",
     description: "For serious hosts",
     features: [
-      "All free packs",
       "5 custom packs",
       "Live sessions",
       "100 participants per session",
-      "Custom branding",
       "Advanced analytics",
       "Priority email support",
       "Export game data"
@@ -628,15 +626,14 @@ export const subscriptionTiers = {
     priceLabel: "$49.99/month",
     description: "For organizations",
     features: [
-      "All free packs",
       "100 custom packs",
       "Live sessions",
       "Unlimited participants",
-      "White-label branding",
       "Advanced analytics & reporting",
       "24/7 priority support",
-      "API access",
-      "Dedicated account manager"
+      "Dedicated account manager",
+      "Global leaderboard access",
+      "Custom branding & themes"
     ],
     limits: {
       maxPacks: 100,
