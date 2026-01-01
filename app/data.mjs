@@ -314,7 +314,7 @@ export const defaultCategoryDecks = [
   {
     id: "kids_gk",
     title: "Kids General Knowledge",
-    subtitle: "Guess in 10 • Kids Quiz",
+    subtitle: "Kids Quiz",
     questions: [
       { id: "kids_1", type: "MCQ", promptText: "How many days are in a week?", options: { A: "7", B: "5", C: "6", D: "8" }, correctOption: "A" },
       { id: "kids_2", type: "MCQ", promptText: "Which color is the sky on a clear day?", options: { A: "Blue", B: "Green", C: "Red", D: "Purple" }, correctOption: "A" },

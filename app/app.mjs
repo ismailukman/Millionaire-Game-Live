@@ -142,11 +142,11 @@ const dom = {
   defaultCategorySection: document.querySelector("#default-category-section"),
   defaultCategoryGrid: document.querySelector("#default-category-grid"),
   defaultCategoryDashboardStatus: document.querySelector("#default-category-dashboard-status"),
-  defaultCategoryLoadDashboard: document.querySelector("#btn-category-load-dashboard"),
+  defaultCategoryLoadDashboard: null,
   defaultCategoryStartDashboard: document.querySelector("#btn-category-start-dashboard"),
   defaultCategoryDialog: document.querySelector("#default-category-dialog"),
   defaultCategoryDialogGrid: document.querySelector("#default-category-dialog-grid"),
-  defaultCategoryLoad: document.querySelector("#btn-category-load"),
+  defaultCategoryLoad: null,
   defaultCategoryStart: document.querySelector("#btn-category-start"),
   defaultCategoryStatus: document.querySelector("#default-category-status"),
   createSession: document.querySelector("#btn-host-session"),
@@ -3140,36 +3140,11 @@ function initEvents() {
     });
   }
 
-  if (dom.defaultCategoryLoad && dom.defaultCategoryDialog) {
-    dom.defaultCategoryLoad.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (!state.selectedDefaultCategoryId) {
-        alert("Choose a category first.");
-        return;
-      }
-      if (dom.defaultCategoryStatus) {
-        dom.defaultCategoryStatus.textContent = "Load successful.";
-        dom.defaultCategoryStatus.classList.add("status-success");
-      }
-    });
-  }
-
   if (dom.defaultCategoryStart && dom.defaultCategoryDialog) {
     dom.defaultCategoryStart.addEventListener("click", (event) => {
       event.preventDefault();
       dom.defaultCategoryDialog.close();
       startDefaultCategoryGame();
-    });
-  }
-
-  if (dom.defaultCategoryLoadDashboard) {
-    dom.defaultCategoryLoadDashboard.addEventListener("click", (event) => {
-      event.preventDefault();
-      ensureDefaultCategorySelection();
-      if (dom.defaultCategoryDashboardStatus) {
-        dom.defaultCategoryDashboardStatus.textContent = "Load successful.";
-        dom.defaultCategoryDashboardStatus.classList.add("status-success");
-      }
     });
   }
 
