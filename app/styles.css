@@ -185,6 +185,11 @@ dialog {
   cursor: not-allowed;
 }
 
+.topbar-actions .locked-action {
+  opacity: 0.45;
+  filter: grayscale(0.6);
+}
+
 .category-section {
   display: none;
   margin-top: 8px;

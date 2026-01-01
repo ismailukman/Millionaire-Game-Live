@@ -199,6 +199,7 @@ const dom = {
   fullscreenTimer: document.querySelector("#fullscreen-timer"),
   fullscreenExit: document.querySelector("#btn-fullscreen-exit"),
   classicLights: document.querySelector("#btn-lights"),
+  quitGame: document.querySelector("#btn-quit-game"),
   walkAway: document.querySelector("#btn-walk-away"),
   gameoverDialog: document.querySelector("#gameover-dialog"),
   gameoverIcon: document.querySelector("#gameover-icon"),
@@ -1206,7 +1207,10 @@ function updateLiveAvailability() {
   const session = getSession();
   const inActiveGame = session && session.mode === "CLASSIC" && session.status === "live";
   const onLanding = document.querySelector("#screen-landing")?.classList.contains("active");
+  const isLocked = !state.user || (state.user && !state.user.subscription?.paid);
   dom.liveToggle.disabled = !onLanding || inActiveGame;
+  dom.liveToggle.classList.toggle("locked-action", isLocked);
+  dom.liveToggle.setAttribute("aria-disabled", String(isLocked));
 }
 
 function updateModeAvailability() {
@@ -1921,6 +1925,24 @@ function stopTimer() {
     clearInterval(activeTimer);
     activeTimer = null;
   }
+}
+
+function quitGame() {
+  const session = getSession();
+  if (!session) return;
+  stopTimer();
+  session.status = "ended";
+  session.currentState.feedback = "Game ended. No prize awarded.";
+  session.currentState.feedbackTone = "bad";
+  session.currentState.locked = true;
+  saveState();
+  if (state.liveMode && session.id && firebaseState.db) {
+    updateDoc(doc(firebaseState.db, "sessions", session.id), {
+      status: "ended",
+      classicState: { ...session.currentState }
+    }).catch((err) => console.warn("Failed to end live session", err));
+  }
+  setScreen("dashboard");
 }
 
 function submitAnswerClassic(sessionId, selected) {
@@ -2849,6 +2871,11 @@ function initEvents() {
 
   if (dom.liveToggle) {
     dom.liveToggle.addEventListener("click", async () => {
+      if (!state.user || !state.user.subscription?.paid) {
+        alert("Upgrade to use this feature.");
+        setScreen("pricing");
+        return;
+      }
       const nextMode = !state.liveMode;
       if (nextMode) {
         const ready = await ensureFirebaseReady();
@@ -2860,6 +2887,14 @@ function initEvents() {
       state.liveMode = nextMode;
       localStorage.setItem(storageKeys.liveMode, String(state.liveMode));
       updateLiveButton();
+    });
+  }
+
+  if (dom.quitGame) {
+    dom.quitGame.addEventListener("click", () => {
+      const confirmed = window.confirm("Quit the game? No prize will be won.");
+      if (!confirmed) return;
+      quitGame();
     });
   }
 
