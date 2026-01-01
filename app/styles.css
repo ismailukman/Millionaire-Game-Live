@@ -209,12 +209,12 @@ dialog {
 
 #classic-layout:fullscreen .classic-board {
   width: min(980px, 60vw);
-  justify-self: end;
+  justify-self: center;
 }
 
 #classic-layout:fullscreen .ladder-card {
   width: min(460px, 30vw);
-  justify-self: start;
+  justify-self: center;
 }
 
 body.classic-light #screen-classic {
