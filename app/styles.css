@@ -891,7 +891,7 @@ button:hover::after {
 .lifeline-row {
   display: flex;
   gap: 10px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: 12px;
   align-items: center;
   justify-content: center;
@@ -905,6 +905,7 @@ button:hover::after {
   gap: 6px;
   line-height: 1;
   white-space: nowrap;
+  text-align: center;
 }
 
 .classic-board #btn-walk-away {
