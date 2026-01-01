@@ -749,6 +749,11 @@ button:hover::after {
   gap: 6px;
 }
 
+.classic-header-block #btn-fullscreen {
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
 .classic-title-row {
   display: flex;
   align-items: center;

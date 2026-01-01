@@ -172,6 +172,8 @@ const dom = {
   classicLifelines: document.querySelector("#classic-lifelines"),
   classicLadder: document.querySelector("#classic-ladder"),
   classicTimer: document.querySelector("#classic-timer"),
+  classicLayout: document.querySelector("#classic-layout"),
+  fullscreenButton: document.querySelector("#btn-fullscreen"),
   walkAway: document.querySelector("#btn-walk-away"),
   gameoverDialog: document.querySelector("#gameover-dialog"),
   gameoverIcon: document.querySelector("#gameover-icon"),
@@ -2700,6 +2702,21 @@ function initEvents() {
       e.preventDefault();
       document.body.classList.toggle("high-contrast");
     });
+  }
+
+  if (dom.fullscreenButton && dom.classicLayout) {
+    const updateFullscreenLabel = () => {
+      dom.fullscreenButton.textContent = document.fullscreenElement ? "⛶ Exit Fullscreen" : "⛶ Fullscreen";
+    };
+    dom.fullscreenButton.addEventListener("click", () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      } else {
+        dom.classicLayout.requestFullscreen().catch(() => {});
+      }
+    });
+    document.addEventListener("fullscreenchange", updateFullscreenLabel);
+    updateFullscreenLabel();
   }
 
   if (footerTerms && termsDialog) {
