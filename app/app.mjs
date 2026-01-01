@@ -13,7 +13,16 @@ import { audioManager } from "./audio.mjs";
 import { ParticleSystem } from "./particles.mjs";
 import { achievementDefinitions, updateAchievements, getAchievementProgress } from "./achievements.mjs";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  updateProfile
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
   getFirestore,
   doc,
@@ -56,7 +65,8 @@ const firebaseState = {
   db: null,
   user: null,
   ready: false,
-  initPromise: null
+  initPromise: null,
+  authListenerAttached: false
 };
 
 const liveListeners = {
@@ -79,6 +89,14 @@ const dom = {
   loginDialog: document.querySelector("#login-dialog"),
   loginEmail: document.querySelector("#login-email"),
   loginName: document.querySelector("#login-name"),
+  loginPassword: document.querySelector("#login-password"),
+  loginPasswordConfirm: document.querySelector("#login-password-confirm"),
+  loginConfirmWrap: document.querySelector("#login-confirm-wrap"),
+  authTitle: document.querySelector("#auth-title"),
+  authStatus: document.querySelector("#auth-status"),
+  authLoginToggle: document.querySelector("#btn-auth-login"),
+  authRegisterToggle: document.querySelector("#btn-auth-register"),
+  authReset: document.querySelector("#btn-password-reset"),
   loginButton: document.querySelector("#btn-login"),
   homeButton: document.querySelector("#btn-home"),
   loginCancel: document.querySelector("#btn-login-cancel"),
@@ -180,6 +198,7 @@ const dom = {
 let activeTimer = null;
 let particleSystem = null;
 let pendingTimerToggle = false;
+let authMode = "login";
 
 function safeParse(json, fallback) {
   if (!json) return fallback;
@@ -220,6 +239,16 @@ async function ensureFirebaseReady() {
     firebaseState.app = initializeApp(config);
     firebaseState.auth = getAuth(firebaseState.app);
     firebaseState.db = getFirestore(firebaseState.app);
+    if (!firebaseState.authListenerAttached) {
+      onAuthStateChanged(firebaseState.auth, (user) => {
+        firebaseState.user = user || null;
+        if (user && user.isAnonymous) {
+          return;
+        }
+        updateAuthUser(user);
+      });
+      firebaseState.authListenerAttached = true;
+    }
     if (!firebaseState.auth.currentUser) {
       await signInAnonymously(firebaseState.auth);
     }
@@ -520,6 +549,44 @@ function ensureDefaultPack() {
       };
     });
   }
+}
+
+function setAuthStatus(message, ok = false) {
+  if (!dom.authStatus) return;
+  dom.authStatus.textContent = message;
+  dom.authStatus.classList.toggle("status-success", ok);
+}
+
+function setAuthMode(nextMode) {
+  authMode = nextMode;
+  if (dom.authTitle) {
+    dom.authTitle.textContent = nextMode === "register" ? "Register" : "Login";
+  }
+  if (dom.loginConfirmWrap) {
+    dom.loginConfirmWrap.style.display = nextMode === "register" ? "block" : "none";
+  }
+  if (dom.saveLogin) {
+    dom.saveLogin.textContent = nextMode === "register" ? "Register" : "Login";
+  }
+  if (dom.authLoginToggle && dom.authRegisterToggle) {
+    dom.authLoginToggle.classList.toggle("secondary", nextMode === "login");
+    dom.authRegisterToggle.classList.toggle("secondary", nextMode === "register");
+  }
+  setAuthStatus("");
+}
+
+function updateAuthUser(user) {
+  if (!user || user.isAnonymous) {
+    state.user = null;
+  } else {
+    state.user = migrateUserState({
+      email: user.email || "",
+      displayName: user.displayName || "Player",
+      createdAt: Date.now()
+    });
+  }
+  saveState();
+  updateLoginButton();
 }
 
 function getActiveScreenName() {
@@ -2120,6 +2187,11 @@ function savePack() {
 function initEvents() {
   dom.loginButton.addEventListener("click", () => {
     if (state.user) {
+      ensureFirebaseReady().then((ready) => {
+        if (ready && firebaseState.auth) {
+          signOut(firebaseState.auth).catch((err) => console.warn("Sign out failed", err));
+        }
+      });
       state.user = null;
       saveState();
       updateLoginButton();
@@ -2134,15 +2206,80 @@ function initEvents() {
     });
   }
 
-  dom.saveLogin.addEventListener("click", () => {
-    state.user = migrateUserState({
-      email: dom.loginEmail.value,
-      displayName: dom.loginName.value,
-      createdAt: Date.now()
-    });
-    saveState();
-    updateLoginButton();
+  if (dom.authLoginToggle) {
+    dom.authLoginToggle.addEventListener("click", () => setAuthMode("login"));
+  }
+
+  if (dom.authRegisterToggle) {
+    dom.authRegisterToggle.addEventListener("click", () => setAuthMode("register"));
+  }
+
+  dom.saveLogin.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const ready = await ensureFirebaseReady();
+    if (!ready || !firebaseState.auth) {
+      setAuthStatus("Firebase is not configured.");
+      return;
+    }
+
+    const email = dom.loginEmail.value.trim();
+    const password = dom.loginPassword?.value || "";
+    const displayName = dom.loginName.value.trim();
+    const confirm = dom.loginPasswordConfirm?.value || "";
+
+    if (!email || !password) {
+      setAuthStatus("Email and password are required.");
+      return;
+    }
+
+    try {
+      if (authMode === "register") {
+        if (password.length < 6) {
+          setAuthStatus("Password must be at least 6 characters.");
+          return;
+        }
+        if (password !== confirm) {
+          setAuthStatus("Passwords do not match.");
+          return;
+        }
+        const result = await createUserWithEmailAndPassword(firebaseState.auth, email, password);
+        if (displayName) {
+          await updateProfile(result.user, { displayName });
+        }
+        updateAuthUser(result.user);
+      } else {
+        const result = await signInWithEmailAndPassword(firebaseState.auth, email, password);
+        updateAuthUser(result.user);
+      }
+      setAuthStatus("", true);
+      dom.loginDialog.close();
+    } catch (err) {
+      console.warn("Auth error", err);
+      setAuthStatus("Authentication failed. Check your details.");
+    }
   });
+
+  if (dom.authReset) {
+    dom.authReset.addEventListener("click", async () => {
+      const ready = await ensureFirebaseReady();
+      if (!ready || !firebaseState.auth) {
+        setAuthStatus("Firebase is not configured.");
+        return;
+      }
+      const email = dom.loginEmail.value.trim();
+      if (!email) {
+        setAuthStatus("Enter your email first.");
+        return;
+      }
+      try {
+        await sendPasswordResetEmail(firebaseState.auth, email);
+        setAuthStatus("Password reset email sent.", true);
+      } catch (err) {
+        console.warn("Password reset error", err);
+        setAuthStatus("Unable to send reset email.");
+      }
+    });
+  }
 
   function applyDemoLogin() {
     dom.loginEmail.value = "demo@wwtbam.local";
@@ -2682,6 +2819,7 @@ if (state.liveMode) {
   ensureFirebaseReady();
 }
 updateLoginButton();
+setAuthMode("login");
 updateTimedButton();
 updateLiveButton();
 renderLanding();

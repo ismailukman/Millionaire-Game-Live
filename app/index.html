@@ -539,7 +539,11 @@
 
     <dialog id="login-dialog">
       <form method="dialog" class="dialog-card">
-        <h3>Login / Register</h3>
+        <h3 id="auth-title">Login</h3>
+        <div class="toggle-row">
+          <button id="btn-auth-login" type="button" class="ghost">Login</button>
+          <button id="btn-auth-register" type="button" class="ghost">Register</button>
+        </div>
         <label class="field">
           <span>Email</span>
           <input id="login-email" type="email" placeholder="you@example.com" required />
@@ -548,9 +552,19 @@
           <span>Display Name</span>
           <input id="login-name" type="text" placeholder="Host" required />
         </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="login-password" type="password" placeholder="••••••••" required />
+        </label>
+        <label class="field" id="login-confirm-wrap">
+          <span>Confirm Password</span>
+          <input id="login-password-confirm" type="password" placeholder="••••••••" />
+        </label>
+        <p id="auth-status" class="subtext"></p>
         <menu>
           <button id="btn-login-cancel" value="cancel" class="ghost">Cancel</button>
           <button id="btn-demo-login" value="default" class="secondary">Use Demo</button>
+          <button id="btn-password-reset" type="button" class="ghost">Forgot Password</button>
           <button id="btn-login-save" value="default" class="primary">Login</button>
         </menu>
       </form>

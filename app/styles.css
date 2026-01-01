@@ -207,6 +207,16 @@ dialog {
   font-weight: 600;
 }
 
+.toggle-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+#login-confirm-wrap {
+  display: none;
+}
+
 
 .shell {
   padding: 20px 48px 80px;
