@@ -174,23 +174,41 @@ dialog {
   margin-top: 12px;
 }
 
-#classic-layout:fullscreen {
-  display: flex;
-  flex-direction: column;
+.fullscreen-controls {
+  display: none;
+  width: 100%;
   justify-content: center;
+  gap: 12px;
+}
+
+#classic-layout:fullscreen {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.75fr);
+  grid-template-rows: auto 1fr;
+  justify-items: center;
   align-items: center;
   gap: 24px;
   padding: 24px;
 }
 
-#classic-layout:fullscreen .classic-board,
-#classic-layout:fullscreen .ladder-card {
-  width: min(820px, 92vw);
-  max-width: 92vw;
+#classic-layout:fullscreen .fullscreen-controls {
+  display: flex;
+  grid-column: 1 / -1;
+}
+
+#classic-layout:fullscreen .classic-board {
+  width: min(980px, 60vw);
+  justify-self: end;
 }
 
 #classic-layout:fullscreen .ladder-card {
-  order: 2;
+  width: min(460px, 30vw);
+  justify-self: start;
+}
+
+body.lights-off .lightning-effects,
+body.lights-off .bg-glow {
+  opacity: 0;
 }
 
 .category-card {

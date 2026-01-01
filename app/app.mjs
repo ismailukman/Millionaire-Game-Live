@@ -174,6 +174,8 @@ const dom = {
   classicTimer: document.querySelector("#classic-timer"),
   classicLayout: document.querySelector("#classic-layout"),
   fullscreenButton: document.querySelector("#btn-fullscreen"),
+  fullscreenSound: document.querySelector("#btn-fullscreen-sound"),
+  fullscreenLights: document.querySelector("#btn-fullscreen-lights"),
   walkAway: document.querySelector("#btn-walk-away"),
   gameoverDialog: document.querySelector("#gameover-dialog"),
   gameoverIcon: document.querySelector("#gameover-icon"),
@@ -890,6 +892,22 @@ function updateTimerSecondsField() {
   if (dom.timerSeconds) {
     dom.timerSeconds.value = String(state.timerSeconds);
   }
+}
+
+function updateSoundButtons() {
+  const label = audioManager.isMuted ? "🔇 Sound Off" : "🔊 Sound On";
+  if (dom.soundToggle) {
+    dom.soundToggle.textContent = label;
+  }
+  if (dom.fullscreenSound) {
+    dom.fullscreenSound.textContent = label;
+  }
+}
+
+function updateLightsButton() {
+  if (!dom.fullscreenLights) return;
+  const lightsOn = !document.body.classList.contains("lights-off");
+  dom.fullscreenLights.textContent = lightsOn ? "💡 Lights On" : "💡 Lights Off";
 }
 
 function updateTimedAvailability() {
@@ -2303,7 +2321,7 @@ function initEvents() {
 
   dom.soundToggle.addEventListener("click", () => {
     const isMuted = audioManager.toggleMute();
-    dom.soundToggle.textContent = isMuted ? "🔇 Sound Off" : "🔊 Sound On";
+    updateSoundButtons();
 
     // Try to initialize audio on first interaction
     if (!isMuted) {
@@ -2719,6 +2737,23 @@ function initEvents() {
     updateFullscreenLabel();
   }
 
+  if (dom.fullscreenSound) {
+    dom.fullscreenSound.addEventListener("click", () => {
+      const isMuted = audioManager.toggleMute();
+      updateSoundButtons();
+      if (!isMuted) {
+        resumeAudioForScreen();
+      }
+    });
+  }
+
+  if (dom.fullscreenLights) {
+    dom.fullscreenLights.addEventListener("click", () => {
+      document.body.classList.toggle("lights-off");
+      updateLightsButton();
+    });
+  }
+
   if (footerTerms && termsDialog) {
     footerTerms.addEventListener("click", (e) => {
       e.preventDefault();
@@ -2797,6 +2832,8 @@ updateLoginButton();
 setAuthMode("login");
 updateTimedButton();
 updateLiveButton();
+updateSoundButtons();
+updateLightsButton();
 renderLanding();
 renderPackList();
 resetBuilder();
