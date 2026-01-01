@@ -1923,6 +1923,19 @@ button:hover::after {
   .price-amount {
     font-size: 36px;
   }
+
+  #screen-pricing .panel {
+    overflow: visible;
+  }
+
+  #screen-pricing .panel-body {
+    display: block;
+  }
+
+  #screen-pricing .pricing-grid {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 980px) {
