@@ -103,7 +103,6 @@ const dom = {
   accountDropdown: document.querySelector("#account-dropdown"),
   accountButton: document.querySelector("#btn-account"),
   logoutButton: document.querySelector("#btn-logout"),
-  accountCancel: document.querySelector("#btn-account-cancel"),
   accountDialog: document.querySelector("#account-dialog"),
   accountName: document.querySelector("#account-name"),
   accountEmail: document.querySelector("#account-email"),
@@ -114,7 +113,6 @@ const dom = {
   accountZip: document.querySelector("#account-zip"),
   accountBillingName: document.querySelector("#account-billing-name"),
   accountAddress: document.querySelector("#account-address"),
-  accountTax: document.querySelector("#account-tax"),
   accountPaymentMethod: document.querySelector("#account-payment-method"),
   accountTier: document.querySelector("#account-tier"),
   accountPayment: document.querySelector("#account-payment"),
@@ -719,16 +717,7 @@ function updateAuthUser(user) {
       displayName: user.displayName || "Player",
       createdAt: Date.now()
     });
-    if (state.user.email === "echoscholarly@gmail.com") {
-      state.user.displayName = "SuperAdmin";
-      state.user.subscription = {
-        tier: "ENTERPRISE",
-        startDate: Date.now(),
-        expiresAt: null,
-        features: subscriptionTiers.ENTERPRISE.limits,
-        paid: true
-      };
-    }
+    applySuperAdminOverrides(state.user);
   }
   saveState();
   updateLoginButton();
@@ -831,12 +820,26 @@ function migrateUserState(user) {
       city: "",
       zip: "",
       billingName: "",
-      address: "",
-      taxId: ""
+      address: ""
     };
   }
 
+  applySuperAdminOverrides(user);
   return user;
+}
+
+function applySuperAdminOverrides(user) {
+  if (!user?.email) return;
+  const email = user.email.toLowerCase();
+  if (email !== "echoscholarly@gmail.com") return;
+  user.displayName = "SuperAdmin";
+  user.subscription = {
+    tier: "ENTERPRISE",
+    startDate: Date.now(),
+    expiresAt: null,
+    features: subscriptionTiers.ENTERPRISE.limits,
+    paid: true
+  };
 }
 
 function loadState() {
@@ -1087,7 +1090,6 @@ function openAccountDialog() {
   if (dom.accountZip) dom.accountZip.value = profile.zip || "";
   if (dom.accountBillingName) dom.accountBillingName.value = profile.billingName || "";
   if (dom.accountAddress) dom.accountAddress.value = profile.address || "";
-  if (dom.accountTax) dom.accountTax.value = profile.taxId || "";
   if (dom.accountPaymentMethod) {
     dom.accountPaymentMethod.value = subscription.tier === "FREE"
       ? "Not required"
@@ -2562,22 +2564,25 @@ function initEvents() {
   }
 
   if (dom.logoutButton) {
-    dom.logoutButton.addEventListener("click", () => {
+    dom.logoutButton.addEventListener("click", async () => {
       closeAccountDropdown();
-      ensureFirebaseReady({ allowAnonymous: false }).then((ready) => {
-        if (ready && firebaseState.auth) {
-          signOut(firebaseState.auth).catch((err) => console.warn("Sign out failed", err));
+      if (firebaseState.auth) {
+        try {
+          await signOut(firebaseState.auth);
+        } catch (err) {
+          console.warn("Sign out failed", err);
         }
-      });
+      } else {
+        ensureFirebaseReady({ allowAnonymous: false }).then((ready) => {
+          if (ready && firebaseState.auth) {
+            signOut(firebaseState.auth).catch((err) => console.warn("Sign out failed", err));
+          }
+        });
+      }
+      firebaseState.user = null;
       state.user = null;
       saveState();
       updateLoginButton();
-    });
-  }
-
-  if (dom.accountCancel) {
-    dom.accountCancel.addEventListener("click", () => {
-      closeAccountDropdown();
     });
   }
 
@@ -2597,8 +2602,7 @@ function initEvents() {
         city: dom.accountCity?.value.trim() || "",
         zip: dom.accountZip?.value.trim() || "",
         billingName: dom.accountBillingName?.value.trim() || "",
-        address: dom.accountAddress?.value.trim() || "",
-        taxId: dom.accountTax?.value.trim() || ""
+        address: dom.accountAddress?.value.trim() || ""
       };
       saveState();
       updateLoginButton();

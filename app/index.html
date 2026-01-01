@@ -38,7 +38,6 @@
           <div id="account-dropdown" class="account-dropdown">
             <button id="btn-account" class="ghost">Account</button>
             <button id="btn-logout" class="ghost">Logout</button>
-            <button id="btn-account-cancel" class="ghost">Cancel</button>
           </div>
         </div>
       </div>
@@ -609,8 +608,8 @@
           </label>
           <label class="field">
             <span>Country</span>
-            <select id="account-country">
-              <option value="">Select country</option>
+            <input id="account-country" type="text" list="country-options" placeholder="Select country" />
+            <datalist id="country-options">
               <option value="NG">Nigeria</option>
               <option value="GH">Ghana</option>
               <option value="KE">Kenya</option>
@@ -621,7 +620,7 @@
               <option value="FR">France</option>
               <option value="DE">Germany</option>
               <option value="IN">India</option>
-            </select>
+            </datalist>
           </label>
           <label class="field">
             <span>City</span>
@@ -638,10 +637,6 @@
           <label class="field full">
             <span>Billing Address</span>
             <textarea id="account-address" rows="2" placeholder="Street, ZIP"></textarea>
-          </label>
-          <label class="field">
-            <span>Tax/VAT ID</span>
-            <input id="account-tax" type="text" placeholder="Optional" />
           </label>
           <label class="field">
             <span>Payment Method</span>
