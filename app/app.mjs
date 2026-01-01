@@ -620,8 +620,8 @@ function resumeAudioForScreen() {
   audioManager.playBackground("mainTheme");
 }
 
-function setDayMode(isDay) {
-  document.body.classList.toggle("lights-off", !isDay);
+function setClassicLight(isLightOn) {
+  document.body.classList.toggle("classic-light", isLightOn);
   updateLightsButton();
   updateClassicLightsButton();
 }
@@ -864,7 +864,7 @@ function setScreen(name) {
   updateTimedAvailability();
   updateLiveAvailability();
   if (name === "classic") {
-    setDayMode(true);
+    setClassicLight(true);
   }
 
   // Play appropriate background music based on screen
@@ -917,14 +917,14 @@ function updateSoundButtons() {
 
 function updateLightsButton() {
   if (!dom.fullscreenLights) return;
-  const lightsOn = !document.body.classList.contains("lights-off");
-  dom.fullscreenLights.textContent = lightsOn ? "💡 Day Mode" : "🌙 Night Mode";
+  const lightsOn = document.body.classList.contains("classic-light");
+  dom.fullscreenLights.textContent = lightsOn ? "💡 Light On" : "🌙 Light Off";
 }
 
 function updateClassicLightsButton() {
   if (!dom.classicLights) return;
-  const lightsOn = !document.body.classList.contains("lights-off");
-  dom.classicLights.textContent = lightsOn ? "💡 Day Mode" : "🌙 Night Mode";
+  const lightsOn = document.body.classList.contains("classic-light");
+  dom.classicLights.textContent = lightsOn ? "💡 Light On" : "🌙 Light Off";
 }
 
 function updateFullscreenTimer() {
@@ -2780,14 +2780,14 @@ function initEvents() {
 
   if (dom.fullscreenLights) {
     dom.fullscreenLights.addEventListener("click", () => {
-      document.body.classList.toggle("lights-off");
+      document.body.classList.toggle("classic-light");
       updateLightsButton();
     });
   }
 
   if (dom.classicLights) {
     dom.classicLights.addEventListener("click", () => {
-      document.body.classList.toggle("lights-off");
+      document.body.classList.toggle("classic-light");
       updateLightsButton();
       updateClassicLightsButton();
     });

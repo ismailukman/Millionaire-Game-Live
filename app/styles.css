@@ -216,13 +216,52 @@ dialog {
   justify-self: start;
 }
 
-body.lights-off .lightning-effects,
-body.lights-off .bg-glow {
-  opacity: 0;
+body.classic-light #screen-classic {
+  background: #f7f7fb;
+  color: #0b1020;
 }
 
-body.lights-off {
-  filter: brightness(0.65) saturate(0.9);
+body.classic-light #screen-classic .panel,
+body.classic-light #screen-classic .card {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #0b1020;
+}
+
+body.classic-light #screen-classic .classic-title-row,
+body.classic-light #screen-classic .classic-header,
+body.classic-light #screen-classic #classic-pack-title,
+body.classic-light #screen-classic #classic-meta {
+  color: #0b1020;
+}
+
+body.classic-light #screen-classic .lifeline-row button {
+  border-color: rgba(15, 23, 42, 0.3);
+  color: #0b1020;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+body.classic-light #screen-classic .ladder li {
+  color: #0b1020;
+}
+
+body.classic-light #screen-classic .timer {
+  color: #0b1020;
+}
+
+body.classic-light #screen-classic .options button {
+  border-color: rgba(15, 23, 42, 0.2);
+  color: #0b1020;
+}
+
+body.classic-light .lightning-effects,
+body.classic-light .bg-glow {
+  opacity: 0.25;
+}
+
+body:not(.classic-light) .lightning-effects,
+body:not(.classic-light) .bg-glow {
+  opacity: 0;
 }
 
 .category-card {
