@@ -1120,9 +1120,9 @@ function updateLoginButton() {
   if (state.user) {
     const tier = state.user.subscription?.tier || "FREE";
     const badge = tier === "FREE" ? "" : ` [${tier}]`;
-    dom.loginButton.textContent = `Hi, ${state.user.displayName}${badge}`;
+    dom.loginButton.textContent = `👤 Hi, ${state.user.displayName}${badge}`;
   } else {
-    dom.loginButton.textContent = "Login";
+    dom.loginButton.textContent = "🔐 Login";
   }
   closeAccountDropdown();
   updateModeAvailability();
