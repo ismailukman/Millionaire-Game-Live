@@ -100,13 +100,7 @@ const dom = {
   loginButton: document.querySelector("#btn-login"),
   homeButton: document.querySelector("#btn-home"),
   loginCancel: document.querySelector("#btn-login-cancel"),
-  demoLogin: document.querySelector("#btn-demo-login"),
   saveLogin: document.querySelector("#btn-login-save"),
-  demoPasskeyDialog: document.querySelector("#demo-passkey-dialog"),
-  demoPasskeyInput: document.querySelector("#demo-passkey-input"),
-  demoPasskeyStatus: document.querySelector("#demo-passkey-status"),
-  demoPasskeySubmit: document.querySelector("#btn-demo-passkey-submit"),
-  demoPasskeyCancel: document.querySelector("#btn-demo-passkey-cancel"),
   leaderboardButton: document.querySelector("#btn-leaderboard"),
   achievementsButton: document.querySelector("#btn-achievements"),
   upgradeButton: document.querySelector("#btn-upgrade"),
@@ -2281,65 +2275,6 @@ function initEvents() {
     });
   }
 
-  function applyDemoLogin() {
-    dom.loginEmail.value = "demo@wwtbam.local";
-    dom.loginName.value = "Demo Host";
-    state.user = migrateUserState({
-      email: dom.loginEmail.value,
-      displayName: dom.loginName.value,
-      createdAt: Date.now()
-    });
-    state.user.subscription = {
-      tier: "PRO",
-      startDate: Date.now(),
-      expiresAt: Date.now() + (30 * 24 * 60 * 60 * 1000),
-      features: subscriptionTiers.PRO.limits
-    };
-    saveState();
-    updateLoginButton();
-    dom.loginDialog.close();
-  }
-
-  if (dom.demoLogin) {
-    dom.demoLogin.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (dom.demoPasskeyStatus) {
-        dom.demoPasskeyStatus.textContent = "";
-        dom.demoPasskeyStatus.classList.remove("status-success");
-      }
-      if (dom.demoPasskeyInput) {
-        dom.demoPasskeyInput.value = "";
-      }
-      dom.demoPasskeyDialog?.showModal();
-    });
-  }
-
-  if (dom.demoPasskeyCancel) {
-    dom.demoPasskeyCancel.addEventListener("click", () => {
-      dom.demoPasskeyDialog?.close();
-      setScreen("landing");
-    });
-  }
-
-  if (dom.demoPasskeySubmit && dom.demoPasskeyDialog) {
-    dom.demoPasskeySubmit.addEventListener("click", (event) => {
-      event.preventDefault();
-      const passkey = dom.demoPasskeyInput?.value || "";
-      if (passkey !== "Lukman") {
-        if (dom.demoPasskeyStatus) {
-          dom.demoPasskeyStatus.textContent = "Incorrect passkey.";
-          dom.demoPasskeyStatus.classList.remove("status-success");
-        }
-        return;
-      }
-      if (dom.demoPasskeyStatus) {
-        dom.demoPasskeyStatus.textContent = "Passkey accepted.";
-        dom.demoPasskeyStatus.classList.add("status-success");
-      }
-      dom.demoPasskeyDialog.close();
-      applyDemoLogin();
-    });
-  }
 
   dom.soundToggle.addEventListener("click", () => {
     const isMuted = audioManager.toggleMute();
