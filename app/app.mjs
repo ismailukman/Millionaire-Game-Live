@@ -224,6 +224,7 @@ let activeTimer = null;
 let particleSystem = null;
 let pendingTimerToggle = false;
 let authMode = "login";
+let lastRenderedLevel = null;
 
 function safeParse(json, fallback) {
   if (!json) return fallback;
@@ -1119,9 +1120,9 @@ function updateClassicLayoutForSession() {
 
 function updateLoginButton() {
   if (state.user) {
-    dom.loginButton.textContent = "👤 Account";
+    dom.loginButton.textContent = `👤 ${state.user.displayName || "Account"}`;
   } else {
-    dom.loginButton.textContent = "🔐 Login";
+    dom.loginButton.textContent = "👤 Account";
   }
   closeAccountDropdown();
   updateModeAvailability();
@@ -1809,18 +1810,21 @@ function renderClassic() {
   audioManager.playBackground(levelMusic, false);
 
   const ladder = pack.config.amounts;
-  dom.classicLadder.innerHTML = "";
-  ladder.slice().reverse().forEach((amount, index) => {
-    const level = 15 - index;
-    const li = document.createElement("li");
-    li.classList.toggle("active", level === session.currentState.level);
-    li.classList.toggle("safe", pack.config.guaranteedLevels.includes(level));
-    if (level < session.currentState.level) {
-      li.classList.add("completed");
-    }
-    li.innerHTML = `<span>${level}</span><span>${formatMoney(pack.config.currencySymbol, amount)}</span>`;
-    dom.classicLadder.appendChild(li);
-  });
+  if (!state.timedMode || lastRenderedLevel !== session.currentState.level || !dom.classicLadder.children.length) {
+    dom.classicLadder.innerHTML = "";
+    ladder.slice().reverse().forEach((amount, index) => {
+      const level = 15 - index;
+      const li = document.createElement("li");
+      li.classList.toggle("active", level === session.currentState.level);
+      li.classList.toggle("safe", pack.config.guaranteedLevels.includes(level));
+      if (level < session.currentState.level) {
+        li.classList.add("completed");
+      }
+      li.innerHTML = `<span>${level}</span><span>${formatMoney(pack.config.currencySymbol, amount)}</span>`;
+      dom.classicLadder.appendChild(li);
+    });
+    lastRenderedLevel = session.currentState.level;
+  }
 
   const question = getCurrentQuestion(pack, session);
   if (!question) {
@@ -2512,7 +2516,7 @@ function handleWalkAway() {
   const session = getSession();
   if (!session) return;
   const pack = getPackForSession(session);
-  const levelIndex = Math.max(0, session.currentState.level - 2);
+  const levelIndex = session.currentState.level - 2;
   const prize = levelIndex >= 0 ? pack.config.amounts[levelIndex] : 0;
   session.currentState.feedback = `Walked away with ${formatMoney(pack.config.currencySymbol, prize)}.`;
   session.currentState.feedbackTone = "good";
