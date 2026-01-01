@@ -2707,6 +2707,16 @@ function initEvents() {
     });
   }
 
+  if (dom.accountDropdown) {
+    dom.accountDropdown.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+      if (target.id === "btn-logout") {
+        handleLogout();
+      }
+    });
+  }
+
   if (dom.accountSave) {
     dom.accountSave.addEventListener("click", async (event) => {
       event.preventDefault();
