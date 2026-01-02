@@ -227,6 +227,9 @@ const dom = {
   paymentTierPrice: document.querySelector("#payment-tier-price"),
   paymentConfirm: document.querySelector("#btn-payment-confirm"),
   paymentBack: document.querySelector("#btn-payment-back"),
+  subscriptionRequestDialog: document.querySelector("#subscription-request-dialog"),
+  subscriptionRequestMessage: document.querySelector("#subscription-request-message"),
+  subscriptionRequestClose: document.querySelector("#btn-subscription-request-close"),
   leaderboardBody: document.querySelector("#leaderboard-body"),
   backFromLeaderboard: document.querySelector("#btn-back-from-leaderboard"),
   achievementsGrid: document.querySelector("#achievements-grid"),
@@ -3054,6 +3057,12 @@ function initEvents() {
     });
   }
 
+  if (dom.subscriptionRequestClose) {
+    dom.subscriptionRequestClose.addEventListener("click", () => {
+      dom.subscriptionRequestDialog?.close();
+    });
+  }
+
   if (dom.accountClose) {
     dom.accountClose.addEventListener("click", () => {
       dom.accountDialog?.close();
@@ -3536,7 +3545,7 @@ function initEvents() {
   }
 
   if (dom.paymentConfirm) {
-    dom.paymentConfirm.addEventListener("click", () => {
+    dom.paymentConfirm.addEventListener("click", async () => {
       if (!state.user || !state.paymentTier) {
         alert("Select a plan first.");
         setScreen("pricing");
@@ -3548,8 +3557,27 @@ function initEvents() {
         return;
       }
       const tier = state.paymentTier;
+      const ready = await ensureFirebaseReady({ allowAnonymous: false });
+      if (!ready || !firebaseState.db) {
+        alert("Firebase is not configured. Add firebaseConfig in index.html.");
+        return;
+      }
+      const payload = {
+        email: state.user.email || "",
+        name: state.user.displayName || "",
+        tier,
+        method: method.dataset.method || "",
+        status: "pending",
+        createdAt: Date.now()
+      };
+      await setDoc(doc(collection(firebaseState.db, "subscription_requests")), payload);
       state.paymentTier = null;
-      alert(`Request submitted for ${subscriptionTiers[tier].name}.\n\nWe will email ismailukman@gmail.com with your subscription details. Your request will be reviewed and an update will be provided.`);
+      if (dom.subscriptionRequestMessage) {
+        dom.subscriptionRequestMessage.textContent =
+          `We will email echoscholarly@gmail.com with your subscription request details. ` +
+          `Your request will be reviewed and an update will be provided.`;
+      }
+      dom.subscriptionRequestDialog?.showModal();
       setScreen("pricing");
     });
   }
