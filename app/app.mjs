@@ -745,6 +745,7 @@ function updateAuthUser(user) {
       createdAt: Date.now()
     });
     applySuperAdminOverrides(state.user);
+    syncUserProfileToFirestore();
   }
   saveState();
   updateLoginButton();
@@ -1282,6 +1283,22 @@ async function handleLogout() {
   setScreen("landing");
 }
 
+async function syncUserProfileToFirestore() {
+  if (!state.user || !state.user.email) return;
+  const ready = await ensureFirebaseReady({ allowAnonymous: false });
+  if (!ready || !firebaseState.db) return;
+  if (!firebaseState.auth?.currentUser || firebaseState.auth.currentUser.isAnonymous) return;
+  const email = state.user.email.toLowerCase();
+  const userDoc = doc(firebaseState.db, "users", email);
+  const tier = state.user.subscription?.tier || "FREE";
+  await setDoc(userDoc, {
+    email,
+    name: state.user.displayName || "",
+    tier,
+    updatedAt: Date.now()
+  }, { merge: true });
+}
+
 function updateTimedButton() {
   if (!dom.timedToggle) return;
   dom.timedToggle.textContent = state.timedMode ? "⏱ Timer On" : "⏱ Timer Off";
@@ -1497,16 +1514,30 @@ async function startAdminUsersListener() {
     alert("Firebase is not configured. Add firebaseConfig in index.html.");
     return;
   }
+  if (!firebaseState.auth?.currentUser || firebaseState.auth.currentUser.isAnonymous) {
+    alert("Please login with the super admin account to access users.");
+    dom.loginDialog?.showModal();
+    return;
+  }
   if (adminUsersUnsubscribe) {
     adminUsersUnsubscribe();
   }
-  adminUsersUnsubscribe = onSnapshot(collection(firebaseState.db, "users"), (snapshot) => {
-    state.adminUsers = [];
-    snapshot.forEach((docSnap) => {
-      state.adminUsers.push({ id: docSnap.id, ...docSnap.data() });
-    });
-    renderAdminPanel();
-  });
+  adminUsersUnsubscribe = onSnapshot(
+    collection(firebaseState.db, "users"),
+    (snapshot) => {
+      state.adminUsers = [];
+      snapshot.forEach((docSnap) => {
+        state.adminUsers.push({ id: docSnap.id, ...docSnap.data() });
+      });
+      renderAdminPanel();
+    },
+    (error) => {
+      console.warn("Admin users listener failed", error);
+      if (dom.adminUserTable) {
+        dom.adminUserTable.innerHTML = `<div class="subtext">Unable to load users (${error.code || "error"}). Check Firestore rules and login state.</div>`;
+      }
+    }
+  );
 }
 
 async function upsertAdminUser(payload) {

@@ -26,7 +26,11 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      allow read, write: if isSuperAdmin();
+      allow read: if isSuperAdmin()
+        || (request.auth != null && request.auth.token.email == userId);
+      allow create, update: if isSuperAdmin()
+        || (request.auth != null && request.auth.token.email == userId);
+      allow delete: if isSuperAdmin();
     }
   }
 }
