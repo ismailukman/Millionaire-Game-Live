@@ -3574,7 +3574,7 @@ function initEvents() {
       state.paymentTier = null;
       if (dom.subscriptionRequestMessage) {
         dom.subscriptionRequestMessage.textContent =
-          `We will email echoscholarly@gmail.com with your subscription request details. ` +
+          `We will email ismailukman@gmail.com with your subscription request details. ` +
           `Your request will be reviewed and an update will be provided.`;
       }
       dom.subscriptionRequestDialog?.showModal();
