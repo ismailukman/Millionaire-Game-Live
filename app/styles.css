@@ -2369,6 +2369,7 @@ button:hover::after {
 
   .classic-title-row .timer {
     margin-left: 0;
+    text-align: left;
   }
 
   .ladder-card-head {
@@ -2391,6 +2392,17 @@ button:hover::after {
 
   .admin-actions {
     justify-content: flex-start;
+  }
+
+  .classic-header-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #classic-layout:fullscreen .classic-board,
+  #classic-layout:fullscreen .ladder-card {
+    max-width: 100%;
+    justify-self: center;
   }
 }
 
@@ -2416,6 +2428,14 @@ button:hover::after {
   .fullscreen-controls {
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  .classic-title-row {
+    align-items: center;
+  }
+
+  .classic-title-row .timer {
+    text-align: center;
   }
 }
 
@@ -2443,6 +2463,15 @@ button:hover::after {
 
   .payment-actions button {
     width: 100%;
+  }
+
+  .classic-layout {
+    gap: 16px;
+  }
+
+  .ladder-card {
+    padding-right: 0;
+    justify-self: center;
   }
 }
 
