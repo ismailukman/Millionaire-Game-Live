@@ -2982,6 +2982,11 @@ function initEvents() {
       event.stopPropagation();
       handleLogout();
     });
+    dom.logoutButton.onclick = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      handleLogout();
+    };
   }
 
   if (dom.accountDropdown) {
