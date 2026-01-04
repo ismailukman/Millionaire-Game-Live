@@ -412,6 +412,34 @@ function applyTranslations() {
     }
   });
 
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (key) {
+      el.textContent = t(key);
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-html");
+    if (key) {
+      el.innerHTML = t(key);
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (key && "placeholder" in el) {
+      el.placeholder = t(key);
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-title");
+    if (key) {
+      el.setAttribute("title", t(key));
+    }
+  });
+
   filterLabelBindings.forEach(([filter, key]) => {
     const el = document.querySelector(`.filter-button[data-filter=\"${filter}\"]`);
     if (el) {
@@ -459,6 +487,15 @@ async function setLanguage(code) {
   renderPackList();
   renderHost();
   renderClassic();
+  renderPricing();
+  renderLeaderboard();
+  renderAchievements();
+  if (getActiveScreenName() === "participant" && state.activeSessionId && state.activeParticipantId) {
+    renderParticipant(state.activeSessionId, state.activeParticipantId);
+  }
+  if (getActiveScreenName() === "admin") {
+    renderAdminPanel();
+  }
 }
 
 async function initI18n() {
@@ -472,7 +509,8 @@ async function initI18n() {
 function getTranslatedQuestion(question) {
   const overrides = i18nState.questions.questions || {};
   const fallback = i18nState.fallbackQuestions.questions || {};
-  const translated = overrides[question.id] || fallback[question.id];
+  const lookupId = question.sourceQuestionId || question.id;
+  const translated = overrides[lookupId] || fallback[lookupId];
   if (!translated) return question;
   return {
     ...question,
@@ -1026,6 +1064,12 @@ function getActiveScreenName() {
   return active.id.replace("screen-", "");
 }
 
+function getSessionStatusLabel(status) {
+  const key = `session.status.${status || "unknown"}`;
+  const label = t(key);
+  return label === key ? status : label;
+}
+
 function resumeAudioForScreen() {
   if (audioManager.isMuted) return;
   const screenName = getActiveScreenName();
@@ -1234,6 +1278,7 @@ function buildCategoryPack(category) {
   const selected = shuffle(category.questions).slice(0, 15).map((question, index) => ({
     ...question,
     id: `${category.id}_${index + 1}_${makeId("Q")}`,
+    sourceQuestionId: question.id,
     level: index + 1
   }));
   const fffQuestion = defaultPack.questions.find((q) => q.type === "FFF");
@@ -1672,7 +1717,7 @@ function renderLanding() {
     const li = document.createElement("li");
     const level = 15 - index;
     li.classList.toggle("safe", defaultPack.config.guaranteedLevels.includes(level));
-    li.innerHTML = `<span>Level ${level}</span><span>${formatMoney(defaultPack.config.currencySymbol, amount)}</span>`;
+    li.innerHTML = `<span>${t("landing.level_label", { level })}</span><span>${formatMoney(defaultPack.config.currencySymbol, amount)}</span>`;
     dom.landingLadder.appendChild(li);
   });
 }
@@ -1682,7 +1727,7 @@ function renderPackList() {
   dom.packList.innerHTML = "";
   const packs = getOrderedPacks();
   const limit = getPackVisibilityLimit();
-      const lockMessage = state.user ? "Upgrade to more access." : "Login to use this feature.";
+  const lockMessage = state.user ? t("alerts.upgrade_more_access") : t("alerts.login_use_feature");
   packs.forEach((pack, index) => {
     const displayPack = getTranslatedPack(pack);
     const locked = index >= limit;
@@ -1690,8 +1735,8 @@ function renderPackList() {
     card.className = locked ? "card locked" : "card";
     card.innerHTML = `
       <strong>${displayPack.title}</strong>
-      <p class="subtext">${displayPack.description || "No description"}</p>
-      <button class="secondary pack-edit" data-pack-id="${pack.id}" ${locked ? "disabled" : ""}>Edit Pack</button>
+      <p class="subtext">${displayPack.description || t("pack.no_description")}</p>
+      <button class="secondary pack-edit" data-pack-id="${pack.id}" ${locked ? "disabled" : ""}>${t("pack.edit")}</button>
       ${locked ? `<p class="lock-note">${lockMessage}</p>` : ""}
     `;
     dom.packList.appendChild(card);
@@ -1702,7 +1747,7 @@ function renderPackList() {
     const locked = index >= limit;
     const option = document.createElement("option");
     option.value = pack.id;
-    option.textContent = locked ? `${displayPack.title} (Upgrade)` : displayPack.title;
+    option.textContent = locked ? `${displayPack.title} (${t("pack.upgrade_suffix")})` : displayPack.title;
     option.disabled = locked;
     dom.packSelect.appendChild(option);
   });
@@ -1740,15 +1785,15 @@ function renderAdminPanel() {
       <span><input type="text" value="${user.name || ""}" data-index="${index}" /></span>
       <span>
         <select data-index="${index}">
-          <option value="GUEST">Guest</option>
-          <option value="FREE">Free</option>
-          <option value="PRO">Pro</option>
-          <option value="ENTERPRISE">Enterprise</option>
+          <option value="GUEST">${t("tier.guest")}</option>
+          <option value="FREE">${t("tier.free")}</option>
+          <option value="PRO">${t("tier.pro")}</option>
+          <option value="ENTERPRISE">${t("tier.enterprise")}</option>
         </select>
       </span>
       <span class="admin-actions">
-        <button class="ghost" data-action="save" data-index="${index}">Save</button>
-        <button class="ghost" data-action="remove" data-index="${index}">Remove</button>
+        <button class="ghost" data-action="save" data-index="${index}">${t("admin.action_save")}</button>
+        <button class="ghost" data-action="remove" data-index="${index}">${t("admin.action_remove")}</button>
       </span>
     `;
     const select = row.querySelector("select");
@@ -1857,31 +1902,31 @@ function renderPricing() {
   // Update all pricing buttons based on current tier
   document.querySelectorAll(".pricing-button[data-tier]").forEach(button => {
     const tier = button.dataset.tier;
+    const tierKey = tier ? `tier.${tier.toLowerCase()}` : "tier.free";
+    const tierName = t(tierKey);
 
     if (currentTier === "GUEST") {
       if (tier === "FREE") {
-        button.textContent = "Login to select";
+        button.textContent = t("pricing.login_select");
         button.className = "pricing-button ghost";
       } else {
-        const tierName = subscriptionTiers[tier].name;
-        button.textContent = `Login to upgrade to ${tierName}`;
+        button.textContent = t("pricing.login_upgrade", { tier: tierName });
         button.className = "pricing-button primary";
       }
       return;
     }
 
     if (tier === currentTier) {
-      button.textContent = "Current Plan";
+      button.textContent = t("pricing.current_plan");
       button.className = "pricing-button secondary";
     } else if (tier === "FREE") {
-      button.textContent = "Downgrade to Free";
+      button.textContent = t("pricing.downgrade_free");
       button.className = "pricing-button ghost";
     } else {
-      const tierName = subscriptionTiers[tier].name;
-      button.textContent = `Upgrade to ${tierName}`;
+      button.textContent = t("pricing.upgrade_to", { tier: tierName });
       button.className = "pricing-button primary";
       if (!state.user?.subscription?.paid) {
-        button.textContent = `Upgrade to ${tierName} (Payment Required)`;
+        button.textContent = t("pricing.upgrade_payment_required", { tier: tierName });
       }
     }
   });
@@ -1919,7 +1964,7 @@ function renderLeaderboard(filterBy = "totalWinnings") {
 
   if (users.length === 0) {
     const row = document.createElement("tr");
-    row.innerHTML = `<td colspan="5" style="text-align: center; padding: 40px; color: var(--muted);">No players yet. Play a game to appear on the leaderboard!</td>`;
+    row.innerHTML = `<td colspan="5" style="text-align: center; padding: 40px; color: var(--muted);">${t("leaderboard.empty")}</td>`;
     dom.leaderboardBody.appendChild(row);
     return;
   }
@@ -1984,7 +2029,11 @@ function renderAchievements() {
   const progress = getAchievementProgress(state.user);
 
   // Update progress text
-  dom.achievementsProgress.textContent = `${progress.unlocked} of ${progress.total} unlocked (${progress.percentage}%)`;
+  dom.achievementsProgress.textContent = t("achievements.progress_summary", {
+    unlocked: progress.unlocked,
+    total: progress.total,
+    percentage: progress.percentage
+  });
 
   // Update stats
   const stats = state.user.stats || {
@@ -2207,7 +2256,10 @@ function renderHost() {
   const pack = getPackForSession(session);
   const displayPack = pack ? getTranslatedPack(pack) : null;
   dom.hostSessionTitle.textContent = displayPack ? displayPack.title : t("live.classic_title");
-  dom.hostSessionMeta.textContent = `${session.mode} • ${session.status}`;
+  dom.hostSessionMeta.textContent = t("host.session_meta", {
+    mode: t(`session.mode.${session.mode}`),
+    status: getSessionStatusLabel(session.status)
+  });
   dom.hostSessionCode.textContent = session.id;
   const joinUrl = `${window.location.origin}${window.location.pathname}?view=participant&session=${session.id}`;
   if (dom.qrImage) {
@@ -2270,18 +2322,18 @@ function renderHostFFF(session, pack, joinUrl) {
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(joinUrl)}`;
   const winnerName = session.winnerParticipantId && session.participants?.[session.winnerParticipantId]
     ? session.participants[session.winnerParticipantId].name
-    : "Pending";
+    : t("host.winner_pending");
   dom.hostLive.innerHTML = `
     <div class="fff-layout">
       <div>
-        <div class="question"><strong>FFF:</strong> ${translatedQuestion.promptText}</div>
-        <div>Participants: ${participantCount}</div>
-        <div>Submissions: ${Object.keys(session.fffSubmissions).length}</div>
-        <div class="status">Winner: ${winnerName}</div>
+        <div class="question"><strong>${t("host.fff_label")}:</strong> ${translatedQuestion.promptText}</div>
+        <div>${t("host.participants_label", { count: participantCount })}</div>
+        <div>${t("host.submissions_label", { count: Object.keys(session.fffSubmissions).length })}</div>
+        <div class="status">${t("host.winner_label", { name: winnerName })}</div>
       </div>
       <div class="fff-qr">
         <img src="${qrUrl}" alt="Join QR code" />
-        <div class="status">Scan to join FFF</div>
+        <div class="status">${t("host.scan_join_fff")}</div>
         <div class="code">${session.id}</div>
       </div>
     </div>
@@ -2307,8 +2359,8 @@ function renderHostClassicStatus(session, pack) {
 
   const currentLevel = session.currentState.level;
   dom.hostLive.innerHTML = `
-    <div class="question">Classic ready. Current level: ${currentLevel}</div>
-    <div class="status">Lifelines used: ${session.currentState.usedLifelines.length}</div>
+    <div class="question">${t("host.classic_ready", { level: currentLevel })}</div>
+    <div class="status">${t("host.lifelines_used", { count: session.currentState.usedLifelines.length })}</div>
   `;
 }
 
@@ -2325,7 +2377,7 @@ function renderClassic() {
   }
   const displayPack = getTranslatedPack(pack);
   dom.classicPackTitle.textContent = displayPack ? displayPack.title : t("classic.round_title");
-  dom.classicMeta.textContent = `Level ${session.currentState.level} of 15`;
+  dom.classicMeta.textContent = t("classic.level_meta", { level: session.currentState.level, total: 15 });
 
   // Play level-appropriate background music
   const levelMusic = audioManager.getMusicForLevel(session.currentState.level);
@@ -2789,12 +2841,15 @@ function showPhoneAFriendDialog(question, level, correctOption = question.correc
 
   let countdown = 60;
   timerDiv.textContent = countdown;
-  messageDiv.textContent = "Your friend is thinking...";
+  messageDiv.textContent = t("status.phone_thinking");
 
   if (!state.liveMode) {
     setTimeout(() => {
       const hint = phoneFriendHint(level, correctOption);
-      messageDiv.textContent = `"I'm ${hint.reliability}% sure the answer is ${hint.hint}. Good luck!"`;
+      messageDiv.textContent = t("status.phone_hint", {
+        confidence: hint.reliability,
+        answer: hint.hint
+      });
     }, 5000);
   }
 
@@ -2805,7 +2860,7 @@ function showPhoneAFriendDialog(question, level, correctOption = question.correc
 
     if (countdown <= 0) {
       clearInterval(countdownInterval);
-      timerDiv.textContent = "Time's up!";
+      timerDiv.textContent = t("status.phone_time_up");
     }
   }, 1000);
 
@@ -2956,7 +3011,10 @@ function renderParticipant(sessionId, participantId) {
     return;
   }
   const pack = getPackForSession(session);
-  dom.participantMeta.textContent = `Session ${session.id} • ${session.status}`;
+  dom.participantMeta.textContent = t("participant.session_meta", {
+    id: session.id,
+    status: getSessionStatusLabel(session.status)
+  });
   const question = getActiveFFFQuestion(session, pack);
   if (!question) {
     dom.participantFFF.textContent = t("live.fff_missing");
@@ -3867,9 +3925,9 @@ function initEvents() {
       await setDoc(doc(collection(firebaseState.db, "subscription_requests")), payload);
       state.paymentTier = null;
       if (dom.subscriptionRequestMessage) {
-        dom.subscriptionRequestMessage.textContent =
-          `We will email ismailukman@gmail.com with your subscription request details. ` +
-          `Your request will be reviewed and an update will be provided.`;
+        dom.subscriptionRequestMessage.textContent = t("subscription.request_notice", {
+          email: "ismailukman@gmail.com"
+        });
       }
       dom.subscriptionRequestDialog?.showModal();
       setScreen("pricing");

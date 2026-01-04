@@ -153,7 +153,7 @@
   "status.phone_thinking": "صديقك يفكر...",
   "status.phone_time_up": "انتهى الوقت!",
   "status.phone_hint": "أنا متأكد بنسبة {confidence}% أن الإجابة هي {answer}. بالتوفيق!",
-  "status.phone_hint_short": "أميل إلى الإجابة {answer}. بالتوفيق!",
+  "status.phone_hint_short": "أميل إلى الخيار {answer}. بالتوفيق!",
   "status.invalid_letter": "أدخل A أو B أو C أو D.",
   "alerts.no_pack_selected": "لم يتم اختيار أي باقة. يرجى اختيار باقة من لوحة التحكم.",
   "alerts.firebase_config_missing": "لم يتم إعداد Firebase. أضف ملف firebaseConfig في ملف index.html.",
@@ -190,5 +190,196 @@
   "auth.status.auth_failed": "فشلت عملية المصادقة. يرجى مراجعة بياناتك.",
   "auth.status.enter_email_first": "أدخل بريدك الإلكتروني أولاً.",
   "auth.status.reset_sent": "تم إرسال بريد إلكتروني لإعادة تعيين كلمة المرور.",
-  "auth.status.reset_failed": "تعذر إرسال بريد إلكتروني لإعادة التعيين."
+  "auth.status.reset_failed": "تعذر إرسال بريد إلكتروني لإعادة التعيين.",
+  "builder.pack_title": "عنوان الحزمة",
+  "builder.pack_title_placeholder": "ليلة المسابقات",
+  "builder.description": "وصف",
+  "builder.description_placeholder": "أضف ملخصًا قصيرًا...",
+  "builder.currency": "رمز العملة",
+  "builder.ladder_title": "سلم الجوائز (15 مستوى)",
+  "builder.messages_title": "رسائل انتهاء اللعبة",
+  "builder.win_title": "الفوز باللقب",
+  "builder.win_title_placeholder": "تهانينا!",
+  "builder.win_message": "رسالة الفوز",
+  "builder.win_message_placeholder": "أنت مليونير!",
+  "builder.lose_title": "خسارة اللقب",
+  "builder.lose_title_placeholder": "انتهت اللعبة",
+  "builder.lose_message": "فقدان الرسالة",
+  "builder.lose_message_placeholder": "حظاً أوفر في المرة القادمة!",
+  "builder.walk_title": "لقب قابل للتنازل",
+  "builder.walk_title_placeholder": "لعبت بشكل جيد!",
+  "builder.walk_message": "رسالة الانسحاب",
+  "builder.walk_message_placeholder": "خرجتَ من هنا بـ:",
+  "builder.import_csv": "استيراد ملف CSV",
+  "builder.lifelines_title": "خطوط النجاة",
+  "builder.lifeline_fifty_label": "50:50",
+  "builder.lifeline_audience_label": "اسأل الجمهور",
+  "builder.lifeline_phone_label": "اتصل بصديق",
+  "host.pack_label": "علية",
+  "host.mode_label": "وضع",
+  "host.mode_fff": "أسرع إجابة أولاً",
+  "host.mode_classic": "كلاسيكي",
+  "host.participants_label": "عدد المشاركين: {count}",
+  "host.submissions_label": "عدد المشاركات: {count}",
+  "host.winner_label": "الفائز: {name}",
+  "host.winner_pending": "قيد الانتظار",
+  "host.fff_label": "FFF",
+  "host.scan_join_fff": "امسح ضوئيًا للانضمام إلى FFF",
+  "host.classic_ready": "جاهز للوضع الكلاسيكي. المستوى الحالي: {level}",
+  "host.lifelines_used": "عدد وسائل المساعدة المستخدمة: {count}",
+  "host.session_meta": "{mode} • {status}",
+  "participant.session_code": "رمز الجلسة",
+  "participant.session_code_placeholder": "AB12CD",
+  "participant.name": "اسمك",
+  "participant.name_placeholder": "أليكس",
+  "participant.session_meta": "الجلسة {id} • {status}",
+  "pricing.most_popular": "الأكثر شعبية",
+  "pricing.free_period": "للأبد",
+  "pricing.pro_period": "/شهر",
+  "pricing.enterprise_period": "/شهر",
+  "pricing.free.feature1": "✓ عبوتان مجانيتان",
+  "pricing.free.feature2": "✓ لا توجد عبوات مخصصة",
+  "pricing.free.feature3": "✓ ١٠ مشاركين في كل جلسة",
+  "pricing.free.feature4": "✓ جميع أوضاع اللعب",
+  "pricing.free.feature5": "✓ وسائل النجاة الأساسية",
+  "pricing.free.feature6": "✓ لوحة المتصدرين المحلية",
+  "pricing.pro.feature1": "✓ 5 عبوات مخصصة",
+  "pricing.pro.feature2": "✓ جلسات مباشرة",
+  "pricing.pro.feature3": "✓ ١٠٠ مشارك في كل جلسة",
+  "pricing.pro.feature4": "✓ تحليلات متقدمة",
+  "pricing.pro.feature5": "✓ الوصول إلى لوحة المتصدرين العالمية",
+  "pricing.pro.feature6": "✓ دعم البريد الإلكتروني ذو الأولوية",
+  "pricing.enterprise.feature1": "✓ 100 عبوة مخصصة",
+  "pricing.enterprise.feature2": "✓ جلسات مباشرة",
+  "pricing.enterprise.feature3": "✓ عدد غير محدود من المشاركين",
+  "pricing.enterprise.feature4": "✓ تحليلات متقدمة وتصدير",
+  "pricing.enterprise.feature5": "✓ دعم مخصص",
+  "pricing.enterprise.feature6": "✓ عمليات تكامل مخصصة",
+  "pricing.enterprise.feature7": "✓ الوصول إلى لوحة المتصدرين العالمية",
+  "pricing.enterprise.feature8": "✓ تصميم العلامة التجارية والقوالب حسب الطلب",
+  "pricing.login_select": "قم بتسجيل الدخول للاختيار",
+  "pricing.login_upgrade": "سجّل الدخول للترقية إلى {tier}",
+  "pricing.current_plan": "الخطة الحالية",
+  "pricing.downgrade_free": "قم بالترقية إلى الإصدار المجاني",
+  "pricing.upgrade_to": "الترقية إلى {tier}",
+  "pricing.upgrade_payment_required": "الترقية إلى {المستوى} (الدفع مطلوب)",
+  "payment.method_apple": "أبل باي",
+  "payment.method_google": "جوجل باي",
+  "payment.method_card": "بطاقة (فيزا/ماستركارد)",
+  "payment.method_paypal": "باي بال",
+  "admin.label_email": "بريد إلكتروني",
+  "admin.email_placeholder": "user@example.com",
+  "admin.label_name": "اسم",
+  "admin.name_placeholder": "اسم المستخدم",
+  "admin.label_tier": "المستوى",
+  "admin.table_email": "بريد إلكتروني",
+  "admin.table_name": "اسم",
+  "admin.table_tier": "المستوى",
+  "admin.table_actions": "الإجراءات",
+  "admin.action_save": "يحفظ",
+  "admin.action_remove": "يزيل",
+  "leaderboard.col_rank": "رتبة",
+  "leaderboard.col_player": "اللاعب",
+  "leaderboard.col_score": "نتيجة",
+  "leaderboard.col_games": "ألعاب",
+  "leaderboard.col_achievements": "الإنجازات",
+  "achievements.stat_games_played": "الألعاب التي تم لعبها",
+  "achievements.stat_games_won": "مباريات تم الفوز بها",
+  "achievements.stat_total_winnings": "إجمالي الأرباح",
+  "achievements.stat_highest_level": "أعلى مستوى",
+  "achievements.progress_summary": "{مفتوح} من {إجمالي} مفتوح ({النسبة المئوية}%)",
+  "account.label_display_name": "اسم العرض",
+  "account.display_name_placeholder": "اسم المضيف",
+  "account.label_email": "بريد إلكتروني",
+  "account.label_org": "منظمة",
+  "account.org_placeholder": "شركة أو مجموعة",
+  "account.label_phone": "هاتف",
+  "account.phone_placeholder": "+1 555 000 0000",
+  "account.label_country": "دولة",
+  "account.country_placeholder": "اختر البلد",
+  "account.label_city": "مدينة",
+  "account.city_placeholder": "مدينة",
+  "account.label_zip": "الرمز البريدي / الرمز البريدي",
+  "account.zip_placeholder": "الرمز البريدي / الرمز البريدي",
+  "account.label_billing_name": "اسم جهة إصدار الفواتير",
+  "account.billing_name_placeholder": "جهة الاتصال الخاصة بالفواتير",
+  "account.label_billing_address": "عنوان الفواتير",
+  "account.billing_address_placeholder": "شارع، الرمز البريدي",
+  "account.label_payment_method": "طريقة الدفع",
+  "account.meta_tier": "المستوى",
+  "account.meta_payment": "قسط",
+  "account.meta_expires": "تاريخ الانتهاء",
+  "account.billing_note": "تتم إدارة تفاصيل الدفع من خلال مزود خدمة الفوترة الخاص بك.",
+  "lifeline.audience_title": "📊 اسأل الجمهور",
+  "lifeline.audience_prompt": "لقد صوّت الجمهور:",
+  "lifeline.apply_votes": "تطبيق الأصوات",
+  "lifeline.phone_title": "📞 اتصل بصديق",
+  "lifeline.phone_prompt": "الاتصال بصديقك...",
+  "lifeline.phone_suggested": "الإجابة المقترحة",
+  "lifeline.phone_placeholder": "إعلان",
+  "lifeline.phone_apply": "تطبيق الاقتراح",
+  "footer.newsletter_email_placeholder": "بريدك الإلكتروني",
+  "footer.newsletter_subscribe": "يشترك",
+  "footer.link_home": "بيت",
+  "footer.link_dashboard": "لوحة التحكم",
+  "footer.link_leaderboard": "لوحة المتصدرين",
+  "footer.link_pricing": "التسعير",
+  "footer.link_contact": "اتصل بنا",
+  "footer.link_contrast": "تباين عالٍ",
+  "footer.link_terms": "شروط الخدمة",
+  "footer.link_privacy": "سياسة الخصوصية",
+  "leaderboard.empty": "لا يوجد لاعبون حتى الآن. العب لعبة لتظهر على لوحة المتصدرين!",
+  "contact.support_subtext": "المشاكل، والمساعدة في الحساب، واستكشاف أخطاء الجلسة المباشرة وإصلاحها.",
+  "contact.support_email_label": "بريد إلكتروني:",
+  "contact.support_response": "مدة الاستجابة: من يوم إلى يومي عمل",
+  "contact.support_include": "يتضمن: رمز الجلسة، والمتصفح، وملخصًا موجزًا",
+  "contact.custom_subtext": "العلامات التجارية، والفئات المخصصة، وعروض الرعاة، والطبقات الإضافية.",
+  "contact.custom_email_label": "بريد إلكتروني:",
+  "contact.custom_options": "الخيارات: الشعارات، والقوالب، والسلالم المخصصة",
+  "contact.custom_turnaround": "مدة التنفيذ: عادةً من 3 إلى 5 أيام عمل",
+  "contact.partnership_subtext": "المدارس والفعاليات وعمليات النشر المؤسسية.",
+  "contact.partnership_email_label": "بريد إلكتروني:",
+  "contact.partnership_includes": "يشمل ذلك: الإعداد والتحليلات والتدريب",
+  "contact.form_name": "اسم",
+  "contact.form_name_placeholder": "اسمك",
+  "contact.form_email": "بريد إلكتروني",
+  "contact.form_email_placeholder": "you@example.com",
+  "contact.form_message": "رسالة",
+  "contact.form_message_placeholder": "كيف يمكننا المساعدة؟",
+  "contact.form_submit": "إرسال الطلب",
+  "landing.level_label": "المستوى {level}",
+  "pack.no_description": "لا يوجد وصف",
+  "pack.edit": "حزمة التحرير",
+  "pack.upgrade_suffix": "يرقي",
+  "session.status.waiting": "منتظر",
+  "session.status.live": "يعيش",
+  "session.status.ended": "نهاية",
+  "session.status.unknown": "مجهول",
+  "session.mode.FFF": "أسرع إجابة أولاً",
+  "session.mode.CLASSIC": "كلاسيكي",
+  "subscription.request_notice": "سنرسل إليك بريدًا إلكترونيًا يحتوي على تفاصيل طلب اشتراكك. سيتم مراجعة طلبك وسيتم تزويدك بآخر المستجدات.",
+  "tier.guest": "ضيف",
+  "tier.free": "حر",
+  "tier.pro": "محترف",
+  "tier.enterprise": "مَشرُوع",
+  "auth.label_email": "بريد إلكتروني",
+  "auth.email_placeholder": "you@example.com",
+  "auth.label_display_name": "اسم العرض",
+  "auth.display_name_placeholder": "يستضيف",
+  "auth.label_password": "كلمة المرور",
+  "auth.label_confirm_password": "تأكيد كلمة المرور",
+  "legal.terms_title": "شروط الخدمة",
+  "legal.terms_updated": "آخر تحديث: 2025-01-01",
+  "legal.terms_intro": "باستخدامك لهذا التطبيق، فإنك توافق على استخدامه للعب القانوني والمحترم والعادل.",
+  "legal.terms_use": "<strong>استخدام الخدمة:</strong> أنت مسؤول عن جلساتك ومحتواك وأي روابط مشتركة.",
+  "legal.terms_content": "<strong>المحتوى:</strong> يجب أن تكون حزم الأسئلة التي تقوم بإنشائها أو تحميلها أصلية أو مرخصة بشكل صحيح.",
+  "legal.terms_availability": "<strong>التوافر:</strong> قد نقوم بتحديث الميزات أو إيقافها مؤقتًا أو إيقافها نهائيًا في أي وقت.",
+  "legal.terms_liability": "<strong>المسؤولية:</strong> يتم توفير هذا العرض التوضيحي \"كما هو\" بدون ضمانات.",
+  "legal.privacy_title": "سياسة الخصوصية",
+  "legal.privacy_updated": "آخر تحديث: 2025-01-01",
+  "legal.privacy_intro": "يخزن هذا التطبيق بيانات جلسة محدودة لتشغيل الألعاب وتحسين تجربة المستخدم.",
+  "legal.privacy_local": "<strong>البيانات المحلية:</strong> قد يتم تخزين تفضيلاتك وحزمك في متصفحك.",
+  "legal.privacy_session": "<strong>بيانات الجلسة:</strong> قد تخزن الجلسات المباشرة رموز الانضمام والأصوات والطوابع الزمنية.",
+  "legal.privacy_no_sale": "<strong>عدم بيع البيانات:</strong> نحن لا نبيع بياناتك الشخصية.",
+  "legal.privacy_contact": "للتواصل: تواصل معنا إذا كنت ترغب في حذف البيانات."
 }

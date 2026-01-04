@@ -87,18 +87,18 @@
             <div class="card">
               <h3 id="dashboard-host-title">Host Session</h3>
               <label class="field">
-                <span>Pack</span>
+                <span data-i18n="host.pack_label">Pack</span>
                 <select id="host-pack-select"></select>
               </label>
               <label class="field">
-                <span>Mode</span>
+                <span data-i18n="host.mode_label">Mode</span>
                 <select id="host-mode-select">
-                  <option value="FFF">Fastest Finger First</option>
-                  <option value="CLASSIC">Classic</option>
+                  <option value="FFF" data-i18n="host.mode_fff">Fastest Finger First</option>
+                  <option value="CLASSIC" data-i18n="host.mode_classic">Classic</option>
                 </select>
               </label>
               <div id="default-category-section" class="category-section">
-                <p class="field-label">Default Pack Categories</p>
+                <p class="field-label" data-i18n="dashboard.default_categories">Default Pack Categories</p>
                 <p id="default-category-dashboard-status" class="subtext"></p>
                 <div id="default-category-grid" class="category-grid"></div>
                 <div class="category-actions">
@@ -120,68 +120,68 @@
           <div class="panel-body grid-2">
             <div class="card">
               <label class="field">
-                <span>Pack Title</span>
-                <input id="builder-title" type="text" placeholder="Trivia Night" />
+                <span data-i18n="builder.pack_title">Pack Title</span>
+                <input id="builder-title" type="text" placeholder="Trivia Night" data-i18n-placeholder="builder.pack_title_placeholder" />
               </label>
               <label class="field">
-                <span>Description</span>
-                <textarea id="builder-description" rows="3" placeholder="Add a short summary..."></textarea>
+                <span data-i18n="builder.description">Description</span>
+                <textarea id="builder-description" rows="3" placeholder="Add a short summary..." data-i18n-placeholder="builder.description_placeholder"></textarea>
               </label>
               <label class="field">
-                <span>Currency Symbol</span>
+                <span data-i18n="builder.currency">Currency Symbol</span>
                 <input id="builder-currency" type="text" value="$" maxlength="3" />
               </label>
               <div class="ladder-editor">
-                <p class="field-label">Prize Ladder (15 levels)</p>
+                <p class="field-label" data-i18n="builder.ladder_title">Prize Ladder (15 levels)</p>
                 <div id="builder-ladder" class="ladder-grid"></div>
               </div>
               <div class="message-editor">
-                <p class="field-label">Game Over Messages</p>
+                <p class="field-label" data-i18n="builder.messages_title">Game Over Messages</p>
                 <label class="field">
-                  <span>Win Title</span>
-                  <input id="builder-win-title" type="text" placeholder="Congratulations!" />
+                  <span data-i18n="builder.win_title">Win Title</span>
+                  <input id="builder-win-title" type="text" placeholder="Congratulations!" data-i18n-placeholder="builder.win_title_placeholder" />
                 </label>
                 <label class="field">
-                  <span>Win Message</span>
-                  <input id="builder-win-message" type="text" placeholder="You are a millionaire!" />
+                  <span data-i18n="builder.win_message">Win Message</span>
+                  <input id="builder-win-message" type="text" placeholder="You are a millionaire!" data-i18n-placeholder="builder.win_message_placeholder" />
                 </label>
                 <label class="field">
-                  <span>Lose Title</span>
-                  <input id="builder-lose-title" type="text" placeholder="Game Over" />
+                  <span data-i18n="builder.lose_title">Lose Title</span>
+                  <input id="builder-lose-title" type="text" placeholder="Game Over" data-i18n-placeholder="builder.lose_title_placeholder" />
                 </label>
                 <label class="field">
-                  <span>Lose Message</span>
-                  <input id="builder-lose-message" type="text" placeholder="Better luck next time!" />
+                  <span data-i18n="builder.lose_message">Lose Message</span>
+                  <input id="builder-lose-message" type="text" placeholder="Better luck next time!" data-i18n-placeholder="builder.lose_message_placeholder" />
                 </label>
                 <label class="field">
-                  <span>Walk Away Title</span>
-                  <input id="builder-walk-title" type="text" placeholder="Well Played!" />
+                  <span data-i18n="builder.walk_title">Walk Away Title</span>
+                  <input id="builder-walk-title" type="text" placeholder="Well Played!" data-i18n-placeholder="builder.walk_title_placeholder" />
                 </label>
                 <label class="field">
-                  <span>Walk Away Message</span>
-                  <input id="builder-walk-message" type="text" placeholder="You walked away with:" />
+                  <span data-i18n="builder.walk_message">Walk Away Message</span>
+                  <input id="builder-walk-message" type="text" placeholder="You walked away with:" data-i18n-placeholder="builder.walk_message_placeholder" />
                 </label>
               </div>
             </div>
             <div class="card">
               <label class="field">
-                <span>Import CSV</span>
+                <span data-i18n="builder.import_csv">Import CSV</span>
                 <input id="builder-csv" type="file" accept=".csv" />
               </label>
               <a class="template-link" href="assets/question_template.csv" download>Download CSV template</a>
               <div id="builder-preview" class="preview"></div>
               <div class="lifelines">
-                <p class="field-label">Lifelines</p>
+                <p class="field-label" data-i18n="builder.lifelines_title">Lifelines</p>
                 <label class="field inline">
-                  <span>50:50</span>
+                  <span data-i18n="builder.lifeline_fifty_label">50:50</span>
                   <input id="lifeline-fifty" type="text" value="50:50" />
                 </label>
                 <label class="field inline">
-                  <span>Ask the Audience</span>
+                  <span data-i18n="builder.lifeline_audience_label">Ask the Audience</span>
                   <input id="lifeline-audience" type="text" value="Ask the Audience" />
                 </label>
                 <label class="field inline">
-                  <span>Phone a Friend</span>
+                  <span data-i18n="builder.lifeline_phone_label">Phone a Friend</span>
                   <input id="lifeline-phone" type="text" value="Phone a Friend" />
                 </label>
               </div>
@@ -211,13 +211,13 @@
                   <button id="btn-copy-link" class="secondary">Copy Join Link</button>
                 </div>
               </div>
-              <div class="timer-toggle">
-                <label>
+                <div class="timer-toggle">
+                  <label>
                   <input id="toggle-timer" type="checkbox" />
-                  Enable Timer
-                </label>
-                <input id="timer-seconds" type="number" min="10" max="90" value="30" />
-              </div>
+                  <span data-i18n="host.enable_timer">Enable Timer</span>
+                  </label>
+                  <input id="timer-seconds" type="number" min="10" max="90" value="30" />
+                </div>
               <div id="host-controls" class="stack"></div>
             </div>
             <div class="card">
@@ -232,17 +232,17 @@
         <div class="panel">
           <div class="panel-head">
             <h2 id="participant-title">Participant Console</h2>
-            <p id="participant-session-meta">Join a Fastest Finger First round.</p>
+            <p id="participant-session-meta" data-i18n="participant.subtitle">Join a Fastest Finger First round.</p>
           </div>
           <div class="panel-body grid-2">
             <div class="card">
               <label class="field">
-                <span>Session Code</span>
-                <input id="participant-code" type="text" placeholder="AB12CD" />
+                <span data-i18n="participant.session_code">Session Code</span>
+                <input id="participant-code" type="text" placeholder="AB12CD" data-i18n-placeholder="participant.session_code_placeholder" />
               </label>
               <label class="field">
-                <span>Your Name</span>
-                <input id="participant-name" type="text" placeholder="Alex" />
+                <span data-i18n="participant.name">Your Name</span>
+                <input id="participant-name" type="text" placeholder="Alex" data-i18n-placeholder="participant.name_placeholder" />
               </label>
               <button id="btn-participant-join" class="primary">Join Session</button>
               <div id="participant-status" class="status"></div>
@@ -309,39 +309,39 @@
               <div class="pricing-card">
                 <div class="pricing-header">
                   <h3>Free</h3>
-                  <div class="pricing-price">
+                <div class="pricing-price">
                     <span class="price-amount">$0</span>
-                    <span class="price-period">Forever</span>
+                    <span class="price-period" data-i18n="pricing.free_period">Forever</span>
                   </div>
                 </div>
                 <ul class="pricing-features">
-                  <li>✓ 2 free packs</li>
-                  <li>✓ No custom packs</li>
-                  <li>✓ 10 participants per session</li>
-                  <li>✓ All game modes</li>
-                  <li>✓ Basic lifelines</li>
-                  <li>✓ Local leaderboard</li>
+                  <li data-i18n="pricing.free.feature1">✓ 2 free packs</li>
+                  <li data-i18n="pricing.free.feature2">✓ No custom packs</li>
+                  <li data-i18n="pricing.free.feature3">✓ 10 participants per session</li>
+                  <li data-i18n="pricing.free.feature4">✓ All game modes</li>
+                  <li data-i18n="pricing.free.feature5">✓ Basic lifelines</li>
+                  <li data-i18n="pricing.free.feature6">✓ Local leaderboard</li>
                 </ul>
                 <button class="pricing-button secondary" data-tier="FREE">Current Plan</button>
               </div>
 
               <!-- PRO Tier -->
               <div class="pricing-card featured">
-                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-badge" data-i18n="pricing.most_popular">Most Popular</div>
                 <div class="pricing-header">
                   <h3>Pro</h3>
                   <div class="pricing-price">
                     <span class="price-amount">$9.99</span>
-                    <span class="price-period">/month</span>
+                    <span class="price-period" data-i18n="pricing.pro_period">/month</span>
                   </div>
                 </div>
                 <ul class="pricing-features">
-                  <li>✓ 5 custom packs</li>
-                  <li>✓ Live sessions</li>
-                  <li>✓ 100 participants per session</li>
-                  <li>✓ Advanced analytics</li>
-                  <li>✓ Global leaderboard access</li>
-                  <li>✓ Priority email support</li>
+                  <li data-i18n="pricing.pro.feature1">✓ 5 custom packs</li>
+                  <li data-i18n="pricing.pro.feature2">✓ Live sessions</li>
+                  <li data-i18n="pricing.pro.feature3">✓ 100 participants per session</li>
+                  <li data-i18n="pricing.pro.feature4">✓ Advanced analytics</li>
+                  <li data-i18n="pricing.pro.feature5">✓ Global leaderboard access</li>
+                  <li data-i18n="pricing.pro.feature6">✓ Priority email support</li>
                 </ul>
                 <button class="pricing-button primary" data-tier="PRO">Upgrade to Pro</button>
               </div>
@@ -352,18 +352,18 @@
                   <h3>Enterprise</h3>
                   <div class="pricing-price">
                     <span class="price-amount">$49.99</span>
-                    <span class="price-period">/month</span>
+                    <span class="price-period" data-i18n="pricing.enterprise_period">/month</span>
                   </div>
                 </div>
                 <ul class="pricing-features">
-                  <li>✓ 100 custom packs</li>
-                  <li>✓ Live sessions</li>
-                  <li>✓ Unlimited participants</li>
-                  <li>✓ Advanced analytics & exports</li>
-                  <li>✓ Dedicated support</li>
-                  <li>✓ Custom integrations</li>
-                  <li>✓ Global leaderboard access</li>
-                  <li>✓ Custom branding & themes</li>
+                  <li data-i18n="pricing.enterprise.feature1">✓ 100 custom packs</li>
+                  <li data-i18n="pricing.enterprise.feature2">✓ Live sessions</li>
+                  <li data-i18n="pricing.enterprise.feature3">✓ Unlimited participants</li>
+                  <li data-i18n="pricing.enterprise.feature4">✓ Advanced analytics & exports</li>
+                  <li data-i18n="pricing.enterprise.feature5">✓ Dedicated support</li>
+                  <li data-i18n="pricing.enterprise.feature6">✓ Custom integrations</li>
+                  <li data-i18n="pricing.enterprise.feature7">✓ Global leaderboard access</li>
+                  <li data-i18n="pricing.enterprise.feature8">✓ Custom branding & themes</li>
                 </ul>
                 <button class="pricing-button primary" data-tier="ENTERPRISE">Upgrade to Enterprise</button>
               </div>
@@ -395,10 +395,10 @@
               </div>
               <div class="card payment-methods">
                 <h3 id="payment-method-title">Payment Method</h3>
-                <button class="payment-option" type="button" data-method="apple_pay">Apple Pay</button>
-                <button class="payment-option" type="button" data-method="google_pay">Google Pay</button>
-                <button class="payment-option" type="button" data-method="card">Card (Visa/Mastercard)</button>
-                <button class="payment-option" type="button" data-method="paypal">PayPal</button>
+                <button class="payment-option" type="button" data-method="apple_pay" data-i18n="payment.method_apple">Apple Pay</button>
+                <button class="payment-option" type="button" data-method="google_pay" data-i18n="payment.method_google">Google Pay</button>
+                <button class="payment-option" type="button" data-method="card" data-i18n="payment.method_card">Card (Visa/Mastercard)</button>
+                <button class="payment-option" type="button" data-method="paypal" data-i18n="payment.method_paypal">PayPal</button>
                 <div class="payment-actions">
                   <button id="btn-payment-back" class="ghost">Cancel</button>
                   <button id="btn-payment-confirm" class="primary">Request Upgrade</button>
@@ -419,20 +419,20 @@
             <div class="card">
               <h3 id="admin-add-title">Add or Update User</h3>
               <label class="field">
-                <span>Email</span>
-                <input id="admin-user-email" type="email" placeholder="user@example.com" />
+                <span data-i18n="admin.label_email">Email</span>
+                <input id="admin-user-email" type="email" placeholder="user@example.com" data-i18n-placeholder="admin.email_placeholder" />
               </label>
               <label class="field">
-                <span>Name</span>
-                <input id="admin-user-name" type="text" placeholder="User name" />
+                <span data-i18n="admin.label_name">Name</span>
+                <input id="admin-user-name" type="text" placeholder="User name" data-i18n-placeholder="admin.name_placeholder" />
               </label>
               <label class="field">
-                <span>Tier</span>
+                <span data-i18n="admin.label_tier">Tier</span>
                 <select id="admin-user-tier">
-                  <option value="GUEST">Guest</option>
-                  <option value="FREE">Free</option>
-                  <option value="PRO">Pro</option>
-                  <option value="ENTERPRISE">Enterprise</option>
+                  <option value="GUEST" data-i18n="tier.guest">Guest</option>
+                  <option value="FREE" data-i18n="tier.free">Free</option>
+                  <option value="PRO" data-i18n="tier.pro">Pro</option>
+                  <option value="ENTERPRISE" data-i18n="tier.enterprise">Enterprise</option>
                 </select>
               </label>
               <button id="btn-admin-add" class="primary">Save User</button>
@@ -444,10 +444,10 @@
               </div>
               <div class="admin-table">
                 <div class="admin-row admin-row-head">
-                  <span>Email</span>
-                  <span>Name</span>
-                  <span>Tier</span>
-                  <span>Actions</span>
+                  <span data-i18n="admin.table_email">Email</span>
+                  <span data-i18n="admin.table_name">Name</span>
+                  <span data-i18n="admin.table_tier">Tier</span>
+                  <span data-i18n="admin.table_actions">Actions</span>
                 </div>
                 <div id="admin-user-table"></div>
               </div>
@@ -484,11 +484,11 @@
               <table class="leaderboard-table" id="leaderboard-table">
                 <thead>
                   <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>Score</th>
-                    <th>Games</th>
-                    <th>Achievements</th>
+                    <th data-i18n="leaderboard.col_rank">Rank</th>
+                    <th data-i18n="leaderboard.col_player">Player</th>
+                    <th data-i18n="leaderboard.col_score">Score</th>
+                    <th data-i18n="leaderboard.col_games">Games</th>
+                    <th data-i18n="leaderboard.col_achievements">Achievements</th>
                   </tr>
                 </thead>
                 <tbody id="leaderboard-body">
@@ -512,46 +512,46 @@
           <div class="panel-body grid-2">
             <div class="card">
               <h3 id="contact-support-title">Support</h3>
-              <p class="subtext">Issues, account help, and live session troubleshooting.</p>
+              <p class="subtext" data-i18n="contact.support_subtext">Issues, account help, and live session troubleshooting.</p>
               <ul class="stack">
-                <li>Email: <a href="mailto:support@millionaire-game.live">support@millionaire-game.live</a></li>
-                <li>Response time: 1–2 business days</li>
-                <li>Include: session code, browser, and short summary</li>
+                <li><span data-i18n="contact.support_email_label">Email:</span> <a href="mailto:support@millionaire-game.live">support@millionaire-game.live</a></li>
+                <li data-i18n="contact.support_response">Response time: 1–2 business days</li>
+                <li data-i18n="contact.support_include">Include: session code, browser, and short summary</li>
               </ul>
             </div>
             <div class="card">
               <h3 id="contact-custom-title">Customization</h3>
-              <p class="subtext">Branding, custom categories, sponsor decks, and overlays.</p>
+              <p class="subtext" data-i18n="contact.custom_subtext">Branding, custom categories, sponsor decks, and overlays.</p>
               <ul class="stack">
-                <li>Email: <a href="mailto:custom@millionaire-game.live">custom@millionaire-game.live</a></li>
-                <li>Options: logos, themes, custom ladders</li>
-                <li>Turnaround: typically 3–5 business days</li>
+                <li><span data-i18n="contact.custom_email_label">Email:</span> <a href="mailto:custom@millionaire-game.live">custom@millionaire-game.live</a></li>
+                <li data-i18n="contact.custom_options">Options: logos, themes, custom ladders</li>
+                <li data-i18n="contact.custom_turnaround">Turnaround: typically 3–5 business days</li>
               </ul>
             </div>
             <div class="card">
               <h3 id="contact-partnership-title">Partnerships</h3>
-              <p class="subtext">Schools, events, and enterprise deployments.</p>
+              <p class="subtext" data-i18n="contact.partnership_subtext">Schools, events, and enterprise deployments.</p>
               <ul class="stack">
-                <li>Email: <a href="mailto:partners@millionaire-game.live">partners@millionaire-game.live</a></li>
-                <li>Includes: onboarding, analytics, and training</li>
+                <li><span data-i18n="contact.partnership_email_label">Email:</span> <a href="mailto:partners@millionaire-game.live">partners@millionaire-game.live</a></li>
+                <li data-i18n="contact.partnership_includes">Includes: onboarding, analytics, and training</li>
               </ul>
             </div>
             <div class="card">
               <h3 id="contact-request-title">Quick Request</h3>
               <form class="stack" id="contact-form">
                 <label class="field">
-                  <span>Name</span>
-                  <input type="text" placeholder="Your name" />
+                  <span data-i18n="contact.form_name">Name</span>
+                  <input type="text" placeholder="Your name" data-i18n-placeholder="contact.form_name_placeholder" />
                 </label>
                 <label class="field">
-                  <span>Email</span>
-                  <input type="email" placeholder="you@example.com" />
+                  <span data-i18n="contact.form_email">Email</span>
+                  <input type="email" placeholder="you@example.com" data-i18n-placeholder="contact.form_email_placeholder" />
                 </label>
                 <label class="field">
-                  <span>Message</span>
-                  <textarea rows="4" placeholder="How can we help?"></textarea>
+                  <span data-i18n="contact.form_message">Message</span>
+                  <textarea rows="4" placeholder="How can we help?" data-i18n-placeholder="contact.form_message_placeholder"></textarea>
                 </label>
-                <button type="submit" class="secondary">Send Request</button>
+                <button type="submit" class="secondary" data-i18n="contact.form_submit">Send Request</button>
               </form>
             </div>
           </div>
@@ -571,19 +571,19 @@
             <div class="stats-summary">
               <div class="stat-card">
                 <div class="stat-value" id="stat-games-played">0</div>
-                <div class="stat-label">Games Played</div>
+                <div class="stat-label" data-i18n="achievements.stat_games_played">Games Played</div>
               </div>
               <div class="stat-card">
                 <div class="stat-value" id="stat-games-won">0</div>
-                <div class="stat-label">Games Won</div>
+                <div class="stat-label" data-i18n="achievements.stat_games_won">Games Won</div>
               </div>
               <div class="stat-card">
                 <div class="stat-value" id="stat-total-winnings">$0</div>
-                <div class="stat-label">Total Winnings</div>
+                <div class="stat-label" data-i18n="achievements.stat_total_winnings">Total Winnings</div>
               </div>
               <div class="stat-card">
                 <div class="stat-value" id="stat-highest-level">0</div>
-                <div class="stat-label">Highest Level</div>
+                <div class="stat-label" data-i18n="achievements.stat_highest_level">Highest Level</div>
               </div>
             </div>
             <div class="achievements-grid" id="achievements-grid">
@@ -621,20 +621,20 @@
         <div class="footer-section">
           <h3 id="footer-links-title">Quick Links</h3>
           <ul class="footer-links">
-            <li><a href="#" id="footer-home">Home</a></li>
-            <li><a href="#" id="footer-dashboard">Dashboard</a></li>
-            <li><a href="#" id="footer-leaderboard">Leaderboard</a></li>
-            <li><a href="#" id="footer-pricing">Pricing</a></li>
+            <li><a href="#" id="footer-home" data-i18n="footer.link_home">Home</a></li>
+            <li><a href="#" id="footer-dashboard" data-i18n="footer.link_dashboard">Dashboard</a></li>
+            <li><a href="#" id="footer-leaderboard" data-i18n="footer.link_leaderboard">Leaderboard</a></li>
+            <li><a href="#" id="footer-pricing" data-i18n="footer.link_pricing">Pricing</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
           <h3 id="footer-others-title">Others</h3>
           <ul class="footer-links">
-            <li><a href="#" id="footer-contact">Contact Us</a></li>
-            <li><a href="#" id="footer-contrast">High Contrast</a></li>
-            <li><a href="#" id="footer-terms">Terms of Service</a></li>
-            <li><a href="#" id="footer-privacy">Privacy Policy</a></li>
+            <li><a href="#" id="footer-contact" data-i18n="footer.link_contact">Contact Us</a></li>
+            <li><a href="#" id="footer-contrast" data-i18n="footer.link_contrast">High Contrast</a></li>
+            <li><a href="#" id="footer-terms" data-i18n="footer.link_terms">Terms of Service</a></li>
+            <li><a href="#" id="footer-privacy" data-i18n="footer.link_privacy">Privacy Policy</a></li>
           </ul>
         </div>
 
@@ -642,8 +642,8 @@
           <h3 id="footer-newsletter-title">Newsletter</h3>
           <p id="footer-newsletter-text">Get updates on new features and game packs.</p>
           <form class="newsletter-form" id="newsletter-form">
-            <input type="email" placeholder="Your email" required />
-            <button type="submit" class="secondary">Subscribe</button>
+            <input type="email" placeholder="Your email" data-i18n-placeholder="footer.newsletter_email_placeholder" required />
+            <button type="submit" class="secondary" data-i18n="footer.newsletter_subscribe">Subscribe</button>
           </form>
         </div>
       </div>
@@ -661,19 +661,19 @@
           <button id="btn-auth-register" type="button" class="ghost">Register</button>
         </div>
         <label class="field">
-          <span>Email</span>
-          <input id="login-email" type="email" placeholder="you@example.com" required />
+          <span data-i18n="auth.label_email">Email</span>
+          <input id="login-email" type="email" placeholder="you@example.com" data-i18n-placeholder="auth.email_placeholder" required />
         </label>
         <label class="field">
-          <span>Display Name</span>
-          <input id="login-name" type="text" placeholder="Host" required />
+          <span data-i18n="auth.label_display_name">Display Name</span>
+          <input id="login-name" type="text" placeholder="Host" data-i18n-placeholder="auth.display_name_placeholder" required />
         </label>
         <label class="field">
-          <span>Password</span>
+          <span data-i18n="auth.label_password">Password</span>
           <input id="login-password" type="password" placeholder="••••••••" required />
         </label>
         <label class="field" id="login-confirm-wrap">
-          <span>Confirm Password</span>
+          <span data-i18n="auth.label_confirm_password">Confirm Password</span>
           <input id="login-password-confirm" type="password" placeholder="••••••••" />
         </label>
         <p id="auth-status" class="subtext"></p>
@@ -687,28 +687,28 @@
 
     <dialog id="account-dialog">
       <form method="dialog" class="dialog-card">
-        <h3>Account</h3>
-        <p class="subtext">Manage your profile, tier, and billing details.</p>
+        <h3 data-i18n="account.title">Account</h3>
+        <p class="subtext" data-i18n="account.subtitle">Manage your profile, tier, and billing details.</p>
         <label class="field">
-          <span>Display Name</span>
-          <input id="account-name" type="text" placeholder="Host name" />
+          <span data-i18n="account.label_display_name">Display Name</span>
+          <input id="account-name" type="text" placeholder="Host name" data-i18n-placeholder="account.display_name_placeholder" />
         </label>
         <label class="field">
-          <span>Email</span>
+          <span data-i18n="account.label_email">Email</span>
           <input id="account-email" type="email" disabled />
         </label>
         <div class="account-fields">
           <label class="field">
-            <span>Organization</span>
-            <input id="account-org" type="text" placeholder="Company or group" />
+            <span data-i18n="account.label_org">Organization</span>
+            <input id="account-org" type="text" placeholder="Company or group" data-i18n-placeholder="account.org_placeholder" />
           </label>
           <label class="field">
-            <span>Phone</span>
-            <input id="account-phone" type="tel" placeholder="+1 555 000 0000" />
+            <span data-i18n="account.label_phone">Phone</span>
+            <input id="account-phone" type="tel" placeholder="+1 555 000 0000" data-i18n-placeholder="account.phone_placeholder" />
           </label>
           <label class="field">
-            <span>Country</span>
-            <input id="account-country" type="text" list="country-options" placeholder="Select country" />
+            <span data-i18n="account.label_country">Country</span>
+            <input id="account-country" type="text" list="country-options" placeholder="Select country" data-i18n-placeholder="account.country_placeholder" />
             <datalist id="country-options">
               <option value="NG">Nigeria</option>
               <option value="GH">Ghana</option>
@@ -723,45 +723,45 @@
             </datalist>
           </label>
           <label class="field">
-            <span>City</span>
-            <input id="account-city" type="text" placeholder="City" />
+            <span data-i18n="account.label_city">City</span>
+            <input id="account-city" type="text" placeholder="City" data-i18n-placeholder="account.city_placeholder" />
           </label>
           <label class="field">
-            <span>ZIP / Postal Code</span>
-            <input id="account-zip" type="text" placeholder="ZIP / Postal code" />
+            <span data-i18n="account.label_zip">ZIP / Postal Code</span>
+            <input id="account-zip" type="text" placeholder="ZIP / Postal code" data-i18n-placeholder="account.zip_placeholder" />
           </label>
           <label class="field">
-            <span>Billing Name</span>
-            <input id="account-billing-name" type="text" placeholder="Billing contact" />
+            <span data-i18n="account.label_billing_name">Billing Name</span>
+            <input id="account-billing-name" type="text" placeholder="Billing contact" data-i18n-placeholder="account.billing_name_placeholder" />
           </label>
           <label class="field full">
-            <span>Billing Address</span>
-            <textarea id="account-address" rows="2" placeholder="Street, ZIP"></textarea>
+            <span data-i18n="account.label_billing_address">Billing Address</span>
+            <textarea id="account-address" rows="2" placeholder="Street, ZIP" data-i18n-placeholder="account.billing_address_placeholder"></textarea>
           </label>
           <label class="field">
-            <span>Payment Method</span>
+            <span data-i18n="account.label_payment_method">Payment Method</span>
             <input id="account-payment-method" type="text" disabled />
           </label>
         </div>
         <div class="account-meta">
           <div class="meta-row">
-            <span>Tier</span>
+            <span data-i18n="account.meta_tier">Tier</span>
             <strong id="account-tier"></strong>
           </div>
           <div class="meta-row">
-            <span>Payment</span>
+            <span data-i18n="account.meta_payment">Payment</span>
             <strong id="account-payment"></strong>
           </div>
           <div class="meta-row">
-            <span>Expires</span>
+            <span data-i18n="account.meta_expires">Expires</span>
             <strong id="account-expires"></strong>
           </div>
         </div>
-        <p class="subtext">Payment details are managed through your billing provider.</p>
+        <p class="subtext" data-i18n="account.billing_note">Payment details are managed through your billing provider.</p>
         <menu>
-          <button id="btn-admin-panel" type="button" class="secondary">Admin Panel</button>
-          <button id="btn-account-close" value="cancel" class="ghost">Cancel</button>
-          <button id="btn-account-save" value="default" class="primary">Save</button>
+          <button id="btn-admin-panel" type="button" class="secondary" data-i18n="account.admin_panel">Admin Panel</button>
+          <button id="btn-account-close" value="cancel" class="ghost" data-i18n="account.cancel">Cancel</button>
+          <button id="btn-account-save" value="default" class="primary" data-i18n="account.save">Save</button>
         </menu>
       </form>
     </dialog>
@@ -769,30 +769,30 @@
 
     <dialog id="terms-dialog">
       <div class="dialog-card legal-dialog">
-        <h3>Terms of Service</h3>
-        <p class="subtext">Last updated: 2025-01-01</p>
-        <p>By using this app, you agree to use it for lawful, respectful, and fair play.</p>
-        <p><strong>Use of service:</strong> You are responsible for your sessions, content, and any shared links.</p>
-        <p><strong>Content:</strong> Question packs you create or upload must be original or properly licensed.</p>
-        <p><strong>Availability:</strong> We may update, pause, or discontinue features at any time.</p>
-        <p><strong>Liability:</strong> This demo is provided "as is" without warranties.</p>
+        <h3 data-i18n="legal.terms_title">Terms of Service</h3>
+        <p class="subtext" data-i18n="legal.terms_updated">Last updated: 2025-01-01</p>
+        <p data-i18n="legal.terms_intro">By using this app, you agree to use it for lawful, respectful, and fair play.</p>
+        <p data-i18n-html="legal.terms_use"><strong>Use of service:</strong> You are responsible for your sessions, content, and any shared links.</p>
+        <p data-i18n-html="legal.terms_content"><strong>Content:</strong> Question packs you create or upload must be original or properly licensed.</p>
+        <p data-i18n-html="legal.terms_availability"><strong>Availability:</strong> We may update, pause, or discontinue features at any time.</p>
+        <p data-i18n-html="legal.terms_liability"><strong>Liability:</strong> This demo is provided \"as is\" without warranties.</p>
         <menu>
-          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+          <button value="cancel" class="primary" data-i18n="dialog.close" onclick="this.closest('dialog').close()">Close</button>
         </menu>
       </div>
     </dialog>
 
     <dialog id="privacy-dialog">
       <div class="dialog-card legal-dialog">
-        <h3>Privacy Policy</h3>
-        <p class="subtext">Last updated: 2025-01-01</p>
-        <p>This app stores limited session data to run games and improve the experience.</p>
-        <p><strong>Local data:</strong> Your preferences and packs may be stored in your browser.</p>
-        <p><strong>Session data:</strong> Live sessions may store join codes, votes, and timestamps.</p>
-        <p><strong>No sale of data:</strong> We do not sell your personal data.</p>
-        <p><strong>Contact:</strong> Reach out if you want data removed.</p>
+        <h3 data-i18n="legal.privacy_title">Privacy Policy</h3>
+        <p class="subtext" data-i18n="legal.privacy_updated">Last updated: 2025-01-01</p>
+        <p data-i18n="legal.privacy_intro">This app stores limited session data to run games and improve the experience.</p>
+        <p data-i18n-html="legal.privacy_local"><strong>Local data:</strong> Your preferences and packs may be stored in your browser.</p>
+        <p data-i18n-html="legal.privacy_session"><strong>Session data:</strong> Live sessions may store join codes, votes, and timestamps.</p>
+        <p data-i18n-html="legal.privacy_no_sale"><strong>No sale of data:</strong> We do not sell your personal data.</p>
+        <p data-i18n-html="legal.privacy_contact"><strong>Contact:</strong> Reach out if you want data removed.</p>
         <menu>
-          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+          <button value="cancel" class="primary" data-i18n="dialog.close" onclick="this.closest('dialog').close()">Close</button>
         </menu>
       </div>
     </dialog>
@@ -800,8 +800,8 @@
 
     <dialog id="audience-dialog">
       <div class="dialog-card lifeline-dialog">
-        <h3>📊 Ask the Audience</h3>
-        <p class="lifeline-prompt">The audience has voted:</p>
+        <h3 data-i18n="lifeline.audience_title">📊 Ask the Audience</h3>
+        <p class="lifeline-prompt" data-i18n="lifeline.audience_prompt">The audience has voted:</p>
         <div id="audience-manual" class="audience-manual">
           <div class="audience-input">
             <label>A</label>
@@ -819,37 +819,37 @@
             <label>D</label>
             <input type="number" min="0" max="100" data-option="D" />
           </div>
-          <button id="audience-apply" class="secondary">Apply Votes</button>
+          <button id="audience-apply" class="secondary" data-i18n="lifeline.apply_votes">Apply Votes</button>
         </div>
         <div id="audience-results" class="audience-bars"></div>
         <menu>
-          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+          <button value="cancel" class="primary" data-i18n="dialog.close" onclick="this.closest('dialog').close()">Close</button>
         </menu>
       </div>
     </dialog>
 
     <dialog id="phone-dialog">
       <div class="dialog-card lifeline-dialog">
-        <h3>📞 Phone a Friend</h3>
-        <p class="lifeline-prompt">Calling your friend...</p>
+        <h3 data-i18n="lifeline.phone_title">📞 Phone a Friend</h3>
+        <p class="lifeline-prompt" data-i18n="lifeline.phone_prompt">Calling your friend...</p>
         <div id="phone-timer" class="phone-countdown">60</div>
         <div id="phone-manual" class="phone-manual">
-          <label>Suggested Answer</label>
-          <input id="phone-manual-input" type="text" maxlength="1" placeholder="A-D" />
-          <button id="phone-apply" class="secondary">Apply Suggestion</button>
+          <label data-i18n="lifeline.phone_suggested">Suggested Answer</label>
+          <input id="phone-manual-input" type="text" maxlength="1" placeholder="A-D" data-i18n-placeholder="lifeline.phone_placeholder" />
+          <button id="phone-apply" class="secondary" data-i18n="lifeline.phone_apply">Apply Suggestion</button>
         </div>
         <div id="phone-message" class="phone-message"></div>
         <menu>
-          <button value="cancel" class="primary" onclick="this.closest('dialog').close()">Close</button>
+          <button value="cancel" class="primary" data-i18n="dialog.close" onclick="this.closest('dialog').close()">Close</button>
         </menu>
       </div>
     </dialog>
 
     <dialog id="timer-dialog">
       <form method="dialog" class="dialog-card">
-        <h3>⏱ Timer Settings</h3>
+        <h3 data-i18n="timer.title">⏱ Timer Settings</h3>
         <label class="field">
-          <span>Seconds per question (5-90)</span>
+          <span data-i18n="timer.label">Seconds per question (5-90)</span>
           <input id="timer-dialog-input" type="number" min="5" max="90" value="10" />
         </label>
         <menu>
@@ -861,13 +861,13 @@
 
     <dialog id="default-category-dialog">
       <div class="dialog-card">
-        <h3>Choose a Category</h3>
-        <p class="subtext">Pick a theme for this round. 15 questions are drawn randomly.</p>
+        <h3 data-i18n="category.title">Choose a Category</h3>
+        <p class="subtext" data-i18n="category.subtitle">Pick a theme for this round. 15 questions are drawn randomly.</p>
         <p id="default-category-status" class="subtext"></p>
         <div id="default-category-dialog-grid" class="category-grid"></div>
         <menu>
           <button id="btn-category-start" value="default" class="primary">Start Game</button>
-          <button value="cancel" class="ghost" onclick="this.closest('dialog').close()">Cancel</button>
+          <button value="cancel" class="ghost" data-i18n="category.cancel" onclick="this.closest('dialog').close()">Cancel</button>
         </menu>
       </div>
     </dialog>
@@ -883,8 +883,8 @@
         <p id="gameover-message" class="gameover-message"></p>
         <div id="gameover-prize" class="gameover-prize"></div>
         <menu>
-          <button value="cancel" class="primary" onclick="window.restartClassic?.()">Play Again</button>
-          <button value="cancel" class="ghost" onclick="this.closest('dialog').close(); window.location.href='index.html'">Close</button>
+          <button value="cancel" class="primary" data-i18n="gameover.play_again" onclick="window.restartClassic?.()">Play Again</button>
+          <button value="cancel" class="ghost" data-i18n="gameover.close" onclick="this.closest('dialog').close(); window.location.href='index.html'">Close</button>
         </menu>
       </div>
     </dialog>
