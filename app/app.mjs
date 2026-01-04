@@ -61,7 +61,8 @@ const state = {
   timerSeconds: 10,
   editingPackId: null,
   paymentTier: null,
-  adminUsers: []
+  adminUsers: [],
+  language: "en"
 };
 
 const firebaseState = {
@@ -88,7 +89,8 @@ const storageKeys = {
   timedMode: "wwtbam_timed_mode",
   liveMode: "wwtbam_live_mode",
   timerSeconds: "wwtbam_timer_seconds",
-  defaultCategory: "wwtbam_default_category"
+  defaultCategory: "wwtbam_default_category",
+  language: "wwtbam_language"
 };
 
 const dom = {
@@ -104,6 +106,7 @@ const dom = {
   authRegisterToggle: document.querySelector("#btn-auth-register"),
   authReset: document.querySelector("#btn-password-reset"),
   loginButton: document.querySelector("#btn-login"),
+  languageSelect: document.querySelector("#language-select"),
   accountMenu: document.querySelector("#account-menu"),
   accountDropdown: document.querySelector("#account-dropdown"),
   accountButton: document.querySelector("#btn-account"),
@@ -242,6 +245,119 @@ const dom = {
   dashboardHome: document.querySelector("#btn-dashboard-home")
 };
 
+const supportedLanguages = [
+  { code: "en", label: "English (US)", icon: "🇺🇸", dir: "ltr" },
+  { code: "ar", label: "Arabic", icon: "🇸🇦", dir: "rtl" },
+  { code: "zh", label: "Chinese", icon: "🇨🇳", dir: "ltr" },
+  { code: "fr", label: "French", icon: "🇫🇷", dir: "ltr" },
+  { code: "de", label: "German", icon: "🇩🇪", dir: "ltr" },
+  { code: "es", label: "Spanish", icon: "🇪🇸", dir: "ltr" },
+  { code: "tr", label: "Turkish", icon: "🇹🇷", dir: "ltr" }
+];
+
+const i18nState = {
+  code: "en",
+  ui: {},
+  questions: {},
+  fallbackUi: {},
+  fallbackQuestions: {}
+};
+
+const uiTextBindings = [
+  ["#btn-leaderboard", "nav.leaderboard"],
+  ["#btn-achievements", "nav.achievements"],
+  ["#btn-upgrade", "nav.upgrade"],
+  ["#btn-account", "nav.account"],
+  ["#btn-logout", "nav.logout"],
+  ["#hero-eyebrow", "hero.eyebrow"],
+  ["#hero-title", "hero.title"],
+  ["#hero-subtext", "hero.subtitle"],
+  ["#btn-play-default", "hero.cta.hot_seat"],
+  ["#btn-select-pack", "hero.cta.select_pack"],
+  ["#btn-go-dashboard", "hero.cta.creator_dashboard"],
+  ["#landing-prize-title", "hero.prize_title"],
+  ["#landing-prize-footnote", "hero.prize_footnote"],
+  ["#dashboard-title", "dashboard.title"],
+  ["#dashboard-subtitle", "dashboard.subtitle"],
+  ["#dashboard-packs-title", "dashboard.packs_title"],
+  ["#dashboard-host-title", "dashboard.host_title"],
+  ["#btn-dashboard-home", "dashboard.back_home"],
+  ["#btn-create-pack", "dashboard.create_pack"],
+  ["#btn-category-start-dashboard", "dashboard.start_game"],
+  ["#btn-category-start", "category.start"],
+  ["#btn-host-session", "dashboard.create_session"],
+  ["#builder-title-text", "builder.title"],
+  ["#builder-subtitle", "builder.subtitle"],
+  [".template-link", "builder.download_template"],
+  ["#btn-save-pack", "builder.save_pack"],
+  ["#btn-cancel-builder", "builder.back"],
+  ["#host-join-title", "host.join_title"],
+  ["#host-live-title", "host.live_title"],
+  ["#btn-end-session", "host.end_session"],
+  ["#btn-copy-link", "host.copy_link"],
+  ["#participant-title", "participant.title"],
+  ["#participant-fff-title", "participant.fastest_finger"],
+  ["#btn-participant-join", "participant.join"],
+  ["#btn-fullscreen", "classic.fullscreen"],
+  ["#btn-lights", "classic.day_mode"],
+  ["#btn-quit-game", "classic.quit_game"],
+  ["#btn-fullscreen-exit", "classic.exit_fullscreen"],
+  ["#btn-walk-away", "classic.walk_away"],
+  ["#classic-ladder-title", "classic.ladder_title"],
+  ["#pricing-title", "pricing.title"],
+  ["#pricing-subtitle", "pricing.subtitle"],
+  ["#btn-back-from-pricing", "pricing.back_home"],
+  ["#pricing-guest-note", "pricing.guest_note"],
+  ["#payment-title", "payment.title"],
+  ["#payment-subtitle", "payment.subtitle"],
+  ["#payment-selected-label", "payment.selected_plan"],
+  ["#payment-review-note", "payment.review_note"],
+  ["#payment-method-title", "payment.method_title"],
+  ["#btn-payment-back", "payment.cancel"],
+  ["#btn-payment-confirm", "payment.request"],
+  ["#btn-subscription-request-close", "dialog.close"],
+  ["#admin-title", "admin.title"],
+  ["#admin-subtitle", "admin.subtitle"],
+  ["#admin-add-title", "admin.add_title"],
+  ["#admin-users-title", "admin.users_title"],
+  ["#btn-admin-add", "admin.save_user"],
+  ["#btn-admin-refresh", "admin.refresh"],
+  ["#btn-admin-back", "admin.back_home"],
+  ["#leaderboard-title", "leaderboard.title"],
+  ["#leaderboard-subtitle", "leaderboard.subtitle"],
+  ["#btn-back-from-leaderboard", "leaderboard.back"],
+  ["#contact-title", "contact.title"],
+  ["#contact-subtitle", "contact.subtitle"],
+  ["#contact-support-title", "contact.support_title"],
+  ["#contact-custom-title", "contact.custom_title"],
+  ["#contact-partnership-title", "contact.partnership_title"],
+  ["#contact-request-title", "contact.request_title"],
+  ["#btn-back-from-contact", "contact.back"],
+  ["#achievements-title", "achievements.title"],
+  ["#achievements-progress", "achievements.progress"],
+  ["#btn-back-from-achievements", "achievements.back"],
+  ["#timer-dialog-apply", "timer.apply"],
+  ["#timer-dialog-cancel", "timer.cancel"],
+  ["#footer-about-title", "footer.about_title"],
+  ["#footer-about-text", "footer.about_text"],
+  ["#footer-links-title", "footer.links_title"],
+  ["#footer-others-title", "footer.others_title"],
+  ["#footer-newsletter-title", "footer.newsletter_title"],
+  ["#footer-newsletter-text", "footer.newsletter_text"],
+  ["#footer-copyright", "footer.copyright"],
+  ["#btn-auth-login", "auth.toggle_login"],
+  ["#btn-auth-register", "auth.toggle_register"],
+  ["#btn-login-cancel", "auth.cancel"],
+  ["#btn-password-reset", "auth.forgot"]
+];
+
+const filterLabelBindings = [
+  ["totalWinnings", "leaderboard.filter.total"],
+  ["gamesWon", "leaderboard.filter.wins"],
+  ["fastestWin", "leaderboard.filter.fastest"],
+  ["highestLevel", "leaderboard.filter.level"]
+];
+
 let activeTimer = null;
 let particleSystem = null;
 let pendingTimerToggle = false;
@@ -260,6 +376,153 @@ function safeParse(json, fallback) {
     console.warn("Failed to parse saved state, resetting.", err);
     return fallback;
   }
+}
+
+function formatTemplate(template, vars = {}) {
+  return template.replace(/\{(\w+)\}/g, (_, key) => (vars[key] ?? ""));
+}
+
+function t(key, vars) {
+  const raw = i18nState.ui[key] ?? i18nState.fallbackUi[key];
+  if (!raw) return key;
+  return vars ? formatTemplate(raw, vars) : raw;
+}
+
+async function fetchJson(path) {
+  const response = await fetch(path, { cache: "no-cache" });
+  if (!response.ok) {
+    throw new Error(`Failed to load ${path}`);
+  }
+  return response.json();
+}
+
+async function loadLanguageAssets(code) {
+  const [ui, questions] = await Promise.all([
+    fetchJson(`./i18n/ui/${code}.json`).catch(() => ({})),
+    fetchJson(`./i18n/questions/${code}.json`).catch(() => ({}))
+  ]);
+  return { ui, questions };
+}
+
+function applyTranslations() {
+  uiTextBindings.forEach(([selector, key]) => {
+    const el = document.querySelector(selector);
+    if (el) {
+      el.textContent = t(key);
+    }
+  });
+
+  filterLabelBindings.forEach(([filter, key]) => {
+    const el = document.querySelector(`.filter-button[data-filter=\"${filter}\"]`);
+    if (el) {
+      el.textContent = t(key);
+    }
+  });
+
+  document.title = t("meta.title");
+}
+
+function renderLanguageOptions() {
+  if (!dom.languageSelect) return;
+  dom.languageSelect.innerHTML = "";
+  supportedLanguages.forEach((lang) => {
+    const option = document.createElement("option");
+    option.value = lang.code;
+    option.textContent = `${lang.icon} ${lang.label}`;
+    dom.languageSelect.append(option);
+  });
+}
+
+async function setLanguage(code) {
+  const next = supportedLanguages.find((lang) => lang.code === code) || supportedLanguages[0];
+  i18nState.code = next.code;
+  state.language = next.code;
+  localStorage.setItem(storageKeys.language, next.code);
+  if (dom.languageSelect) {
+    dom.languageSelect.value = next.code;
+  }
+  const { ui, questions } = await loadLanguageAssets(next.code);
+  i18nState.ui = ui;
+  i18nState.questions = questions;
+  document.documentElement.lang = next.code;
+  document.documentElement.dir = next.dir;
+  applyTranslations();
+  setAuthMode(authMode);
+  updateLoginButton();
+  updateTimedButton();
+  updateLiveButton();
+  updateSoundButtons();
+  updateLightsButton();
+  updateFullscreenTimer();
+  updateClassicLightsButton();
+  renderLanding();
+  renderPackList();
+  renderHost();
+  renderClassic();
+}
+
+async function initI18n() {
+  i18nState.fallbackUi = await fetchJson("./i18n/ui/en.json").catch(() => ({}));
+  i18nState.fallbackQuestions = await fetchJson("./i18n/questions/en.json").catch(() => ({}));
+  renderLanguageOptions();
+  const savedLanguage = localStorage.getItem(storageKeys.language) || state.language || "en";
+  await setLanguage(savedLanguage);
+}
+
+function getTranslatedQuestion(question) {
+  const overrides = i18nState.questions.questions || {};
+  const fallback = i18nState.fallbackQuestions.questions || {};
+  const translated = overrides[question.id] || fallback[question.id];
+  if (!translated) return question;
+  return {
+    ...question,
+    promptText: translated.promptText ?? question.promptText,
+    options: translated.options ? { ...question.options, ...translated.options } : question.options,
+    explanation: translated.explanation ?? question.explanation
+  };
+}
+
+function getTranslatedCategory(category) {
+  const overrides = i18nState.questions.categories || {};
+  const fallback = i18nState.fallbackQuestions.categories || {};
+  const translated = overrides[category.id] || fallback[category.id];
+  if (!translated) return category;
+  return {
+    ...category,
+    title: translated.title ?? category.title,
+    subtitle: translated.subtitle ?? category.subtitle
+  };
+}
+
+function getTranslatedPack(pack) {
+  const overrides = i18nState.questions.packs || {};
+  const fallback = i18nState.fallbackQuestions.packs || {};
+  const translated = overrides[pack.id] || fallback[pack.id];
+  const basePackOverride = overrides[defaultPack.id] || fallback[defaultPack.id];
+  const category = pack.sourceCategoryId ? getDefaultCategoryById(pack.sourceCategoryId) : null;
+  const translatedCategory = category ? getTranslatedCategory(category) : null;
+  const baseTitle = basePackOverride?.title ?? defaultPack.title;
+  const packTitle = translated?.title
+    ?? (translatedCategory ? `${baseTitle} • ${translatedCategory.title}` : pack.title);
+  const packDescription = translated?.description
+    ?? (translatedCategory ? translatedCategory.subtitle : pack.description);
+  const lifelineOverrides = translated?.lifelines || {};
+  const baseMessages = pack.id.startsWith(defaultPack.id) && basePackOverride?.messages
+    ? basePackOverride.messages
+    : {};
+  return {
+    ...pack,
+    title: packTitle,
+    description: packDescription,
+    config: {
+      ...pack.config,
+      messages: { ...pack.config.messages, ...baseMessages, ...(translated?.messages || {}) },
+      lifelines: pack.config.lifelines.map((life) => ({
+        ...life,
+        displayName: lifelineOverrides[life.key] ?? life.displayName
+      }))
+    }
+  };
 }
 
 function getFirebaseConfig() {
@@ -394,7 +657,7 @@ function subscribeToLiveSession(sessionId) {
   const sessionRef = doc(firebaseState.db, "sessions", sessionId);
   liveListeners.session = onSnapshot(sessionRef, (snapshot) => {
     if (!snapshot.exists()) {
-      dom.participantStatus.textContent = "Session not found.";
+      dom.participantStatus.textContent = t("participant.session_not_found");
       return;
     }
     applyRemoteSessionData(sessionId, snapshot.data());
@@ -437,18 +700,18 @@ function subscribeToLiveSession(sessionId) {
 
 async function createLiveSession(pack, mode) {
   if (!pack) {
-    alert("No pack selected. Please choose a pack from the dashboard.");
+    alert(t("alerts.no_pack_selected"));
     return null;
   }
   const ready = await ensureFirebaseReady();
   if (!ready) {
-    alert("Firebase is not configured. Add firebaseConfig in index.html.");
+    alert(t("alerts.firebase_config_missing"));
     return null;
   }
 
   const fffQuestion = getRandomDefaultFFFQuestion();
   if (!fffQuestion) {
-    alert("No valid Fastest Finger question available.");
+    alert(t("alerts.no_valid_fff"));
     return null;
   }
 
@@ -461,6 +724,8 @@ async function createLiveSession(pack, mode) {
     createdAt: Date.now(),
     hostUid: firebaseState.user?.uid || null,
     fffQuestion: {
+      id: fffQuestion.id,
+      type: fffQuestion.type,
       promptText: fffQuestion.promptText,
       options: fffQuestion.options || null,
       orderItems: fffQuestion.orderItems || null,
@@ -723,13 +988,13 @@ function setAuthStatus(message, ok = false) {
 function setAuthMode(nextMode) {
   authMode = nextMode;
   if (dom.authTitle) {
-    dom.authTitle.textContent = nextMode === "register" ? "Register" : "Login";
+    dom.authTitle.textContent = nextMode === "register" ? t("auth.title_register") : t("auth.title_login");
   }
   if (dom.loginConfirmWrap) {
     dom.loginConfirmWrap.style.display = nextMode === "register" ? "block" : "none";
   }
   if (dom.saveLogin) {
-    dom.saveLogin.textContent = nextMode === "register" ? "Register" : "Login";
+    dom.saveLogin.textContent = nextMode === "register" ? t("auth.save_register") : t("auth.save_login");
   }
   if (dom.authLoginToggle && dom.authRegisterToggle) {
     dom.authLoginToggle.classList.toggle("secondary", nextMode === "login");
@@ -887,6 +1152,7 @@ function loadState() {
   const savedLive = localStorage.getItem(storageKeys.liveMode);
   const savedTimer = localStorage.getItem(storageKeys.timerSeconds);
   const savedCategory = localStorage.getItem(storageKeys.defaultCategory);
+  const savedLanguage = localStorage.getItem(storageKeys.language);
 
   state.user = savedUser ? migrateUserState(safeParse(savedUser, null)) : null;
   state.packs = safeParse(savedPacks, [defaultPack]);
@@ -895,6 +1161,7 @@ function loadState() {
   state.liveMode = savedLive === "true";
   state.timerSeconds = savedTimer ? Number(savedTimer) || 10 : 10;
   state.selectedDefaultCategoryId = savedCategory || defaultCategoryDecks[0]?.id || null;
+  state.language = savedLanguage || "en";
 
   if (state.liveMode && !getFirebaseConfig()) {
     state.liveMode = false;
@@ -961,7 +1228,7 @@ function getDefaultCategoryById(categoryId) {
 
 function buildCategoryPack(category) {
   if (!isCategoryAllowed(category)) {
-    alert(state.user ? "Upgrade to more access." : "Login to use this feature.");
+    alert(state.user ? t("alerts.upgrade_more_access") : t("alerts.login_use_feature"));
     return defaultPack;
   }
   const selected = shuffle(category.questions).slice(0, 15).map((question, index) => ({
@@ -974,6 +1241,7 @@ function buildCategoryPack(category) {
   return {
     ...defaultPack,
     id: `${defaultPack.id}_${category.id}`,
+    sourceCategoryId: category.id,
     title: `${defaultPack.title} • ${category.title}`,
     description: category.subtitle,
     questions
@@ -990,7 +1258,7 @@ function startDefaultCategoryGame() {
   ensureDefaultCategorySelection();
   const category = getDefaultCategoryById(state.selectedDefaultCategoryId);
   if (!category) {
-    alert("Choose a category first.");
+    alert(t("alerts.choose_category_first"));
     return;
   }
   const session = createSession(defaultPack, "CLASSIC");
@@ -1010,6 +1278,7 @@ function renderCategoryCards(target, { onSelect, selectedId } = {}) {
       ? ["Animals", "Science & Nature"]
       : defaultCategoryDecks.map((category) => category.title);
   defaultCategoryDecks.forEach((category) => {
+    const translatedCategory = getTranslatedCategory(category);
     const card = document.createElement("button");
     card.type = "button";
     const locked = !allowedTitles.includes(category.title);
@@ -1018,13 +1287,13 @@ function renderCategoryCards(target, { onSelect, selectedId } = {}) {
       card.classList.add("selected");
     }
     card.innerHTML = `
-      <strong>${category.title}</strong>
-      <span class="subtext">${category.subtitle}</span>
-      <span class="meta">45 questions • 15 random per game</span>
+      <strong>${translatedCategory.title}</strong>
+      <span class="subtext">${translatedCategory.subtitle}</span>
+      <span class="meta">${t("category.meta")}</span>
     `;
     card.addEventListener("click", () => {
       if (locked) {
-        alert(state.user ? "Upgrade to more access." : "Login to use this feature.");
+        alert(state.user ? t("alerts.upgrade_more_access") : t("alerts.login_use_feature"));
         setScreen(state.user ? "pricing" : "landing");
         return;
       }
@@ -1110,13 +1379,13 @@ function canAddParticipant(sessionId) {
 
 function showUpgradePrompt(feature) {
   const messages = {
-    maxPacks: "You've reached your pack limit. Upgrade to Pro for 50 packs!",
-    maxParticipants: "Session full! Upgrade to Pro for 100 participants.",
-    customBranding: "Custom branding is a Pro feature. Upgrade now!",
-    analytics: "Advanced analytics available in Pro. Upgrade to unlock!"
+    maxPacks: t("alerts.upgrade_max_packs"),
+    maxParticipants: t("alerts.upgrade_max_participants"),
+    customBranding: t("alerts.upgrade_custom_branding"),
+    analytics: t("alerts.upgrade_analytics")
   };
 
-  alert(messages[feature] || "Upgrade to unlock this feature!");
+  alert(messages[feature] || t("alerts.upgrade_unlock_feature"));
   setScreen("pricing");
 }
 
@@ -1165,9 +1434,9 @@ function updateClassicLayoutForSession() {
 
 function updateLoginButton() {
   if (state.user) {
-    dom.loginButton.textContent = `👤 ${state.user.displayName || "Account"}`;
+    dom.loginButton.textContent = state.user.displayName ? `👤 ${state.user.displayName}` : t("nav.account");
   } else {
-    dom.loginButton.textContent = "👤 Account";
+    dom.loginButton.textContent = t("nav.account");
   }
   closeAccountDropdown();
   updateModeAvailability();
@@ -1304,12 +1573,12 @@ async function syncUserProfileToFirestore() {
 
 function updateTimedButton() {
   if (!dom.timedToggle) return;
-  dom.timedToggle.textContent = state.timedMode ? "⏱ Timer On" : "⏱ Timer Off";
+  dom.timedToggle.textContent = state.timedMode ? t("nav.timer_on") : t("nav.timer_off");
 }
 
 function updateLiveButton() {
   if (!dom.liveToggle) return;
-  dom.liveToggle.textContent = state.liveMode ? "📡 Live On" : "📡 Live Off";
+  dom.liveToggle.textContent = state.liveMode ? t("nav.live_on") : t("nav.live_off");
 }
 
 
@@ -1320,7 +1589,7 @@ function updateTimerSecondsField() {
 }
 
 function updateSoundButtons() {
-  const label = audioManager.isMuted ? "🔇 Sound Off" : "🔊 Sound On";
+  const label = audioManager.isMuted ? t("nav.sound_off") : t("nav.sound_on");
   if (dom.soundToggle) {
     dom.soundToggle.textContent = label;
   }
@@ -1332,13 +1601,13 @@ function updateSoundButtons() {
 function updateLightsButton() {
   if (!dom.fullscreenLights) return;
   const lightsOn = document.body.classList.contains("classic-light");
-  dom.fullscreenLights.textContent = lightsOn ? "💡 Light On" : "🌙 Light Off";
+  dom.fullscreenLights.textContent = lightsOn ? t("classic.light_on") : t("classic.light_off");
 }
 
 function updateClassicLightsButton() {
   if (!dom.classicLights) return;
   const lightsOn = document.body.classList.contains("classic-light");
-  dom.classicLights.textContent = lightsOn ? "💡 Light On" : "🌙 Light Off";
+  dom.classicLights.textContent = lightsOn ? t("classic.light_on") : t("classic.light_off");
 }
 
 function updateFullscreenTimer() {
@@ -1346,7 +1615,7 @@ function updateFullscreenTimer() {
   const session = getSession();
   const seconds = session?.currentState?.timerSeconds;
   if (typeof seconds === "number") {
-    dom.fullscreenTimer.textContent = `Timer: ${Math.max(0, seconds)}s`;
+    dom.fullscreenTimer.textContent = t("classic.timer_label", { seconds: Math.max(0, seconds) });
     dom.fullscreenTimer.style.display = "inline-flex";
   } else {
     dom.fullscreenTimer.textContent = "";
@@ -1415,12 +1684,13 @@ function renderPackList() {
   const limit = getPackVisibilityLimit();
       const lockMessage = state.user ? "Upgrade to more access." : "Login to use this feature.";
   packs.forEach((pack, index) => {
+    const displayPack = getTranslatedPack(pack);
     const locked = index >= limit;
     const card = document.createElement("div");
     card.className = locked ? "card locked" : "card";
     card.innerHTML = `
-      <strong>${pack.title}</strong>
-      <p class="subtext">${pack.description || "No description"}</p>
+      <strong>${displayPack.title}</strong>
+      <p class="subtext">${displayPack.description || "No description"}</p>
       <button class="secondary pack-edit" data-pack-id="${pack.id}" ${locked ? "disabled" : ""}>Edit Pack</button>
       ${locked ? `<p class="lock-note">${lockMessage}</p>` : ""}
     `;
@@ -1428,10 +1698,11 @@ function renderPackList() {
   });
   dom.packSelect.innerHTML = "";
   packs.forEach((pack, index) => {
+    const displayPack = getTranslatedPack(pack);
     const locked = index >= limit;
     const option = document.createElement("option");
     option.value = pack.id;
-    option.textContent = locked ? `${pack.title} (Upgrade)` : pack.title;
+    option.textContent = locked ? `${displayPack.title} (Upgrade)` : displayPack.title;
     option.disabled = locked;
     dom.packSelect.appendChild(option);
   });
@@ -1448,7 +1719,7 @@ function renderPackList() {
 function renderAdminPanel() {
   if (!dom.adminUserTable) return;
   if (!isSuperAdmin()) {
-    alert("Admin access only.");
+    alert(t("alerts.admin_access_only"));
     setScreen("landing");
     return;
   }
@@ -1456,7 +1727,7 @@ function renderAdminPanel() {
   if (!Array.isArray(state.adminUsers) || state.adminUsers.length === 0) {
     const empty = document.createElement("div");
     empty.className = "subtext";
-    empty.textContent = "No users added yet.";
+    empty.textContent = t("admin.no_users");
     dom.adminUserTable.appendChild(empty);
     return;
   }
@@ -1509,16 +1780,16 @@ function renderAdminPanel() {
 
 async function startAdminUsersListener() {
   if (!isSuperAdmin()) {
-    alert("Admin access only.");
+    alert(t("alerts.admin_access_only"));
     return;
   }
   const ready = await ensureFirebaseReady({ allowAnonymous: false });
   if (!ready || !firebaseState.db) {
-    alert("Firebase is not configured. Add firebaseConfig in index.html.");
+    alert(t("alerts.firebase_config_missing"));
     return;
   }
   if (!firebaseState.auth?.currentUser || firebaseState.auth.currentUser.isAnonymous) {
-    alert("Please login with the super admin account to access users.");
+    alert(t("alerts.super_admin_required"));
     dom.loginDialog?.showModal();
     return;
   }
@@ -1546,7 +1817,7 @@ async function startAdminUsersListener() {
 async function upsertAdminUser(payload) {
   const ready = await ensureFirebaseReady({ allowAnonymous: false });
   if (!ready || !firebaseState.db) {
-    alert("Firebase is not configured. Add firebaseConfig in index.html.");
+    alert(t("alerts.firebase_config_missing"));
     return;
   }
   const email = payload.email.toLowerCase();
@@ -1812,7 +2083,11 @@ function updateGameStats(type, sessionId) {
     setTimeout(() => {
       newAchievements.forEach((achievement, index) => {
         setTimeout(() => {
-          alert(`🎉 Achievement Unlocked!\n\n${achievement.icon} ${achievement.name}\n${achievement.description}`);
+          alert(t("alerts.achievement_unlocked", {
+            icon: achievement.icon,
+            name: achievement.name,
+            description: achievement.description
+          }));
         }, index * 500);
       });
     }, 2000);
@@ -1844,7 +2119,7 @@ function resetBuilder() {
   dom.builderLoseMessage.value = "Better luck next time!";
   dom.builderWalkTitle.value = "Well Played!";
   dom.builderWalkMessage.value = "You walked away with:";
-  dom.builderPreview.textContent = "Upload a CSV with 15 rows to preview questions.";
+  dom.builderPreview.textContent = t("builder.preview_placeholder");
   renderBuilderLadder(defaultPack.config.amounts);
   delete dom.builderPreview.dataset.questions;
   state.editingPackId = null;
@@ -1852,14 +2127,14 @@ function resetBuilder() {
 
 function createSession(pack, mode) {
   if (!pack) {
-    alert("No pack selected. Please choose a pack from the dashboard.");
+    alert(t("alerts.no_pack_selected"));
     return null;
   }
   let resolvedPack = pack;
   if (pack.id === defaultPack.id && mode === "CLASSIC") {
     const category = getDefaultCategoryById(state.selectedDefaultCategoryId);
     if (!category) {
-      alert("Choose a category for the default pack.");
+      alert(t("alerts.choose_default_category"));
       return null;
     }
     resolvedPack = buildCategoryPack(category);
@@ -1930,7 +2205,8 @@ function renderHost() {
     return;
   }
   const pack = getPackForSession(session);
-  dom.hostSessionTitle.textContent = pack ? pack.title : "Live Session";
+  const displayPack = pack ? getTranslatedPack(pack) : null;
+  dom.hostSessionTitle.textContent = displayPack ? displayPack.title : t("live.classic_title");
   dom.hostSessionMeta.textContent = `${session.mode} • ${session.status}`;
   dom.hostSessionCode.textContent = session.id;
   const joinUrl = `${window.location.origin}${window.location.pathname}?view=participant&session=${session.id}`;
@@ -1939,8 +2215,8 @@ function renderHost() {
   }
   dom.copyLink.onclick = () => {
     navigator.clipboard.writeText(joinUrl);
-    dom.copyLink.textContent = "Copied";
-    setTimeout(() => (dom.copyLink.textContent = "Copy Join Link"), 1500);
+    dom.copyLink.textContent = t("host.copied");
+    setTimeout(() => (dom.copyLink.textContent = t("host.copy_link")), 1500);
   };
 
   dom.hostControls.innerHTML = "";
@@ -1956,29 +2232,30 @@ function renderHost() {
 function renderHostFFF(session, pack, joinUrl) {
   const fffQuestion = getActiveFFFQuestion(session, pack);
   if (!fffQuestion) {
-    dom.hostLive.textContent = "No FFF question available in this pack.";
+    dom.hostLive.textContent = t("live.fff_missing");
     return;
   }
   const startBtn = document.createElement("button");
   startBtn.className = "primary";
-  startBtn.textContent = session.status === "live" ? "Restart FFF" : "Start FFF";
+  startBtn.textContent = session.status === "live" ? t("live.restart_fff") : t("live.start_fff");
   startBtn.onclick = () => startFFF(session.id);
 
   const winnerBtn = document.createElement("button");
   winnerBtn.className = "secondary";
-  winnerBtn.textContent = "Compute Winner";
+  winnerBtn.textContent = t("live.compute_winner");
   winnerBtn.onclick = () => computeFFFWinner(session.id);
 
   const classicBtn = document.createElement("button");
   classicBtn.className = "ghost";
-  classicBtn.textContent = "Start Classic";
+  classicBtn.textContent = t("live.start_classic");
   classicBtn.onclick = () => startClassic(session.id);
 
   dom.hostControls.append(startBtn, winnerBtn, classicBtn);
 
   const participantCount = Object.keys(session.participants).length;
-  const tally = getFFFTally(session, fffQuestion);
-  const results = Object.entries(fffQuestion.options || {}).map(([key]) => {
+  const translatedQuestion = getTranslatedQuestion(fffQuestion);
+  const tally = getFFFTally(session, translatedQuestion);
+  const results = Object.entries(translatedQuestion.options || {}).map(([key]) => {
     const count = tally[key] || 0;
     const pct = tally.total ? Math.round((count / tally.total) * 100) : 0;
     return `
@@ -1997,7 +2274,7 @@ function renderHostFFF(session, pack, joinUrl) {
   dom.hostLive.innerHTML = `
     <div class="fff-layout">
       <div>
-        <div class="question"><strong>FFF:</strong> ${fffQuestion.promptText}</div>
+        <div class="question"><strong>FFF:</strong> ${translatedQuestion.promptText}</div>
         <div>Participants: ${participantCount}</div>
         <div>Submissions: ${Object.keys(session.fffSubmissions).length}</div>
         <div class="status">Winner: ${winnerName}</div>
@@ -2017,12 +2294,12 @@ function renderHostClassicStatus(session, pack) {
   status.className = "stack";
   const openClassicBtn = document.createElement("button");
   openClassicBtn.className = "primary";
-  openClassicBtn.textContent = "Open Classic Board";
+  openClassicBtn.textContent = t("live.open_classic");
   openClassicBtn.onclick = () => setScreen("classic");
 
   const startBtn = document.createElement("button");
   startBtn.className = "secondary";
-  startBtn.textContent = session.status === "live" ? "Restart Classic" : "Start Classic";
+  startBtn.textContent = session.status === "live" ? t("live.restart_classic") : t("live.start_classic");
   startBtn.onclick = () => startClassic(session.id);
 
   status.append(openClassicBtn, startBtn);
@@ -2043,28 +2320,29 @@ function renderClassic() {
   updateClassicLayoutForSession();
   const pack = getPackForSession(session);
   if (!pack) {
-    dom.classicQuestion.textContent = "Pack data missing. Reload the page to restore the default pack.";
+    dom.classicQuestion.textContent = t("classic.pack_missing");
     return;
   }
-  dom.classicPackTitle.textContent = pack ? pack.title : "Classic Round";
+  const displayPack = getTranslatedPack(pack);
+  dom.classicPackTitle.textContent = displayPack ? displayPack.title : t("classic.round_title");
   dom.classicMeta.textContent = `Level ${session.currentState.level} of 15`;
 
   // Play level-appropriate background music
   const levelMusic = audioManager.getMusicForLevel(session.currentState.level);
   audioManager.playBackground(levelMusic, false);
 
-  const ladder = pack.config.amounts;
+  const ladder = displayPack.config.amounts;
   if (!state.timedMode || lastRenderedLevel !== session.currentState.level || !dom.classicLadder.children.length) {
     dom.classicLadder.innerHTML = "";
     ladder.slice().reverse().forEach((amount, index) => {
       const level = 15 - index;
       const li = document.createElement("li");
       li.classList.toggle("active", level === session.currentState.level);
-      li.classList.toggle("safe", pack.config.guaranteedLevels.includes(level));
+      li.classList.toggle("safe", displayPack.config.guaranteedLevels.includes(level));
       if (level < session.currentState.level) {
         li.classList.add("completed");
       }
-      li.innerHTML = `<span>${level}</span><span>${formatMoney(pack.config.currencySymbol, amount)}</span>`;
+      li.innerHTML = `<span>${level}</span><span>${formatMoney(displayPack.config.currencySymbol, amount)}</span>`;
       dom.classicLadder.appendChild(li);
     });
     lastRenderedLevel = session.currentState.level;
@@ -2072,15 +2350,16 @@ function renderClassic() {
 
   const question = getCurrentQuestion(pack, session);
   if (!question) {
-    dom.classicQuestion.textContent = "No question loaded.";
+    dom.classicQuestion.textContent = t("classic.no_question");
     return;
   }
-  const shuffled = getShuffledQuestion(session, question);
-  dom.classicQuestion.textContent = question.promptText;
+  const translatedQuestion = getTranslatedQuestion(question);
+  const shuffled = getShuffledQuestion(session, translatedQuestion);
+  dom.classicQuestion.textContent = translatedQuestion.promptText;
   if (dom.classicQuestionImage) {
-    if (question.image) {
+    if (translatedQuestion.image || question.image) {
       dom.classicQuestionImage.src = question.image;
-      dom.classicQuestionImage.alt = question.imageAlt || question.promptText || "Question image";
+      dom.classicQuestionImage.alt = question.imageAlt || translatedQuestion.promptText || "Question image";
       dom.classicQuestionImage.style.display = "block";
     } else {
       dom.classicQuestionImage.removeAttribute("src");
@@ -2121,7 +2400,7 @@ function renderClassic() {
     ask_audience: "📊",
     phone_friend: "📞"
   };
-  pack.config.lifelines.forEach((life) => {
+  displayPack.config.lifelines.forEach((life) => {
     const btn = document.createElement("button");
     btn.className = "ghost";
     const icon = lifelineIcons[life.key] || "⭐";
@@ -2132,13 +2411,13 @@ function renderClassic() {
   });
   const walkButton = dom.walkAway;
   if (walkButton) {
-    walkButton.textContent = "🚪 Walk Away";
+    walkButton.textContent = t("classic.walk_away");
     dom.classicLifelines.appendChild(walkButton);
   }
 
   const showTimer = state.timedMode || (dom.toggleTimer && dom.toggleTimer.checked);
   if (showTimer && session.currentState.timerSeconds !== undefined) {
-    dom.classicTimer.textContent = `Timer : ${Math.max(0, session.currentState.timerSeconds)}s`;
+    dom.classicTimer.textContent = t("classic.timer_label_compact", { seconds: Math.max(0, session.currentState.timerSeconds) });
   } else {
     dom.classicTimer.textContent = "";
   }
@@ -2668,7 +2947,7 @@ async function submitFFF(sessionId, participantId, order) {
 function renderParticipant(sessionId, participantId) {
   const session = state.sessions[sessionId];
   if (!session) {
-    dom.participantStatus.textContent = "Session not found.";
+    dom.participantStatus.textContent = t("participant.session_not_found");
     return;
   }
   if (session.mode === "CLASSIC") {
@@ -2680,29 +2959,30 @@ function renderParticipant(sessionId, participantId) {
   dom.participantMeta.textContent = `Session ${session.id} • ${session.status}`;
   const question = getActiveFFFQuestion(session, pack);
   if (!question) {
-    dom.participantFFF.textContent = "No FFF question in this pack.";
+    dom.participantFFF.textContent = t("live.fff_missing");
     return;
   }
+  const translatedQuestion = getTranslatedQuestion(question);
 
   dom.participantFFF.innerHTML = "";
   if (session.status !== "live") {
-    dom.participantStatus.textContent = "Waiting for host to start...";
+    dom.participantStatus.textContent = t("participant.waiting");
   }
   const prompt = document.createElement("div");
   prompt.className = "question";
-  prompt.textContent = question.promptText;
+  prompt.textContent = translatedQuestion.promptText;
 
   const list = document.createElement("div");
   list.className = "stack";
 
-  if (question.options) {
-    Object.entries(question.options).forEach(([key, value]) => {
+  if (translatedQuestion.options) {
+    Object.entries(translatedQuestion.options).forEach(([key, value]) => {
       const btn = document.createElement("button");
       btn.className = "secondary";
       btn.textContent = `${key}: ${value}`;
       btn.onclick = async () => {
         await submitFFF(sessionId, participantId, key);
-        dom.participantStatus.textContent = `Voted ${key}.`;
+        dom.participantStatus.textContent = t("participant.voted", { option: key });
         list.querySelectorAll("button").forEach((b) => (b.disabled = true));
       };
       list.appendChild(btn);
@@ -2719,7 +2999,7 @@ function renderParticipant(sessionId, participantId) {
         btn.disabled = true;
         if (selections.length === 4) {
           await submitFFF(sessionId, participantId, selections);
-          dom.participantStatus.textContent = "Submitted!";
+          dom.participantStatus.textContent = t("participant.submitted");
         }
       };
       list.appendChild(btn);
@@ -2733,7 +3013,7 @@ function renderParticipant(sessionId, participantId) {
   }
 
   if (session.fffSubmissions?.[participantId]) {
-    dom.participantStatus.textContent = "Submitted!";
+    dom.participantStatus.textContent = t("participant.submitted");
     list.querySelectorAll("button").forEach((b) => (b.disabled = true));
   }
 }
@@ -2811,7 +3091,8 @@ function showGameOverDialog(type, prize, currencySymbol) {
   const prizeDiv = dom.gameoverPrize;
   const session = getSession();
   const pack = session ? getPackForSession(session) : null;
-  const messages = pack?.config?.messages || {};
+  const displayPack = pack ? getTranslatedPack(pack) : null;
+  const messages = displayPack?.config?.messages || {};
 
   // Clear previous classes
   icon.className = "gameover-icon";
@@ -2878,10 +3159,10 @@ function handleCSVUpload(file) {
     const rows = parseCSV(reader.result);
     const validated = validateCSV(rows);
     if (!validated.ok) {
-      dom.builderPreview.textContent = validated.error;
+    dom.builderPreview.textContent = validated.error;
       return;
     }
-    dom.builderPreview.textContent = `Loaded ${validated.questions.length} questions.`;
+    dom.builderPreview.textContent = t("builder.preview_loaded", { count: validated.questions.length });
     dom.builderPreview.dataset.questions = JSON.stringify(validated.questions);
   };
   reader.readAsText(file);
@@ -2892,7 +3173,10 @@ function savePack() {
   if (!state.editingPackId && !canCreatePack()) {
     const limits = getUserLimits();
     const userPacks = state.packs.filter(pack => pack.ownerId === state.user?.email);
-    alert(`Pack limit reached! You have ${userPacks.length}/${limits.maxPacks} packs.\n\nUpgrade to create more packs.`);
+    alert(t("alerts.pack_limit_reached", {
+      current: userPacks.length,
+      max: limits.maxPacks
+    }));
     setScreen("pricing");
     renderPricing();
     return;
@@ -2900,7 +3184,7 @@ function savePack() {
 
   const questionsRaw = dom.builderPreview.dataset.questions;
   if (!questionsRaw) {
-    dom.builderPreview.textContent = "Upload a valid CSV first.";
+  dom.builderPreview.textContent = t("builder.preview_invalid");
     return;
   }
   const questions = JSON.parse(questionsRaw).map((q) => ({ ...q, id: makeId("Q") }));
@@ -2944,6 +3228,11 @@ function savePack() {
 
 function initEvents() {
   startInactivityTracking();
+  if (dom.languageSelect) {
+    dom.languageSelect.addEventListener("change", (event) => {
+      setLanguage(event.target.value);
+    });
+  }
   dom.loginButton.addEventListener("click", () => {
     if (state.user) {
       toggleAccountDropdown();
@@ -2963,7 +3252,7 @@ function initEvents() {
     dom.adminPanelButton.addEventListener("click", () => {
       dom.accountDialog?.close();
       if (!isSuperAdmin()) {
-        alert("Admin access only.");
+        alert(t("alerts.admin_access_only"));
         return;
       }
       setScreen("admin");
@@ -3034,14 +3323,14 @@ function initEvents() {
   if (dom.adminAdd) {
     dom.adminAdd.addEventListener("click", async () => {
       if (!isSuperAdmin()) {
-        alert("Admin access only.");
+        alert(t("alerts.admin_access_only"));
         return;
       }
       const email = dom.adminUserEmail?.value.trim().toLowerCase();
       const name = dom.adminUserName?.value.trim();
       const tier = dom.adminUserTier?.value || "FREE";
       if (!email) {
-        alert("Email is required.");
+        alert(t("alerts.email_required"));
         return;
       }
       await upsertAdminUser({ email, name: name || "", tier });
@@ -3113,11 +3402,11 @@ function initEvents() {
     const ready = await ensureFirebaseReady({ allowAnonymous: false });
     if (!ready || !firebaseState.auth) {
       if (firebaseState.lastInitError === "config") {
-        setAuthStatus("Firebase config missing. Refresh the page.");
+        setAuthStatus(t("auth.status.firebase_missing"));
       } else if (firebaseState.lastInitError === "anonymous") {
-        setAuthStatus("Anonymous auth is disabled. Enable it in Firebase.");
+        setAuthStatus(t("auth.status.anonymous_disabled"));
       } else {
-        setAuthStatus("Firebase failed to initialize. Check network or console.");
+        setAuthStatus(t("auth.status.firebase_failed"));
       }
       return;
     }
@@ -3128,18 +3417,18 @@ function initEvents() {
     const confirm = dom.loginPasswordConfirm?.value || "";
 
     if (!email || !password) {
-      setAuthStatus("Email and password are required.");
+      setAuthStatus(t("auth.status.email_password_required"));
       return;
     }
 
     try {
       if (authMode === "register") {
         if (password.length < 6) {
-          setAuthStatus("Password must be at least 6 characters.");
+          setAuthStatus(t("auth.status.password_short"));
           return;
         }
         if (password !== confirm) {
-          setAuthStatus("Passwords do not match.");
+          setAuthStatus(t("auth.status.password_mismatch"));
           return;
         }
         const result = await createUserWithEmailAndPassword(firebaseState.auth, email, password);
@@ -3155,7 +3444,7 @@ function initEvents() {
       dom.loginDialog.close();
     } catch (err) {
       console.warn("Auth error", err);
-      setAuthStatus("Authentication failed. Check your details.");
+      setAuthStatus(t("auth.status.auth_failed"));
     }
   });
 
@@ -3164,25 +3453,25 @@ function initEvents() {
       const ready = await ensureFirebaseReady({ allowAnonymous: false });
       if (!ready || !firebaseState.auth) {
         if (firebaseState.lastInitError === "config") {
-          setAuthStatus("Firebase config missing. Refresh the page.");
+          setAuthStatus(t("auth.status.firebase_missing"));
         } else if (firebaseState.lastInitError === "anonymous") {
-          setAuthStatus("Anonymous auth is disabled. Enable it in Firebase.");
+          setAuthStatus(t("auth.status.anonymous_disabled"));
         } else {
-          setAuthStatus("Firebase failed to initialize. Check network or console.");
+          setAuthStatus(t("auth.status.firebase_failed"));
         }
         return;
       }
       const email = dom.loginEmail.value.trim();
       if (!email) {
-        setAuthStatus("Enter your email first.");
+        setAuthStatus(t("auth.status.enter_email_first"));
         return;
       }
       try {
         await sendPasswordResetEmail(firebaseState.auth, email);
-        setAuthStatus("Password reset email sent.", true);
+        setAuthStatus(t("auth.status.reset_sent"), true);
       } catch (err) {
         console.warn("Password reset error", err);
-        setAuthStatus("Unable to send reset email.");
+        setAuthStatus(t("auth.status.reset_failed"));
       }
     });
   }
@@ -3275,7 +3564,7 @@ function initEvents() {
   if (dom.liveToggle) {
     dom.liveToggle.addEventListener("click", async () => {
       if (!state.user || !state.user.subscription?.paid) {
-        alert("Upgrade to use this feature.");
+        alert(t("alerts.upgrade_use_feature"));
         setScreen("pricing");
         return;
       }
@@ -3283,7 +3572,7 @@ function initEvents() {
       if (nextMode) {
         const ready = await ensureFirebaseReady();
         if (!ready) {
-          alert("Firebase is not configured. Add firebaseConfig in index.html.");
+          alert(t("alerts.firebase_config_missing"));
           return;
         }
       }
@@ -3387,7 +3676,7 @@ function initEvents() {
 
   dom.createPack.addEventListener("click", () => {
     if (!state.user) {
-      dom.builderPreview.textContent = "Login required to save custom packs.";
+      dom.builderPreview.textContent = t("builder.preview_login_required");
     }
     resetBuilder();
     setScreen("builder");
@@ -3406,7 +3695,7 @@ function initEvents() {
 
   dom.savePack.addEventListener("click", () => {
     if (!state.user) {
-      dom.builderPreview.textContent = "Login required to save custom packs.";
+      dom.builderPreview.textContent = t("builder.preview_login_required");
       return;
     }
     savePack();
@@ -3416,12 +3705,12 @@ function initEvents() {
     const packId = dom.packSelect.value;
     const mode = dom.modeSelect.value;
     if (!isPackAllowed(packId)) {
-      alert(state.user ? "Upgrade to access more packs." : "Login to use this feature.");
+      alert(state.user ? t("alerts.upgrade_more_packs") : t("alerts.login_use_feature"));
       setScreen(state.user ? "pricing" : "landing");
       return;
     }
     if (mode === "FFF" && getUserTier() !== "PRO" && getUserTier() !== "ENTERPRISE") {
-      alert("Fastest Finger First is not available on the Free tier. Upgrade to unlock this mode.");
+      alert(t("alerts.fff_free_tier_unavailable"));
       setScreen("pricing");
       return;
     }
@@ -3459,7 +3748,7 @@ function initEvents() {
     dom.builderWalkTitle.value = pack.config?.messages?.walkAwayTitle || "Well Played!";
     dom.builderWalkMessage.value = pack.config?.messages?.walkAwayMessage || "You walked away with:";
     renderBuilderLadder(pack.config?.amounts || defaultPack.config.amounts);
-    dom.builderPreview.textContent = `Loaded ${pack.questions.length} questions from this pack.`;
+  dom.builderPreview.textContent = t("builder.preview_loaded_pack", { count: pack.questions.length });
     dom.builderPreview.dataset.questions = JSON.stringify(pack.questions.filter((q) => q.type === "MCQ"));
     setScreen("builder");
   });
@@ -3482,7 +3771,7 @@ function initEvents() {
     const code = dom.participantCode.value.trim().toUpperCase();
     const name = dom.participantName.value.trim();
     if (!code || !name) {
-      dom.participantStatus.textContent = "Enter a session code and name.";
+      dom.participantStatus.textContent = t("participant.enter_code");
       return;
     }
     const result = await joinSession(code, name);
@@ -3490,7 +3779,7 @@ function initEvents() {
       dom.participantStatus.textContent = result.message;
       return;
     }
-    dom.participantStatus.textContent = `Joined ${code}.`;
+    dom.participantStatus.textContent = t("participant.joined", { code });
     renderParticipant(code, result.participantId);
   });
 
@@ -3506,7 +3795,7 @@ function initEvents() {
     button.addEventListener("click", () => {
       const tier = button.dataset.tier;
       if (!state.user) {
-        alert("Please login to manage your subscription.");
+        alert(t("alerts.login_manage_subscription"));
         dom.loginDialog.showModal();
         return;
       }
@@ -3526,7 +3815,7 @@ function initEvents() {
         };
         saveState();
         updateLoginButton();
-        alert("Your plan has been updated to Free.");
+        alert(t("alerts.plan_updated_free"));
         setScreen("dashboard");
         return;
       }
@@ -3552,19 +3841,19 @@ function initEvents() {
   if (dom.paymentConfirm) {
     dom.paymentConfirm.addEventListener("click", async () => {
       if (!state.user || !state.paymentTier) {
-        alert("Select a plan first.");
+        alert(t("alerts.select_plan_first"));
         setScreen("pricing");
         return;
       }
       const method = document.querySelector(".payment-option.selected");
       if (!method) {
-        alert("Select a payment method to continue.");
+        alert(t("alerts.select_payment_method"));
         return;
       }
       const tier = state.paymentTier;
       const ready = await ensureFirebaseReady({ allowAnonymous: false });
       if (!ready || !firebaseState.db) {
-        alert("Firebase is not configured. Add firebaseConfig in index.html.");
+        alert(t("alerts.firebase_config_missing"));
         return;
       }
       const payload = {
@@ -3660,7 +3949,7 @@ function initEvents() {
 
   if (dom.fullscreenButton && dom.classicLayout) {
     const updateFullscreenLabel = () => {
-      dom.fullscreenButton.textContent = document.fullscreenElement ? "⛶ Exit Fullscreen" : "⛶ Fullscreen";
+      dom.fullscreenButton.textContent = document.fullscreenElement ? t("classic.exit_fullscreen") : t("classic.fullscreen");
     };
     dom.fullscreenButton.addEventListener("click", () => {
       if (document.fullscreenElement) {
@@ -3739,7 +4028,7 @@ function initEvents() {
     newsletterForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const email = newsletterForm.querySelector("input[type='email']").value;
-      alert(`Thanks for subscribing with ${email}!\n\nYou'll receive updates about new features and game packs.`);
+      alert(t("alerts.subscribe_thanks", { email }));
       newsletterForm.reset();
     });
   }
@@ -3748,7 +4037,7 @@ function initEvents() {
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      alert("Thanks for reaching out! We'll get back to you soon.");
+      alert(t("alerts.contact_thanks"));
       contactForm.reset();
     });
   }
@@ -3776,28 +4065,33 @@ function initFromUrl() {
   setScreen("landing");
 }
 
-loadState();
-if (state.liveMode) {
-  ensureFirebaseReady();
+async function bootstrap() {
+  loadState();
+  await initI18n();
+  if (state.liveMode) {
+    ensureFirebaseReady();
+  }
+  updateLoginButton();
+  setAuthMode("login");
+  updateTimedButton();
+  updateLiveButton();
+  updateSoundButtons();
+  updateLightsButton();
+  updateFullscreenTimer();
+  updateClassicLightsButton();
+  renderLanding();
+  renderPackList();
+  resetBuilder();
+  initEvents();
+  initFromUrl();
+  initParticles();
+  renderHost();
+  renderClassic();
+  updateTimedAvailability();
+  updateLiveAvailability();
 }
-updateLoginButton();
-setAuthMode("login");
-updateTimedButton();
-updateLiveButton();
-updateSoundButtons();
-updateLightsButton();
-updateFullscreenTimer();
-updateClassicLightsButton();
-renderLanding();
-renderPackList();
-resetBuilder();
-initEvents();
-initFromUrl();
-initParticles();
-renderHost();
-renderClassic();
-updateTimedAvailability();
-updateLiveAvailability();
+
+bootstrap();
 
 window.restartClassic = () => {
   const session = getSession();

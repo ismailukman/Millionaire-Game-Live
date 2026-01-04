@@ -1,0 +1,3442 @@
+{
+  "packs": {
+    "pack_default": {
+      "title": "Millionaire Questions",
+      "description": "A cinematic mix of pop culture, history, and science.",
+      "messages": {
+        "winTitle": "Congratulations!",
+        "winMessage": "You are a millionaire!",
+        "loseTitle": "Game Over",
+        "loseMessage": "Better luck next time!",
+        "walkAwayTitle": "Well Played!",
+        "walkAwayMessage": "You walked away with:"
+      },
+      "lifelines": {
+        "fifty_fifty": "50:50",
+        "ask_audience": "Ask the Audience",
+        "phone_friend": "Phone a Friend"
+      }
+    }
+  },
+  "categories": {
+    "animals": {
+      "title": "Animals",
+      "subtitle": "Animal Planet • Underwater Animals"
+    },
+    "geography": {
+      "title": "Geography",
+      "subtitle": "States of America • Countries of the World • Cities Around the World"
+    },
+    "science_nature": {
+      "title": "Science & Nature",
+      "subtitle": "Dinosaurs • Space"
+    },
+    "kids_gk": {
+      "title": "Kids General Knowledge",
+      "subtitle": "Kids Quiz"
+    },
+    "mathematics": {
+      "title": "Mathematics",
+      "subtitle": "Numbers • Algebra • Geometry • Probability"
+    },
+    "aptitude": {
+      "title": "Aptitude",
+      "subtitle": "Verbal • Numerical • Abstract • Logic • Patterns"
+    },
+    "occupations": {
+      "title": "Occupations",
+      "subtitle": "Inspiring Professions"
+    },
+    "objects_concepts": {
+      "title": "Objects & Concepts",
+      "subtitle": "Wheels, Wings, and More • Trip Through Town"
+    }
+  },
+  "questions": {
+    "q1": {
+      "promptText": "Which planet is known as the Red Planet?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Jupiter",
+        "D": "Mercury"
+      },
+      "explanation": "Mars appears red due to iron oxide on its surface."
+    },
+    "q2": {
+      "promptText": "What is the capital of Canada?",
+      "options": {
+        "A": "Toronto",
+        "B": "Vancouver",
+        "C": "Ottawa",
+        "D": "Montreal"
+      }
+    },
+    "q3": {
+      "promptText": "Which instrument has 88 keys?",
+      "options": {
+        "A": "Harp",
+        "B": "Piano",
+        "C": "Accordion",
+        "D": "Organ"
+      }
+    },
+    "q4": {
+      "promptText": "The Great Barrier Reef is located off the coast of which country?",
+      "options": {
+        "A": "Mexico",
+        "B": "Australia",
+        "C": "South Africa",
+        "D": "Brazil"
+      }
+    },
+    "q5": {
+      "promptText": "Which element has the chemical symbol O?",
+      "options": {
+        "A": "Gold",
+        "B": "Oxygen",
+        "C": "Osmium",
+        "D": "Tin"
+      }
+    },
+    "q6": {
+      "promptText": "Who wrote 'Pride and Prejudice'?",
+      "options": {
+        "A": "Charlotte Bronte",
+        "B": "Jane Austen",
+        "C": "Mary Shelley",
+        "D": "Emily Dickinson"
+      }
+    },
+    "q7": {
+      "promptText": "Which ocean is the largest on Earth?",
+      "options": {
+        "A": "Atlantic",
+        "B": "Indian",
+        "C": "Pacific",
+        "D": "Arctic"
+      }
+    },
+    "q8": {
+      "promptText": "What is the name of the first artificial satellite launched into space?",
+      "options": {
+        "A": "Voyager",
+        "B": "Sputnik",
+        "C": "Apollo",
+        "D": "Pioneer"
+      }
+    },
+    "q9": {
+      "promptText": "Which city hosted the 2012 Summer Olympics?",
+      "options": {
+        "A": "London",
+        "B": "Beijing",
+        "C": "Rio de Janeiro",
+        "D": "Tokyo"
+      }
+    },
+    "q10": {
+      "promptText": "What is the hardest natural substance?",
+      "options": {
+        "A": "Diamond",
+        "B": "Quartz",
+        "C": "Granite",
+        "D": "Platinum"
+      }
+    },
+    "q11": {
+      "promptText": "Which artist painted the ceiling of the Sistine Chapel?",
+      "options": {
+        "A": "Raphael",
+        "B": "Michelangelo",
+        "C": "Da Vinci",
+        "D": "Caravaggio"
+      }
+    },
+    "q12": {
+      "promptText": "What is the longest river in the world?",
+      "options": {
+        "A": "Amazon",
+        "B": "Nile",
+        "C": "Yangtze",
+        "D": "Mississippi"
+      }
+    },
+    "q13": {
+      "promptText": "Which gas makes up the majority of Earth's atmosphere?",
+      "options": {
+        "A": "Oxygen",
+        "B": "Nitrogen",
+        "C": "Carbon Dioxide",
+        "D": "Argon"
+      }
+    },
+    "q14": {
+      "promptText": "What is the largest desert in the world?",
+      "options": {
+        "A": "Sahara",
+        "B": "Gobi",
+        "C": "Antarctic Desert",
+        "D": "Arabian"
+      }
+    },
+    "q15": {
+      "promptText": "Which physicist developed the theory of general relativity?",
+      "options": {
+        "A": "Isaac Newton",
+        "B": "Albert Einstein",
+        "C": "Niels Bohr",
+        "D": "Marie Curie"
+      }
+    },
+    "fff1": {
+      "promptText": "Fastest Finger: Which Surah is known as The Opening?",
+      "options": {
+        "A": "Al-Fatihah",
+        "B": "Al-Baqarah",
+        "C": "Al-Ikhlas",
+        "D": "Al-Kahf"
+      }
+    },
+    "animals_1": {
+      "promptText": "Which mammal is known for echolocation?",
+      "options": {
+        "A": "Bat",
+        "B": "Otter",
+        "C": "Zebra",
+        "D": "Moose"
+      }
+    },
+    "animals_2": {
+      "promptText": "What is the fastest land animal?",
+      "options": {
+        "A": "Cheetah",
+        "B": "Pronghorn",
+        "C": "Lion",
+        "D": "Ostrich"
+      }
+    },
+    "animals_3": {
+      "promptText": "Which bird is famous for its colorful tail feathers and courtship display?",
+      "options": {
+        "A": "Peacock",
+        "B": "Flamingo",
+        "C": "Eagle",
+        "D": "Penguin"
+      }
+    },
+    "animals_4": {
+      "promptText": "A group of lions is called a:",
+      "options": {
+        "A": "Herd",
+        "B": "Pride",
+        "C": "School",
+        "D": "Pack"
+      }
+    },
+    "animals_5": {
+      "promptText": "Which animal is the largest on Earth?",
+      "options": {
+        "A": "African Elephant",
+        "B": "Blue Whale",
+        "C": "Giraffe",
+        "D": "Great White Shark"
+      }
+    },
+    "animals_6": {
+      "promptText": "What do you call a baby kangaroo?",
+      "options": {
+        "A": "Cub",
+        "B": "Joey",
+        "C": "Calf",
+        "D": "Fawn"
+      }
+    },
+    "animals_7": {
+      "promptText": "Which animal has the longest lifespan?",
+      "options": {
+        "A": "Galapagos Tortoise",
+        "B": "Elephant",
+        "C": "Blue Whale",
+        "D": "Parrot"
+      }
+    },
+    "animals_8": {
+      "promptText": "Which sea creature has eight arms and three hearts?",
+      "options": {
+        "A": "Squid",
+        "B": "Octopus",
+        "C": "Cuttlefish",
+        "D": "Jellyfish"
+      }
+    },
+    "animals_9": {
+      "promptText": "Which animal is known as the ship of the desert?",
+      "options": {
+        "A": "Horse",
+        "B": "Camel",
+        "C": "Llama",
+        "D": "Donkey"
+      }
+    },
+    "animals_10": {
+      "promptText": "Which bird cannot fly but can run very fast?",
+      "options": {
+        "A": "Penguin",
+        "B": "Ostrich",
+        "C": "Kiwi",
+        "D": "Emu"
+      }
+    },
+    "animals_11": {
+      "promptText": "What is the largest species of shark?",
+      "options": {
+        "A": "Great White",
+        "B": "Whale Shark",
+        "C": "Hammerhead",
+        "D": "Tiger Shark"
+      }
+    },
+    "animals_12": {
+      "promptText": "Which animal is known for changing its color to blend in?",
+      "options": {
+        "A": "Chameleon",
+        "B": "Iguana",
+        "C": "Gecko",
+        "D": "Anole"
+      }
+    },
+    "animals_13": {
+      "promptText": "What is a group of dolphins called?",
+      "options": {
+        "A": "Pod",
+        "B": "Flock",
+        "C": "Herd",
+        "D": "Colony"
+      }
+    },
+    "animals_14": {
+      "promptText": "Which animal has black and white stripes and lives in Africa?",
+      "options": {
+        "A": "Okapi",
+        "B": "Zebra",
+        "C": "Tapir",
+        "D": "Skunk"
+      }
+    },
+    "animals_15": {
+      "promptText": "Which insect produces honey?",
+      "options": {
+        "A": "Wasp",
+        "B": "Bee",
+        "C": "Ant",
+        "D": "Butterfly"
+      }
+    },
+    "animals_16": {
+      "promptText": "What is the largest species of bear?",
+      "options": {
+        "A": "Grizzly Bear",
+        "B": "Polar Bear",
+        "C": "Black Bear",
+        "D": "Panda"
+      }
+    },
+    "animals_17": {
+      "promptText": "Which animal is known for its trunk?",
+      "options": {
+        "A": "Elephant",
+        "B": "Rhinoceros",
+        "C": "Hippopotamus",
+        "D": "Walrus"
+      }
+    },
+    "animals_18": {
+      "promptText": "Which bird is a symbol of peace?",
+      "options": {
+        "A": "Dove",
+        "B": "Crow",
+        "C": "Raven",
+        "D": "Hawk"
+      }
+    },
+    "animals_19": {
+      "promptText": "Which animal sleeps standing up?",
+      "options": {
+        "A": "Horse",
+        "B": "Lion",
+        "C": "Tiger",
+        "D": "Gorilla"
+      }
+    },
+    "animals_20": {
+      "promptText": "What is the largest cat species?",
+      "options": {
+        "A": "Lion",
+        "B": "Leopard",
+        "C": "Tiger",
+        "D": "Jaguar"
+      }
+    },
+    "animals_21": {
+      "promptText": "Which animal has the most powerful bite among mammals?",
+      "options": {
+        "A": "Lion",
+        "B": "Hippo",
+        "C": "Hyena",
+        "D": "Bear"
+      }
+    },
+    "animals_22": {
+      "promptText": "Which marine animal is known for bioluminescence?",
+      "options": {
+        "A": "Sea Turtle",
+        "B": "Anglerfish",
+        "C": "Dolphin",
+        "D": "Manatee"
+      }
+    },
+    "animals_23": {
+      "promptText": "What is the largest species of penguin?",
+      "options": {
+        "A": "Emperor Penguin",
+        "B": "King Penguin",
+        "C": "Adelie Penguin",
+        "D": "Gentoo Penguin"
+      }
+    },
+    "animals_24": {
+      "promptText": "Which animal is famous for playing dead?",
+      "options": {
+        "A": "Raccoon",
+        "B": "Opossum",
+        "C": "Badger",
+        "D": "Fox"
+      }
+    },
+    "animals_25": {
+      "promptText": "Which fish is known for its ability to inflate?",
+      "options": {
+        "A": "Clownfish",
+        "B": "Pufferfish",
+        "C": "Angelfish",
+        "D": "Swordfish"
+      }
+    },
+    "animals_26": {
+      "promptText": "Which animal has a pouch and is native to Australia?",
+      "options": {
+        "A": "Koala",
+        "B": "Kangaroo",
+        "C": "Wombat",
+        "D": "All of these"
+      }
+    },
+    "animals_27": {
+      "promptText": "What do you call a group of whales?",
+      "options": {
+        "A": "Pod",
+        "B": "School",
+        "C": "Swarm",
+        "D": "Pride"
+      }
+    },
+    "animals_28": {
+      "promptText": "Which animal is known for its long neck?",
+      "options": {
+        "A": "Giraffe",
+        "B": "Moose",
+        "C": "Camel",
+        "D": "Llama"
+      }
+    },
+    "animals_29": {
+      "promptText": "Which sea creature moves by squirting water?",
+      "options": {
+        "A": "Octopus",
+        "B": "Seahorse",
+        "C": "Starfish",
+        "D": "Crab"
+      }
+    },
+    "animals_30": {
+      "promptText": "Which animal is the largest reptile?",
+      "options": {
+        "A": "Komodo Dragon",
+        "B": "Saltwater Crocodile",
+        "C": "Alligator",
+        "D": "Green Anaconda"
+      }
+    },
+    "animals_31": {
+      "promptText": "Which bird is known for mimicking sounds and speech?",
+      "options": {
+        "A": "Parrot",
+        "B": "Sparrow",
+        "C": "Robin",
+        "D": "Falcon"
+      }
+    },
+    "animals_32": {
+      "promptText": "What is the only mammal capable of true flight?",
+      "options": {
+        "A": "Flying Squirrel",
+        "B": "Bat",
+        "C": "Sugar Glider",
+        "D": "Colugo"
+      }
+    },
+    "animals_33": {
+      "promptText": "Which animal has the thickest fur?",
+      "options": {
+        "A": "Arctic Fox",
+        "B": "Sea Otter",
+        "C": "Polar Bear",
+        "D": "Wolverine"
+      }
+    },
+    "animals_34": {
+      "promptText": "Which animal is known for its black and white coat and bamboo diet?",
+      "options": {
+        "A": "Panda",
+        "B": "Zebra",
+        "C": "Skunk",
+        "D": "Badger"
+      }
+    },
+    "animals_35": {
+      "promptText": "Which animal has a prehensile tail?",
+      "options": {
+        "A": "Gorilla",
+        "B": "Spider Monkey",
+        "C": "Wolf",
+        "D": "Bear"
+      }
+    },
+    "animals_36": {
+      "promptText": "Which aquatic mammal is known for its tusks?",
+      "options": {
+        "A": "Walrus",
+        "B": "Seal",
+        "C": "Manatee",
+        "D": "Dugong"
+      }
+    },
+    "animals_37": {
+      "promptText": "Which animal can rotate its head up to 270 degrees?",
+      "options": {
+        "A": "Owl",
+        "B": "Eagle",
+        "C": "Falcon",
+        "D": "Hawk"
+      }
+    },
+    "animals_38": {
+      "promptText": "Which fish is famous for climbing waterfalls?",
+      "options": {
+        "A": "Salmon",
+        "B": "Trout",
+        "C": "Carp",
+        "D": "Catfish"
+      }
+    },
+    "animals_39": {
+      "promptText": "Which animal is known for its armor-like shell?",
+      "options": {
+        "A": "Armadillo",
+        "B": "Hedgehog",
+        "C": "Porcupine",
+        "D": "Pangolin"
+      }
+    },
+    "animals_40": {
+      "promptText": "Which sea creature has a crown of venomous spines?",
+      "options": {
+        "A": "Starfish",
+        "B": "Crown-of-thorns starfish",
+        "C": "Sea Urchin",
+        "D": "Sea Cucumber"
+      }
+    },
+    "animals_41": {
+      "promptText": "Which reptile is known for changing its skin color in water?",
+      "options": {
+        "A": "Crocodile",
+        "B": "Alligator",
+        "C": "Marine Iguana",
+        "D": "Sea Snake"
+      }
+    },
+    "animals_42": {
+      "promptText": "Which animal uses ink as a defense mechanism?",
+      "options": {
+        "A": "Octopus",
+        "B": "Seahorse",
+        "C": "Lobster",
+        "D": "Crab"
+      }
+    },
+    "animals_43": {
+      "promptText": "What is a group of frogs called?",
+      "options": {
+        "A": "Army",
+        "B": "Colony",
+        "C": "Swarm",
+        "D": "Huddle"
+      }
+    },
+    "animals_44": {
+      "promptText": "Which animal is known for its long tongue used to catch ants?",
+      "options": {
+        "A": "Anteater",
+        "B": "Aardvark",
+        "C": "Pangolin",
+        "D": "All of these"
+      }
+    },
+    "animals_45": {
+      "promptText": "Which bird can fly backward?",
+      "options": {
+        "A": "Hummingbird",
+        "B": "Swallow",
+        "C": "Sparrow",
+        "D": "Swift"
+      }
+    },
+    "geo_1": {
+      "promptText": "What is the capital of Japan?",
+      "options": {
+        "A": "Tokyo",
+        "B": "Kyoto",
+        "C": "Osaka",
+        "D": "Nagoya"
+      }
+    },
+    "geo_2": {
+      "promptText": "Which U.S. state is known as the Sunshine State?",
+      "options": {
+        "A": "California",
+        "B": "Florida",
+        "C": "Arizona",
+        "D": "Texas"
+      }
+    },
+    "geo_3": {
+      "promptText": "Which country has the largest population?",
+      "options": {
+        "A": "India",
+        "B": "United States",
+        "C": "China",
+        "D": "Indonesia"
+      }
+    },
+    "geo_4": {
+      "promptText": "What is the capital of Australia?",
+      "options": {
+        "A": "Sydney",
+        "B": "Melbourne",
+        "C": "Canberra",
+        "D": "Perth"
+      }
+    },
+    "geo_5": {
+      "promptText": "Which U.S. state is the largest by area?",
+      "options": {
+        "A": "Texas",
+        "B": "California",
+        "C": "Alaska",
+        "D": "Montana"
+      }
+    },
+    "geo_6": {
+      "promptText": "Which city is known as the Big Apple?",
+      "options": {
+        "A": "Los Angeles",
+        "B": "New York City",
+        "C": "Chicago",
+        "D": "Miami"
+      }
+    },
+    "geo_7": {
+      "promptText": "Which country is home to the Eiffel Tower?",
+      "options": {
+        "A": "Italy",
+        "B": "France",
+        "C": "Spain",
+        "D": "Belgium"
+      }
+    },
+    "geo_8": {
+      "promptText": "Which U.S. state has the Grand Canyon?",
+      "options": {
+        "A": "Utah",
+        "B": "Colorado",
+        "C": "Arizona",
+        "D": "Nevada"
+      }
+    },
+    "geo_9": {
+      "promptText": "What is the capital of Canada?",
+      "options": {
+        "A": "Toronto",
+        "B": "Montreal",
+        "C": "Ottawa",
+        "D": "Vancouver"
+      }
+    },
+    "geo_10": {
+      "promptText": "Which country is also a continent?",
+      "options": {
+        "A": "Australia",
+        "B": "Greenland",
+        "C": "Iceland",
+        "D": "Madagascar"
+      }
+    },
+    "geo_11": {
+      "promptText": "Which U.S. state is known as the Empire State?",
+      "options": {
+        "A": "New York",
+        "B": "New Jersey",
+        "C": "Pennsylvania",
+        "D": "Massachusetts"
+      }
+    },
+    "geo_12": {
+      "promptText": "What is the capital of Brazil?",
+      "options": {
+        "A": "Rio de Janeiro",
+        "B": "Brasilia",
+        "C": "Sao Paulo",
+        "D": "Salvador"
+      }
+    },
+    "geo_13": {
+      "promptText": "Which city is famous for the Colosseum?",
+      "options": {
+        "A": "Rome",
+        "B": "Athens",
+        "C": "Istanbul",
+        "D": "Cairo"
+      }
+    },
+    "geo_14": {
+      "promptText": "Which U.S. state is known as the Land of 10,000 Lakes?",
+      "options": {
+        "A": "Minnesota",
+        "B": "Michigan",
+        "C": "Wisconsin",
+        "D": "North Dakota"
+      }
+    },
+    "geo_15": {
+      "promptText": "Which country is the smallest by land area?",
+      "options": {
+        "A": "Monaco",
+        "B": "San Marino",
+        "C": "Vatican City",
+        "D": "Liechtenstein"
+      }
+    },
+    "geo_16": {
+      "promptText": "What is the capital of South Korea?",
+      "options": {
+        "A": "Busan",
+        "B": "Seoul",
+        "C": "Incheon",
+        "D": "Daegu"
+      }
+    },
+    "geo_17": {
+      "promptText": "Which U.S. state is known as the Lone Star State?",
+      "options": {
+        "A": "Texas",
+        "B": "Oklahoma",
+        "C": "Louisiana",
+        "D": "New Mexico"
+      }
+    },
+    "geo_18": {
+      "promptText": "Which country has the city of Marrakesh?",
+      "options": {
+        "A": "Morocco",
+        "B": "Egypt",
+        "C": "Tunisia",
+        "D": "Algeria"
+      }
+    },
+    "geo_19": {
+      "promptText": "Which city is known for the Opera House with sail-like roofs?",
+      "options": {
+        "A": "Auckland",
+        "B": "Sydney",
+        "C": "Cape Town",
+        "D": "Lisbon"
+      }
+    },
+    "geo_20": {
+      "promptText": "Which U.S. state has the most active volcanoes?",
+      "options": {
+        "A": "Hawaii",
+        "B": "Alaska",
+        "C": "California",
+        "D": "Washington"
+      }
+    },
+    "geo_21": {
+      "promptText": "What is the capital of Egypt?",
+      "options": {
+        "A": "Alexandria",
+        "B": "Cairo",
+        "C": "Giza",
+        "D": "Luxor"
+      }
+    },
+    "geo_22": {
+      "promptText": "Which country is famous for the fjords of Bergen and Oslo?",
+      "options": {
+        "A": "Norway",
+        "B": "Sweden",
+        "C": "Finland",
+        "D": "Denmark"
+      }
+    },
+    "geo_23": {
+      "promptText": "Which U.S. state is known for Mount Rushmore?",
+      "options": {
+        "A": "South Dakota",
+        "B": "North Dakota",
+        "C": "Wyoming",
+        "D": "Colorado"
+      }
+    },
+    "geo_24": {
+      "promptText": "What is the capital of Spain?",
+      "options": {
+        "A": "Barcelona",
+        "B": "Madrid",
+        "C": "Valencia",
+        "D": "Seville"
+      }
+    },
+    "geo_25": {
+      "promptText": "Which city is known as the City of Canals?",
+      "options": {
+        "A": "Amsterdam",
+        "B": "Venice",
+        "C": "Bruges",
+        "D": "Stockholm"
+      }
+    },
+    "geo_26": {
+      "promptText": "Which U.S. state has the nickname Peach State?",
+      "options": {
+        "A": "Georgia",
+        "B": "South Carolina",
+        "C": "Alabama",
+        "D": "Tennessee"
+      }
+    },
+    "geo_27": {
+      "promptText": "Which country is home to Machu Picchu?",
+      "options": {
+        "A": "Peru",
+        "B": "Chile",
+        "C": "Bolivia",
+        "D": "Ecuador"
+      }
+    },
+    "geo_28": {
+      "promptText": "What is the capital of Argentina?",
+      "options": {
+        "A": "Santiago",
+        "B": "Montevideo",
+        "C": "Buenos Aires",
+        "D": "Lima"
+      }
+    },
+    "geo_29": {
+      "promptText": "Which U.S. state is known as the Granite State?",
+      "options": {
+        "A": "New Hampshire",
+        "B": "Vermont",
+        "C": "Maine",
+        "D": "Rhode Island"
+      }
+    },
+    "geo_30": {
+      "promptText": "Which country has the city of Reykjavik?",
+      "options": {
+        "A": "Norway",
+        "B": "Iceland",
+        "C": "Ireland",
+        "D": "Greenland"
+      }
+    },
+    "geo_31": {
+      "promptText": "What is the capital of Kenya?",
+      "options": {
+        "A": "Nairobi",
+        "B": "Mombasa",
+        "C": "Kampala",
+        "D": "Dar es Salaam"
+      }
+    },
+    "geo_32": {
+      "promptText": "Which U.S. state is known as the Garden State?",
+      "options": {
+        "A": "New Jersey",
+        "B": "Connecticut",
+        "C": "Maryland",
+        "D": "Virginia"
+      }
+    },
+    "geo_33": {
+      "promptText": "Which country is home to the city of Timbuktu?",
+      "options": {
+        "A": "Mali",
+        "B": "Niger",
+        "C": "Chad",
+        "D": "Sudan"
+      }
+    },
+    "geo_34": {
+      "promptText": "Which city hosts the famous Christ the Redeemer statue?",
+      "options": {
+        "A": "Rio de Janeiro",
+        "B": "Lisbon",
+        "C": "Bogota",
+        "D": "Lima"
+      }
+    },
+    "geo_35": {
+      "promptText": "Which U.S. state is known for the Rocky Mountain National Park?",
+      "options": {
+        "A": "Colorado",
+        "B": "Utah",
+        "C": "Idaho",
+        "D": "Wyoming"
+      }
+    },
+    "geo_36": {
+      "promptText": "What is the capital of Thailand?",
+      "options": {
+        "A": "Phuket",
+        "B": "Bangkok",
+        "C": "Chiang Mai",
+        "D": "Pattaya"
+      }
+    },
+    "geo_37": {
+      "promptText": "Which country is home to the city of Dubrovnik?",
+      "options": {
+        "A": "Croatia",
+        "B": "Greece",
+        "C": "Italy",
+        "D": "Turkey"
+      }
+    },
+    "geo_38": {
+      "promptText": "Which U.S. state has the nickname Evergreen State?",
+      "options": {
+        "A": "Washington",
+        "B": "Oregon",
+        "C": "Maine",
+        "D": "Vermont"
+      }
+    },
+    "geo_39": {
+      "promptText": "Which country has the city of Cape Town?",
+      "options": {
+        "A": "Namibia",
+        "B": "South Africa",
+        "C": "Botswana",
+        "D": "Zimbabwe"
+      }
+    },
+    "geo_40": {
+      "promptText": "What is the capital of Germany?",
+      "options": {
+        "A": "Munich",
+        "B": "Hamburg",
+        "C": "Berlin",
+        "D": "Frankfurt"
+      }
+    },
+    "geo_41": {
+      "promptText": "Which U.S. state is known for the Bourbon Trail?",
+      "options": {
+        "A": "Kentucky",
+        "B": "Tennessee",
+        "C": "Missouri",
+        "D": "Indiana"
+      }
+    },
+    "geo_42": {
+      "promptText": "Which country is home to the city of Petra?",
+      "options": {
+        "A": "Jordan",
+        "B": "Israel",
+        "C": "Lebanon",
+        "D": "Syria"
+      }
+    },
+    "geo_43": {
+      "promptText": "Which U.S. state is known for the city of New Orleans?",
+      "options": {
+        "A": "Louisiana",
+        "B": "Mississippi",
+        "C": "Alabama",
+        "D": "Arkansas"
+      }
+    },
+    "geo_44": {
+      "promptText": "What is the capital of Norway?",
+      "options": {
+        "A": "Oslo",
+        "B": "Bergen",
+        "C": "Trondheim",
+        "D": "Stavanger"
+      }
+    },
+    "geo_45": {
+      "promptText": "Which city is known as the Windy City?",
+      "options": {
+        "A": "Chicago",
+        "B": "Boston",
+        "C": "Seattle",
+        "D": "Denver"
+      }
+    },
+    "sci_1": {
+      "promptText": "Which planet is known as the Red Planet?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Jupiter",
+        "D": "Mercury"
+      }
+    },
+    "sci_2": {
+      "promptText": "What is the closest star to Earth?",
+      "options": {
+        "A": "Proxima Centauri",
+        "B": "Sirius",
+        "C": "The Sun",
+        "D": "Vega"
+      }
+    },
+    "sci_3": {
+      "promptText": "What is the largest planet in our solar system?",
+      "options": {
+        "A": "Saturn",
+        "B": "Jupiter",
+        "C": "Neptune",
+        "D": "Uranus"
+      }
+    },
+    "sci_4": {
+      "promptText": "Which dinosaur is known for its three horns?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Triceratops",
+        "C": "Tyrannosaurus",
+        "D": "Velociraptor"
+      }
+    },
+    "sci_5": {
+      "promptText": "What is the name of Earth's natural satellite?",
+      "options": {
+        "A": "Phobos",
+        "B": "Moon",
+        "C": "Europa",
+        "D": "Titan"
+      }
+    },
+    "sci_6": {
+      "promptText": "Which planet is famous for its rings?",
+      "options": {
+        "A": "Jupiter",
+        "B": "Saturn",
+        "C": "Uranus",
+        "D": "Neptune"
+      }
+    },
+    "sci_7": {
+      "promptText": "Which dinosaur had plates along its back?",
+      "options": {
+        "A": "Brachiosaurus",
+        "B": "Stegosaurus",
+        "C": "Ankylosaurus",
+        "D": "Allosaurus"
+      }
+    },
+    "sci_8": {
+      "promptText": "What is the hottest planet in our solar system?",
+      "options": {
+        "A": "Mercury",
+        "B": "Venus",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "sci_9": {
+      "promptText": "Which dinosaur is often called the king of the dinosaurs?",
+      "options": {
+        "A": "Tyrannosaurus rex",
+        "B": "Spinosaurus",
+        "C": "Giganotosaurus",
+        "D": "Allosaurus"
+      }
+    },
+    "sci_10": {
+      "promptText": "What is the name of the galaxy we live in?",
+      "options": {
+        "A": "Andromeda",
+        "B": "Milky Way",
+        "C": "Sombrero",
+        "D": "Whirlpool"
+      }
+    },
+    "sci_11": {
+      "promptText": "Which planet has the Great Red Spot?",
+      "options": {
+        "A": "Jupiter",
+        "B": "Saturn",
+        "C": "Neptune",
+        "D": "Uranus"
+      }
+    },
+    "sci_12": {
+      "promptText": "Which dinosaur was known for its long neck?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "Brachiosaurus",
+        "C": "Ankylosaurus",
+        "D": "Dilophosaurus"
+      }
+    },
+    "sci_13": {
+      "promptText": "What is the largest moon in the solar system?",
+      "options": {
+        "A": "Europa",
+        "B": "Titan",
+        "C": "Ganymede",
+        "D": "Io"
+      }
+    },
+    "sci_14": {
+      "promptText": "Which planet is known for its blue color due to methane?",
+      "options": {
+        "A": "Neptune",
+        "B": "Uranus",
+        "C": "Both A and B",
+        "D": "Earth"
+      }
+    },
+    "sci_15": {
+      "promptText": "Which dinosaur had a dome-shaped skull?",
+      "options": {
+        "A": "Pachycephalosaurus",
+        "B": "Parasaurolophus",
+        "C": "Stegosaurus",
+        "D": "Ceratosaurus"
+      }
+    },
+    "sci_16": {
+      "promptText": "What is the term for a star explosion?",
+      "options": {
+        "A": "Nebula",
+        "B": "Supernova",
+        "C": "Comet",
+        "D": "Asteroid"
+      }
+    },
+    "sci_17": {
+      "promptText": "Which dinosaur had a club-like tail?",
+      "options": {
+        "A": "Ankylosaurus",
+        "B": "Triceratops",
+        "C": "Iguanodon",
+        "D": "Gallimimus"
+      }
+    },
+    "sci_18": {
+      "promptText": "Which planet is farthest from the Sun?",
+      "options": {
+        "A": "Neptune",
+        "B": "Uranus",
+        "C": "Saturn",
+        "D": "Pluto"
+      }
+    },
+    "sci_19": {
+      "promptText": "Which dinosaur is known for its sickle-shaped claw?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "Diplodocus",
+        "C": "Triceratops",
+        "D": "Apatosaurus"
+      }
+    },
+    "sci_20": {
+      "promptText": "Which planet has a day longer than its year?",
+      "options": {
+        "A": "Mercury",
+        "B": "Venus",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "sci_21": {
+      "promptText": "What is the name of Mars' largest moon?",
+      "options": {
+        "A": "Phobos",
+        "B": "Deimos",
+        "C": "Io",
+        "D": "Europa"
+      }
+    },
+    "sci_22": {
+      "promptText": "Which dinosaur was a duck-billed herbivore?",
+      "options": {
+        "A": "Hadrosaurus",
+        "B": "Spinosaurus",
+        "C": "Therizinosaurus",
+        "D": "Carnotaurus"
+      }
+    },
+    "sci_23": {
+      "promptText": "What is the asteroid belt located between?",
+      "options": {
+        "A": "Earth and Mars",
+        "B": "Mars and Jupiter",
+        "C": "Jupiter and Saturn",
+        "D": "Saturn and Uranus"
+      }
+    },
+    "sci_24": {
+      "promptText": "Which dinosaur is famous for its sail-like spine?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Spinosaurus",
+        "C": "Allosaurus",
+        "D": "Iguanodon"
+      }
+    },
+    "sci_25": {
+      "promptText": "Which planet is known for its tilted axis?",
+      "options": {
+        "A": "Uranus",
+        "B": "Neptune",
+        "C": "Jupiter",
+        "D": "Mars"
+      }
+    },
+    "sci_26": {
+      "promptText": "What is the name of the first man-made satellite?",
+      "options": {
+        "A": "Explorer 1",
+        "B": "Sputnik 1",
+        "C": "Voyager 1",
+        "D": "Apollo 11"
+      }
+    },
+    "sci_27": {
+      "promptText": "Which dinosaur had a crest shaped like a tube?",
+      "options": {
+        "A": "Parasaurolophus",
+        "B": "Corythosaurus",
+        "C": "Triceratops",
+        "D": "Ankylosaurus"
+      }
+    },
+    "sci_28": {
+      "promptText": "Which planet is called Earth's twin?",
+      "options": {
+        "A": "Venus",
+        "B": "Mars",
+        "C": "Mercury",
+        "D": "Uranus"
+      }
+    },
+    "sci_29": {
+      "promptText": "Which dinosaur is known for its armor plates and spikes?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Brachiosaurus",
+        "C": "Dilophosaurus",
+        "D": "Compsognathus"
+      }
+    },
+    "sci_30": {
+      "promptText": "What is the largest asteroid in the asteroid belt?",
+      "options": {
+        "A": "Vesta",
+        "B": "Pallas",
+        "C": "Ceres",
+        "D": "Hygiea"
+      }
+    },
+    "sci_31": {
+      "promptText": "Which dinosaur was known for its long, whip-like tail?",
+      "options": {
+        "A": "Diplodocus",
+        "B": "Spinosaurus",
+        "C": "Theropod",
+        "D": "Carnotaurus"
+      }
+    },
+    "sci_32": {
+      "promptText": "What is the name of NASA's most famous space telescope?",
+      "options": {
+        "A": "Hubble",
+        "B": "Kepler",
+        "C": "Spitzer",
+        "D": "Chandra"
+      }
+    },
+    "sci_33": {
+      "promptText": "Which dinosaur was known for its small size and speed?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "T. rex",
+        "C": "Brachiosaurus",
+        "D": "Ankylosaurus"
+      }
+    },
+    "sci_34": {
+      "promptText": "Which planet has the most moons?",
+      "options": {
+        "A": "Saturn",
+        "B": "Jupiter",
+        "C": "Uranus",
+        "D": "Neptune"
+      }
+    },
+    "sci_35": {
+      "promptText": "What is the name of the boundary around a black hole?",
+      "options": {
+        "A": "Singularity",
+        "B": "Event Horizon",
+        "C": "Accretion Disk",
+        "D": "Nebula"
+      }
+    },
+    "sci_36": {
+      "promptText": "Which dinosaur had a thick, bony head used for head-butting?",
+      "options": {
+        "A": "Pachycephalosaurus",
+        "B": "Iguanodon",
+        "C": "Gallimimus",
+        "D": "Baryonyx"
+      }
+    },
+    "sci_37": {
+      "promptText": "Which planet is known for its Great Dark Spot?",
+      "options": {
+        "A": "Neptune",
+        "B": "Uranus",
+        "C": "Saturn",
+        "D": "Jupiter"
+      }
+    },
+    "sci_38": {
+      "promptText": "Which dinosaur was a massive herbivore with a long tail and neck?",
+      "options": {
+        "A": "Apatosaurus",
+        "B": "Allosaurus",
+        "C": "Carnotaurus",
+        "D": "Ceratosaurus"
+      }
+    },
+    "sci_39": {
+      "promptText": "What is the name of Earth's atmosphere layer where weather occurs?",
+      "options": {
+        "A": "Stratosphere",
+        "B": "Troposphere",
+        "C": "Mesosphere",
+        "D": "Thermosphere"
+      }
+    },
+    "sci_40": {
+      "promptText": "Which planet is known as the Morning Star?",
+      "options": {
+        "A": "Mercury",
+        "B": "Venus",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "sci_41": {
+      "promptText": "Which dinosaur had a beak and lived in herds?",
+      "options": {
+        "A": "Triceratops",
+        "B": "Hadrosaurus",
+        "C": "Allosaurus",
+        "D": "Stegosaurus"
+      }
+    },
+    "sci_42": {
+      "promptText": "Which space probe has traveled the farthest from Earth?",
+      "options": {
+        "A": "Voyager 1",
+        "B": "Pioneer 10",
+        "C": "New Horizons",
+        "D": "Voyager 2"
+      }
+    },
+    "sci_43": {
+      "promptText": "Which dinosaur is known for its long, curved claw on each hand?",
+      "options": {
+        "A": "Therizinosaurus",
+        "B": "Velociraptor",
+        "C": "Triceratops",
+        "D": "Stegosaurus"
+      }
+    },
+    "sci_44": {
+      "promptText": "What is the name of the closest galaxy to the Milky Way?",
+      "options": {
+        "A": "Andromeda",
+        "B": "Triangulum",
+        "C": "Sombrero",
+        "D": "Whirlpool"
+      }
+    },
+    "sci_45": {
+      "promptText": "Which dinosaur was a massive predator larger than T. rex?",
+      "options": {
+        "A": "Spinosaurus",
+        "B": "Allosaurus",
+        "C": "Utahraptor",
+        "D": "Dilophosaurus"
+      }
+    },
+    "kids_1": {
+      "promptText": "How many days are in a week?",
+      "options": {
+        "A": "7",
+        "B": "5",
+        "C": "6",
+        "D": "8"
+      }
+    },
+    "kids_2": {
+      "promptText": "Which color is the sky on a clear day?",
+      "options": {
+        "A": "Blue",
+        "B": "Green",
+        "C": "Red",
+        "D": "Purple"
+      }
+    },
+    "kids_3": {
+      "promptText": "Which animal says \"meow\"?",
+      "options": {
+        "A": "Dog",
+        "B": "Cat",
+        "C": "Cow",
+        "D": "Sheep"
+      }
+    },
+    "kids_4": {
+      "promptText": "What do bees make?",
+      "options": {
+        "A": "Milk",
+        "B": "Honey",
+        "C": "Bread",
+        "D": "Cheese"
+      }
+    },
+    "kids_5": {
+      "promptText": "Which planet do we live on?",
+      "options": {
+        "A": "Mars",
+        "B": "Earth",
+        "C": "Jupiter",
+        "D": "Venus"
+      }
+    },
+    "kids_6": {
+      "promptText": "How many legs does a spider have?",
+      "options": {
+        "A": "6",
+        "B": "8",
+        "C": "10",
+        "D": "12"
+      }
+    },
+    "kids_7": {
+      "promptText": "Which shape has three sides?",
+      "options": {
+        "A": "Square",
+        "B": "Triangle",
+        "C": "Circle",
+        "D": "Rectangle"
+      }
+    },
+    "kids_8": {
+      "promptText": "Which season is the coldest?",
+      "options": {
+        "A": "Spring",
+        "B": "Summer",
+        "C": "Autumn",
+        "D": "Winter"
+      }
+    },
+    "kids_9": {
+      "promptText": "What is H2O commonly called?",
+      "options": {
+        "A": "Salt",
+        "B": "Water",
+        "C": "Oxygen",
+        "D": "Sugar"
+      }
+    },
+    "kids_10": {
+      "promptText": "Which fruit is yellow and curved?",
+      "options": {
+        "A": "Apple",
+        "B": "Banana",
+        "C": "Orange",
+        "D": "Grape"
+      }
+    },
+    "kids_11": {
+      "promptText": "Which animal is known as the king of the jungle?",
+      "options": {
+        "A": "Elephant",
+        "B": "Lion",
+        "C": "Giraffe",
+        "D": "Zebra"
+      }
+    },
+    "kids_12": {
+      "promptText": "What do plants need to grow?",
+      "options": {
+        "A": "Sunlight",
+        "B": "Candy",
+        "C": "Snow",
+        "D": "Sand"
+      }
+    },
+    "kids_13": {
+      "promptText": "Which month comes after June?",
+      "options": {
+        "A": "May",
+        "B": "July",
+        "C": "August",
+        "D": "April"
+      }
+    },
+    "kids_14": {
+      "promptText": "How many hours are in a day?",
+      "options": {
+        "A": "12",
+        "B": "18",
+        "C": "24",
+        "D": "30"
+      }
+    },
+    "kids_15": {
+      "promptText": "Which tool tells time?",
+      "options": {
+        "A": "Clock",
+        "B": "Ruler",
+        "C": "Spoon",
+        "D": "Brush"
+      }
+    },
+    "kids_16": {
+      "promptText": "Which insect makes a hive?",
+      "options": {
+        "A": "Butterfly",
+        "B": "Bee",
+        "C": "Ant",
+        "D": "Spider"
+      }
+    },
+    "kids_17": {
+      "promptText": "What is the opposite of hot?",
+      "options": {
+        "A": "Cold",
+        "B": "Wet",
+        "C": "Light",
+        "D": "Soft"
+      }
+    },
+    "kids_18": {
+      "promptText": "Which body part do you hear with?",
+      "options": {
+        "A": "Eye",
+        "B": "Nose",
+        "C": "Ear",
+        "D": "Hand"
+      }
+    },
+    "kids_19": {
+      "promptText": "Which ocean is the largest?",
+      "options": {
+        "A": "Atlantic",
+        "B": "Indian",
+        "C": "Pacific",
+        "D": "Arctic"
+      }
+    },
+    "kids_20": {
+      "promptText": "Which animal lives in water and has gills?",
+      "options": {
+        "A": "Dog",
+        "B": "Fish",
+        "C": "Cat",
+        "D": "Bird"
+      }
+    },
+    "kids_21": {
+      "promptText": "What color are stop signs?",
+      "options": {
+        "A": "Green",
+        "B": "Yellow",
+        "C": "Red",
+        "D": "Blue"
+      }
+    },
+    "kids_22": {
+      "promptText": "Which planet is closest to the Sun?",
+      "options": {
+        "A": "Mercury",
+        "B": "Earth",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "kids_23": {
+      "promptText": "Which object is used to write?",
+      "options": {
+        "A": "Fork",
+        "B": "Pencil",
+        "C": "Plate",
+        "D": "Cup"
+      }
+    },
+    "kids_24": {
+      "promptText": "How many continents are there?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "kids_25": {
+      "promptText": "Which animal carries its baby in a pouch?",
+      "options": {
+        "A": "Kangaroo",
+        "B": "Tiger",
+        "C": "Horse",
+        "D": "Sheep"
+      }
+    },
+    "kids_26": {
+      "promptText": "Which instrument has black and white keys?",
+      "options": {
+        "A": "Drum",
+        "B": "Piano",
+        "C": "Flute",
+        "D": "Guitar"
+      }
+    },
+    "kids_27": {
+      "promptText": "Which holiday uses a tree and gifts?",
+      "options": {
+        "A": "Easter",
+        "B": "Christmas",
+        "C": "Halloween",
+        "D": "Thanksgiving"
+      }
+    },
+    "kids_28": {
+      "promptText": "What do you call a baby dog?",
+      "options": {
+        "A": "Kitten",
+        "B": "Puppy",
+        "C": "Calf",
+        "D": "Foal"
+      }
+    },
+    "kids_29": {
+      "promptText": "Which shape is round?",
+      "options": {
+        "A": "Circle",
+        "B": "Triangle",
+        "C": "Square",
+        "D": "Rectangle"
+      }
+    },
+    "kids_30": {
+      "promptText": "How many sides does a square have?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "kids_31": {
+      "promptText": "Which animal is the fastest land animal?",
+      "options": {
+        "A": "Cheetah",
+        "B": "Lion",
+        "C": "Elephant",
+        "D": "Horse"
+      }
+    },
+    "kids_32": {
+      "promptText": "Which animal gives us milk?",
+      "options": {
+        "A": "Cow",
+        "B": "Chicken",
+        "C": "Dog",
+        "D": "Cat"
+      }
+    },
+    "kids_33": {
+      "promptText": "What do you call frozen water?",
+      "options": {
+        "A": "Ice",
+        "B": "Steam",
+        "C": "Sand",
+        "D": "Clay"
+      }
+    },
+    "kids_34": {
+      "promptText": "Which planet is known as the Red Planet?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Earth",
+        "D": "Mercury"
+      }
+    },
+    "kids_35": {
+      "promptText": "Which is used to go up floors in a building?",
+      "options": {
+        "A": "Elevator",
+        "B": "Ramp",
+        "C": "Slide",
+        "D": "Bridge"
+      }
+    },
+    "kids_36": {
+      "promptText": "Which animal has a long trunk?",
+      "options": {
+        "A": "Elephant",
+        "B": "Hippo",
+        "C": "Rhino",
+        "D": "Gorilla"
+      }
+    },
+    "kids_37": {
+      "promptText": "What do you call the person who teaches in school?",
+      "options": {
+        "A": "Pilot",
+        "B": "Teacher",
+        "C": "Baker",
+        "D": "Farmer"
+      }
+    },
+    "kids_38": {
+      "promptText": "Which is a common way to travel on rails?",
+      "options": {
+        "A": "Train",
+        "B": "Boat",
+        "C": "Bike",
+        "D": "Plane"
+      }
+    },
+    "kids_39": {
+      "promptText": "Which vegetable is orange and crunchy?",
+      "options": {
+        "A": "Carrot",
+        "B": "Potato",
+        "C": "Lettuce",
+        "D": "Pepper"
+      }
+    },
+    "kids_40": {
+      "promptText": "Which shape has four equal sides?",
+      "options": {
+        "A": "Square",
+        "B": "Triangle",
+        "C": "Oval",
+        "D": "Pentagon"
+      }
+    },
+    "kids_41": {
+      "promptText": "Which animal is the tallest?",
+      "options": {
+        "A": "Giraffe",
+        "B": "Camel",
+        "C": "Horse",
+        "D": "Bear"
+      }
+    },
+    "kids_42": {
+      "promptText": "Which planet has rings?",
+      "options": {
+        "A": "Saturn",
+        "B": "Mars",
+        "C": "Mercury",
+        "D": "Earth"
+      }
+    },
+    "kids_43": {
+      "promptText": "Which part of a plant is usually green?",
+      "options": {
+        "A": "Leaf",
+        "B": "Root",
+        "C": "Stem",
+        "D": "Seed"
+      }
+    },
+    "kids_44": {
+      "promptText": "Which device is used to take photos?",
+      "options": {
+        "A": "Camera",
+        "B": "Hammer",
+        "C": "Lantern",
+        "D": "Whistle"
+      }
+    },
+    "kids_45": {
+      "promptText": "Which fruit is shown?",
+      "options": {
+        "A": "Apple",
+        "B": "Orange",
+        "C": "Pear",
+        "D": "Peach"
+      }
+    },
+    "math_1": {
+      "promptText": "What is 2 + 3?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "math_2": {
+      "promptText": "What is 10 - 4?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_3": {
+      "promptText": "What is 6 x 7?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "42",
+        "D": "48"
+      }
+    },
+    "math_4": {
+      "promptText": "What is 12 divided by 3?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_5": {
+      "promptText": "What is 5 squared?",
+      "options": {
+        "A": "10",
+        "B": "15",
+        "C": "20",
+        "D": "25"
+      }
+    },
+    "math_6": {
+      "promptText": "Simplify 6/12.",
+      "options": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "3/4"
+      }
+    },
+    "math_7": {
+      "promptText": "Which fraction equals 0.5?",
+      "options": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "3/4"
+      }
+    },
+    "math_8": {
+      "promptText": "What is the perimeter of a square with side 4?",
+      "options": {
+        "A": "8",
+        "B": "12",
+        "C": "16",
+        "D": "20"
+      }
+    },
+    "math_9": {
+      "promptText": "What is the area of a rectangle 3 by 5?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "15"
+      }
+    },
+    "math_10": {
+      "promptText": "What is the sum of angles in a triangle?",
+      "options": {
+        "A": "90",
+        "B": "120",
+        "C": "180",
+        "D": "360"
+      }
+    },
+    "math_11": {
+      "promptText": "Which number is prime?",
+      "options": {
+        "A": "9",
+        "B": "12",
+        "C": "15",
+        "D": "17"
+      }
+    },
+    "math_12": {
+      "promptText": "What is the LCM of 4 and 6?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "24"
+      }
+    },
+    "math_13": {
+      "promptText": "What is the GCD of 12 and 18?",
+      "options": {
+        "A": "3",
+        "B": "6",
+        "C": "9",
+        "D": "12"
+      }
+    },
+    "math_14": {
+      "promptText": "Solve: x + 5 = 12.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_15": {
+      "promptText": "Solve: 3x = 15.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_16": {
+      "promptText": "Solve: 2x + 3 = 11.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_17": {
+      "promptText": "Solve: 5x - 10 = 0.",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_18": {
+      "promptText": "What is 2 to the power of 3?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "math_19": {
+      "promptText": "What is the square root of 81?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      }
+    },
+    "math_20": {
+      "promptText": "A ratio is 2:3 and the total is 25. What is the 2-part?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "12"
+      }
+    },
+    "math_21": {
+      "promptText": "What is 20% of 50?",
+      "options": {
+        "A": "5",
+        "B": "10",
+        "C": "15",
+        "D": "20"
+      }
+    },
+    "math_22": {
+      "promptText": "What is the probability of heads on a fair coin?",
+      "options": {
+        "A": "1/4",
+        "B": "1/3",
+        "C": "1/2",
+        "D": "3/4"
+      }
+    },
+    "math_23": {
+      "promptText": "What is the probability of rolling a 6 on a fair die?",
+      "options": {
+        "A": "1/2",
+        "B": "1/3",
+        "C": "1/6",
+        "D": "1/12"
+      }
+    },
+    "math_24": {
+      "promptText": "What is the mean of 2, 4, 6, 8?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "math_25": {
+      "promptText": "What is the median of 1, 3, 5, 7, 9?",
+      "options": {
+        "A": "3",
+        "B": "5",
+        "C": "7",
+        "D": "9"
+      }
+    },
+    "math_26": {
+      "promptText": "What is the mode of 2, 2, 3, 4?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "None"
+      }
+    },
+    "math_27": {
+      "promptText": "Convert 3/4 to a decimal.",
+      "options": {
+        "A": "0.25",
+        "B": "0.5",
+        "C": "0.75",
+        "D": "0.9"
+      }
+    },
+    "math_28": {
+      "promptText": "Simplify 12/16.",
+      "options": {
+        "A": "1/2",
+        "B": "3/4",
+        "C": "2/3",
+        "D": "4/5"
+      }
+    },
+    "math_29": {
+      "promptText": "Which formula gives the area of a circle?",
+      "options": {
+        "A": "pi r^2",
+        "B": "2 pi r",
+        "C": "r^2",
+        "D": "pi r"
+      }
+    },
+    "math_30": {
+      "promptText": "A triangle with sides 3, 4, 5 is:",
+      "options": {
+        "A": "Isosceles",
+        "B": "Equilateral",
+        "C": "Right triangle",
+        "D": "Obtuse"
+      }
+    },
+    "math_31": {
+      "promptText": "If a and b are positive and a > b, then a - b is:",
+      "options": {
+        "A": "Negative",
+        "B": "Zero",
+        "C": "Positive",
+        "D": "Undefined"
+      }
+    },
+    "math_32": {
+      "promptText": "Solve: 2x - 4 = 10.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_33": {
+      "promptText": "What is 0.25 as a fraction?",
+      "options": {
+        "A": "1/2",
+        "B": "1/3",
+        "C": "1/4",
+        "D": "3/4"
+      }
+    },
+    "math_34": {
+      "promptText": "What is log10(100)?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_35": {
+      "promptText": "What is the slope of y = 2x + 3?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_36": {
+      "promptText": "If f(x) = x^2, what is f(3)?",
+      "options": {
+        "A": "6",
+        "B": "9",
+        "C": "12",
+        "D": "15"
+      }
+    },
+    "math_37": {
+      "promptText": "What is the sum of the first 10 natural numbers?",
+      "options": {
+        "A": "45",
+        "B": "50",
+        "C": "55",
+        "D": "60"
+      }
+    },
+    "math_38": {
+      "promptText": "How many degrees are in a straight line?",
+      "options": {
+        "A": "90",
+        "B": "120",
+        "C": "180",
+        "D": "360"
+      }
+    },
+    "math_39": {
+      "promptText": "Which number is irrational?",
+      "options": {
+        "A": "3/4",
+        "B": "0.2",
+        "C": "sqrt(2)",
+        "D": "5"
+      }
+    },
+    "math_40": {
+      "promptText": "In a right triangle, a^2 + b^2 = ?",
+      "options": {
+        "A": "c^2",
+        "B": "2c",
+        "C": "ab",
+        "D": "c/2"
+      }
+    },
+    "math_41": {
+      "promptText": "If probability is 0.2, what percent is that?",
+      "options": {
+        "A": "2%",
+        "B": "10%",
+        "C": "20%",
+        "D": "50%"
+      }
+    },
+    "math_42": {
+      "promptText": "Solve: x^2 = 49.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_43": {
+      "promptText": "What is the expected value of a fair six-sided die?",
+      "options": {
+        "A": "2.5",
+        "B": "3",
+        "C": "3.5",
+        "D": "4"
+      }
+    },
+    "math_44": {
+      "promptText": "Which angle is greater than 90 degrees?",
+      "options": {
+        "A": "Acute",
+        "B": "Right",
+        "C": "Obtuse",
+        "D": "Straight"
+      }
+    },
+    "math_45": {
+      "promptText": "How many sides does a hexagon have?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "apt_1": {
+      "promptText": "Find the next number: 2, 4, 6, 8, ?",
+      "options": {
+        "A": "9",
+        "B": "10",
+        "C": "11",
+        "D": "12"
+      }
+    },
+    "apt_2": {
+      "promptText": "Find the next number: 1, 1, 2, 3, 5, ?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "apt_3": {
+      "promptText": "Which word does not belong?",
+      "options": {
+        "A": "Apple",
+        "B": "Banana",
+        "C": "Carrot",
+        "D": "Grape"
+      }
+    },
+    "apt_4": {
+      "promptText": "Choose the synonym of \"happy\".",
+      "options": {
+        "A": "Sad",
+        "B": "Angry",
+        "C": "Joyful",
+        "D": "Tired"
+      }
+    },
+    "apt_5": {
+      "promptText": "Choose the antonym of \"increase\".",
+      "options": {
+        "A": "Grow",
+        "B": "Decrease",
+        "C": "Add",
+        "D": "Raise"
+      }
+    },
+    "apt_6": {
+      "promptText": "If all bloops are razzies and all razzies are lazzies, then all bloops are:",
+      "options": {
+        "A": "Lazzies",
+        "B": "Razzies",
+        "C": "Zazzies",
+        "D": "Fizzies"
+      }
+    },
+    "apt_7": {
+      "promptText": "Find the next letter: A, C, E, G, ?",
+      "options": {
+        "A": "H",
+        "B": "I",
+        "C": "J",
+        "D": "K"
+      }
+    },
+    "apt_8": {
+      "promptText": "Which word is a palindrome?",
+      "options": {
+        "A": "Level",
+        "B": "Apple",
+        "C": "Bridge",
+        "D": "House"
+      }
+    },
+    "apt_9": {
+      "promptText": "Which fraction is larger?",
+      "options": {
+        "A": "2/3",
+        "B": "3/5",
+        "C": "1/2",
+        "D": "4/9"
+      }
+    },
+    "apt_10": {
+      "promptText": "If 5 machines make 5 items in 5 minutes, how many items can 5 machines make in 10 minutes?",
+      "options": {
+        "A": "5",
+        "B": "8",
+        "C": "10",
+        "D": "15"
+      }
+    },
+    "apt_11": {
+      "promptText": "Find the next number: 3, 6, 12, 24, ?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "48",
+        "D": "60"
+      }
+    },
+    "apt_12": {
+      "promptText": "Which comes next: 10, 20, 40, 80, ?",
+      "options": {
+        "A": "100",
+        "B": "120",
+        "C": "160",
+        "D": "200"
+      }
+    },
+    "apt_13": {
+      "promptText": "If today is Tuesday, what day is it in 3 days?",
+      "options": {
+        "A": "Wednesday",
+        "B": "Thursday",
+        "C": "Friday",
+        "D": "Saturday"
+      }
+    },
+    "apt_14": {
+      "promptText": "Choose the odd one out.",
+      "options": {
+        "A": "Square",
+        "B": "Circle",
+        "C": "Triangle",
+        "D": "Blue"
+      }
+    },
+    "apt_15": {
+      "promptText": "Find the next number: 1, 4, 9, 16, ?",
+      "options": {
+        "A": "20",
+        "B": "25",
+        "C": "30",
+        "D": "36"
+      }
+    },
+    "apt_16": {
+      "promptText": "Which word completes the analogy: Bird is to Fly as Fish is to ?",
+      "options": {
+        "A": "Swim",
+        "B": "Run",
+        "C": "Jump",
+        "D": "Crawl"
+      }
+    },
+    "apt_17": {
+      "promptText": "If some cats are pets and all pets are loved, then some cats are:",
+      "options": {
+        "A": "Loved",
+        "B": "Wild",
+        "C": "Hungry",
+        "D": "Fast"
+      }
+    },
+    "apt_18": {
+      "promptText": "Choose the word that means the same as \"quick\".",
+      "options": {
+        "A": "Slow",
+        "B": "Rapid",
+        "C": "Late",
+        "D": "Lazy"
+      }
+    },
+    "apt_19": {
+      "promptText": "Find the next number: 5, 9, 13, 17, ?",
+      "options": {
+        "A": "19",
+        "B": "21",
+        "C": "23",
+        "D": "25"
+      }
+    },
+    "apt_20": {
+      "promptText": "Which is a valid conclusion? All squares are rectangles. This shape is a square.",
+      "options": {
+        "A": "It is a rectangle",
+        "B": "It is a circle",
+        "C": "It has no sides",
+        "D": "It is a triangle"
+      }
+    },
+    "apt_21": {
+      "promptText": "If a clock shows 3:00, what is the angle between the hands?",
+      "options": {
+        "A": "0 degrees",
+        "B": "30 degrees",
+        "C": "90 degrees",
+        "D": "180 degrees"
+      }
+    },
+    "apt_22": {
+      "promptText": "Choose the odd one out.",
+      "options": {
+        "A": "Red",
+        "B": "Blue",
+        "C": "Green",
+        "D": "Triangle"
+      }
+    },
+    "apt_23": {
+      "promptText": "Find the next letter: Z, X, V, T, ?",
+      "options": {
+        "A": "R",
+        "B": "S",
+        "C": "U",
+        "D": "Q"
+      }
+    },
+    "apt_24": {
+      "promptText": "Which number completes the pattern? 2, 5, 10, 17, ?",
+      "options": {
+        "A": "24",
+        "B": "26",
+        "C": "28",
+        "D": "30"
+      }
+    },
+    "apt_25": {
+      "promptText": "If the word \"DOG\" is coded as \"EPH\", then \"CAT\" is coded as:",
+      "options": {
+        "A": "DBU",
+        "B": "DBT",
+        "C": "DPU",
+        "D": "CBU"
+      }
+    },
+    "apt_26": {
+      "promptText": "Choose the word that best fits: Hot is to Cold as Up is to ?",
+      "options": {
+        "A": "Down",
+        "B": "Left",
+        "C": "Right",
+        "D": "Over"
+      }
+    },
+    "apt_27": {
+      "promptText": "Find the next number: 100, 50, 25, 12.5, ?",
+      "options": {
+        "A": "6.25",
+        "B": "7.5",
+        "C": "8.25",
+        "D": "10"
+      }
+    },
+    "apt_28": {
+      "promptText": "Which word is a noun?",
+      "options": {
+        "A": "Run",
+        "B": "Blue",
+        "C": "Happiness",
+        "D": "Quickly"
+      }
+    },
+    "apt_29": {
+      "promptText": "Choose the best answer: A triangle has how many corners?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      }
+    },
+    "apt_30": {
+      "promptText": "Find the next number: 7, 14, 28, 56, ?",
+      "options": {
+        "A": "63",
+        "B": "70",
+        "C": "98",
+        "D": "112"
+      }
+    },
+    "apt_31": {
+      "promptText": "If all roses are flowers and some flowers fade, then some roses:",
+      "options": {
+        "A": "Fade",
+        "B": "Are blue",
+        "C": "Are trees",
+        "D": "Are animals"
+      }
+    },
+    "apt_32": {
+      "promptText": "Which is the next even number after 48?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      }
+    },
+    "apt_33": {
+      "promptText": "How many dots are shown?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "apt_34": {
+      "promptText": "If it is raining, the ground is wet. It is raining. Therefore:",
+      "options": {
+        "A": "The ground is wet",
+        "B": "The ground is dry",
+        "C": "The sun is out",
+        "D": "It is snowing"
+      }
+    },
+    "apt_35": {
+      "promptText": "Choose the odd one out.",
+      "options": {
+        "A": "Square",
+        "B": "Rectangle",
+        "C": "Circle",
+        "D": "Triangle"
+      }
+    },
+    "apt_36": {
+      "promptText": "Find the next number: 4, 7, 10, 13, ?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "17",
+        "D": "18"
+      }
+    },
+    "apt_37": {
+      "promptText": "Which word is opposite of \"expand\"?",
+      "options": {
+        "A": "Grow",
+        "B": "Shrink",
+        "C": "Open",
+        "D": "Increase"
+      }
+    },
+    "apt_38": {
+      "promptText": "Choose the best answer: 3 is to 9 as 4 is to ?",
+      "options": {
+        "A": "12",
+        "B": "14",
+        "C": "16",
+        "D": "18"
+      }
+    },
+    "apt_39": {
+      "promptText": "If a=1, b=2, c=3, what is d?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "apt_40": {
+      "promptText": "Which number is missing? 2, 3, 5, 8, 12, ?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "17",
+        "D": "18"
+      }
+    },
+    "apt_41": {
+      "promptText": "Choose the word that completes: Hand is to Glove as Foot is to ?",
+      "options": {
+        "A": "Hat",
+        "B": "Sock",
+        "C": "Ring",
+        "D": "Belt"
+      }
+    },
+    "apt_42": {
+      "promptText": "Which letter comes next? B, E, H, K, ?",
+      "options": {
+        "A": "L",
+        "B": "M",
+        "C": "N",
+        "D": "O"
+      }
+    },
+    "apt_43": {
+      "promptText": "If 2 + 2 = 4 and 3 + 3 = 6, then 4 + 4 = ?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "apt_44": {
+      "promptText": "Choose the odd one out.",
+      "options": {
+        "A": "January",
+        "B": "February",
+        "C": "Monday",
+        "D": "March"
+      }
+    },
+    "apt_45": {
+      "promptText": "Find the next number: 11, 22, 33, 44, ?",
+      "options": {
+        "A": "50",
+        "B": "55",
+        "C": "66",
+        "D": "77"
+      }
+    },
+    "job_1": {
+      "promptText": "Which profession is responsible for diagnosing illness?",
+      "options": {
+        "A": "Architect",
+        "B": "Doctor",
+        "C": "Chef",
+        "D": "Pilot"
+      }
+    },
+    "job_2": {
+      "promptText": "Who designs buildings and structures?",
+      "options": {
+        "A": "Engineer",
+        "B": "Architect",
+        "C": "Biologist",
+        "D": "Designer"
+      }
+    },
+    "job_3": {
+      "promptText": "Which job involves flying airplanes?",
+      "options": {
+        "A": "Mechanic",
+        "B": "Pilot",
+        "C": "Sailor",
+        "D": "Driver"
+      }
+    },
+    "job_4": {
+      "promptText": "Who writes code for software and apps?",
+      "options": {
+        "A": "Programmer",
+        "B": "Teacher",
+        "C": "Nurse",
+        "D": "Chef"
+      }
+    },
+    "job_5": {
+      "promptText": "Which profession studies plants and animals?",
+      "options": {
+        "A": "Geologist",
+        "B": "Biologist",
+        "C": "Astronomer",
+        "D": "Historian"
+      }
+    },
+    "job_6": {
+      "promptText": "Who is trained to fight fires?",
+      "options": {
+        "A": "Police Officer",
+        "B": "Firefighter",
+        "C": "Paramedic",
+        "D": "Lifeguard"
+      }
+    },
+    "job_7": {
+      "promptText": "Which job helps people recover movement after injury?",
+      "options": {
+        "A": "Dentist",
+        "B": "Physical Therapist",
+        "C": "Pharmacist",
+        "D": "Surgeon"
+      }
+    },
+    "job_8": {
+      "promptText": "Who writes and edits news stories?",
+      "options": {
+        "A": "Journalist",
+        "B": "Lawyer",
+        "C": "Accountant",
+        "D": "Engineer"
+      }
+    },
+    "job_9": {
+      "promptText": "Which profession protects the public and enforces laws?",
+      "options": {
+        "A": "Judge",
+        "B": "Police Officer",
+        "C": "Paramedic",
+        "D": "Detective"
+      }
+    },
+    "job_10": {
+      "promptText": "Who studies the stars and planets?",
+      "options": {
+        "A": "Astronomer",
+        "B": "Geographer",
+        "C": "Chemist",
+        "D": "Physicist"
+      }
+    },
+    "job_11": {
+      "promptText": "Which job designs and builds machines?",
+      "options": {
+        "A": "Engineer",
+        "B": "Plumber",
+        "C": "Electrician",
+        "D": "Carpenter"
+      }
+    },
+    "job_12": {
+      "promptText": "Who creates lessons and teaches students?",
+      "options": {
+        "A": "Teacher",
+        "B": "Trainer",
+        "C": "Coach",
+        "D": "Tutor"
+      }
+    },
+    "job_13": {
+      "promptText": "Which profession takes care of teeth?",
+      "options": {
+        "A": "Dentist",
+        "B": "Optometrist",
+        "C": "Vet",
+        "D": "Pediatrician"
+      }
+    },
+    "job_14": {
+      "promptText": "Who prepares food in restaurants?",
+      "options": {
+        "A": "Baker",
+        "B": "Chef",
+        "C": "Server",
+        "D": "Barista"
+      }
+    },
+    "job_15": {
+      "promptText": "Which job focuses on animal health?",
+      "options": {
+        "A": "Vet",
+        "B": "Zoologist",
+        "C": "Farmer",
+        "D": "Trainer"
+      }
+    },
+    "job_16": {
+      "promptText": "Who checks financial records for accuracy?",
+      "options": {
+        "A": "Accountant",
+        "B": "Banker",
+        "C": "Analyst",
+        "D": "Broker"
+      }
+    },
+    "job_17": {
+      "promptText": "Which profession builds and repairs electrical systems?",
+      "options": {
+        "A": "Electrician",
+        "B": "Mechanic",
+        "C": "Plumber",
+        "D": "Carpenter"
+      }
+    },
+    "job_18": {
+      "promptText": "Who helps people with legal advice?",
+      "options": {
+        "A": "Judge",
+        "B": "Lawyer",
+        "C": "Clerk",
+        "D": "Bailiff"
+      }
+    },
+    "job_19": {
+      "promptText": "Which job studies Earth's rocks and minerals?",
+      "options": {
+        "A": "Geologist",
+        "B": "Ecologist",
+        "C": "Meteorologist",
+        "D": "Botanist"
+      }
+    },
+    "job_20": {
+      "promptText": "Who creates art using paint or sculpture?",
+      "options": {
+        "A": "Designer",
+        "B": "Artist",
+        "C": "Actor",
+        "D": "Composer"
+      }
+    },
+    "job_21": {
+      "promptText": "Which profession captures photographs?",
+      "options": {
+        "A": "Photographer",
+        "B": "Reporter",
+        "C": "Producer",
+        "D": "Director"
+      }
+    },
+    "job_22": {
+      "promptText": "Who treats patients in emergencies?",
+      "options": {
+        "A": "Surgeon",
+        "B": "Paramedic",
+        "C": "Nurse",
+        "D": "Therapist"
+      }
+    },
+    "job_23": {
+      "promptText": "Which job designs clothing and fashion?",
+      "options": {
+        "A": "Stylist",
+        "B": "Fashion Designer",
+        "C": "Tailor",
+        "D": "Model"
+      }
+    },
+    "job_24": {
+      "promptText": "Who directs a movie or TV show?",
+      "options": {
+        "A": "Producer",
+        "B": "Director",
+        "C": "Editor",
+        "D": "Screenwriter"
+      }
+    },
+    "job_25": {
+      "promptText": "Which profession studies weather?",
+      "options": {
+        "A": "Astronomer",
+        "B": "Meteorologist",
+        "C": "Climatologist",
+        "D": "Geographer"
+      }
+    },
+    "job_26": {
+      "promptText": "Who manages the day-to-day operations of a company?",
+      "options": {
+        "A": "CEO",
+        "B": "Manager",
+        "C": "Analyst",
+        "D": "Consultant"
+      }
+    },
+    "job_27": {
+      "promptText": "Which job helps people buy and sell homes?",
+      "options": {
+        "A": "Broker",
+        "B": "Realtor",
+        "C": "Accountant",
+        "D": "Appraiser"
+      }
+    },
+    "job_28": {
+      "promptText": "Who builds furniture and structures from wood?",
+      "options": {
+        "A": "Carpenter",
+        "B": "Plumber",
+        "C": "Mason",
+        "D": "Welder"
+      }
+    },
+    "job_29": {
+      "promptText": "Which profession creates music?",
+      "options": {
+        "A": "Composer",
+        "B": "Painter",
+        "C": "Writer",
+        "D": "Actor"
+      }
+    },
+    "job_30": {
+      "promptText": "Who takes care of patients in hospitals?",
+      "options": {
+        "A": "Nurse",
+        "B": "Pharmacist",
+        "C": "Therapist",
+        "D": "Dentist"
+      }
+    },
+    "job_31": {
+      "promptText": "Which job studies human behavior and mind?",
+      "options": {
+        "A": "Psychologist",
+        "B": "Sociologist",
+        "C": "Anthropologist",
+        "D": "Neurologist"
+      }
+    },
+    "job_32": {
+      "promptText": "Who designs logos and brand visuals?",
+      "options": {
+        "A": "Graphic Designer",
+        "B": "Photographer",
+        "C": "Editor",
+        "D": "Writer"
+      }
+    },
+    "job_33": {
+      "promptText": "Which profession prepares medicines?",
+      "options": {
+        "A": "Pharmacist",
+        "B": "Nurse",
+        "C": "Surgeon",
+        "D": "Dentist"
+      }
+    },
+    "job_34": {
+      "promptText": "Who fixes cars and engines?",
+      "options": {
+        "A": "Mechanic",
+        "B": "Engineer",
+        "C": "Driver",
+        "D": "Pilot"
+      }
+    },
+    "job_35": {
+      "promptText": "Which job is responsible for training athletes?",
+      "options": {
+        "A": "Coach",
+        "B": "Trainer",
+        "C": "Referee",
+        "D": "Scout"
+      }
+    },
+    "job_36": {
+      "promptText": "Who studies past events and civilizations?",
+      "options": {
+        "A": "Historian",
+        "B": "Linguist",
+        "C": "Archaeologist",
+        "D": "Sociologist"
+      }
+    },
+    "job_37": {
+      "promptText": "Which profession writes books and stories?",
+      "options": {
+        "A": "Writer",
+        "B": "Poet",
+        "C": "Editor",
+        "D": "Publisher"
+      }
+    },
+    "job_38": {
+      "promptText": "Who assists people with hearing loss?",
+      "options": {
+        "A": "Audiologist",
+        "B": "Optometrist",
+        "C": "Dermatologist",
+        "D": "Dietitian"
+      }
+    },
+    "job_39": {
+      "promptText": "Which job plans and builds roads and bridges?",
+      "options": {
+        "A": "Civil Engineer",
+        "B": "Surveyor",
+        "C": "Architect",
+        "D": "Contractor"
+      }
+    },
+    "job_40": {
+      "promptText": "Who uses maps and GPS to guide travel?",
+      "options": {
+        "A": "Navigator",
+        "B": "Pilot",
+        "C": "Driver",
+        "D": "Guide"
+      }
+    },
+    "job_41": {
+      "promptText": "Which profession works with space missions?",
+      "options": {
+        "A": "Astronaut",
+        "B": "Pilot",
+        "C": "Engineer",
+        "D": "Scientist"
+      }
+    },
+    "job_42": {
+      "promptText": "Who specializes in skin health?",
+      "options": {
+        "A": "Dermatologist",
+        "B": "Cardiologist",
+        "C": "Orthopedist",
+        "D": "Neurologist"
+      }
+    },
+    "job_43": {
+      "promptText": "Which job plans events and schedules?",
+      "options": {
+        "A": "Coordinator",
+        "B": "Planner",
+        "C": "Organizer",
+        "D": "All of these"
+      }
+    },
+    "job_44": {
+      "promptText": "Who designs video games and interactive media?",
+      "options": {
+        "A": "Game Designer",
+        "B": "Animator",
+        "C": "Programmer",
+        "D": "Producer"
+      }
+    },
+    "job_45": {
+      "promptText": "Which profession manages money and budgets?",
+      "options": {
+        "A": "Financial Analyst",
+        "B": "Coach",
+        "C": "Editor",
+        "D": "Scientist"
+      }
+    },
+    "obj_1": {
+      "promptText": "Which object is used to tell time?",
+      "options": {
+        "A": "Compass",
+        "B": "Clock",
+        "C": "Thermometer",
+        "D": "Barometer"
+      }
+    },
+    "obj_2": {
+      "promptText": "Which vehicle uses wings to fly?",
+      "options": {
+        "A": "Boat",
+        "B": "Train",
+        "C": "Airplane",
+        "D": "Car"
+      }
+    },
+    "obj_3": {
+      "promptText": "What do wheels help reduce?",
+      "options": {
+        "A": "Friction",
+        "B": "Heat",
+        "C": "Light",
+        "D": "Sound"
+      }
+    },
+    "obj_4": {
+      "promptText": "Which item is used to cross a river safely?",
+      "options": {
+        "A": "Bridge",
+        "B": "Tunnel",
+        "C": "Ladder",
+        "D": "Fence"
+      }
+    },
+    "obj_5": {
+      "promptText": "Which object is used to write on paper?",
+      "options": {
+        "A": "Spoon",
+        "B": "Pen",
+        "C": "Ruler",
+        "D": "Hammer"
+      }
+    },
+    "obj_6": {
+      "promptText": "What powers a traditional bicycle?",
+      "options": {
+        "A": "Fuel",
+        "B": "Electricity",
+        "C": "Human pedaling",
+        "D": "Wind"
+      }
+    },
+    "obj_7": {
+      "promptText": "Which object is used to cook food with heat?",
+      "options": {
+        "A": "Oven",
+        "B": "Freezer",
+        "C": "Fan",
+        "D": "Vacuum"
+      }
+    },
+    "obj_8": {
+      "promptText": "Which object helps you see far away?",
+      "options": {
+        "A": "Microscope",
+        "B": "Telescope",
+        "C": "Thermometer",
+        "D": "Compass"
+      }
+    },
+    "obj_9": {
+      "promptText": "Which item is used to protect your head while biking?",
+      "options": {
+        "A": "Helmet",
+        "B": "Gloves",
+        "C": "Boots",
+        "D": "Cape"
+      }
+    },
+    "obj_10": {
+      "promptText": "Which city building is used for borrowing books?",
+      "options": {
+        "A": "Library",
+        "B": "Bakery",
+        "C": "Hospital",
+        "D": "Museum"
+      }
+    },
+    "obj_11": {
+      "promptText": "Which tool is used to tighten bolts?",
+      "options": {
+        "A": "Hammer",
+        "B": "Wrench",
+        "C": "Saw",
+        "D": "Brush"
+      }
+    },
+    "obj_12": {
+      "promptText": "Which vehicle runs on rails in a city?",
+      "options": {
+        "A": "Tram",
+        "B": "Boat",
+        "C": "Bike",
+        "D": "Truck"
+      }
+    },
+    "obj_13": {
+      "promptText": "What do wings help birds do?",
+      "options": {
+        "A": "Swim",
+        "B": "Fly",
+        "C": "Dig",
+        "D": "Hide"
+      }
+    },
+    "obj_14": {
+      "promptText": "Which object tells you direction?",
+      "options": {
+        "A": "Clock",
+        "B": "Compass",
+        "C": "Camera",
+        "D": "Scale"
+      }
+    },
+    "obj_15": {
+      "promptText": "Which place in town is used to treat sick people?",
+      "options": {
+        "A": "School",
+        "B": "Hospital",
+        "C": "Stadium",
+        "D": "Post Office"
+      }
+    },
+    "obj_16": {
+      "promptText": "Which object is used to take photos?",
+      "options": {
+        "A": "Camera",
+        "B": "Radio",
+        "C": "Speaker",
+        "D": "Printer"
+      }
+    },
+    "obj_17": {
+      "promptText": "Which vehicle is powered by an engine and carries passengers in a city?",
+      "options": {
+        "A": "Bus",
+        "B": "Scooter",
+        "C": "Bike",
+        "D": "Skateboard"
+      }
+    },
+    "obj_18": {
+      "promptText": "Which object is used to measure temperature?",
+      "options": {
+        "A": "Thermometer",
+        "B": "Ruler",
+        "C": "Scale",
+        "D": "Compass"
+      }
+    },
+    "obj_19": {
+      "promptText": "Which tool is used to cut wood?",
+      "options": {
+        "A": "Saw",
+        "B": "Wrench",
+        "C": "Screwdriver",
+        "D": "Pliers"
+      }
+    },
+    "obj_20": {
+      "promptText": "Which place sells groceries in town?",
+      "options": {
+        "A": "Bakery",
+        "B": "Supermarket",
+        "C": "Library",
+        "D": "Post Office"
+      }
+    },
+    "obj_21": {
+      "promptText": "Which object helps cars stop?",
+      "options": {
+        "A": "Brakes",
+        "B": "Pedals",
+        "C": "Mirrors",
+        "D": "Seats"
+      }
+    },
+    "obj_22": {
+      "promptText": "Which object is used to mail letters?",
+      "options": {
+        "A": "Mailbox",
+        "B": "Locker",
+        "C": "Chimney",
+        "D": "Drawer"
+      }
+    },
+    "obj_23": {
+      "promptText": "Which machine helps clean floors?",
+      "options": {
+        "A": "Vacuum",
+        "B": "Microwave",
+        "C": "Toaster",
+        "D": "Fan"
+      }
+    },
+    "obj_24": {
+      "promptText": "Which object is used to unlock doors?",
+      "options": {
+        "A": "Key",
+        "B": "Pin",
+        "C": "Clip",
+        "D": "String"
+      }
+    },
+    "obj_25": {
+      "promptText": "Which place in town sends letters and packages?",
+      "options": {
+        "A": "Bank",
+        "B": "Post Office",
+        "C": "Gym",
+        "D": "Theater"
+      }
+    },
+    "obj_26": {
+      "promptText": "Which object is used to play music?",
+      "options": {
+        "A": "Speaker",
+        "B": "Blender",
+        "C": "Printer",
+        "D": "Toaster"
+      }
+    },
+    "obj_27": {
+      "promptText": "Which vehicle is designed to travel underground in cities?",
+      "options": {
+        "A": "Subway",
+        "B": "Bus",
+        "C": "Ferry",
+        "D": "Taxi"
+      }
+    },
+    "obj_28": {
+      "promptText": "Which object is used to lift heavy items?",
+      "options": {
+        "A": "Crane",
+        "B": "Mop",
+        "C": "Bucket",
+        "D": "Broom"
+      }
+    },
+    "obj_29": {
+      "promptText": "Which object is used to light a room?",
+      "options": {
+        "A": "Lamp",
+        "B": "Fan",
+        "C": "Clock",
+        "D": "Radio"
+      }
+    },
+    "obj_30": {
+      "promptText": "Which place in town is used for sports games?",
+      "options": {
+        "A": "Stadium",
+        "B": "Museum",
+        "C": "Library",
+        "D": "Theater"
+      }
+    },
+    "obj_31": {
+      "promptText": "Which tool is used to drive screws?",
+      "options": {
+        "A": "Screwdriver",
+        "B": "Hammer",
+        "C": "Pliers",
+        "D": "Wrench"
+      }
+    },
+    "obj_32": {
+      "promptText": "Which object is used to store cold food?",
+      "options": {
+        "A": "Oven",
+        "B": "Refrigerator",
+        "C": "Toaster",
+        "D": "Kettle"
+      }
+    },
+    "obj_33": {
+      "promptText": "Which vehicle is powered by wind on water?",
+      "options": {
+        "A": "Sailboat",
+        "B": "Submarine",
+        "C": "Ferry",
+        "D": "Canoe"
+      }
+    },
+    "obj_34": {
+      "promptText": "Which object helps you cross a street safely?",
+      "options": {
+        "A": "Crosswalk",
+        "B": "Driveway",
+        "C": "Garage",
+        "D": "Alley"
+      }
+    },
+    "obj_35": {
+      "promptText": "Which object is used to pay for items?",
+      "options": {
+        "A": "Wallet",
+        "B": "Notebook",
+        "C": "Backpack",
+        "D": "Helmet"
+      }
+    },
+    "obj_36": {
+      "promptText": "Which place in town helps you withdraw money?",
+      "options": {
+        "A": "Bank",
+        "B": "Clinic",
+        "C": "School",
+        "D": "Park"
+      }
+    },
+    "obj_37": {
+      "promptText": "Which machine is used to wash clothes?",
+      "options": {
+        "A": "Washing Machine",
+        "B": "Dishwasher",
+        "C": "Dryer",
+        "D": "Mixer"
+      }
+    },
+    "obj_38": {
+      "promptText": "Which object is used to see your reflection?",
+      "options": {
+        "A": "Mirror",
+        "B": "Window",
+        "C": "Screen",
+        "D": "Lens"
+      }
+    },
+    "obj_39": {
+      "promptText": "Which city feature controls traffic flow?",
+      "options": {
+        "A": "Traffic Light",
+        "B": "Street Sign",
+        "C": "Speed Bump",
+        "D": "Sidewalk"
+      }
+    },
+    "obj_40": {
+      "promptText": "Which object keeps rain off your head?",
+      "options": {
+        "A": "Umbrella",
+        "B": "Scarf",
+        "C": "Boots",
+        "D": "Belt"
+      }
+    },
+    "obj_41": {
+      "promptText": "Which place in town shows movies?",
+      "options": {
+        "A": "Cinema",
+        "B": "Museum",
+        "C": "Library",
+        "D": "Gym"
+      }
+    },
+    "obj_42": {
+      "promptText": "Which object helps you climb to high places?",
+      "options": {
+        "A": "Ladder",
+        "B": "Rope",
+        "C": "Net",
+        "D": "Ramp"
+      }
+    },
+    "obj_43": {
+      "promptText": "Which object is used to carry groceries?",
+      "options": {
+        "A": "Basket",
+        "B": "Envelope",
+        "C": "Wallet",
+        "D": "Book"
+      }
+    },
+    "obj_44": {
+      "promptText": "Which vehicle is used to deliver packages quickly in town?",
+      "options": {
+        "A": "Delivery Van",
+        "B": "Sailboat",
+        "C": "Train",
+        "D": "Cable Car"
+      }
+    },
+    "obj_45": {
+      "promptText": "Which place in town helps people learn?",
+      "options": {
+        "A": "School",
+        "B": "Cafe",
+        "C": "Stadium",
+        "D": "Garage"
+      }
+    }
+  }
+}

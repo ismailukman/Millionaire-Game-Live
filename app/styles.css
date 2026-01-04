@@ -151,6 +151,20 @@ dialog {
   gap: 12px;
 }
 
+.language-select {
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+}
+
+.language-select:focus-visible {
+  outline: 2px solid rgba(246, 185, 59, 0.6);
+  outline-offset: 2px;
+}
+
 .account-menu {
   position: relative;
   pointer-events: auto;

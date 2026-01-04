@@ -1,0 +1,3442 @@
+{
+  "packs": {
+    "pack_default": {
+      "title": "Milyoner Soruları",
+      "description": "Popüler kültürün, tarihin ve bilimin sinematik bir karışımı.",
+      "messages": {
+        "winTitle": "Tebrikler!",
+        "winMessage": "Milyoner oldunuz!",
+        "loseTitle": "Oyun bitti",
+        "loseMessage": "Bir dahaki sefere daha iyi şanslar!",
+        "walkAwayTitle": "Güzel oynadı!",
+        "walkAwayMessage": "Şunları elde ettiniz:"
+      },
+      "lifelines": {
+        "fifty_fifty": "50:50",
+        "ask_audience": "Seyircilere Sorun",
+        "phone_friend": "Bir Arkadaşını Ara"
+      }
+    }
+  },
+  "categories": {
+    "animals": {
+      "title": "Hayvanlar",
+      "subtitle": "Hayvan Gezegeni • Sualtı Hayvanları"
+    },
+    "geography": {
+      "title": "Coğrafya",
+      "subtitle": "Amerika Birleşik Devletleri Eyaletleri • Dünya Ülkeleri • Dünyadaki Şehirler"
+    },
+    "science_nature": {
+      "title": "Bilim ve Doğa",
+      "subtitle": "Dinozorlar • Uzay"
+    },
+    "kids_gk": {
+      "title": "Çocuklar İçin Genel Bilgi",
+      "subtitle": "Çocuklar İçin Bilgi Yarışması"
+    },
+    "mathematics": {
+      "title": "Matematik",
+      "subtitle": "Sayılar • Cebir • Geometri • Olasılık"
+    },
+    "aptitude": {
+      "title": "Yetenek",
+      "subtitle": "Sözel • Sayısal • Soyut • Mantıksal • Desenler"
+    },
+    "occupations": {
+      "title": "Meslekler",
+      "subtitle": "İlham Veren Meslekler"
+    },
+    "objects_concepts": {
+      "title": "Nesneler ve Kavramlar",
+      "subtitle": "Tekerlekler, Kanatlar ve Daha Fazlası • Şehir Turu"
+    }
+  },
+  "questions": {
+    "q1": {
+      "promptText": "Kızıl Gezegen olarak bilinen gezegen hangisidir?",
+      "options": {
+        "A": "Mars",
+        "B": "Venüs",
+        "C": "Jüpiter",
+        "D": "Merkür"
+      },
+      "explanation": "Mars, yüzeyindeki demir oksit nedeniyle kırmızı görünür."
+    },
+    "q2": {
+      "promptText": "Kanada'nın başkenti neresidir?",
+      "options": {
+        "A": "Toronto",
+        "B": "Vancouver",
+        "C": "Ottawa",
+        "D": "Montreal"
+      }
+    },
+    "q3": {
+      "promptText": "Hangi müzik aletinin 88 tuşu vardır?",
+      "options": {
+        "A": "Arp",
+        "B": "Piyano",
+        "C": "Akordeon",
+        "D": "Organ"
+      }
+    },
+    "q4": {
+      "promptText": "Büyük Bariyer Resifi hangi ülkenin kıyılarında yer almaktadır?",
+      "options": {
+        "A": "Meksika",
+        "B": "Avustralya",
+        "C": "Güney Afrika",
+        "D": "Brezilya"
+      }
+    },
+    "q5": {
+      "promptText": "Kimyasal sembolü O olan element hangisidir?",
+      "options": {
+        "A": "Altın",
+        "B": "Oksijen",
+        "C": "Osmiyum",
+        "D": "Kalay"
+      }
+    },
+    "q6": {
+      "promptText": "'Gurur ve Önyargı'yı kim yazdı?",
+      "options": {
+        "A": "Charlotte Bronte",
+        "B": "Jane Austen",
+        "C": "Mary Shelley",
+        "D": "Emily Dickinson"
+      }
+    },
+    "q7": {
+      "promptText": "Dünyanın en büyük okyanusu hangisidir?",
+      "options": {
+        "A": "Atlantik",
+        "B": "Hint",
+        "C": "Pasifik",
+        "D": "Arktik"
+      }
+    },
+    "q8": {
+      "promptText": "Uzaya fırlatılan ilk yapay uydunun adı nedir?",
+      "options": {
+        "A": "Yolcu",
+        "B": "Sputnik",
+        "C": "Apollo",
+        "D": "Öncü"
+      }
+    },
+    "q9": {
+      "promptText": "2012 Yaz Olimpiyatları hangi şehir tarafından düzenlendi?",
+      "options": {
+        "A": "Londra",
+        "B": "Pekin",
+        "C": "Rio de Janeiro",
+        "D": "Tokyo"
+      }
+    },
+    "q10": {
+      "promptText": "Doğada bulunan en sert madde nedir?",
+      "options": {
+        "A": "Elmas",
+        "B": "Kuvars",
+        "C": "Granit",
+        "D": "Platin"
+      }
+    },
+    "q11": {
+      "promptText": "Sistine Şapeli'nin tavanını hangi sanatçı boyamıştır?",
+      "options": {
+        "A": "Raphael",
+        "B": "Michelangelo",
+        "C": "Da Vinci",
+        "D": "Caravaggio"
+      }
+    },
+    "q12": {
+      "promptText": "Dünyanın en uzun nehri hangisidir?",
+      "options": {
+        "A": "Amazon",
+        "B": "Nil",
+        "C": "Yangtze",
+        "D": "Mississippi"
+      }
+    },
+    "q13": {
+      "promptText": "Dünya atmosferinin büyük çoğunluğunu hangi gaz oluşturur?",
+      "options": {
+        "A": "Oksijen",
+        "B": "Azot",
+        "C": "Karbondioksit",
+        "D": "Argon"
+      }
+    },
+    "q14": {
+      "promptText": "Dünyanın en büyük çölü hangisidir?",
+      "options": {
+        "A": "Sahra",
+        "B": "Gobi",
+        "C": "Antarktika Çölü",
+        "D": "Arap"
+      }
+    },
+    "q15": {
+      "promptText": "Genel görelilik kuramını hangi fizikçi geliştirdi?",
+      "options": {
+        "A": "Isaac Newton",
+        "B": "Albert Einstein",
+        "C": "Niels Bohr",
+        "D": "Marie Curie"
+      }
+    },
+    "fff1": {
+      "promptText": "En Hızlı Parmak: Açılış Suresi olarak bilinen sure hangisidir?",
+      "options": {
+        "A": "El-Fatiha",
+        "B": "Bakara",
+        "C": "El-İhlas",
+        "D": "El-Kahf"
+      }
+    },
+    "animals_1": {
+      "promptText": "Ekolokasyon yeteneğiyle bilinen memeli hangisidir?",
+      "options": {
+        "A": "Yarasa",
+        "B": "Su samuru",
+        "C": "Zebra",
+        "D": "Geyik"
+      }
+    },
+    "animals_2": {
+      "promptText": "En hızlı kara hayvanı hangisidir?",
+      "options": {
+        "A": "Çita",
+        "B": "Pronghorn",
+        "C": "Aslan",
+        "D": "Devekuşu"
+      }
+    },
+    "animals_3": {
+      "promptText": "Hangi kuş, renkli kuyruk tüyleri ve kur yapma gösterisiyle ünlüdür?",
+      "options": {
+        "A": "Tavus kuşu",
+        "B": "Flamingo",
+        "C": "Kartal",
+        "D": "Penguen"
+      }
+    },
+    "animals_4": {
+      "promptText": "Aslan sürüsüne ne denir?",
+      "options": {
+        "A": "Sürü",
+        "B": "Gurur",
+        "C": "Okul",
+        "D": "Ambalaj"
+      }
+    },
+    "animals_5": {
+      "promptText": "Yeryüzündeki en büyük hayvan hangisidir?",
+      "options": {
+        "A": "Afrika Fili",
+        "B": "Mavi Balina",
+        "C": "Zürafa",
+        "D": "Büyük Beyaz Köpekbalığı"
+      }
+    },
+    "animals_6": {
+      "promptText": "Yavru kanguruya ne denir?",
+      "options": {
+        "A": "Yavru",
+        "B": "Joey",
+        "C": "Buzağı",
+        "D": "Geyik yavrusu"
+      }
+    },
+    "animals_7": {
+      "promptText": "En uzun ömre sahip hayvan hangisidir?",
+      "options": {
+        "A": "Galapagos Kaplumbağası",
+        "B": "Fil",
+        "C": "Mavi Balina",
+        "D": "Papağan"
+      }
+    },
+    "animals_8": {
+      "promptText": "Sekiz kolu ve üç kalbi olan deniz canlısı hangisidir?",
+      "options": {
+        "A": "Kalamar",
+        "B": "Ahtapot",
+        "C": "Mürekkepbalığı",
+        "D": "Denizanası"
+      }
+    },
+    "animals_9": {
+      "promptText": "Çölün gemisi olarak bilinen hayvan hangisidir?",
+      "options": {
+        "A": "Atış",
+        "B": "Deve",
+        "C": "Lama",
+        "D": "Eşek"
+      }
+    },
+    "animals_10": {
+      "promptText": "Uçamayan ama çok hızlı koşabilen kuş hangisidir?",
+      "options": {
+        "A": "Penguen",
+        "B": "Devekuşu",
+        "C": "Kivi",
+        "D": "Emu"
+      }
+    },
+    "animals_11": {
+      "promptText": "En büyük köpekbalığı türü hangisidir?",
+      "options": {
+        "A": "Büyük Beyaz Beyaz",
+        "B": "Balina Köpekbalığı",
+        "C": "Çekiç başlı",
+        "D": "Kaplan Köpekbalığı"
+      }
+    },
+    "animals_12": {
+      "promptText": "Hangi hayvan, ortama uyum sağlamak için rengini değiştirmesiyle bilinir?",
+      "options": {
+        "A": "Bukalemun",
+        "B": "İguana",
+        "C": "Kertenkele",
+        "D": "Anole"
+      }
+    },
+    "animals_13": {
+      "promptText": "Yunus sürüsüne ne denir?",
+      "options": {
+        "A": "Pod",
+        "B": "Sürü",
+        "C": "Sürü",
+        "D": "Koloni"
+      }
+    },
+    "animals_14": {
+      "promptText": "Siyah beyaz çizgileri olan ve Afrika'da yaşayan hayvan hangisidir?",
+      "options": {
+        "A": "Okapi",
+        "B": "Zebra",
+        "C": "Tapir",
+        "D": "Kokarca"
+      }
+    },
+    "animals_15": {
+      "promptText": "Bal üreten böcek hangisidir?",
+      "options": {
+        "A": "Eşek arısı",
+        "B": "Arı",
+        "C": "Karınca",
+        "D": "Kelebek"
+      }
+    },
+    "animals_16": {
+      "promptText": "En büyük ayı türü hangisidir?",
+      "options": {
+        "A": "Boz Ayı",
+        "B": "Kutup ayısı",
+        "C": "Kara Ayı",
+        "D": "Panda"
+      }
+    },
+    "animals_17": {
+      "promptText": "Hangi hayvan hortumuyla bilinir?",
+      "options": {
+        "A": "Fil",
+        "B": "Gergedan",
+        "C": "Su aygırı",
+        "D": "Mors"
+      }
+    },
+    "animals_18": {
+      "promptText": "Barışın sembolü olan kuş hangisidir?",
+      "options": {
+        "A": "Güvercin",
+        "B": "Karga",
+        "C": "Kuzgun",
+        "D": "Şahin"
+      }
+    },
+    "animals_19": {
+      "promptText": "Hangi hayvan ayakta uyur?",
+      "options": {
+        "A": "Atış",
+        "B": "Aslan",
+        "C": "Kaplan",
+        "D": "Goril"
+      }
+    },
+    "animals_20": {
+      "promptText": "En büyük kedi türü hangisidir?",
+      "options": {
+        "A": "Aslan",
+        "B": "Leopar",
+        "C": "Kaplan",
+        "D": "Jaguar"
+      }
+    },
+    "animals_21": {
+      "promptText": "Memeliler arasında en güçlü ısırma gücüne sahip hayvan hangisidir?",
+      "options": {
+        "A": "Aslan",
+        "B": "Su aygırı",
+        "C": "Sırtlan",
+        "D": "Ayı"
+      }
+    },
+    "animals_22": {
+      "promptText": "Biyolüminesans özelliğiyle bilinen deniz hayvanı hangisidir?",
+      "options": {
+        "A": "Deniz Kaplumbağası",
+        "B": "Fener balığı",
+        "C": "Yunus",
+        "D": "Deniz ineği"
+      }
+    },
+    "animals_23": {
+      "promptText": "En büyük penguen türü hangisidir?",
+      "options": {
+        "A": "İmparator Penguen",
+        "B": "Kral Penguen",
+        "C": "Adelie Pengueni",
+        "D": "Gentoo Pengueni"
+      }
+    },
+    "animals_24": {
+      "promptText": "Ölü taklidi yapmasıyla ünlü hayvan hangisidir?",
+      "options": {
+        "A": "Rakun",
+        "B": "Opossum",
+        "C": "Porsuk",
+        "D": "Tilki"
+      }
+    },
+    "animals_25": {
+      "promptText": "Hangi balık şişme özelliğiyle bilinir?",
+      "options": {
+        "A": "Palyaço balığı",
+        "B": "Balon balığı",
+        "C": "Melek balığı",
+        "D": "Kılıçbalığı"
+      }
+    },
+    "animals_26": {
+      "promptText": "Kesesi olan ve Avustralya'ya özgü olan hayvan hangisidir?",
+      "options": {
+        "A": "Koala",
+        "B": "Kanguru",
+        "C": "Vombat",
+        "D": "Bunların hepsi"
+      }
+    },
+    "animals_27": {
+      "promptText": "Balina sürüsüne ne denir?",
+      "options": {
+        "A": "Pod",
+        "B": "Okul",
+        "C": "Sürü",
+        "D": "Gurur"
+      }
+    },
+    "animals_28": {
+      "promptText": "Uzun boynuyla bilinen hayvan hangisidir?",
+      "options": {
+        "A": "Zürafa",
+        "B": "Geyik",
+        "C": "Deve",
+        "D": "Lama"
+      }
+    },
+    "animals_29": {
+      "promptText": "Su püskürterek hareket eden deniz canlısı hangisidir?",
+      "options": {
+        "A": "Ahtapot",
+        "B": "Denizatı",
+        "C": "Denizyıldızı",
+        "D": "Yengeç"
+      }
+    },
+    "animals_30": {
+      "promptText": "En büyük sürüngen hayvan hangisidir?",
+      "options": {
+        "A": "Komodo Ejderi",
+        "B": "Tuzlu su timsahı",
+        "C": "Timsah",
+        "D": "Yeşil Anakonda"
+      }
+    },
+    "animals_31": {
+      "promptText": "Sesleri ve konuşmayı taklit etmesiyle bilinen kuş hangisidir?",
+      "options": {
+        "A": "Papağan",
+        "B": "Serçe",
+        "C": "Robin",
+        "D": "Şahin"
+      }
+    },
+    "animals_32": {
+      "promptText": "Gerçek anlamda uçabilen tek memeli hayvan hangisidir?",
+      "options": {
+        "A": "Uçan sincap",
+        "B": "Yarasa",
+        "C": "Şeker Sincabı",
+        "D": "Colugo"
+      }
+    },
+    "animals_33": {
+      "promptText": "En kalın kürke sahip hayvan hangisidir?",
+      "options": {
+        "A": "Kutup Tilkisi",
+        "B": "Deniz samuru",
+        "C": "Kutup ayısı",
+        "D": "Wolverine"
+      }
+    },
+    "animals_34": {
+      "promptText": "Siyah beyaz kürkü ve bambuyla beslenmesiyle bilinen hayvan hangisidir?",
+      "options": {
+        "A": "Panda",
+        "B": "Zebra",
+        "C": "Kokarca",
+        "D": "Porsuk"
+      }
+    },
+    "animals_35": {
+      "promptText": "Hangi hayvanın kavrayıcı kuyruğu vardır?",
+      "options": {
+        "A": "Goril",
+        "B": "Örümcek Maymunu",
+        "C": "Kurt",
+        "D": "Ayı"
+      }
+    },
+    "animals_36": {
+      "promptText": "Dişleriyle ünlü olan su memelisi hangisidir?",
+      "options": {
+        "A": "Mors",
+        "B": "Fok",
+        "C": "Deniz ineği",
+        "D": "Deniz ineği"
+      }
+    },
+    "animals_37": {
+      "promptText": "Hangi hayvan kafasını 270 dereceye kadar döndürebilir?",
+      "options": {
+        "A": "Baykuş",
+        "B": "Kartal",
+        "C": "Şahin",
+        "D": "Şahin"
+      }
+    },
+    "animals_38": {
+      "promptText": "Şelalelere tırmanmasıyla ünlü balık hangisidir?",
+      "options": {
+        "A": "Somon",
+        "B": "Alabalık",
+        "C": "Sazan",
+        "D": "Yayın balığı"
+      }
+    },
+    "animals_39": {
+      "promptText": "Hangi hayvan zırh benzeri kabuğuyla bilinir?",
+      "options": {
+        "A": "Armadillo",
+        "B": "Kirpi",
+        "C": "Kirpi",
+        "D": "Pangolin"
+      }
+    },
+    "animals_40": {
+      "promptText": "Hangi deniz canlısının zehirli dikenlerden oluşan bir tacı vardır?",
+      "options": {
+        "A": "Denizyıldızı",
+        "B": "Dikenli taç deniz yıldızı",
+        "C": "Deniz kestanesi",
+        "D": "Deniz Hıyarı"
+      }
+    },
+    "animals_41": {
+      "promptText": "Suyun içinde deri rengini değiştirmesiyle bilinen sürüngen hangisidir?",
+      "options": {
+        "A": "Timsah",
+        "B": "Timsah",
+        "C": "Deniz İguanası",
+        "D": "Deniz Yılanı"
+      }
+    },
+    "animals_42": {
+      "promptText": "Hangi hayvan mürekkebi savunma mekanizması olarak kullanır?",
+      "options": {
+        "A": "Ahtapot",
+        "B": "Denizatı",
+        "C": "Istakoz",
+        "D": "Yengeç"
+      }
+    },
+    "animals_43": {
+      "promptText": "Kurbağa sürüsüne ne denir?",
+      "options": {
+        "A": "Ordu",
+        "B": "Koloni",
+        "C": "Sürü",
+        "D": "Toplanma"
+      }
+    },
+    "animals_44": {
+      "promptText": "Karıncaları yakalamak için kullandığı uzun diliyle bilinen hayvan hangisidir?",
+      "options": {
+        "A": "Karıncayiyen",
+        "B": "Karıncayiyen",
+        "C": "Pangolin",
+        "D": "Bunların hepsi"
+      }
+    },
+    "animals_45": {
+      "promptText": "Hangi kuş geriye doğru uçabilir?",
+      "options": {
+        "A": "Sinek kuşu",
+        "B": "Yutmak",
+        "C": "Serçe",
+        "D": "Süratli"
+      }
+    },
+    "geo_1": {
+      "promptText": "Japonya'nın başkenti neresidir?",
+      "options": {
+        "A": "Tokyo",
+        "B": "Kyoto",
+        "C": "Osaka",
+        "D": "Nagoya"
+      }
+    },
+    "geo_2": {
+      "promptText": "Amerika Birleşik Devletleri'nde \"Güneşli Eyalet\" olarak bilinen eyalet hangisidir?",
+      "options": {
+        "A": "Kaliforniya",
+        "B": "Florida",
+        "C": "Arizona",
+        "D": "Teksas"
+      }
+    },
+    "geo_3": {
+      "promptText": "En kalabalık ülke hangisidir?",
+      "options": {
+        "A": "Hindistan",
+        "B": "Amerika Birleşik Devletleri",
+        "C": "Çin",
+        "D": "Endonezya"
+      }
+    },
+    "geo_4": {
+      "promptText": "Avustralya'nın başkenti neresidir?",
+      "options": {
+        "A": "Sidney",
+        "B": "Melbourne",
+        "C": "Canberra",
+        "D": "Perth"
+      }
+    },
+    "geo_5": {
+      "promptText": "Yüzölçümü bakımından en büyük ABD eyaleti hangisidir?",
+      "options": {
+        "A": "Teksas",
+        "B": "Kaliforniya",
+        "C": "Alaska",
+        "D": "Montana"
+      }
+    },
+    "geo_6": {
+      "promptText": "\"Büyük Elma\" olarak bilinen şehir hangisidir?",
+      "options": {
+        "A": "Los Angeles",
+        "B": "New York Şehri",
+        "C": "Chicago",
+        "D": "Miami"
+      }
+    },
+    "geo_7": {
+      "promptText": "Eyfel Kulesi hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "İtalya",
+        "B": "Fransa",
+        "C": "İspanya",
+        "D": "Belçika"
+      }
+    },
+    "geo_8": {
+      "promptText": "Amerika Birleşik Devletleri'nde Büyük Kanyon hangi eyalette bulunur?",
+      "options": {
+        "A": "Utah",
+        "B": "Colorado",
+        "C": "Arizona",
+        "D": "Nevada"
+      }
+    },
+    "geo_9": {
+      "promptText": "Kanada'nın başkenti neresidir?",
+      "options": {
+        "A": "Toronto",
+        "B": "Montreal",
+        "C": "Ottawa",
+        "D": "Vancouver"
+      }
+    },
+    "geo_10": {
+      "promptText": "Hangi ülke aynı zamanda bir kıtadır?",
+      "options": {
+        "A": "Avustralya",
+        "B": "Grönland",
+        "C": "İzlanda",
+        "D": "Madagaskar"
+      }
+    },
+    "geo_11": {
+      "promptText": "Amerika Birleşik Devletleri'nde \"İmparatorluk Eyaleti\" olarak bilinen eyalet hangisidir?",
+      "options": {
+        "A": "New York",
+        "B": "New Jersey",
+        "C": "Pensilvanya",
+        "D": "Massachusetts"
+      }
+    },
+    "geo_12": {
+      "promptText": "Brezilya'nın başkenti neresidir?",
+      "options": {
+        "A": "Rio de Janeiro",
+        "B": "Brasilia",
+        "C": "Sao Paulo",
+        "D": "Salvador"
+      }
+    },
+    "geo_13": {
+      "promptText": "Kolezyum'uyla ünlü şehir hangisidir?",
+      "options": {
+        "A": "Roma",
+        "B": "Atina",
+        "C": "İstanbul",
+        "D": "Kahire"
+      }
+    },
+    "geo_14": {
+      "promptText": "Amerika Birleşik Devletleri'nin hangi eyaleti \"10.000 Göller Ülkesi\" olarak bilinir?",
+      "options": {
+        "A": "Minnesota",
+        "B": "Michigan",
+        "C": "Wisconsin",
+        "D": "Kuzey Dakota"
+      }
+    },
+    "geo_15": {
+      "promptText": "Yüzölçümü bakımından en küçük ülke hangisidir?",
+      "options": {
+        "A": "Monako",
+        "B": "San Marino",
+        "C": "Vatikan Şehri",
+        "D": "Lihtenştayn"
+      }
+    },
+    "geo_16": {
+      "promptText": "Güney Kore'nin başkenti neresidir?",
+      "options": {
+        "A": "Busan",
+        "B": "Seul",
+        "C": "İncheon",
+        "D": "Daegu"
+      }
+    },
+    "geo_17": {
+      "promptText": "Amerika Birleşik Devletleri'nde \"Yalnız Yıldız Eyaleti\" olarak bilinen eyalet hangisidir?",
+      "options": {
+        "A": "Teksas",
+        "B": "Oklahoma",
+        "C": "Louisiana",
+        "D": "Yeni Meksika"
+      }
+    },
+    "geo_18": {
+      "promptText": "Marakeş şehri hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "Fas",
+        "B": "Mısır",
+        "C": "Tunus",
+        "D": "Cezayir"
+      }
+    },
+    "geo_19": {
+      "promptText": "Yelken şeklindeki çatılarıyla ünlü opera binası hangi şehirdir?",
+      "options": {
+        "A": "Auckland",
+        "B": "Sidney",
+        "C": "Cape Town",
+        "D": "Lizbon"
+      }
+    },
+    "geo_20": {
+      "promptText": "Amerika Birleşik Devletleri'nde en çok aktif yanardağ bulunan eyalet hangisidir?",
+      "options": {
+        "A": "Hawaii",
+        "B": "Alaska",
+        "C": "Kaliforniya",
+        "D": "Washington"
+      }
+    },
+    "geo_21": {
+      "promptText": "Mısır'ın başkenti neresidir?",
+      "options": {
+        "A": "İskenderiye",
+        "B": "Kahire",
+        "C": "Giza",
+        "D": "Luksor"
+      }
+    },
+    "geo_22": {
+      "promptText": "Bergen ve Oslo fiyortlarıyla ünlü ülke hangisidir?",
+      "options": {
+        "A": "Norveç",
+        "B": "İsveç",
+        "C": "Finlandiya",
+        "D": "Danimarka"
+      }
+    },
+    "geo_23": {
+      "promptText": "Amerika Birleşik Devletleri'nde Rushmore Dağı ile ünlü eyalet hangisidir?",
+      "options": {
+        "A": "Güney Dakota",
+        "B": "Kuzey Dakota",
+        "C": "Wyoming",
+        "D": "Colorado"
+      }
+    },
+    "geo_24": {
+      "promptText": "İspanya'nın başkenti neresidir?",
+      "options": {
+        "A": "Barselona",
+        "B": "Madrid",
+        "C": "Valencia",
+        "D": "Sevilla"
+      }
+    },
+    "geo_25": {
+      "promptText": "Kanallar Şehri olarak bilinen şehir hangisidir?",
+      "options": {
+        "A": "Amsterdam",
+        "B": "Venedik",
+        "C": "Bruges",
+        "D": "Stockholm"
+      }
+    },
+    "geo_26": {
+      "promptText": "Amerika Birleşik Devletleri'nde \"Şeftali Eyaleti\" lakabıyla bilinen eyalet hangisidir?",
+      "options": {
+        "A": "Georgia",
+        "B": "Güney Carolina",
+        "C": "Alabama",
+        "D": "Tennessee"
+      }
+    },
+    "geo_27": {
+      "promptText": "Machu Picchu hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "Peru",
+        "B": "Şili",
+        "C": "Bolivya",
+        "D": "Ekvador"
+      }
+    },
+    "geo_28": {
+      "promptText": "Arjantin'in başkenti neresidir?",
+      "options": {
+        "A": "Santiago",
+        "B": "Montevideo",
+        "C": "Buenos Aires",
+        "D": "Lima"
+      }
+    },
+    "geo_29": {
+      "promptText": "Amerika Birleşik Devletleri'nde \"Granit Eyaleti\" olarak bilinen eyalet hangisidir?",
+      "options": {
+        "A": "Yeni Hampshire",
+        "B": "Vermont",
+        "C": "Maine",
+        "D": "Rhode Island"
+      }
+    },
+    "geo_30": {
+      "promptText": "Reykjavik şehri hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "Norveç",
+        "B": "İzlanda",
+        "C": "İrlanda",
+        "D": "Grönland"
+      }
+    },
+    "geo_31": {
+      "promptText": "Kenya'nın başkenti neresidir?",
+      "options": {
+        "A": "Nairobi",
+        "B": "Mombasa",
+        "C": "Kampala",
+        "D": "Dar es Salaam"
+      }
+    },
+    "geo_32": {
+      "promptText": "Amerika Birleşik Devletleri'nde \"Bahçe Eyaleti\" olarak bilinen eyalet hangisidir?",
+      "options": {
+        "A": "New Jersey",
+        "B": "Connecticut",
+        "C": "Maryland",
+        "D": "Virginia"
+      }
+    },
+    "geo_33": {
+      "promptText": "Timbuktu şehri hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "Mali",
+        "B": "Nijer",
+        "C": "Çad",
+        "D": "Sudan"
+      }
+    },
+    "geo_34": {
+      "promptText": "Ünlü Kurtarıcı İsa heykeline hangi şehir ev sahipliği yapıyor?",
+      "options": {
+        "A": "Rio de Janeiro",
+        "B": "Lizbon",
+        "C": "Bogota",
+        "D": "Lima"
+      }
+    },
+    "geo_35": {
+      "promptText": "Amerika Birleşik Devletleri'nde Rocky Dağları Milli Parkı ile ünlü eyalet hangisidir?",
+      "options": {
+        "A": "Colorado",
+        "B": "Utah",
+        "C": "Idaho",
+        "D": "Wyoming"
+      }
+    },
+    "geo_36": {
+      "promptText": "Tayland'ın başkenti neresidir?",
+      "options": {
+        "A": "Phuket",
+        "B": "Bangkok",
+        "C": "Chiang Mai",
+        "D": "Pattaya"
+      }
+    },
+    "geo_37": {
+      "promptText": "Dubrovnik şehri hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "Hırvatistan",
+        "B": "Yunanistan",
+        "C": "İtalya",
+        "D": "Türkiye"
+      }
+    },
+    "geo_38": {
+      "promptText": "Amerika Birleşik Devletleri'nde \"Ebedi Yeşil Eyalet\" lakabıyla bilinen eyalet hangisidir?",
+      "options": {
+        "A": "Washington",
+        "B": "Oregon",
+        "C": "Maine",
+        "D": "Vermont"
+      }
+    },
+    "geo_39": {
+      "promptText": "Cape Town şehri hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "Namibya",
+        "B": "Güney Afrika",
+        "C": "Botsvana",
+        "D": "Zimbabve"
+      }
+    },
+    "geo_40": {
+      "promptText": "Almanya'nın başkenti neresidir?",
+      "options": {
+        "A": "Münih",
+        "B": "Hamburg",
+        "C": "Berlin",
+        "D": "Frankfurt"
+      }
+    },
+    "geo_41": {
+      "promptText": "Amerika Birleşik Devletleri'nde Bourbon Yolu ile ünlü eyalet hangisidir?",
+      "options": {
+        "A": "Kentucky",
+        "B": "Tennessee",
+        "C": "Missouri",
+        "D": "Indiana"
+      }
+    },
+    "geo_42": {
+      "promptText": "Petra şehri hangi ülkede yer almaktadır?",
+      "options": {
+        "A": "Ürdün",
+        "B": "İsrail",
+        "C": "Lübnan",
+        "D": "Suriye"
+      }
+    },
+    "geo_43": {
+      "promptText": "Amerika Birleşik Devletleri'nde New Orleans şehri hangi eyalette ünlüdür?",
+      "options": {
+        "A": "Louisiana",
+        "B": "Mississippi",
+        "C": "Alabama",
+        "D": "Arkansas"
+      }
+    },
+    "geo_44": {
+      "promptText": "Norveç'in başkenti neresidir?",
+      "options": {
+        "A": "Oslo",
+        "B": "Bergen",
+        "C": "Trondheim",
+        "D": "Stavanger"
+      }
+    },
+    "geo_45": {
+      "promptText": "\"Rüzgarlı Şehir\" olarak bilinen şehir hangisidir?",
+      "options": {
+        "A": "Chicago",
+        "B": "Boston",
+        "C": "Seattle",
+        "D": "Denver"
+      }
+    },
+    "sci_1": {
+      "promptText": "Kızıl Gezegen olarak bilinen gezegen hangisidir?",
+      "options": {
+        "A": "Mars",
+        "B": "Venüs",
+        "C": "Jüpiter",
+        "D": "Merkür"
+      }
+    },
+    "sci_2": {
+      "promptText": "Dünyaya en yakın yıldız hangisidir?",
+      "options": {
+        "A": "Proxima Centauri",
+        "B": "Sirius",
+        "C": "Güneş",
+        "D": "Vega"
+      }
+    },
+    "sci_3": {
+      "promptText": "Güneş sistemimizdeki en büyük gezegen hangisidir?",
+      "options": {
+        "A": "Satürn",
+        "B": "Jüpiter",
+        "C": "Neptün",
+        "D": "Uranüs"
+      }
+    },
+    "sci_4": {
+      "promptText": "Üç boynuzuyla bilinen dinozor hangisidir?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Triceratops",
+        "C": "Tiranosaurus",
+        "D": "Velociraptor"
+      }
+    },
+    "sci_5": {
+      "promptText": "Dünyanın doğal uydusunun adı nedir?",
+      "options": {
+        "A": "Phobos",
+        "B": "Ay",
+        "C": "Avrupa",
+        "D": "titan"
+      }
+    },
+    "sci_6": {
+      "promptText": "Halkalarıyla ünlü olan gezegen hangisidir?",
+      "options": {
+        "A": "Jüpiter",
+        "B": "Satürn",
+        "C": "Uranüs",
+        "D": "Neptün"
+      }
+    },
+    "sci_7": {
+      "promptText": "Sırtında plakalar bulunan dinozor hangisiydi?",
+      "options": {
+        "A": "Brachiosaurus",
+        "B": "Stegosaurus",
+        "C": "Ankilosaurus",
+        "D": "Allosaurus"
+      }
+    },
+    "sci_8": {
+      "promptText": "Güneş sistemimizdeki en sıcak gezegen hangisidir?",
+      "options": {
+        "A": "Merkür",
+        "B": "Venüs",
+        "C": "Mars",
+        "D": "Jüpiter"
+      }
+    },
+    "sci_9": {
+      "promptText": "Hangi dinozora genellikle dinozorların kralı denir?",
+      "options": {
+        "A": "Tyrannosaurus rex",
+        "B": "Spinosaurus",
+        "C": "Giganotosaurus",
+        "D": "Allosaurus"
+      }
+    },
+    "sci_10": {
+      "promptText": "Yaşadığımız galaksinin adı nedir?",
+      "options": {
+        "A": "Andromeda",
+        "B": "Samanyolu",
+        "C": "Sombrero",
+        "D": "Whirlpool"
+      }
+    },
+    "sci_11": {
+      "promptText": "Büyük Kırmızı Nokta hangi gezegende bulunur?",
+      "options": {
+        "A": "Jüpiter",
+        "B": "Satürn",
+        "C": "Neptün",
+        "D": "Uranüs"
+      }
+    },
+    "sci_12": {
+      "promptText": "Uzun boynuyla bilinen dinozor hangisiydi?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "Brachiosaurus",
+        "C": "Ankilosaurus",
+        "D": "Dilophosaurus"
+      }
+    },
+    "sci_13": {
+      "promptText": "Güneş sistemindeki en büyük uydu hangisidir?",
+      "options": {
+        "A": "Avrupa",
+        "B": "titan",
+        "C": "Ganymede",
+        "D": "Io"
+      }
+    },
+    "sci_14": {
+      "promptText": "Metan gazı nedeniyle mavi rengiyle bilinen gezegen hangisidir?",
+      "options": {
+        "A": "Neptün",
+        "B": "Uranüs",
+        "C": "Hem A hem de B",
+        "D": "Toprak"
+      }
+    },
+    "sci_15": {
+      "promptText": "Kubbe şeklinde bir kafatasına sahip olan dinozor hangisiydi?",
+      "options": {
+        "A": "Pachycephalosaurus",
+        "B": "Parasaurolophus",
+        "C": "Stegosaurus",
+        "D": "Ceratosaurus"
+      }
+    },
+    "sci_16": {
+      "promptText": "Yıldız patlamasına ne ad verilir?",
+      "options": {
+        "A": "Bulutsu",
+        "B": "Süpernova",
+        "C": "Kuyruklu yıldız",
+        "D": "Asteroit"
+      }
+    },
+    "sci_17": {
+      "promptText": "Hangi dinozorun sopa şeklinde bir kuyruğu vardı?",
+      "options": {
+        "A": "Ankilosaurus",
+        "B": "Triceratops",
+        "C": "Otçul kertenkele",
+        "D": "Gallimimus"
+      }
+    },
+    "sci_18": {
+      "promptText": "Güneş'e en uzak gezegen hangisidir?",
+      "options": {
+        "A": "Neptün",
+        "B": "Uranüs",
+        "C": "Satürn",
+        "D": "Plüton"
+      }
+    },
+    "sci_19": {
+      "promptText": "Orak şeklindeki pençesiyle bilinen dinozor hangisidir?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "Diplodocus",
+        "C": "Triceratops",
+        "D": "Apatosaurus"
+      }
+    },
+    "sci_20": {
+      "promptText": "Hangi gezegenin günü yılından daha uzundur?",
+      "options": {
+        "A": "Merkür",
+        "B": "Venüs",
+        "C": "Mars",
+        "D": "Jüpiter"
+      }
+    },
+    "sci_21": {
+      "promptText": "Mars'ın en büyük uydusunun adı nedir?",
+      "options": {
+        "A": "Phobos",
+        "B": "Deimos",
+        "C": "Io",
+        "D": "Avrupa"
+      }
+    },
+    "sci_22": {
+      "promptText": "Ördek gagalı otçul dinozor hangisiydi?",
+      "options": {
+        "A": "Hadrosaurus",
+        "B": "Spinosaurus",
+        "C": "Therizinosaurus",
+        "D": "Carnotaurus"
+      }
+    },
+    "sci_23": {
+      "promptText": "Asteroit kuşağı neyin arasında yer almaktadır?",
+      "options": {
+        "A": "Dünya ve Mars",
+        "B": "Mars ve Jüpiter",
+        "C": "Jüpiter ve Satürn",
+        "D": "Satürn ve Uranüs"
+      }
+    },
+    "sci_24": {
+      "promptText": "Yelken benzeri omurgasıyla ünlü olan dinozor hangisidir?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Spinosaurus",
+        "C": "Allosaurus",
+        "D": "Otçul kertenkele"
+      }
+    },
+    "sci_25": {
+      "promptText": "Eksen eğikliğiyle bilinen gezegen hangisidir?",
+      "options": {
+        "A": "Uranüs",
+        "B": "Neptün",
+        "C": "Jüpiter",
+        "D": "Mars"
+      }
+    },
+    "sci_26": {
+      "promptText": "İnsan yapımı ilk uydunun adı nedir?",
+      "options": {
+        "A": "Kaşif 1",
+        "B": "Sputnik 1",
+        "C": "Voyager 1",
+        "D": "Apollo 11"
+      }
+    },
+    "sci_27": {
+      "promptText": "Hangi dinozorun tepesi tüp şeklindeydi?",
+      "options": {
+        "A": "Parasaurolophus",
+        "B": "Corythosaurus",
+        "C": "Triceratops",
+        "D": "Ankilosaurus"
+      }
+    },
+    "sci_28": {
+      "promptText": "Dünya'nın ikizi olarak adlandırılan gezegen hangisidir?",
+      "options": {
+        "A": "Venüs",
+        "B": "Mars",
+        "C": "Merkür",
+        "D": "Uranüs"
+      }
+    },
+    "sci_29": {
+      "promptText": "Zırh plakaları ve dikenleriyle bilinen dinozor hangisidir?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Brachiosaurus",
+        "C": "Dilophosaurus",
+        "D": "Compsognathus"
+      }
+    },
+    "sci_30": {
+      "promptText": "Asteroit kuşağındaki en büyük asteroit hangisidir?",
+      "options": {
+        "A": "Vesta",
+        "B": "Pallas",
+        "C": "Ceres",
+        "D": "Hygiea"
+      }
+    },
+    "sci_31": {
+      "promptText": "Uzun, kamçı benzeri kuyruğuyla bilinen dinozor hangisiydi?",
+      "options": {
+        "A": "Diplodocus",
+        "B": "Spinosaurus",
+        "C": "Theropod",
+        "D": "Carnotaurus"
+      }
+    },
+    "sci_32": {
+      "promptText": "NASA'nın en ünlü uzay teleskobunun adı nedir?",
+      "options": {
+        "A": "Hubble",
+        "B": "Kepler",
+        "C": "Spitzer",
+        "D": "Chandra"
+      }
+    },
+    "sci_33": {
+      "promptText": "Hangi dinozor küçük boyutu ve hızıyla biliniyordu?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "T. rex",
+        "C": "Brachiosaurus",
+        "D": "Ankilosaurus"
+      }
+    },
+    "sci_34": {
+      "promptText": "En çok uydusu olan gezegen hangisidir?",
+      "options": {
+        "A": "Satürn",
+        "B": "Jüpiter",
+        "C": "Uranüs",
+        "D": "Neptün"
+      }
+    },
+    "sci_35": {
+      "promptText": "Kara deliğin etrafındaki sınırın adı nedir?",
+      "options": {
+        "A": "Tekillik",
+        "B": "Olay Ufku",
+        "C": "Yığılma Diski",
+        "D": "Bulutsu"
+      }
+    },
+    "sci_36": {
+      "promptText": "Kafa tokuşturmak için kullanılan kalın, kemikli bir kafaya sahip olan dinozor hangisiydi?",
+      "options": {
+        "A": "Pachycephalosaurus",
+        "B": "Otçul kertenkele",
+        "C": "Gallimimus",
+        "D": "Baryonyx"
+      }
+    },
+    "sci_37": {
+      "promptText": "Büyük Karanlık Lekesiyle bilinen gezegen hangisidir?",
+      "options": {
+        "A": "Neptün",
+        "B": "Uranüs",
+        "C": "Satürn",
+        "D": "Jüpiter"
+      }
+    },
+    "sci_38": {
+      "promptText": "Uzun kuyruğu ve boynu olan, iri bir otobur dinozor hangisiydi?",
+      "options": {
+        "A": "Apatosaurus",
+        "B": "Allosaurus",
+        "C": "Carnotaurus",
+        "D": "Ceratosaurus"
+      }
+    },
+    "sci_39": {
+      "promptText": "Dünya atmosferinin, hava olaylarının meydana geldiği katmanının adı nedir?",
+      "options": {
+        "A": "Stratosfer",
+        "B": "Troposfer",
+        "C": "Mezosfer",
+        "D": "Termosfer"
+      }
+    },
+    "sci_40": {
+      "promptText": "Sabah Yıldızı olarak bilinen gezegen hangisidir?",
+      "options": {
+        "A": "Merkür",
+        "B": "Venüs",
+        "C": "Mars",
+        "D": "Jüpiter"
+      }
+    },
+    "sci_41": {
+      "promptText": "Gagası olan ve sürüler halinde yaşayan dinozor hangisiydi?",
+      "options": {
+        "A": "Triceratops",
+        "B": "Hadrosaurus",
+        "C": "Allosaurus",
+        "D": "Stegosaurus"
+      }
+    },
+    "sci_42": {
+      "promptText": "Dünya'dan en uzağa giden uzay sondası hangisidir?",
+      "options": {
+        "A": "Voyager 1",
+        "B": "Pioneer 10",
+        "C": "Yeni Ufuklar",
+        "D": "Voyager 2"
+      }
+    },
+    "sci_43": {
+      "promptText": "Her iki elinde de uzun, kıvrık pençeleriyle bilinen dinozor hangisidir?",
+      "options": {
+        "A": "Therizinosaurus",
+        "B": "Velociraptor",
+        "C": "Triceratops",
+        "D": "Stegosaurus"
+      }
+    },
+    "sci_44": {
+      "promptText": "Samanyolu galaksisine en yakın galaksinin adı nedir?",
+      "options": {
+        "A": "Andromeda",
+        "B": "Üçgen",
+        "C": "Sombrero",
+        "D": "Whirlpool"
+      }
+    },
+    "sci_45": {
+      "promptText": "T. rex'ten daha büyük, devasa bir yırtıcı olan dinozor hangisiydi?",
+      "options": {
+        "A": "Spinosaurus",
+        "B": "Allosaurus",
+        "C": "Utahraptor",
+        "D": "Dilophosaurus"
+      }
+    },
+    "kids_1": {
+      "promptText": "Bir haftada kaç gün vardır?",
+      "options": {
+        "A": "7",
+        "B": "5",
+        "C": "6",
+        "D": "8"
+      }
+    },
+    "kids_2": {
+      "promptText": "Güneşli bir günde gökyüzü ne renktir?",
+      "options": {
+        "A": "Mavi",
+        "B": "Yeşil",
+        "C": "Kırmızı",
+        "D": "Mor"
+      }
+    },
+    "kids_3": {
+      "promptText": "\"Miyav\" diye ses çıkaran hayvan hangisidir?",
+      "options": {
+        "A": "Köpek",
+        "B": "Kedi",
+        "C": "İnek",
+        "D": "Koyun"
+      }
+    },
+    "kids_4": {
+      "promptText": "Arılar ne üretir?",
+      "options": {
+        "A": "Süt",
+        "B": "Bal",
+        "C": "Ekmek",
+        "D": "Peynir"
+      }
+    },
+    "kids_5": {
+      "promptText": "Hangi gezegende yaşıyoruz?",
+      "options": {
+        "A": "Mars",
+        "B": "Toprak",
+        "C": "Jüpiter",
+        "D": "Venüs"
+      }
+    },
+    "kids_6": {
+      "promptText": "Bir örümceğin kaç bacağı vardır?",
+      "options": {
+        "A": "6",
+        "B": "8",
+        "C": "10",
+        "D": "12"
+      }
+    },
+    "kids_7": {
+      "promptText": "Üç kenarı olan şekil hangisidir?",
+      "options": {
+        "A": "Kare",
+        "B": "Üçgen",
+        "C": "Daire",
+        "D": "Dikdörtgen"
+      }
+    },
+    "kids_8": {
+      "promptText": "En soğuk mevsim hangisidir?",
+      "options": {
+        "A": "Bahar",
+        "B": "Yaz",
+        "C": "Sonbahar",
+        "D": "Kış"
+      }
+    },
+    "kids_9": {
+      "promptText": "H2O'ya genellikle ne denir?",
+      "options": {
+        "A": "Tuz",
+        "B": "su",
+        "C": "Oksijen",
+        "D": "Şeker"
+      }
+    },
+    "kids_10": {
+      "promptText": "Sarı ve kıvrık olan meyve hangisidir?",
+      "options": {
+        "A": "Elma",
+        "B": "Muz",
+        "C": "Turuncu",
+        "D": "Üzüm"
+      }
+    },
+    "kids_11": {
+      "promptText": "Ormanın kralı olarak bilinen hayvan hangisidir?",
+      "options": {
+        "A": "Fil",
+        "B": "Aslan",
+        "C": "Zürafa",
+        "D": "Zebra"
+      }
+    },
+    "kids_12": {
+      "promptText": "Bitkilerin büyümesi için nelere ihtiyaçları vardır?",
+      "options": {
+        "A": "Güneş ışığı",
+        "B": "Şeker",
+        "C": "Kar",
+        "D": "Kum"
+      }
+    },
+    "kids_13": {
+      "promptText": "Haziran ayından sonra hangi ay gelir?",
+      "options": {
+        "A": "Mayıs",
+        "B": "Temmuz",
+        "C": "Ağustos",
+        "D": "Nisan"
+      }
+    },
+    "kids_14": {
+      "promptText": "Bir günde kaç saat vardır?",
+      "options": {
+        "A": "12",
+        "B": "18",
+        "C": "24",
+        "D": "30"
+      }
+    },
+    "kids_15": {
+      "promptText": "Hangi alet zamanı gösterir?",
+      "options": {
+        "A": "Saat",
+        "B": "Cetvel",
+        "C": "Kaşık",
+        "D": "Fırçalamak"
+      }
+    },
+    "kids_16": {
+      "promptText": "Hangi böcek kovan yapar?",
+      "options": {
+        "A": "Kelebek",
+        "B": "Arı",
+        "C": "Karınca",
+        "D": "Örümcek"
+      }
+    },
+    "kids_17": {
+      "promptText": "Sıcak kelimesinin zıt anlamlısı nedir?",
+      "options": {
+        "A": "Soğuk",
+        "B": "Islak",
+        "C": "Işık",
+        "D": "Yumuşak"
+      }
+    },
+    "kids_18": {
+      "promptText": "Hangi vücut parçanızla duyuyorsunuz?",
+      "options": {
+        "A": "Göz",
+        "B": "Burun",
+        "C": "Kulak",
+        "D": "El"
+      }
+    },
+    "kids_19": {
+      "promptText": "En büyük okyanus hangisidir?",
+      "options": {
+        "A": "Atlantik",
+        "B": "Hint",
+        "C": "Pasifik",
+        "D": "Arktik"
+      }
+    },
+    "kids_20": {
+      "promptText": "Suda yaşayan ve solungaçları olan hayvan hangisidir?",
+      "options": {
+        "A": "Köpek",
+        "B": "Balık",
+        "C": "Kedi",
+        "D": "Kuş"
+      }
+    },
+    "kids_21": {
+      "promptText": "Dur levhaları ne renk?",
+      "options": {
+        "A": "Yeşil",
+        "B": "Sarı",
+        "C": "Kırmızı",
+        "D": "Mavi"
+      }
+    },
+    "kids_22": {
+      "promptText": "Güneş'e en yakın gezegen hangisidir?",
+      "options": {
+        "A": "Merkür",
+        "B": "Toprak",
+        "C": "Mars",
+        "D": "Jüpiter"
+      }
+    },
+    "kids_23": {
+      "promptText": "Yazmak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Çatal",
+        "B": "Kalem",
+        "C": "Plaka",
+        "D": "Bardak"
+      }
+    },
+    "kids_24": {
+      "promptText": "Kaç kıta var?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "kids_25": {
+      "promptText": "Hangi hayvan yavrusunu kesesinde taşır?",
+      "options": {
+        "A": "Kanguru",
+        "B": "Kaplan",
+        "C": "Atış",
+        "D": "Koyun"
+      }
+    },
+    "kids_26": {
+      "promptText": "Hangi müzik aletinin tuşları siyah ve beyazdır?",
+      "options": {
+        "A": "Davul",
+        "B": "Piyano",
+        "C": "Flüt",
+        "D": "Gitar"
+      }
+    },
+    "kids_27": {
+      "promptText": "Hangi bayramda ağaç ve hediyeler kullanılır?",
+      "options": {
+        "A": "Paskalya",
+        "B": "Noel",
+        "C": "Cadılar Bayramı",
+        "D": "Şükran Günü"
+      }
+    },
+    "kids_28": {
+      "promptText": "Yavru köpeğe ne denir?",
+      "options": {
+        "A": "Yavru kedi",
+        "B": "Yavru köpek",
+        "C": "Buzağı",
+        "D": "Tay"
+      }
+    },
+    "kids_29": {
+      "promptText": "Hangi şekil yuvarlak?",
+      "options": {
+        "A": "Daire",
+        "B": "Üçgen",
+        "C": "Kare",
+        "D": "Dikdörtgen"
+      }
+    },
+    "kids_30": {
+      "promptText": "Bir karenin kaç kenarı vardır?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "kids_31": {
+      "promptText": "En hızlı kara hayvanı hangisidir?",
+      "options": {
+        "A": "Çita",
+        "B": "Aslan",
+        "C": "Fil",
+        "D": "Atış"
+      }
+    },
+    "kids_32": {
+      "promptText": "Hangi hayvan bize süt verir?",
+      "options": {
+        "A": "İnek",
+        "B": "Tavuk",
+        "C": "Köpek",
+        "D": "Kedi"
+      }
+    },
+    "kids_33": {
+      "promptText": "Donmuş suya ne denir?",
+      "options": {
+        "A": "Buz",
+        "B": "Buhar",
+        "C": "Kum",
+        "D": "Kil"
+      }
+    },
+    "kids_34": {
+      "promptText": "Kızıl Gezegen olarak bilinen gezegen hangisidir?",
+      "options": {
+        "A": "Mars",
+        "B": "Venüs",
+        "C": "Toprak",
+        "D": "Merkür"
+      }
+    },
+    "kids_35": {
+      "promptText": "Binalarda kat yukarı çıkmak için hangisi kullanılır?",
+      "options": {
+        "A": "Asansör",
+        "B": "Rampa",
+        "C": "Slayt",
+        "D": "Köprü"
+      }
+    },
+    "kids_36": {
+      "promptText": "Hangi hayvanın hortumu uzundur?",
+      "options": {
+        "A": "Fil",
+        "B": "Su aygırı",
+        "C": "Gergedan",
+        "D": "Goril"
+      }
+    },
+    "kids_37": {
+      "promptText": "Okulda ders veren kişiye ne denir?",
+      "options": {
+        "A": "Pilot",
+        "B": "Öğretmen",
+        "C": "Fırıncı",
+        "D": "Çiftçi"
+      }
+    },
+    "kids_38": {
+      "promptText": "Demiryoluyla seyahat etmenin yaygın yolu hangisidir?",
+      "options": {
+        "A": "Tren",
+        "B": "Bot",
+        "C": "Bisiklet",
+        "D": "Uçak"
+      }
+    },
+    "kids_39": {
+      "promptText": "Turuncu ve çıtır çıtır olan sebze hangisidir?",
+      "options": {
+        "A": "Havuç",
+        "B": "Patates",
+        "C": "Marul",
+        "D": "Biber"
+      }
+    },
+    "kids_40": {
+      "promptText": "Dört kenarı eşit olan şekil hangisidir?",
+      "options": {
+        "A": "Kare",
+        "B": "Üçgen",
+        "C": "Oval",
+        "D": "Pentagon"
+      }
+    },
+    "kids_41": {
+      "promptText": "En uzun hayvan hangisidir?",
+      "options": {
+        "A": "Zürafa",
+        "B": "Deve",
+        "C": "Atış",
+        "D": "Ayı"
+      }
+    },
+    "kids_42": {
+      "promptText": "Hangi gezegenin halkaları var?",
+      "options": {
+        "A": "Satürn",
+        "B": "Mars",
+        "C": "Merkür",
+        "D": "Toprak"
+      }
+    },
+    "kids_43": {
+      "promptText": "Bitkinin hangi kısmı genellikle yeşildir?",
+      "options": {
+        "A": "Yaprak",
+        "B": "Kök",
+        "C": "Kök",
+        "D": "Tohum"
+      }
+    },
+    "kids_44": {
+      "promptText": "Fotoğraf çekmek için hangi cihaz kullanılıyor?",
+      "options": {
+        "A": "Kamera",
+        "B": "Çekiç",
+        "C": "Fener",
+        "D": "Düdük"
+      }
+    },
+    "kids_45": {
+      "promptText": "Resimde hangi meyve gösteriliyor?",
+      "options": {
+        "A": "Elma",
+        "B": "Turuncu",
+        "C": "Armut",
+        "D": "Şeftali"
+      }
+    },
+    "math_1": {
+      "promptText": "2 + 3 kaçtır?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "math_2": {
+      "promptText": "10 - 4 kaçtır?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_3": {
+      "promptText": "6 x 7 kaçtır?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "42",
+        "D": "48"
+      }
+    },
+    "math_4": {
+      "promptText": "12'nin 3'e bölümü kaçtır?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_5": {
+      "promptText": "5'in karesi kaçtır?",
+      "options": {
+        "A": "10",
+        "B": "15",
+        "C": "20",
+        "D": "25"
+      }
+    },
+    "math_6": {
+      "promptText": "6/12'yi sadeleştirin.",
+      "options": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "3/4"
+      }
+    },
+    "math_7": {
+      "promptText": "Hangi kesir 0,5'e eşittir?",
+      "options": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "3/4"
+      }
+    },
+    "math_8": {
+      "promptText": "Kenar uzunluğu 4 olan bir karenin çevresi kaçtır?",
+      "options": {
+        "A": "8",
+        "B": "12",
+        "C": "16",
+        "D": "20"
+      }
+    },
+    "math_9": {
+      "promptText": "3x5 boyutlarındaki bir dikdörtgenin alanı nedir?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "15"
+      }
+    },
+    "math_10": {
+      "promptText": "Bir üçgenin açılarının toplamı kaçtır?",
+      "options": {
+        "A": "90",
+        "B": "120",
+        "C": "180",
+        "D": "360"
+      }
+    },
+    "math_11": {
+      "promptText": "Hangi sayı asal sayıdır?",
+      "options": {
+        "A": "9",
+        "B": "12",
+        "C": "15",
+        "D": "17"
+      }
+    },
+    "math_12": {
+      "promptText": "4 ve 6'nın en küçük ortak katı (EKOK) nedir?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "24"
+      }
+    },
+    "math_13": {
+      "promptText": "12 ve 18'in en büyük ortak böleni (EBOB) nedir?",
+      "options": {
+        "A": "3",
+        "B": "6",
+        "C": "9",
+        "D": "12"
+      }
+    },
+    "math_14": {
+      "promptText": "Çözüm: x + 5 = 12.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_15": {
+      "promptText": "3x = 15 denklemini çözün.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_16": {
+      "promptText": "2x + 3 = 11 denklemini çözün.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_17": {
+      "promptText": "5x - 10 = 0 denklemini çözün.",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_18": {
+      "promptText": "2 üzeri 3 kaçtır?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "math_19": {
+      "promptText": "81'in karekökü kaçtır?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      }
+    },
+    "math_20": {
+      "promptText": "Oran 2:3 ve toplam 25. 2'li kısım kaçtır?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "12"
+      }
+    },
+    "math_21": {
+      "promptText": "50'nin %20'si kaçtır?",
+      "options": {
+        "A": "5",
+        "B": "10",
+        "C": "15",
+        "D": "20"
+      }
+    },
+    "math_22": {
+      "promptText": "Adil bir madeni paranın yazı gelme olasılığı nedir?",
+      "options": {
+        "A": "1/4",
+        "B": "1/3",
+        "C": "1/2",
+        "D": "3/4"
+      }
+    },
+    "math_23": {
+      "promptText": "Adil bir zarda 6 gelme olasılığı nedir?",
+      "options": {
+        "A": "1/2",
+        "B": "1/3",
+        "C": "1/6",
+        "D": "1/12"
+      }
+    },
+    "math_24": {
+      "promptText": "2, 4, 6, 8 sayılarının ortalaması kaçtır?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "math_25": {
+      "promptText": "1, 3, 5, 7, 9 sayılarının medyanı kaçtır?",
+      "options": {
+        "A": "3",
+        "B": "5",
+        "C": "7",
+        "D": "9"
+      }
+    },
+    "math_26": {
+      "promptText": "2, 2, 3, 4'ün modu kaçtır?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "Hiçbiri"
+      }
+    },
+    "math_27": {
+      "promptText": "3/4'ü ondalık sayıya çevirin.",
+      "options": {
+        "A": "0,25",
+        "B": "0,5",
+        "C": "0,75",
+        "D": "0.9"
+      }
+    },
+    "math_28": {
+      "promptText": "12/16'yı sadeleştirin.",
+      "options": {
+        "A": "1/2",
+        "B": "3/4",
+        "C": "2/3",
+        "D": "4/5"
+      }
+    },
+    "math_29": {
+      "promptText": "Dairenin alanını hangi formül verir?",
+      "options": {
+        "A": "pi r^2",
+        "B": "2 pi r",
+        "C": "r^2",
+        "D": "pi r"
+      }
+    },
+    "math_30": {
+      "promptText": "Kenarları 3, 4, 5 olan bir üçgen şöyledir:",
+      "options": {
+        "A": "İkizkenar",
+        "B": "Eşkenar",
+        "C": "Dik üçgen",
+        "D": "Geniş"
+      }
+    },
+    "math_31": {
+      "promptText": "Eğer a ve b pozitif sayılar ise ve a > b ise, a - b şöyledir:",
+      "options": {
+        "A": "Negatif",
+        "B": "Sıfır",
+        "C": "Pozitif",
+        "D": "Tanımlanmamış"
+      }
+    },
+    "math_32": {
+      "promptText": "2x - 4 = 10 denklemini çözün.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_33": {
+      "promptText": "0,25'in kesir olarak karşılığı nedir?",
+      "options": {
+        "A": "1/2",
+        "B": "1/3",
+        "C": "1/4",
+        "D": "3/4"
+      }
+    },
+    "math_34": {
+      "promptText": "log10(100) nedir?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_35": {
+      "promptText": "y = 2x + 3 doğrusunun eğimi nedir?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_36": {
+      "promptText": "Eğer f(x) = x^2 ise, f(3) nedir?",
+      "options": {
+        "A": "6",
+        "B": "9",
+        "C": "12",
+        "D": "15"
+      }
+    },
+    "math_37": {
+      "promptText": "İlk 10 doğal sayının toplamı kaçtır?",
+      "options": {
+        "A": "45",
+        "B": "50",
+        "C": "55",
+        "D": "60"
+      }
+    },
+    "math_38": {
+      "promptText": "Düz bir çizgide kaç derece vardır?",
+      "options": {
+        "A": "90",
+        "B": "120",
+        "C": "180",
+        "D": "360"
+      }
+    },
+    "math_39": {
+      "promptText": "Hangi sayı irrasyoneldir?",
+      "options": {
+        "A": "3/4",
+        "B": "0.2",
+        "C": "√2",
+        "D": "5"
+      }
+    },
+    "math_40": {
+      "promptText": "Dik üçgende, a² + b² = ?",
+      "options": {
+        "A": "c^2",
+        "B": "2c",
+        "C": "ab",
+        "D": "c/2"
+      }
+    },
+    "math_41": {
+      "promptText": "Eğer olasılık 0,2 ise, bu yüzde kaçtır?",
+      "options": {
+        "A": "%2",
+        "B": "%10",
+        "C": "%20",
+        "D": "%50"
+      }
+    },
+    "math_42": {
+      "promptText": "Çözüm: x^2 = 49.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_43": {
+      "promptText": "Adil bir altı yüzlü zarın beklenen değeri nedir?",
+      "options": {
+        "A": "2.5",
+        "B": "3",
+        "C": "3.5",
+        "D": "4"
+      }
+    },
+    "math_44": {
+      "promptText": "90 dereceden büyük olan açı hangisidir?",
+      "options": {
+        "A": "Akut",
+        "B": "Sağ",
+        "C": "Geniş",
+        "D": "Dümdüz"
+      }
+    },
+    "math_45": {
+      "promptText": "Altıgenin kaç kenarı vardır?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "apt_1": {
+      "promptText": "Sonraki sayıyı bulun: 2, 4, 6, 8, ?",
+      "options": {
+        "A": "9",
+        "B": "10",
+        "C": "11",
+        "D": "12"
+      }
+    },
+    "apt_2": {
+      "promptText": "Sonraki sayıyı bulun: 1, 1, 2, 3, 5, ?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "apt_3": {
+      "promptText": "Hangi kelime uygun değil?",
+      "options": {
+        "A": "Elma",
+        "B": "Muz",
+        "C": "Havuç",
+        "D": "Üzüm"
+      }
+    },
+    "apt_4": {
+      "promptText": "\"Mutlu\" kelimesinin eş anlamlısını seçin.",
+      "options": {
+        "A": "Üzgünüm",
+        "B": "Sinirli",
+        "C": "Neşe dolu",
+        "D": "Yorgun"
+      }
+    },
+    "apt_5": {
+      "promptText": "\"Artış\" kelimesinin zıt anlamlısını seçin.",
+      "options": {
+        "A": "Büyümek",
+        "B": "Azaltmak",
+        "C": "Eklemek",
+        "D": "Artırmak"
+      }
+    },
+    "apt_6": {
+      "promptText": "Eğer tüm blooplar razzie ise ve tüm razzieler lazzies ise, o zaman tüm blooplar şunlardır:",
+      "options": {
+        "A": "Tembeller",
+        "B": "Razzies",
+        "C": "Zazzies",
+        "D": "Gazlı içecekler"
+      }
+    },
+    "apt_7": {
+      "promptText": "Sonraki harfi bulun: A, C, E, G, ?",
+      "options": {
+        "A": "H",
+        "B": "BEN",
+        "C": "J",
+        "D": "K"
+      }
+    },
+    "apt_8": {
+      "promptText": "Hangi kelime palindromdur?",
+      "options": {
+        "A": "Seviye",
+        "B": "Elma",
+        "C": "Köprü",
+        "D": "Ev"
+      }
+    },
+    "apt_9": {
+      "promptText": "Hangi kesir daha büyük?",
+      "options": {
+        "A": "2/3",
+        "B": "3/5",
+        "C": "1/2",
+        "D": "4/9"
+      }
+    },
+    "apt_10": {
+      "promptText": "5 makine 5 dakikada 5 ürün üretiyorsa, 5 makine 10 dakikada kaç ürün üretebilir?",
+      "options": {
+        "A": "5",
+        "B": "8",
+        "C": "10",
+        "D": "15"
+      }
+    },
+    "apt_11": {
+      "promptText": "Sonraki sayıyı bulun: 3, 6, 12, 24, ?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "48",
+        "D": "60"
+      }
+    },
+    "apt_12": {
+      "promptText": "Sırada hangisi geliyor: 10, 20, 40, 80, ?",
+      "options": {
+        "A": "100",
+        "B": "120",
+        "C": "160",
+        "D": "200"
+      }
+    },
+    "apt_13": {
+      "promptText": "Bugün salı ise, 3 gün sonra hangi gün olur?",
+      "options": {
+        "A": "Çarşamba",
+        "B": "Perşembe",
+        "C": "Cuma",
+        "D": "Cumartesi"
+      }
+    },
+    "apt_14": {
+      "promptText": "Farklı olanı seçin.",
+      "options": {
+        "A": "Kare",
+        "B": "Daire",
+        "C": "Üçgen",
+        "D": "Mavi"
+      }
+    },
+    "apt_15": {
+      "promptText": "Sonraki sayıyı bulun: 1, 4, 9, 16, ?",
+      "options": {
+        "A": "20",
+        "B": "25",
+        "C": "30",
+        "D": "36"
+      }
+    },
+    "apt_16": {
+      "promptText": "\"Kuş, uçmaya ne kadar benziyorsa, balık da uçağa o kadar benziyor\" benzetmesini tamamlayan kelime hangisidir?",
+      "options": {
+        "A": "Yüzmek",
+        "B": "Koşmak",
+        "C": "Zıplamak",
+        "D": "Sürünmek"
+      }
+    },
+    "apt_17": {
+      "promptText": "Eğer bazı kediler evcil hayvansa ve tüm evcil hayvanlar seviliyorsa, o zaman bazı kediler şunlardır:",
+      "options": {
+        "A": "Sevilen",
+        "B": "Vahşi",
+        "C": "Aç",
+        "D": "Hızlı"
+      }
+    },
+    "apt_18": {
+      "promptText": "\"Hızlı\" kelimesiyle aynı anlama gelen kelimeyi seçin.",
+      "options": {
+        "A": "Yavaş",
+        "B": "Ani",
+        "C": "Geç",
+        "D": "Tembel"
+      }
+    },
+    "apt_19": {
+      "promptText": "Sonraki sayıyı bulun: 5, 9, 13, 17, ?",
+      "options": {
+        "A": "19",
+        "B": "21",
+        "C": "23",
+        "D": "25"
+      }
+    },
+    "apt_20": {
+      "promptText": "Hangisi geçerli bir sonuçtur? Tüm kareler dikdörtgendir. Bu şekil bir karedir.",
+      "options": {
+        "A": "Bu bir dikdörtgendir.",
+        "B": "Bu bir daire.",
+        "C": "Hiçbir tarafı yok.",
+        "D": "Bu bir üçgen."
+      }
+    },
+    "apt_21": {
+      "promptText": "Saat 3:00'ü gösteriyorsa, akrep ve yelkovan arasındaki açı nedir?",
+      "options": {
+        "A": "0 derece",
+        "B": "30 derece",
+        "C": "90 derece",
+        "D": "180 derece"
+      }
+    },
+    "apt_22": {
+      "promptText": "Farklı olanı seçin.",
+      "options": {
+        "A": "Kırmızı",
+        "B": "Mavi",
+        "C": "Yeşil",
+        "D": "Üçgen"
+      }
+    },
+    "apt_23": {
+      "promptText": "Sonraki harfi bulun: Z, X, V, T, ?",
+      "options": {
+        "A": "R",
+        "B": "S",
+        "C": "U",
+        "D": "Q"
+      }
+    },
+    "apt_24": {
+      "promptText": "Hangi sayı örüntüyü tamamlar? 2, 5, 10, 17, ?",
+      "options": {
+        "A": "24",
+        "B": "26",
+        "C": "28",
+        "D": "30"
+      }
+    },
+    "apt_25": {
+      "promptText": "Eğer \"KÖPEK\" kelimesi \"EPH\" olarak kodlanıyorsa, \"KEDİ\" şu şekilde kodlanır:",
+      "options": {
+        "A": "DBU",
+        "B": "DBT",
+        "C": "DPU",
+        "D": "CBU"
+      }
+    },
+    "apt_26": {
+      "promptText": "En uygun kelimeyi seçin: Sıcak, Soğuğa ne kadar benziyorsa, Yukarı da neye o kadar benziyor?",
+      "options": {
+        "A": "Aşağı",
+        "B": "Sol",
+        "C": "Sağ",
+        "D": "Üzerinde"
+      }
+    },
+    "apt_27": {
+      "promptText": "Sonraki sayıyı bulun: 100, 50, 25, 12.5, ?",
+      "options": {
+        "A": "6.25",
+        "B": "7.5",
+        "C": "8.25",
+        "D": "10"
+      }
+    },
+    "apt_28": {
+      "promptText": "Hangi kelime isimdir?",
+      "options": {
+        "A": "Koşmak",
+        "B": "Mavi",
+        "C": "Mutluluk",
+        "D": "Hızlıca"
+      }
+    },
+    "apt_29": {
+      "promptText": "En doğru cevabı seçin: Bir üçgenin kaç köşesi vardır?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      }
+    },
+    "apt_30": {
+      "promptText": "Sonraki sayıyı bulun: 7, 14, 28, 56, ?",
+      "options": {
+        "A": "63",
+        "B": "70",
+        "C": "98",
+        "D": "112"
+      }
+    },
+    "apt_31": {
+      "promptText": "Eğer bütün güller çiçekse ve bazı çiçekler soluyorsa, o zaman bazı güller de solar:",
+      "options": {
+        "A": "Solmak",
+        "B": "Maviler mi?",
+        "C": "Ağaçlar",
+        "D": "Hayvanlar"
+      }
+    },
+    "apt_32": {
+      "promptText": "48'den sonraki ilk çift sayı hangisidir?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      }
+    },
+    "apt_33": {
+      "promptText": "Kaç nokta gösteriliyor?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "apt_34": {
+      "promptText": "Yağmur yağıyorsa, yer ıslaktır. Yağmur yağıyor. Dolayısıyla:",
+      "options": {
+        "A": "Zemin ıslak.",
+        "B": "Toprak kuru.",
+        "C": "Güneş çıktı.",
+        "D": "Kar yağıyor."
+      }
+    },
+    "apt_35": {
+      "promptText": "Farklı olanı seçin.",
+      "options": {
+        "A": "Kare",
+        "B": "Dikdörtgen",
+        "C": "Daire",
+        "D": "Üçgen"
+      }
+    },
+    "apt_36": {
+      "promptText": "Sonraki sayıyı bulun: 4, 7, 10, 13, ?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "17",
+        "D": "18"
+      }
+    },
+    "apt_37": {
+      "promptText": "\"Genişletmek\" kelimesinin zıt anlamlısı hangisidir?",
+      "options": {
+        "A": "Büyümek",
+        "B": "Çekmek",
+        "C": "Açık",
+        "D": "Arttırmak"
+      }
+    },
+    "apt_38": {
+      "promptText": "En doğru cevabı seçin: 3'ün 9'a oranı, 4'ün neye oranıyla aynıdır?",
+      "options": {
+        "A": "12",
+        "B": "14",
+        "C": "16",
+        "D": "18"
+      }
+    },
+    "apt_39": {
+      "promptText": "Eğer a=1, b=2, c=3 ise, d kaçtır?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "apt_40": {
+      "promptText": "Hangi sayı eksik? 2, 3, 5, 8, 12, ?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "17",
+        "D": "18"
+      }
+    },
+    "apt_41": {
+      "promptText": "Cümleyi tamamlayan kelimeyi seçin: El, eldivene nasılsa ayak da ?'e öyledir.",
+      "options": {
+        "A": "Şapka",
+        "B": "Çorap",
+        "C": "Yüzük",
+        "D": "Kemer"
+      }
+    },
+    "apt_42": {
+      "promptText": "Sonraki harf hangisi? B, E, H, K, ?",
+      "options": {
+        "A": "L",
+        "B": "M",
+        "C": "N",
+        "D": "O"
+      }
+    },
+    "apt_43": {
+      "promptText": "Eğer 2 + 2 = 4 ve 3 + 3 = 6 ise, 4 + 4 = ?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "apt_44": {
+      "promptText": "Farklı olanı seçin.",
+      "options": {
+        "A": "Ocak",
+        "B": "Şubat",
+        "C": "Pazartesi",
+        "D": "Mart"
+      }
+    },
+    "apt_45": {
+      "promptText": "Sonraki sayıyı bulun: 11, 22, 33, 44, ?",
+      "options": {
+        "A": "50",
+        "B": "55",
+        "C": "66",
+        "D": "77"
+      }
+    },
+    "job_1": {
+      "promptText": "Hastalık teşhisinden hangi meslek grubu sorumludur?",
+      "options": {
+        "A": "Mimar",
+        "B": "Doktor",
+        "C": "Şef",
+        "D": "Pilot"
+      }
+    },
+    "job_2": {
+      "promptText": "Binaları ve yapıları kim tasarlar?",
+      "options": {
+        "A": "Mühendis",
+        "B": "Mimar",
+        "C": "Biyolog",
+        "D": "Tasarımcı"
+      }
+    },
+    "job_3": {
+      "promptText": "Uçak uçurmayı gerektiren meslek hangisidir?",
+      "options": {
+        "A": "Mekanik",
+        "B": "Pilot",
+        "C": "Denizci",
+        "D": "Sürücü"
+      }
+    },
+    "job_4": {
+      "promptText": "Yazılım ve uygulamalar için kodu kim yazıyor?",
+      "options": {
+        "A": "Programcı",
+        "B": "Öğretmen",
+        "C": "Hemşire",
+        "D": "Şef"
+      }
+    },
+    "job_5": {
+      "promptText": "Bitkileri ve hayvanları inceleyen meslek hangisidir?",
+      "options": {
+        "A": "Jeolog",
+        "B": "Biyolog",
+        "C": "Astronom",
+        "D": "Tarihçi"
+      }
+    },
+    "job_6": {
+      "promptText": "Yangınla mücadele konusunda kimler eğitimlidir?",
+      "options": {
+        "A": "Polis Memuru",
+        "B": "İtfaiyeci",
+        "C": "Paramedik",
+        "D": "Cankurtaran"
+      }
+    },
+    "job_7": {
+      "promptText": "Yaralanma sonrası hareket kabiliyetini geri kazanmaya yardımcı olan meslek hangisidir?",
+      "options": {
+        "A": "Dişçi",
+        "B": "Fizik Tedavi Uzmanı",
+        "C": "Eczacı",
+        "D": "Cerrah"
+      }
+    },
+    "job_8": {
+      "promptText": "Haberleri kim yazıyor ve düzenliyor?",
+      "options": {
+        "A": "Gazeteci",
+        "B": "Avukat",
+        "C": "Muhasebeci",
+        "D": "Mühendis"
+      }
+    },
+    "job_9": {
+      "promptText": "Hangi meslek halkı korur ve yasaları uygular?",
+      "options": {
+        "A": "Yargıç",
+        "B": "Polis Memuru",
+        "C": "Paramedik",
+        "D": "Dedektif"
+      }
+    },
+    "job_10": {
+      "promptText": "Yıldızları ve gezegenleri kim inceler?",
+      "options": {
+        "A": "Astronom",
+        "B": "Coğrafyacı",
+        "C": "Kimyager",
+        "D": "Fizikçi"
+      }
+    },
+    "job_11": {
+      "promptText": "Makine tasarlama ve üretme işi hangi meslektir?",
+      "options": {
+        "A": "Mühendis",
+        "B": "Tesisatçı",
+        "C": "Elektrikçi",
+        "D": "Marangoz"
+      }
+    },
+    "job_12": {
+      "promptText": "Dersleri kim hazırlıyor ve öğrencilere kim ders veriyor?",
+      "options": {
+        "A": "Öğretmen",
+        "B": "Eğitmen",
+        "C": "Koç",
+        "D": "Özel öğretmen"
+      }
+    },
+    "job_13": {
+      "promptText": "Dişlerle hangi meslek grubu ilgilenir?",
+      "options": {
+        "A": "Dişçi",
+        "B": "Göz doktoru",
+        "C": "Veteriner",
+        "D": "Çocuk doktoru"
+      }
+    },
+    "job_14": {
+      "promptText": "Restoranlarda yemekleri kim hazırlıyor?",
+      "options": {
+        "A": "Fırıncı",
+        "B": "Şef",
+        "C": "Sunucu",
+        "D": "Barista"
+      }
+    },
+    "job_15": {
+      "promptText": "Hayvan sağlığına odaklanan iş hangisidir?",
+      "options": {
+        "A": "Veteriner",
+        "B": "Zoolog",
+        "C": "Çiftçi",
+        "D": "Eğitmen"
+      }
+    },
+    "job_16": {
+      "promptText": "Finansal kayıtların doğruluğunu kim kontrol eder?",
+      "options": {
+        "A": "Muhasebeci",
+        "B": "Bankacı",
+        "C": "Analist",
+        "D": "Aracı"
+      }
+    },
+    "job_17": {
+      "promptText": "Elektrik sistemlerinin yapımı ve onarımı hangi meslek grubuyla yapılır?",
+      "options": {
+        "A": "Elektrikçi",
+        "B": "Mekanik",
+        "C": "Tesisatçı",
+        "D": "Marangoz"
+      }
+    },
+    "job_18": {
+      "promptText": "İnsanlara hukuki danışmanlık konusunda kim yardımcı olur?",
+      "options": {
+        "A": "Yargıç",
+        "B": "Avukat",
+        "C": "Katip",
+        "D": "İcra memuru"
+      }
+    },
+    "job_19": {
+      "promptText": "Dünya'nın kaya ve minerallerini inceleyen meslek hangisidir?",
+      "options": {
+        "A": "Jeolog",
+        "B": "Ekolojist",
+        "C": "Meteorolog",
+        "D": "Botanikçi"
+      }
+    },
+    "job_20": {
+      "promptText": "Resim veya heykel kullanarak sanat eseri yaratan kimdir?",
+      "options": {
+        "A": "Tasarımcı",
+        "B": "Sanatçı",
+        "C": "Aktör",
+        "D": "Besteci"
+      }
+    },
+    "job_21": {
+      "promptText": "Fotoğraf çekme işiyle hangi meslek dalı ilgilenir?",
+      "options": {
+        "A": "Fotoğrafçı",
+        "B": "Muhabir",
+        "C": "Yapımcı",
+        "D": "Müdür"
+      }
+    },
+    "job_22": {
+      "promptText": "Acil durumlarda hastaları kim tedavi eder?",
+      "options": {
+        "A": "Cerrah",
+        "B": "Paramedik",
+        "C": "Hemşire",
+        "D": "Terapist"
+      }
+    },
+    "job_23": {
+      "promptText": "Giyim ve moda tasarımı hangi meslektir?",
+      "options": {
+        "A": "Stilist",
+        "B": "Moda Tasarımcısı",
+        "C": "Terzi",
+        "D": "Model"
+      }
+    },
+    "job_24": {
+      "promptText": "Bir filmi veya televizyon dizisini kim yönetir?",
+      "options": {
+        "A": "Yapımcı",
+        "B": "Müdür",
+        "C": "Editör",
+        "D": "Senarist"
+      }
+    },
+    "job_25": {
+      "promptText": "Hava durumunu hangi meslek grubu inceler?",
+      "options": {
+        "A": "Astronom",
+        "B": "Meteorolog",
+        "C": "İklim bilimci",
+        "D": "Coğrafyacı"
+      }
+    },
+    "job_26": {
+      "promptText": "Şirketin günlük operasyonlarını kim yönetir?",
+      "options": {
+        "A": "CEO",
+        "B": "Müdür",
+        "C": "Analist",
+        "D": "Danışman"
+      }
+    },
+    "job_27": {
+      "promptText": "İnsanların ev alıp satmasına yardımcı olan meslek hangisidir?",
+      "options": {
+        "A": "Aracı",
+        "B": "Emlakçı",
+        "C": "Muhasebeci",
+        "D": "Değerleme uzmanı"
+      }
+    },
+    "job_28": {
+      "promptText": "Ahşaptan mobilya ve yapılar kim yapar?",
+      "options": {
+        "A": "Marangoz",
+        "B": "Tesisatçı",
+        "C": "Mason",
+        "D": "Kaynakçı"
+      }
+    },
+    "job_29": {
+      "promptText": "Hangi meslek müzik üretir?",
+      "options": {
+        "A": "Besteci",
+        "B": "Ressam",
+        "C": "Yazar",
+        "D": "Aktör"
+      }
+    },
+    "job_30": {
+      "promptText": "Hastanelerde hastalarla kim ilgileniyor?",
+      "options": {
+        "A": "Hemşire",
+        "B": "Eczacı",
+        "C": "Terapist",
+        "D": "Dişçi"
+      }
+    },
+    "job_31": {
+      "promptText": "İnsan davranışlarını ve zihnini inceleyen meslek hangisidir?",
+      "options": {
+        "A": "Psikolog",
+        "B": "Sosyolog",
+        "C": "Antropolog",
+        "D": "Nörolog"
+      }
+    },
+    "job_32": {
+      "promptText": "Logoları ve marka görsellerini kim tasarlıyor?",
+      "options": {
+        "A": "Grafik Tasarımcı",
+        "B": "Fotoğrafçı",
+        "C": "Editör",
+        "D": "Yazar"
+      }
+    },
+    "job_33": {
+      "promptText": "İlaçları hangi meslek grubu hazırlar?",
+      "options": {
+        "A": "Eczacı",
+        "B": "Hemşire",
+        "C": "Cerrah",
+        "D": "Dişçi"
+      }
+    },
+    "job_34": {
+      "promptText": "Otomobil ve motor tamirini kim yapar?",
+      "options": {
+        "A": "Mekanik",
+        "B": "Mühendis",
+        "C": "Sürücü",
+        "D": "Pilot"
+      }
+    },
+    "job_35": {
+      "promptText": "Sporcuların eğitiminden hangi meslek grubu sorumludur?",
+      "options": {
+        "A": "Koç",
+        "B": "Eğitmen",
+        "C": "Hakem",
+        "D": "İzci"
+      }
+    },
+    "job_36": {
+      "promptText": "Geçmiş olayları ve medeniyetleri kim inceler?",
+      "options": {
+        "A": "Tarihçi",
+        "B": "Dilbilimci",
+        "C": "Arkeolog",
+        "D": "Sosyolog"
+      }
+    },
+    "job_37": {
+      "promptText": "Kitap ve öykü yazmak hangi meslek grubudur?",
+      "options": {
+        "A": "Yazar",
+        "B": "Şair",
+        "C": "Editör",
+        "D": "Yayıncı"
+      }
+    },
+    "job_38": {
+      "promptText": "İşitme kaybı olan kişilere kimler yardımcı olur?",
+      "options": {
+        "A": "Odyolog",
+        "B": "Göz doktoru",
+        "C": "Dermatolog",
+        "D": "Diyetisyen"
+      }
+    },
+    "job_39": {
+      "promptText": "Yol ve köprü planlama ve inşaat işleri hangi meslek grubuna aittir?",
+      "options": {
+        "A": "İnşaat mühendisi",
+        "B": "Haritacı",
+        "C": "Mimar",
+        "D": "Müteahhit"
+      }
+    },
+    "job_40": {
+      "promptText": "Seyahat planlaması için haritaları ve GPS'i kimler kullanıyor?",
+      "options": {
+        "A": "Navigatör",
+        "B": "Pilot",
+        "C": "Sürücü",
+        "D": "Rehber"
+      }
+    },
+    "job_41": {
+      "promptText": "Uzay görevleriyle ilgilenen meslek grubu hangisidir?",
+      "options": {
+        "A": "Astronot",
+        "B": "Pilot",
+        "C": "Mühendis",
+        "D": "Bilim adamı"
+      }
+    },
+    "job_42": {
+      "promptText": "Cilt sağlığı konusunda uzman kimdir?",
+      "options": {
+        "A": "Dermatolog",
+        "B": "Kardiyolog",
+        "C": "Ortopedist",
+        "D": "Nörolog"
+      }
+    },
+    "job_43": {
+      "promptText": "Etkinlik planlama ve programlama işi hangi alandadır?",
+      "options": {
+        "A": "Koordinatör",
+        "B": "Planlayıcı",
+        "C": "Organizatör",
+        "D": "Bunların hepsi"
+      }
+    },
+    "job_44": {
+      "promptText": "Video oyunlarını ve etkileşimli medyayı kim tasarlıyor?",
+      "options": {
+        "A": "Oyun Tasarımcısı",
+        "B": "Animatör",
+        "C": "Programcı",
+        "D": "Yapımcı"
+      }
+    },
+    "job_45": {
+      "promptText": "Hangi meslek grubu para ve bütçe yönetimiyle ilgilenir?",
+      "options": {
+        "A": "Finans Analisti",
+        "B": "Koç",
+        "C": "Editör",
+        "D": "Bilim adamı"
+      }
+    },
+    "obj_1": {
+      "promptText": "Zamanı göstermek için hangi nesne kullanılır?",
+      "options": {
+        "A": "Pusula",
+        "B": "Saat",
+        "C": "Termometre",
+        "D": "Barometre"
+      }
+    },
+    "obj_2": {
+      "promptText": "Hangi araç uçmak için kanat kullanır?",
+      "options": {
+        "A": "Bot",
+        "B": "Tren",
+        "C": "Uçak",
+        "D": "Araba"
+      }
+    },
+    "obj_3": {
+      "promptText": "Tekerlekler neyin azaltılmasına yardımcı olur?",
+      "options": {
+        "A": "Sürtünme",
+        "B": "Sıcaklık",
+        "C": "Işık",
+        "D": "Ses"
+      }
+    },
+    "obj_4": {
+      "promptText": "Nehir karşıya güvenli bir şekilde geçmek için hangi eşya kullanılır?",
+      "options": {
+        "A": "Köprü",
+        "B": "Tünel",
+        "C": "Merdiven",
+        "D": "Çit"
+      }
+    },
+    "obj_5": {
+      "promptText": "Kağıda yazı yazmak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Kaşık",
+        "B": "Dolma kalem",
+        "C": "Cetvel",
+        "D": "Çekiç"
+      }
+    },
+    "obj_6": {
+      "promptText": "Geleneksel bir bisiklete ne güç verir?",
+      "options": {
+        "A": "Yakıt",
+        "B": "Elektrik",
+        "C": "İnsan pedal çevirme",
+        "D": "Rüzgâr"
+      }
+    },
+    "obj_7": {
+      "promptText": "Yiyecekleri ısıtmak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Fırın",
+        "B": "Dondurucu",
+        "C": "Fan",
+        "D": "Vakum"
+      }
+    },
+    "obj_8": {
+      "promptText": "Hangi nesne uzağı görmenize yardımcı olur?",
+      "options": {
+        "A": "Mikroskop",
+        "B": "Teleskop",
+        "C": "Termometre",
+        "D": "Pusula"
+      }
+    },
+    "obj_9": {
+      "promptText": "Bisiklet sürerken başınızı korumak için hangi eşya kullanılır?",
+      "options": {
+        "A": "Kask",
+        "B": "Eldivenler",
+        "C": "Çizmeler",
+        "D": "Burun"
+      }
+    },
+    "obj_10": {
+      "promptText": "Şehirdeki hangi bina kitap ödünç almak için kullanılır?",
+      "options": {
+        "A": "Kütüphane",
+        "B": "Fırın",
+        "C": "Hastane",
+        "D": "Müze"
+      }
+    },
+    "obj_11": {
+      "promptText": "Cıvataları sıkmak için hangi alet kullanılır?",
+      "options": {
+        "A": "Çekiç",
+        "B": "İngiliz anahtarı",
+        "C": "Testere",
+        "D": "Fırçalamak"
+      }
+    },
+    "obj_12": {
+      "promptText": "Şehirde raylar üzerinde hareket eden araç hangisidir?",
+      "options": {
+        "A": "Tramvay",
+        "B": "Bot",
+        "C": "Bisiklet",
+        "D": "Kamyon"
+      }
+    },
+    "obj_13": {
+      "promptText": "Kuşların kanatları onlara ne yapmalarında yardımcı olur?",
+      "options": {
+        "A": "Yüzmek",
+        "B": "Uçmak",
+        "C": "Kazmak",
+        "D": "Saklamak"
+      }
+    },
+    "obj_14": {
+      "promptText": "Hangi nesne size yönü gösterir?",
+      "options": {
+        "A": "Saat",
+        "B": "Pusula",
+        "C": "Kamera",
+        "D": "Ölçek"
+      }
+    },
+    "obj_15": {
+      "promptText": "Şehirde hastaların tedavi edildiği yer neresidir?",
+      "options": {
+        "A": "Okul",
+        "B": "Hastane",
+        "C": "Stadyum",
+        "D": "Postane"
+      }
+    },
+    "obj_16": {
+      "promptText": "Fotoğraf çekmek için hangi nesne kullanılır?",
+      "options": {
+        "A": "Kamera",
+        "B": "Radyo",
+        "C": "Konuşmacı",
+        "D": "Yazıcı"
+      }
+    },
+    "obj_17": {
+      "promptText": "Şehir içinde motorla çalışan ve yolcu taşıyan araç hangisidir?",
+      "options": {
+        "A": "Otobüs",
+        "B": "Scooter",
+        "C": "Bisiklet",
+        "D": "Kaykay"
+      }
+    },
+    "obj_18": {
+      "promptText": "Sıcaklık ölçümünde hangi nesne kullanılır?",
+      "options": {
+        "A": "Termometre",
+        "B": "Cetvel",
+        "C": "Ölçek",
+        "D": "Pusula"
+      }
+    },
+    "obj_19": {
+      "promptText": "Ahşap kesmek için hangi alet kullanılır?",
+      "options": {
+        "A": "Testere",
+        "B": "İngiliz anahtarı",
+        "C": "Tornavida",
+        "D": "Pense"
+      }
+    },
+    "obj_20": {
+      "promptText": "Şehirde hangi bakkal dükkanı var?",
+      "options": {
+        "A": "Fırın",
+        "B": "Süpermarket",
+        "C": "Kütüphane",
+        "D": "Postane"
+      }
+    },
+    "obj_21": {
+      "promptText": "Araçların durmasına hangi nesne yardımcı olur?",
+      "options": {
+        "A": "Frenler",
+        "B": "Pedallar",
+        "C": "Aynalar",
+        "D": "Koltuklar"
+      }
+    },
+    "obj_22": {
+      "promptText": "Mektup göndermek için hangi nesne kullanılır?",
+      "options": {
+        "A": "Posta kutusu",
+        "B": "Dolap",
+        "C": "Baca",
+        "D": "Çekmece"
+      }
+    },
+    "obj_23": {
+      "promptText": "Zemin temizliğinde hangi makine yardımcı olur?",
+      "options": {
+        "A": "Vakum",
+        "B": "Mikrodalga",
+        "C": "Ekmek kızartma makinesi",
+        "D": "Fan"
+      }
+    },
+    "obj_24": {
+      "promptText": "Kapıları açmak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Anahtar",
+        "B": "Pin",
+        "C": "Klip",
+        "D": "Sicim"
+      }
+    },
+    "obj_25": {
+      "promptText": "Şehirde hangi yer mektup ve paket gönderiyor?",
+      "options": {
+        "A": "Banka",
+        "B": "Postane",
+        "C": "Spor salonu",
+        "D": "Tiyatro"
+      }
+    },
+    "obj_26": {
+      "promptText": "Müzik çalmak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Konuşmacı",
+        "B": "Blender",
+        "C": "Yazıcı",
+        "D": "Ekmek kızartma makinesi"
+      }
+    },
+    "obj_27": {
+      "promptText": "Şehirlerde yer altından geçmek için tasarlanmış araç hangisidir?",
+      "options": {
+        "A": "Metro",
+        "B": "Otobüs",
+        "C": "Feribot",
+        "D": "Taksi"
+      }
+    },
+    "obj_28": {
+      "promptText": "Ağır eşyaları kaldırmak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Vinç",
+        "B": "Paspas",
+        "C": "Kova",
+        "D": "Süpürge"
+      }
+    },
+    "obj_29": {
+      "promptText": "Odayı aydınlatmak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Lamba",
+        "B": "Fan",
+        "C": "Saat",
+        "D": "Radyo"
+      }
+    },
+    "obj_30": {
+      "promptText": "Şehirdeki hangi alan spor müsabakaları için kullanılıyor?",
+      "options": {
+        "A": "Stadyum",
+        "B": "Müze",
+        "C": "Kütüphane",
+        "D": "Tiyatro"
+      }
+    },
+    "obj_31": {
+      "promptText": "Vidaları sıkmak için hangi alet kullanılır?",
+      "options": {
+        "A": "Tornavida",
+        "B": "Çekiç",
+        "C": "Pense",
+        "D": "İngiliz anahtarı"
+      }
+    },
+    "obj_32": {
+      "promptText": "Soğuk yiyecekleri saklamak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Fırın",
+        "B": "Buzdolabı",
+        "C": "Ekmek kızartma makinesi",
+        "D": "Çaydanlık"
+      }
+    },
+    "obj_33": {
+      "promptText": "Su üzerinde rüzgarla çalışan araç hangisidir?",
+      "options": {
+        "A": "Yelkenli",
+        "B": "Denizaltı",
+        "C": "Feribot",
+        "D": "Kano"
+      }
+    },
+    "obj_34": {
+      "promptText": "Hangi nesne caddeyi güvenli bir şekilde geçmenize yardımcı olur?",
+      "options": {
+        "A": "Yaya geçidi",
+        "B": "Giriş yolu",
+        "C": "Garaj",
+        "D": "Sokak"
+      }
+    },
+    "obj_35": {
+      "promptText": "Ürünlerin ödemesinde hangi nesne kullanılır?",
+      "options": {
+        "A": "Cüzdan",
+        "B": "Defter",
+        "C": "Sırt çantası",
+        "D": "Kask"
+      }
+    },
+    "obj_36": {
+      "promptText": "Şehirde para çekmenize yardımcı olan yer neresi?",
+      "options": {
+        "A": "Banka",
+        "B": "Klinik",
+        "C": "Okul",
+        "D": "Park"
+      }
+    },
+    "obj_37": {
+      "promptText": "Çamaşır yıkamak için hangi makine kullanılır?",
+      "options": {
+        "A": "Çamaşır makinesi",
+        "B": "Bulaşık makinesi",
+        "C": "Kurutma makinesi",
+        "D": "Mikser"
+      }
+    },
+    "obj_38": {
+      "promptText": "Yansımayı görmek için hangi nesne kullanılır?",
+      "options": {
+        "A": "Ayna",
+        "B": "Pencere",
+        "C": "Ekran",
+        "D": "Lens"
+      }
+    },
+    "obj_39": {
+      "promptText": "Şehirdeki hangi özellik trafik akışını kontrol eder?",
+      "options": {
+        "A": "Trafik Işığı",
+        "B": "Sokak Tabelası",
+        "C": "Hız Kesici Tümsek",
+        "D": "Kaldırım"
+      }
+    },
+    "obj_40": {
+      "promptText": "Hangi nesne yağmurun başınıza gelmesini engeller?",
+      "options": {
+        "A": "Şemsiye",
+        "B": "Atkı",
+        "C": "Çizmeler",
+        "D": "Kemer"
+      }
+    },
+    "obj_41": {
+      "promptText": "Şehirde hangi sinemada film gösteriliyor?",
+      "options": {
+        "A": "Sinema",
+        "B": "Müze",
+        "C": "Kütüphane",
+        "D": "Spor salonu"
+      }
+    },
+    "obj_42": {
+      "promptText": "Yüksek yerlere tırmanmanıza hangi nesne yardımcı olur?",
+      "options": {
+        "A": "Merdiven",
+        "B": "Halat",
+        "C": "Açık",
+        "D": "Rampa"
+      }
+    },
+    "obj_43": {
+      "promptText": "Market alışverişi taşımak için hangi nesne kullanılır?",
+      "options": {
+        "A": "Sepet",
+        "B": "Mektup",
+        "C": "Cüzdan",
+        "D": "Kitap"
+      }
+    },
+    "obj_44": {
+      "promptText": "Şehir içinde paketleri hızlı bir şekilde teslim etmek için hangi araç kullanılır?",
+      "options": {
+        "A": "Teslimat Kamyoneti",
+        "B": "Yelkenli",
+        "C": "Tren",
+        "D": "Teleferik"
+      }
+    },
+    "obj_45": {
+      "promptText": "Şehirde insanların öğrenmesine yardımcı olan yer neresi?",
+      "options": {
+        "A": "Okul",
+        "B": "Kafe",
+        "C": "Stadyum",
+        "D": "Garaj"
+      }
+    }
+  }
+}

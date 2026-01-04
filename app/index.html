@@ -29,6 +29,7 @@
         <button id="btn-achievements" class="ghost">⭐ Achievements</button>
       </nav>
       <div class="topbar-actions">
+        <select id="language-select" class="ghost language-select" aria-label="Language"></select>
         <button id="btn-upgrade" class="ghost">💎 Upgrade</button>
         <button id="btn-sound" class="ghost">🔇 Sound Off</button>
         <button id="btn-timed" class="ghost">⏱ Timer Off</button>
@@ -47,9 +48,9 @@
       <section id="screen-landing" class="screen active">
         <div class="hero">
           <div>
-            <p class="eyebrow">Play. Host. Build.</p>
-            <h1>Run a Millionaire game show, with cinematic energy fully customizable.</h1>
-            <p class="subtext">
+            <p id="hero-eyebrow" class="eyebrow">Play. Host. Build.</p>
+            <h1 id="hero-title">Run a Millionaire game show, with cinematic energy fully customizable.</h1>
+            <p id="hero-subtext" class="subtext">
               Host Classic rounds, spin up Fastest Finger First, or create custom game packs in minutes.
             </p>
             <div class="cta-row">
@@ -60,9 +61,9 @@
           </div>
           <div class="hero-card">
             <div class="hero-card-inner">
-              <p class="card-title prize-title">Prize</p>
+              <p id="landing-prize-title" class="card-title prize-title">Prize</p>
               <ul class="ladder-preview" id="landing-ladder"></ul>
-              <p class="card-footnote">Customizable currency, lifelines, and themes.</p>
+              <p id="landing-prize-footnote" class="card-footnote">Customizable currency, lifelines, and themes.</p>
             </div>
           </div>
         </div>
@@ -72,19 +73,19 @@
         <div class="panel">
           <div class="panel-head classic-header">
             <div>
-              <h2>Creator Dashboard</h2>
-              <p>Build packs, customize ladders, and host live sessions.</p>
+              <h2 id="dashboard-title">Creator Dashboard</h2>
+              <p id="dashboard-subtitle">Build packs, customize ladders, and host live sessions.</p>
             </div>
             <button id="btn-dashboard-home" class="ghost">Back to Home</button>
           </div>
           <div class="panel-body grid-2">
             <div class="card">
-              <h3>My Packs</h3>
+              <h3 id="dashboard-packs-title">My Packs</h3>
               <div id="pack-list" class="stack"></div>
               <button id="btn-create-pack" class="secondary">Create Pack</button>
             </div>
             <div class="card">
-              <h3>Host Session</h3>
+              <h3 id="dashboard-host-title">Host Session</h3>
               <label class="field">
                 <span>Pack</span>
                 <select id="host-pack-select"></select>
@@ -113,8 +114,8 @@
       <section id="screen-builder" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Game Builder</h2>
-            <p>Upload a CSV, tweak lifelines, and save your custom pack.</p>
+            <h2 id="builder-title-text">Game Builder</h2>
+            <p id="builder-subtitle">Upload a CSV, tweak lifelines, and save your custom pack.</p>
           </div>
           <div class="panel-body grid-2">
             <div class="card">
@@ -202,7 +203,7 @@
           </div>
           <div class="panel-body grid-2">
             <div class="card">
-              <h3>Join Info</h3>
+              <h3 id="host-join-title">Join Info</h3>
               <div class="qr-card">
                 <img id="qr-image" class="qr-image" alt="Join QR code" />
                 <div>
@@ -220,7 +221,7 @@
               <div id="host-controls" class="stack"></div>
             </div>
             <div class="card">
-              <h3>Live Board</h3>
+              <h3 id="host-live-title">Live Board</h3>
               <div id="host-live" class="live-board"></div>
             </div>
           </div>
@@ -230,7 +231,7 @@
       <section id="screen-participant" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Participant Console</h2>
+            <h2 id="participant-title">Participant Console</h2>
             <p id="participant-session-meta">Join a Fastest Finger First round.</p>
           </div>
           <div class="panel-body grid-2">
@@ -247,7 +248,7 @@
               <div id="participant-status" class="status"></div>
             </div>
             <div class="card">
-              <h3>Fastest Finger</h3>
+              <h3 id="participant-fff-title">Fastest Finger</h3>
               <div id="participant-fff" class="stack"></div>
             </div>
           </div>
@@ -287,7 +288,7 @@
             </div>
             <div class="card ladder-card">
               <div class="ladder-card-head">
-                <h3>Prize Ladder</h3>
+                <h3 id="classic-ladder-title">Prize Ladder</h3>
                 <p id="classic-meta"></p>
               </div>
               <ol id="classic-ladder" class="ladder"></ol>
@@ -299,8 +300,8 @@
       <section id="screen-pricing" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Choose Your Plan</h2>
-            <p>Unlock more features, host bigger sessions, and customize your experience.</p>
+            <h2 id="pricing-title">Choose Your Plan</h2>
+            <p id="pricing-subtitle">Unlock more features, host bigger sessions, and customize your experience.</p>
           </div>
           <div class="panel-body">
             <div class="pricing-grid">
@@ -369,7 +370,7 @@
             </div>
             <div class="pricing-footer">
               <button id="btn-back-from-pricing" class="ghost">← Back to Home</button>
-              <p class="subtext">Guest: 1 free pack (login to unlock more).</p>
+              <p id="pricing-guest-note" class="subtext">Guest: 1 free pack (login to unlock more).</p>
             </div>
           </div>
         </div>
@@ -378,22 +379,22 @@
       <section id="screen-payment" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Complete Payment</h2>
-            <p>Select a payment method to activate your plan.</p>
+            <h2 id="payment-title">Complete Payment</h2>
+            <p id="payment-subtitle">Select a payment method to activate your plan.</p>
           </div>
           <div class="panel-body">
             <div class="payment-grid">
               <div class="card payment-summary">
-                <p class="subtext">Selected plan</p>
+                <p id="payment-selected-label" class="subtext">Selected plan</p>
                 <h3 id="payment-tier-name">Plan</h3>
                 <p class="subtext" id="payment-tier-desc"></p>
                 <div class="payment-price">
                   <span id="payment-tier-price"></span>
                 </div>
-                <p class="subtext">We will review your request and confirm activation by email.</p>
+                <p id="payment-review-note" class="subtext">We will review your request and confirm activation by email.</p>
               </div>
               <div class="card payment-methods">
-                <h3>Payment Method</h3>
+                <h3 id="payment-method-title">Payment Method</h3>
                 <button class="payment-option" type="button" data-method="apple_pay">Apple Pay</button>
                 <button class="payment-option" type="button" data-method="google_pay">Google Pay</button>
                 <button class="payment-option" type="button" data-method="card">Card (Visa/Mastercard)</button>
@@ -411,12 +412,12 @@
       <section id="screen-admin" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Admin Panel</h2>
-            <p>Assign tiers to users and manage access.</p>
+            <h2 id="admin-title">Admin Panel</h2>
+            <p id="admin-subtitle">Assign tiers to users and manage access.</p>
           </div>
           <div class="panel-body grid-2">
             <div class="card">
-              <h3>Add or Update User</h3>
+              <h3 id="admin-add-title">Add or Update User</h3>
               <label class="field">
                 <span>Email</span>
                 <input id="admin-user-email" type="email" placeholder="user@example.com" />
@@ -438,7 +439,7 @@
             </div>
             <div class="card">
               <div class="admin-table-head">
-                <h3>Users</h3>
+                <h3 id="admin-users-title">Users</h3>
                 <button id="btn-admin-refresh" class="ghost">Refresh</button>
               </div>
               <div class="admin-table">
@@ -469,8 +470,8 @@
       <section id="screen-leaderboard" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Leaderboard</h2>
-            <p>Top players on this device</p>
+            <h2 id="leaderboard-title">Leaderboard</h2>
+            <p id="leaderboard-subtitle">Top players on this device</p>
           </div>
           <div class="panel-body">
             <div class="leaderboard-filters">
@@ -505,12 +506,12 @@
       <section id="screen-contact" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Contact Us</h2>
-            <p>Support, customization, and partnerships.</p>
+            <h2 id="contact-title">Contact Us</h2>
+            <p id="contact-subtitle">Support, customization, and partnerships.</p>
           </div>
           <div class="panel-body grid-2">
             <div class="card">
-              <h3>Support</h3>
+              <h3 id="contact-support-title">Support</h3>
               <p class="subtext">Issues, account help, and live session troubleshooting.</p>
               <ul class="stack">
                 <li>Email: <a href="mailto:support@millionaire-game.live">support@millionaire-game.live</a></li>
@@ -519,7 +520,7 @@
               </ul>
             </div>
             <div class="card">
-              <h3>Customization</h3>
+              <h3 id="contact-custom-title">Customization</h3>
               <p class="subtext">Branding, custom categories, sponsor decks, and overlays.</p>
               <ul class="stack">
                 <li>Email: <a href="mailto:custom@millionaire-game.live">custom@millionaire-game.live</a></li>
@@ -528,7 +529,7 @@
               </ul>
             </div>
             <div class="card">
-              <h3>Partnerships</h3>
+              <h3 id="contact-partnership-title">Partnerships</h3>
               <p class="subtext">Schools, events, and enterprise deployments.</p>
               <ul class="stack">
                 <li>Email: <a href="mailto:partners@millionaire-game.live">partners@millionaire-game.live</a></li>
@@ -536,7 +537,7 @@
               </ul>
             </div>
             <div class="card">
-              <h3>Quick Request</h3>
+              <h3 id="contact-request-title">Quick Request</h3>
               <form class="stack" id="contact-form">
                 <label class="field">
                   <span>Name</span>
@@ -563,7 +564,7 @@
       <section id="screen-achievements" class="screen">
         <div class="panel">
           <div class="panel-head">
-            <h2>Achievements</h2>
+            <h2 id="achievements-title">Achievements</h2>
             <p id="achievements-progress">Unlock achievements by playing games</p>
           </div>
           <div class="panel-body">
@@ -599,8 +600,8 @@
     <footer class="footer-new">
       <div class="footer-container">
         <div class="footer-section">
-          <h3>About</h3>
-          <p>Experience the thrill of the iconic game show. Host your own sessions, create custom question packs, and compete for the top spot on the leaderboard.</p>
+          <h3 id="footer-about-title">About</h3>
+          <p id="footer-about-text">Experience the thrill of the iconic game show. Host your own sessions, create custom question packs, and compete for the top spot on the leaderboard.</p>
           <div class="social-links">
             <a href="#" aria-label="Twitter">
               <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -618,7 +619,7 @@
         </div>
 
         <div class="footer-section">
-          <h3>Quick Links</h3>
+          <h3 id="footer-links-title">Quick Links</h3>
           <ul class="footer-links">
             <li><a href="#" id="footer-home">Home</a></li>
             <li><a href="#" id="footer-dashboard">Dashboard</a></li>
@@ -628,7 +629,7 @@
         </div>
 
         <div class="footer-section">
-          <h3>Others</h3>
+          <h3 id="footer-others-title">Others</h3>
           <ul class="footer-links">
             <li><a href="#" id="footer-contact">Contact Us</a></li>
             <li><a href="#" id="footer-contrast">High Contrast</a></li>
@@ -638,8 +639,8 @@
         </div>
 
         <div class="footer-section">
-          <h3>Newsletter</h3>
-          <p>Get updates on new features and game packs.</p>
+          <h3 id="footer-newsletter-title">Newsletter</h3>
+          <p id="footer-newsletter-text">Get updates on new features and game packs.</p>
           <form class="newsletter-form" id="newsletter-form">
             <input type="email" placeholder="Your email" required />
             <button type="submit" class="secondary">Subscribe</button>
@@ -648,7 +649,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2025 Who Wants to be a Millionaire.</p>
+        <p id="footer-copyright">&copy; 2025 Who Wants to be a Millionaire.</p>
       </div>
     </footer>
 

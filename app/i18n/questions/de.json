@@ -1,0 +1,3442 @@
+{
+  "packs": {
+    "pack_default": {
+      "title": "Millionärsfragen",
+      "description": "Eine filmische Mischung aus Popkultur, Geschichte und Wissenschaft.",
+      "messages": {
+        "winTitle": "Glückwunsch!",
+        "winMessage": "Sie sind Millionär!",
+        "loseTitle": "Spiel vorbei",
+        "loseMessage": "Beim nächsten Mal klappt's bestimmt!",
+        "walkAwayTitle": "Gut gespielt!",
+        "walkAwayMessage": "Sie gingen mit Folgendem nach Hause:"
+      },
+      "lifelines": {
+        "fifty_fifty": "50:50",
+        "ask_audience": "Fragen Sie das Publikum",
+        "phone_friend": "Einen Freund anrufen"
+      }
+    }
+  },
+  "categories": {
+    "animals": {
+      "title": "Tiere",
+      "subtitle": "Animal Planet • Unterwassertiere"
+    },
+    "geography": {
+      "title": "Geographie",
+      "subtitle": "Staaten von Amerika • Länder der Welt • Städte rund um die Welt"
+    },
+    "science_nature": {
+      "title": "Wissenschaft und Natur",
+      "subtitle": "Dinosaurier • Weltraum"
+    },
+    "kids_gk": {
+      "title": "Allgemeinwissen für Kinder",
+      "subtitle": "Kinderquiz"
+    },
+    "mathematics": {
+      "title": "Mathematik",
+      "subtitle": "Zahlen • Algebra • Geometrie • Wahrscheinlichkeit"
+    },
+    "aptitude": {
+      "title": "Eignung",
+      "subtitle": "Verbal • Numerisch • Abstrakt • Logisch • Muster"
+    },
+    "occupations": {
+      "title": "Berufe",
+      "subtitle": "Inspirierende Berufe"
+    },
+    "objects_concepts": {
+      "title": "Objekte & Konzepte",
+      "subtitle": "Räder, Flügel und mehr • Ausflug durch die Stadt"
+    }
+  },
+  "questions": {
+    "q1": {
+      "promptText": "Welcher Planet ist als der Rote Planet bekannt?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Jupiter",
+        "D": "Quecksilber"
+      },
+      "explanation": "Der Mars erscheint aufgrund von Eisenoxid auf seiner Oberfläche rot."
+    },
+    "q2": {
+      "promptText": "Was ist die Hauptstadt von Kanada?",
+      "options": {
+        "A": "Toronto",
+        "B": "Vancouver",
+        "C": "Ottawa",
+        "D": "Montreal"
+      }
+    },
+    "q3": {
+      "promptText": "Welches Instrument hat 88 Tasten?",
+      "options": {
+        "A": "Harfe",
+        "B": "Klavier",
+        "C": "Akkordeon",
+        "D": "Orgel"
+      }
+    },
+    "q4": {
+      "promptText": "Vor der Küste welchen Landes liegt das Great Barrier Reef?",
+      "options": {
+        "A": "Mexiko",
+        "B": "Australien",
+        "C": "Südafrika",
+        "D": "Brasilien"
+      }
+    },
+    "q5": {
+      "promptText": "Welches Element hat das chemische Symbol O?",
+      "options": {
+        "A": "Gold",
+        "B": "Sauerstoff",
+        "C": "Osmium",
+        "D": "Zinn"
+      }
+    },
+    "q6": {
+      "promptText": "Wer schrieb „Stolz und Vorurteil“?",
+      "options": {
+        "A": "Charlotte Brontë",
+        "B": "Jane Austen",
+        "C": "Mary Shelley",
+        "D": "Emily Dickinson"
+      }
+    },
+    "q7": {
+      "promptText": "Welcher Ozean ist der größte der Erde?",
+      "options": {
+        "A": "atlantisch",
+        "B": "indisch",
+        "C": "Pazifik",
+        "D": "Arktis"
+      }
+    },
+    "q8": {
+      "promptText": "Wie heißt der erste künstliche Satellit, der ins Weltall geschickt wurde?",
+      "options": {
+        "A": "Voyager",
+        "B": "Sputnik",
+        "C": "Apollo",
+        "D": "Pionier"
+      }
+    },
+    "q9": {
+      "promptText": "In welcher Stadt fanden die Olympischen Sommerspiele 2012 statt?",
+      "options": {
+        "A": "London",
+        "B": "Peking",
+        "C": "Rio de Janeiro",
+        "D": "Tokio"
+      }
+    },
+    "q10": {
+      "promptText": "Was ist der härteste natürliche Stoff?",
+      "options": {
+        "A": "Diamant",
+        "B": "Quarz",
+        "C": "Granit",
+        "D": "Platin"
+      }
+    },
+    "q11": {
+      "promptText": "Welcher Künstler bemalte die Decke der Sixtinischen Kapelle?",
+      "options": {
+        "A": "Raffael",
+        "B": "Michelangelo",
+        "C": "Da Vinci",
+        "D": "Caravaggio"
+      }
+    },
+    "q12": {
+      "promptText": "Welcher ist der längste Fluss der Welt?",
+      "options": {
+        "A": "Amazonas",
+        "B": "Nil",
+        "C": "Jangtse",
+        "D": "Mississippi"
+      }
+    },
+    "q13": {
+      "promptText": "Welches Gas macht den größten Teil der Erdatmosphäre aus?",
+      "options": {
+        "A": "Sauerstoff",
+        "B": "Stickstoff",
+        "C": "Kohlendioxid",
+        "D": "Argon"
+      }
+    },
+    "q14": {
+      "promptText": "Was ist die größte Wüste der Welt?",
+      "options": {
+        "A": "Sahara",
+        "B": "Gobi",
+        "C": "Antarktische Wüste",
+        "D": "arabisch"
+      }
+    },
+    "q15": {
+      "promptText": "Welcher Physiker entwickelte die allgemeine Relativitätstheorie?",
+      "options": {
+        "A": "Isaac Newton",
+        "B": "Albert Einstein",
+        "C": "Niels Bohr",
+        "D": "Marie Curie"
+      }
+    },
+    "fff1": {
+      "promptText": "Schnellster Finger: Welche Sure ist als „Die Eröffnung“ bekannt?",
+      "options": {
+        "A": "Al-Fatihah",
+        "B": "Al-Baqara",
+        "C": "Al-Ikhlas",
+        "D": "Al-Kahf"
+      }
+    },
+    "animals_1": {
+      "promptText": "Welches Säugetier ist für seine Echoortung bekannt?",
+      "options": {
+        "A": "Schläger",
+        "B": "Otter",
+        "C": "Zebra",
+        "D": "Elch"
+      }
+    },
+    "animals_2": {
+      "promptText": "Welches ist das schnellste Landtier?",
+      "options": {
+        "A": "Gepard",
+        "B": "Gabelbock",
+        "C": "Löwe",
+        "D": "Strauß"
+      }
+    },
+    "animals_3": {
+      "promptText": "Welcher Vogel ist berühmt für sein farbenprächtiges Schwanzgefieder und sein Balzverhalten?",
+      "options": {
+        "A": "Pfau",
+        "B": "Flamingo",
+        "C": "Adler",
+        "D": "Pinguin"
+      }
+    },
+    "animals_4": {
+      "promptText": "Eine Gruppe von Löwen wird als … bezeichnet.",
+      "options": {
+        "A": "Herde",
+        "B": "Stolz",
+        "C": "Schule",
+        "D": "Pack"
+      }
+    },
+    "animals_5": {
+      "promptText": "Welches Tier ist das größte der Erde?",
+      "options": {
+        "A": "Afrikanischer Elefant",
+        "B": "Blauwal",
+        "C": "Giraffe",
+        "D": "Weißer Hai"
+      }
+    },
+    "animals_6": {
+      "promptText": "Wie nennt man ein Kängurubaby?",
+      "options": {
+        "A": "Jungtier",
+        "B": "Joey",
+        "C": "Kalb",
+        "D": "Kitz"
+      }
+    },
+    "animals_7": {
+      "promptText": "Welches Tier hat die längste Lebenserwartung?",
+      "options": {
+        "A": "Galapagos-Schildkröte",
+        "B": "Elefant",
+        "C": "Blauwal",
+        "D": "Papagei"
+      }
+    },
+    "animals_8": {
+      "promptText": "Welches Meerestier hat acht Arme und drei Herzen?",
+      "options": {
+        "A": "Tintenfisch",
+        "B": "Oktopus",
+        "C": "Tintenfisch",
+        "D": "Qualle"
+      }
+    },
+    "animals_9": {
+      "promptText": "Welches Tier wird als Schiff der Wüste bezeichnet?",
+      "options": {
+        "A": "Pferd",
+        "B": "Kamel",
+        "C": "Lama",
+        "D": "Esel"
+      }
+    },
+    "animals_10": {
+      "promptText": "Welcher Vogel kann nicht fliegen, aber sehr schnell laufen?",
+      "options": {
+        "A": "Pinguin",
+        "B": "Strauß",
+        "C": "Kiwi",
+        "D": "Emu"
+      }
+    },
+    "animals_11": {
+      "promptText": "Welche ist die größte Haiart?",
+      "options": {
+        "A": "Weißer Hai",
+        "B": "Walhai",
+        "C": "Hammerhai",
+        "D": "Tigerhai"
+      }
+    },
+    "animals_12": {
+      "promptText": "Welches Tier ist dafür bekannt, seine Farbe zu ändern, um sich anzupassen?",
+      "options": {
+        "A": "Chamäleon",
+        "B": "Leguan",
+        "C": "Gecko",
+        "D": "Anole"
+      }
+    },
+    "animals_13": {
+      "promptText": "Wie nennt man eine Gruppe von Delfinen?",
+      "options": {
+        "A": "Pod",
+        "B": "Herde",
+        "C": "Herde",
+        "D": "Kolonie"
+      }
+    },
+    "animals_14": {
+      "promptText": "Welches Tier hat schwarz-weiße Streifen und lebt in Afrika?",
+      "options": {
+        "A": "Okapi",
+        "B": "Zebra",
+        "C": "Tapir",
+        "D": "Skunk"
+      }
+    },
+    "animals_15": {
+      "promptText": "Welches Insekt produziert Honig?",
+      "options": {
+        "A": "Wespe",
+        "B": "Biene",
+        "C": "Ameise",
+        "D": "Schmetterling"
+      }
+    },
+    "animals_16": {
+      "promptText": "Welche ist die größte Bärenart?",
+      "options": {
+        "A": "Grizzlybär",
+        "B": "Eisbär",
+        "C": "Schwarzbär",
+        "D": "Panda"
+      }
+    },
+    "animals_17": {
+      "promptText": "Welches Tier ist für seinen Rüssel bekannt?",
+      "options": {
+        "A": "Elefant",
+        "B": "Nashorn",
+        "C": "Nilpferd",
+        "D": "Walross"
+      }
+    },
+    "animals_18": {
+      "promptText": "Welcher Vogel ist ein Symbol des Friedens?",
+      "options": {
+        "A": "Taube",
+        "B": "Krähe",
+        "C": "Rabe",
+        "D": "Falke"
+      }
+    },
+    "animals_19": {
+      "promptText": "Welches Tier schläft im Stehen?",
+      "options": {
+        "A": "Pferd",
+        "B": "Löwe",
+        "C": "Tiger",
+        "D": "Gorilla"
+      }
+    },
+    "animals_20": {
+      "promptText": "Welche ist die größte Katzenart?",
+      "options": {
+        "A": "Löwe",
+        "B": "Leopard",
+        "C": "Tiger",
+        "D": "Jaguar"
+      }
+    },
+    "animals_21": {
+      "promptText": "Welches Säugetier hat die stärkste Beißkraft?",
+      "options": {
+        "A": "Löwe",
+        "B": "Nilpferd",
+        "C": "Hyäne",
+        "D": "Tragen"
+      }
+    },
+    "animals_22": {
+      "promptText": "Welches Meerestier ist für seine Biolumineszenz bekannt?",
+      "options": {
+        "A": "Meeresschildkröte",
+        "B": "Anglerfisch",
+        "C": "Delphin",
+        "D": "Seekuh"
+      }
+    },
+    "animals_23": {
+      "promptText": "Welche ist die größte Pinguinart?",
+      "options": {
+        "A": "Kaiserpinguin",
+        "B": "Königspinguin",
+        "C": "Adelie-Pinguin",
+        "D": "Eselspinguin"
+      }
+    },
+    "animals_24": {
+      "promptText": "Welches Tier ist berühmt dafür, sich totzustellen?",
+      "options": {
+        "A": "Waschbär",
+        "B": "Beutelratte",
+        "C": "Dachs",
+        "D": "Fuchs"
+      }
+    },
+    "animals_25": {
+      "promptText": "Welcher Fisch ist für seine Fähigkeit bekannt, sich aufzublähen?",
+      "options": {
+        "A": "Clownfisch",
+        "B": "Kugelfisch",
+        "C": "Kaiserfisch",
+        "D": "Schwertfisch"
+      }
+    },
+    "animals_26": {
+      "promptText": "Welches Tier besitzt einen Beutel und ist in Australien heimisch?",
+      "options": {
+        "A": "Koala",
+        "B": "Känguru",
+        "C": "Wombat",
+        "D": "Alle diese"
+      }
+    },
+    "animals_27": {
+      "promptText": "Wie nennt man eine Gruppe von Walen?",
+      "options": {
+        "A": "Pod",
+        "B": "Schule",
+        "C": "Schwarm",
+        "D": "Stolz"
+      }
+    },
+    "animals_28": {
+      "promptText": "Welches Tier ist für seinen langen Hals bekannt?",
+      "options": {
+        "A": "Giraffe",
+        "B": "Elch",
+        "C": "Kamel",
+        "D": "Lama"
+      }
+    },
+    "animals_29": {
+      "promptText": "Welches Meerestier bewegt sich durch Wasserspritzen fort?",
+      "options": {
+        "A": "Oktopus",
+        "B": "Seepferdchen",
+        "C": "Seestern",
+        "D": "Krabbe"
+      }
+    },
+    "animals_30": {
+      "promptText": "Welches Tier ist das größte Reptil?",
+      "options": {
+        "A": "Komodowaran",
+        "B": "Salzwasserkrokodil",
+        "C": "Alligator",
+        "D": "Grüne Anakonda"
+      }
+    },
+    "animals_31": {
+      "promptText": "Welcher Vogel ist dafür bekannt, Geräusche und Sprache nachzuahmen?",
+      "options": {
+        "A": "Papagei",
+        "B": "Spatz",
+        "C": "Robin",
+        "D": "Falke"
+      }
+    },
+    "animals_32": {
+      "promptText": "Welches ist das einzige Säugetier, das zum echten Flug fähig ist?",
+      "options": {
+        "A": "Gleithörnchen",
+        "B": "Schläger",
+        "C": "Gleithörnchen",
+        "D": "Colugo"
+      }
+    },
+    "animals_33": {
+      "promptText": "Welches Tier hat das dichteste Fell?",
+      "options": {
+        "A": "Polarfuchs",
+        "B": "Seeotter",
+        "C": "Eisbär",
+        "D": "Vielfraß"
+      }
+    },
+    "animals_34": {
+      "promptText": "Welches Tier ist für sein schwarz-weißes Fell und seine Bambusernährung bekannt?",
+      "options": {
+        "A": "Panda",
+        "B": "Zebra",
+        "C": "Skunk",
+        "D": "Dachs"
+      }
+    },
+    "animals_35": {
+      "promptText": "Welches Tier besitzt einen Greifschwanz?",
+      "options": {
+        "A": "Gorilla",
+        "B": "Klammeraffe",
+        "C": "Wolf",
+        "D": "Tragen"
+      }
+    },
+    "animals_36": {
+      "promptText": "Welches Wassersäugetier ist für seine Stoßzähne bekannt?",
+      "options": {
+        "A": "Walross",
+        "B": "Siegel",
+        "C": "Seekuh",
+        "D": "Dugong"
+      }
+    },
+    "animals_37": {
+      "promptText": "Welches Tier kann seinen Kopf bis zu 270 Grad drehen?",
+      "options": {
+        "A": "Eule",
+        "B": "Adler",
+        "C": "Falke",
+        "D": "Falke"
+      }
+    },
+    "animals_38": {
+      "promptText": "Welcher Fisch ist dafür bekannt, Wasserfälle hinaufzuklettern?",
+      "options": {
+        "A": "Lachs",
+        "B": "Forelle",
+        "C": "Karpfen",
+        "D": "Wels"
+      }
+    },
+    "animals_39": {
+      "promptText": "Welches Tier ist für seinen panzerartigen Panzer bekannt?",
+      "options": {
+        "A": "Gürteltier",
+        "B": "Igel",
+        "C": "Stachelschwein",
+        "D": "Schuppentier"
+      }
+    },
+    "animals_40": {
+      "promptText": "Welches Meerestier besitzt eine Krone aus giftigen Stacheln?",
+      "options": {
+        "A": "Seestern",
+        "B": "Dornenkronenseestern",
+        "C": "Seeigel",
+        "D": "Seegurke"
+      }
+    },
+    "animals_41": {
+      "promptText": "Welches Reptil ist dafür bekannt, seine Hautfarbe im Wasser zu ändern?",
+      "options": {
+        "A": "Krokodil",
+        "B": "Alligator",
+        "C": "Meerechse",
+        "D": "Seeschlange"
+      }
+    },
+    "animals_42": {
+      "promptText": "Welches Tier nutzt Tinte als Verteidigungsmechanismus?",
+      "options": {
+        "A": "Oktopus",
+        "B": "Seepferdchen",
+        "C": "Hummer",
+        "D": "Krabbe"
+      }
+    },
+    "animals_43": {
+      "promptText": "Wie nennt man eine Gruppe von Fröschen?",
+      "options": {
+        "A": "Armee",
+        "B": "Kolonie",
+        "C": "Schwarm",
+        "D": "Haufen"
+      }
+    },
+    "animals_44": {
+      "promptText": "Welches Tier ist für seine lange Zunge bekannt, mit der es Ameisen fängt?",
+      "options": {
+        "A": "Ameisenbär",
+        "B": "Erdferkel",
+        "C": "Schuppentier",
+        "D": "Alle diese"
+      }
+    },
+    "animals_45": {
+      "promptText": "Welcher Vogel kann rückwärts fliegen?",
+      "options": {
+        "A": "Kolibri",
+        "B": "Schlucken",
+        "C": "Spatz",
+        "D": "Schnell"
+      }
+    },
+    "geo_1": {
+      "promptText": "Was ist die Hauptstadt von Japan?",
+      "options": {
+        "A": "Tokio",
+        "B": "Kyoto",
+        "C": "Osaka",
+        "D": "Nagoya"
+      }
+    },
+    "geo_2": {
+      "promptText": "Welcher US-Bundesstaat ist als Sunshine State bekannt?",
+      "options": {
+        "A": "Kalifornien",
+        "B": "Florida",
+        "C": "Arizona",
+        "D": "Texas"
+      }
+    },
+    "geo_3": {
+      "promptText": "Welches Land hat die größte Bevölkerung?",
+      "options": {
+        "A": "Indien",
+        "B": "Vereinigte Staaten",
+        "C": "China",
+        "D": "Indonesien"
+      }
+    },
+    "geo_4": {
+      "promptText": "Was ist die Hauptstadt von Australien?",
+      "options": {
+        "A": "Sydney",
+        "B": "Melbourne",
+        "C": "Canberra",
+        "D": "Perth"
+      }
+    },
+    "geo_5": {
+      "promptText": "Welcher US-Bundesstaat ist flächenmäßig der größte?",
+      "options": {
+        "A": "Texas",
+        "B": "Kalifornien",
+        "C": "Alaska",
+        "D": "Montana"
+      }
+    },
+    "geo_6": {
+      "promptText": "Welche Stadt ist als Big Apple bekannt?",
+      "options": {
+        "A": "Los Angeles",
+        "B": "New York City",
+        "C": "Chicago",
+        "D": "Miami"
+      }
+    },
+    "geo_7": {
+      "promptText": "In welchem Land steht der Eiffelturm?",
+      "options": {
+        "A": "Italien",
+        "B": "Frankreich",
+        "C": "Spanien",
+        "D": "Belgien"
+      }
+    },
+    "geo_8": {
+      "promptText": "In welchem US-Bundesstaat befindet sich der Grand Canyon?",
+      "options": {
+        "A": "Utah",
+        "B": "Colorado",
+        "C": "Arizona",
+        "D": "Nevada"
+      }
+    },
+    "geo_9": {
+      "promptText": "Was ist die Hauptstadt von Kanada?",
+      "options": {
+        "A": "Toronto",
+        "B": "Montreal",
+        "C": "Ottawa",
+        "D": "Vancouver"
+      }
+    },
+    "geo_10": {
+      "promptText": "Welches Land ist gleichzeitig ein Kontinent?",
+      "options": {
+        "A": "Australien",
+        "B": "Grönland",
+        "C": "Island",
+        "D": "Madagaskar"
+      }
+    },
+    "geo_11": {
+      "promptText": "Welcher US-Bundesstaat ist als Empire State bekannt?",
+      "options": {
+        "A": "New York",
+        "B": "New Jersey",
+        "C": "Pennsylvania",
+        "D": "Massachusetts"
+      }
+    },
+    "geo_12": {
+      "promptText": "Was ist die Hauptstadt von Brasilien?",
+      "options": {
+        "A": "Rio de Janeiro",
+        "B": "Brasilia",
+        "C": "São Paulo",
+        "D": "Salvador"
+      }
+    },
+    "geo_13": {
+      "promptText": "Welche Stadt ist für das Kolosseum berühmt?",
+      "options": {
+        "A": "Rom",
+        "B": "Athen",
+        "C": "Istanbul",
+        "D": "Kairo"
+      }
+    },
+    "geo_14": {
+      "promptText": "Welcher US-Bundesstaat ist als das Land der 10.000 Seen bekannt?",
+      "options": {
+        "A": "Minnesota",
+        "B": "Michigan",
+        "C": "Wisconsin",
+        "D": "Nord-Dakota"
+      }
+    },
+    "geo_15": {
+      "promptText": "Welches Land ist flächenmäßig das kleinste?",
+      "options": {
+        "A": "Monaco",
+        "B": "San Marino",
+        "C": "Vatikanstadt",
+        "D": "Liechtenstein"
+      }
+    },
+    "geo_16": {
+      "promptText": "Was ist die Hauptstadt von Südkorea?",
+      "options": {
+        "A": "Busan",
+        "B": "Seoul",
+        "C": "Incheon",
+        "D": "Daegu"
+      }
+    },
+    "geo_17": {
+      "promptText": "Welcher US-Bundesstaat ist als Lone Star State bekannt?",
+      "options": {
+        "A": "Texas",
+        "B": "Oklahoma",
+        "C": "Louisiana",
+        "D": "New Mexico"
+      }
+    },
+    "geo_18": {
+      "promptText": "In welchem Land liegt die Stadt Marrakesch?",
+      "options": {
+        "A": "Marokko",
+        "B": "Ägypten",
+        "C": "Tunesien",
+        "D": "Algerien"
+      }
+    },
+    "geo_19": {
+      "promptText": "Welche Stadt ist für ihr Opernhaus mit segelartigen Dächern bekannt?",
+      "options": {
+        "A": "Auckland",
+        "B": "Sydney",
+        "C": "Kapstadt",
+        "D": "Lissabon"
+      }
+    },
+    "geo_20": {
+      "promptText": "Welcher US-Bundesstaat hat die meisten aktiven Vulkane?",
+      "options": {
+        "A": "Hawaii",
+        "B": "Alaska",
+        "C": "Kalifornien",
+        "D": "Washington"
+      }
+    },
+    "geo_21": {
+      "promptText": "Was ist die Hauptstadt von Ägypten?",
+      "options": {
+        "A": "Alexandria",
+        "B": "Kairo",
+        "C": "Giza",
+        "D": "Luxor"
+      }
+    },
+    "geo_22": {
+      "promptText": "Welches Land ist berühmt für die Fjorde von Bergen und Oslo?",
+      "options": {
+        "A": "Norwegen",
+        "B": "Schweden",
+        "C": "Finnland",
+        "D": "Dänemark"
+      }
+    },
+    "geo_23": {
+      "promptText": "Welcher US-Bundesstaat ist für Mount Rushmore bekannt?",
+      "options": {
+        "A": "Süd-Dakota",
+        "B": "Nord-Dakota",
+        "C": "Wyoming",
+        "D": "Colorado"
+      }
+    },
+    "geo_24": {
+      "promptText": "Was ist die Hauptstadt von Spanien?",
+      "options": {
+        "A": "Barcelona",
+        "B": "Madrid",
+        "C": "Valencia",
+        "D": "Sevilla"
+      }
+    },
+    "geo_25": {
+      "promptText": "Welche Stadt ist als Stadt der Kanäle bekannt?",
+      "options": {
+        "A": "Amsterdam",
+        "B": "Venedig",
+        "C": "Brügge",
+        "D": "Stockholm"
+      }
+    },
+    "geo_26": {
+      "promptText": "Welcher US-Bundesstaat trägt den Spitznamen „Peach State“?",
+      "options": {
+        "A": "Georgia",
+        "B": "South Carolina",
+        "C": "Alabama",
+        "D": "Tennessee"
+      }
+    },
+    "geo_27": {
+      "promptText": "In welchem Land liegt Machu Picchu?",
+      "options": {
+        "A": "Peru",
+        "B": "Chile",
+        "C": "Bolivien",
+        "D": "Ecuador"
+      }
+    },
+    "geo_28": {
+      "promptText": "Was ist die Hauptstadt von Argentinien?",
+      "options": {
+        "A": "Santiago",
+        "B": "Montevideo",
+        "C": "Buenos Aires",
+        "D": "Lima"
+      }
+    },
+    "geo_29": {
+      "promptText": "Welcher US-Bundesstaat ist als Granitstaat bekannt?",
+      "options": {
+        "A": "New Hampshire",
+        "B": "Vermont",
+        "C": "Maine",
+        "D": "Rhode Island"
+      }
+    },
+    "geo_30": {
+      "promptText": "In welchem Land liegt die Stadt Reykjavik?",
+      "options": {
+        "A": "Norwegen",
+        "B": "Island",
+        "C": "Irland",
+        "D": "Grönland"
+      }
+    },
+    "geo_31": {
+      "promptText": "Was ist die Hauptstadt von Kenia?",
+      "options": {
+        "A": "Nairobi",
+        "B": "Mombasa",
+        "C": "Kampala",
+        "D": "Dar es Salaam"
+      }
+    },
+    "geo_32": {
+      "promptText": "Welcher US-Bundesstaat ist als „Gartenstaat“ bekannt?",
+      "options": {
+        "A": "New Jersey",
+        "B": "Connecticut",
+        "C": "Maryland",
+        "D": "Virginia"
+      }
+    },
+    "geo_33": {
+      "promptText": "In welchem Land liegt die Stadt Timbuktu?",
+      "options": {
+        "A": "Mali",
+        "B": "Niger",
+        "C": "Tschad",
+        "D": "Sudan"
+      }
+    },
+    "geo_34": {
+      "promptText": "In welcher Stadt steht die berühmte Christusstatue?",
+      "options": {
+        "A": "Rio de Janeiro",
+        "B": "Lissabon",
+        "C": "Bogotá",
+        "D": "Lima"
+      }
+    },
+    "geo_35": {
+      "promptText": "Welcher US-Bundesstaat ist für den Rocky-Mountain-Nationalpark bekannt?",
+      "options": {
+        "A": "Colorado",
+        "B": "Utah",
+        "C": "Idaho",
+        "D": "Wyoming"
+      }
+    },
+    "geo_36": {
+      "promptText": "Was ist die Hauptstadt von Thailand?",
+      "options": {
+        "A": "Phuket",
+        "B": "Bangkok",
+        "C": "Chiang Mai",
+        "D": "Pattaya"
+      }
+    },
+    "geo_37": {
+      "promptText": "In welchem Land liegt die Stadt Dubrovnik?",
+      "options": {
+        "A": "Kroatien",
+        "B": "Griechenland",
+        "C": "Italien",
+        "D": "Truthahn"
+      }
+    },
+    "geo_38": {
+      "promptText": "Welcher US-Bundesstaat trägt den Spitznamen Evergreen State?",
+      "options": {
+        "A": "Washington",
+        "B": "Oregon",
+        "C": "Maine",
+        "D": "Vermont"
+      }
+    },
+    "geo_39": {
+      "promptText": "In welchem Land liegt die Stadt Kapstadt?",
+      "options": {
+        "A": "Namibia",
+        "B": "Südafrika",
+        "C": "Botswana",
+        "D": "Simbabwe"
+      }
+    },
+    "geo_40": {
+      "promptText": "Was ist die Hauptstadt von Deutschland?",
+      "options": {
+        "A": "München",
+        "B": "Hamburg",
+        "C": "Berlin",
+        "D": "Frankfurt"
+      }
+    },
+    "geo_41": {
+      "promptText": "Welcher US-Bundesstaat ist für den Bourbon Trail bekannt?",
+      "options": {
+        "A": "Kentucky",
+        "B": "Tennessee",
+        "C": "Missouri",
+        "D": "Indiana"
+      }
+    },
+    "geo_42": {
+      "promptText": "In welchem Land liegt die Stadt Petra?",
+      "options": {
+        "A": "Jordanien",
+        "B": "Israel",
+        "C": "Libanon",
+        "D": "Syrien"
+      }
+    },
+    "geo_43": {
+      "promptText": "Welcher US-Bundesstaat ist für die Stadt New Orleans bekannt?",
+      "options": {
+        "A": "Louisiana",
+        "B": "Mississippi",
+        "C": "Alabama",
+        "D": "Arkansas"
+      }
+    },
+    "geo_44": {
+      "promptText": "Was ist die Hauptstadt von Norwegen?",
+      "options": {
+        "A": "Oslo",
+        "B": "Bergen",
+        "C": "Trondheim",
+        "D": "Stavanger"
+      }
+    },
+    "geo_45": {
+      "promptText": "Welche Stadt ist als Windy City bekannt?",
+      "options": {
+        "A": "Chicago",
+        "B": "Boston",
+        "C": "Seattle",
+        "D": "Denver"
+      }
+    },
+    "sci_1": {
+      "promptText": "Welcher Planet ist als der Rote Planet bekannt?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Jupiter",
+        "D": "Quecksilber"
+      }
+    },
+    "sci_2": {
+      "promptText": "Welcher Stern ist der Erde am nächsten?",
+      "options": {
+        "A": "Proxima Centauri",
+        "B": "Sirius",
+        "C": "Die Sonne",
+        "D": "Vega"
+      }
+    },
+    "sci_3": {
+      "promptText": "Welcher Planet ist der größte in unserem Sonnensystem?",
+      "options": {
+        "A": "Saturn",
+        "B": "Jupiter",
+        "C": "Neptun",
+        "D": "Uranus"
+      }
+    },
+    "sci_4": {
+      "promptText": "Welcher Dinosaurier ist für seine drei Hörner bekannt?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Triceratops",
+        "C": "Tyrannosaurus",
+        "D": "Velociraptor"
+      }
+    },
+    "sci_5": {
+      "promptText": "Wie heißt der natürliche Satellit der Erde?",
+      "options": {
+        "A": "Phobos",
+        "B": "Mond",
+        "C": "Europa",
+        "D": "Titan"
+      }
+    },
+    "sci_6": {
+      "promptText": "Welcher Planet ist für seine Ringe berühmt?",
+      "options": {
+        "A": "Jupiter",
+        "B": "Saturn",
+        "C": "Uranus",
+        "D": "Neptun"
+      }
+    },
+    "sci_7": {
+      "promptText": "Welcher Dinosaurier hatte Platten auf dem Rücken?",
+      "options": {
+        "A": "Brachiosaurus",
+        "B": "Stegosaurus",
+        "C": "Ankylosaurus",
+        "D": "Allosaurus"
+      }
+    },
+    "sci_8": {
+      "promptText": "Welcher Planet in unserem Sonnensystem ist der heißeste?",
+      "options": {
+        "A": "Quecksilber",
+        "B": "Venus",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "sci_9": {
+      "promptText": "Welcher Dinosaurier wird oft als König der Dinosaurier bezeichnet?",
+      "options": {
+        "A": "Tyrannosaurus rex",
+        "B": "Spinosaurus",
+        "C": "Giganotosaurus",
+        "D": "Allosaurus"
+      }
+    },
+    "sci_10": {
+      "promptText": "Wie heißt die Galaxie, in der wir leben?",
+      "options": {
+        "A": "Andromeda",
+        "B": "Milchstraße",
+        "C": "Sombrero",
+        "D": "Whirlpool"
+      }
+    },
+    "sci_11": {
+      "promptText": "Auf welchem Planeten befindet sich der Große Rote Fleck?",
+      "options": {
+        "A": "Jupiter",
+        "B": "Saturn",
+        "C": "Neptun",
+        "D": "Uranus"
+      }
+    },
+    "sci_12": {
+      "promptText": "Welcher Dinosaurier war für seinen langen Hals bekannt?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "Brachiosaurus",
+        "C": "Ankylosaurus",
+        "D": "Dilophosaurus"
+      }
+    },
+    "sci_13": {
+      "promptText": "Welcher ist der größte Mond im Sonnensystem?",
+      "options": {
+        "A": "Europa",
+        "B": "Titan",
+        "C": "Ganymed",
+        "D": "Io"
+      }
+    },
+    "sci_14": {
+      "promptText": "Welcher Planet ist aufgrund des Methans für seine blaue Farbe bekannt?",
+      "options": {
+        "A": "Neptun",
+        "B": "Uranus",
+        "C": "Sowohl A als auch B",
+        "D": "Erde"
+      }
+    },
+    "sci_15": {
+      "promptText": "Welcher Dinosaurier hatte einen kuppelförmigen Schädel?",
+      "options": {
+        "A": "Pachycephalosaurus",
+        "B": "Parasaurolophus",
+        "C": "Stegosaurus",
+        "D": "Ceratosaurus"
+      }
+    },
+    "sci_16": {
+      "promptText": "Wie nennt man eine Sternexplosion?",
+      "options": {
+        "A": "Nebel",
+        "B": "Supernova",
+        "C": "Komet",
+        "D": "Asteroid"
+      }
+    },
+    "sci_17": {
+      "promptText": "Welcher Dinosaurier hatte einen keulenartigen Schwanz?",
+      "options": {
+        "A": "Ankylosaurus",
+        "B": "Triceratops",
+        "C": "Iguanodon",
+        "D": "Gallimimus"
+      }
+    },
+    "sci_18": {
+      "promptText": "Welcher Planet ist am weitesten von der Sonne entfernt?",
+      "options": {
+        "A": "Neptun",
+        "B": "Uranus",
+        "C": "Saturn",
+        "D": "Pluto"
+      }
+    },
+    "sci_19": {
+      "promptText": "Welcher Dinosaurier ist für seine sichelförmige Kralle bekannt?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "Diplodocus",
+        "C": "Triceratops",
+        "D": "Apatosaurus"
+      }
+    },
+    "sci_20": {
+      "promptText": "Auf welchem Planeten ist ein Tag länger als sein Jahr?",
+      "options": {
+        "A": "Quecksilber",
+        "B": "Venus",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "sci_21": {
+      "promptText": "Wie heißt der größte Mond des Mars?",
+      "options": {
+        "A": "Phobos",
+        "B": "Deimos",
+        "C": "Io",
+        "D": "Europa"
+      }
+    },
+    "sci_22": {
+      "promptText": "Welcher Dinosaurier war ein Entenschnabel-Pflanzenfresser?",
+      "options": {
+        "A": "Hadrosaurus",
+        "B": "Spinosaurus",
+        "C": "Therizinosaurus",
+        "D": "Carnotaurus"
+      }
+    },
+    "sci_23": {
+      "promptText": "Zwischen welchen Bereichen befindet sich der Asteroidengürtel?",
+      "options": {
+        "A": "Erde und Mars",
+        "B": "Mars und Jupiter",
+        "C": "Jupiter und Saturn",
+        "D": "Saturn und Uranus"
+      }
+    },
+    "sci_24": {
+      "promptText": "Welcher Dinosaurier ist berühmt für seine segelartige Wirbelsäule?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Spinosaurus",
+        "C": "Allosaurus",
+        "D": "Iguanodon"
+      }
+    },
+    "sci_25": {
+      "promptText": "Welcher Planet ist für seine geneigte Achse bekannt?",
+      "options": {
+        "A": "Uranus",
+        "B": "Neptun",
+        "C": "Jupiter",
+        "D": "Mars"
+      }
+    },
+    "sci_26": {
+      "promptText": "Wie heißt der erste künstliche Satellit?",
+      "options": {
+        "A": "Explorer 1",
+        "B": "Sputnik 1",
+        "C": "Voyager 1",
+        "D": "Apollo 11"
+      }
+    },
+    "sci_27": {
+      "promptText": "Welcher Dinosaurier hatte einen röhrenförmigen Kamm?",
+      "options": {
+        "A": "Parasaurolophus",
+        "B": "Corythosaurus",
+        "C": "Triceratops",
+        "D": "Ankylosaurus"
+      }
+    },
+    "sci_28": {
+      "promptText": "Welcher Planet wird als Zwillingsplanet der Erde bezeichnet?",
+      "options": {
+        "A": "Venus",
+        "B": "Mars",
+        "C": "Quecksilber",
+        "D": "Uranus"
+      }
+    },
+    "sci_29": {
+      "promptText": "Welcher Dinosaurier ist für seine Panzerplatten und Stacheln bekannt?",
+      "options": {
+        "A": "Stegosaurus",
+        "B": "Brachiosaurus",
+        "C": "Dilophosaurus",
+        "D": "Compsognathus"
+      }
+    },
+    "sci_30": {
+      "promptText": "Welcher ist der größte Asteroid im Asteroidengürtel?",
+      "options": {
+        "A": "Vesta",
+        "B": "Pallas",
+        "C": "Ceres",
+        "D": "Hygiea"
+      }
+    },
+    "sci_31": {
+      "promptText": "Welcher Dinosaurier war für seinen langen, peitschenartigen Schwanz bekannt?",
+      "options": {
+        "A": "Diplodocus",
+        "B": "Spinosaurus",
+        "C": "Theropode",
+        "D": "Carnotaurus"
+      }
+    },
+    "sci_32": {
+      "promptText": "Wie heißt das bekannteste Weltraumteleskop der NASA?",
+      "options": {
+        "A": "Hubble",
+        "B": "Kepler",
+        "C": "Spitzer",
+        "D": "Chandra"
+      }
+    },
+    "sci_33": {
+      "promptText": "Welcher Dinosaurier war für seine geringe Größe und Geschwindigkeit bekannt?",
+      "options": {
+        "A": "Velociraptor",
+        "B": "T. rex",
+        "C": "Brachiosaurus",
+        "D": "Ankylosaurus"
+      }
+    },
+    "sci_34": {
+      "promptText": "Welcher Planet hat die meisten Monde?",
+      "options": {
+        "A": "Saturn",
+        "B": "Jupiter",
+        "C": "Uranus",
+        "D": "Neptun"
+      }
+    },
+    "sci_35": {
+      "promptText": "Wie nennt man die Grenze um ein Schwarzes Loch?",
+      "options": {
+        "A": "Singularität",
+        "B": "Ereignishorizont",
+        "C": "Akkretionsscheibe",
+        "D": "Nebel"
+      }
+    },
+    "sci_36": {
+      "promptText": "Welcher Dinosaurier hatte einen dicken, knöchernen Kopf, der zum Kopfstoßen benutzt wurde?",
+      "options": {
+        "A": "Pachycephalosaurus",
+        "B": "Iguanodon",
+        "C": "Gallimimus",
+        "D": "Baryonyx"
+      }
+    },
+    "sci_37": {
+      "promptText": "Welcher Planet ist für seinen Großen Dunklen Fleck bekannt?",
+      "options": {
+        "A": "Neptun",
+        "B": "Uranus",
+        "C": "Saturn",
+        "D": "Jupiter"
+      }
+    },
+    "sci_38": {
+      "promptText": "Welcher Dinosaurier war ein massiger Pflanzenfresser mit langem Schwanz und Hals?",
+      "options": {
+        "A": "Apatosaurus",
+        "B": "Allosaurus",
+        "C": "Carnotaurus",
+        "D": "Ceratosaurus"
+      }
+    },
+    "sci_39": {
+      "promptText": "Wie heißt die Schicht der Erdatmosphäre, in der das Wettergeschehen stattfindet?",
+      "options": {
+        "A": "Stratosphäre",
+        "B": "Troposphäre",
+        "C": "Mesosphäre",
+        "D": "Thermosphäre"
+      }
+    },
+    "sci_40": {
+      "promptText": "Welcher Planet ist als Morgenstern bekannt?",
+      "options": {
+        "A": "Quecksilber",
+        "B": "Venus",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "sci_41": {
+      "promptText": "Welcher Dinosaurier hatte einen Schnabel und lebte in Herden?",
+      "options": {
+        "A": "Triceratops",
+        "B": "Hadrosaurus",
+        "C": "Allosaurus",
+        "D": "Stegosaurus"
+      }
+    },
+    "sci_42": {
+      "promptText": "Welche Raumsonde hat die größte Entfernung von der Erde zurückgelegt?",
+      "options": {
+        "A": "Voyager 1",
+        "B": "Pioneer 10",
+        "C": "Neue Horizonte",
+        "D": "Voyager 2"
+      }
+    },
+    "sci_43": {
+      "promptText": "Welcher Dinosaurier ist für seine langen, gebogenen Krallen an jeder Hand bekannt?",
+      "options": {
+        "A": "Therizinosaurus",
+        "B": "Velociraptor",
+        "C": "Triceratops",
+        "D": "Stegosaurus"
+      }
+    },
+    "sci_44": {
+      "promptText": "Wie heißt die Galaxie, die der Milchstraße am nächsten liegt?",
+      "options": {
+        "A": "Andromeda",
+        "B": "Dreieck",
+        "C": "Sombrero",
+        "D": "Whirlpool"
+      }
+    },
+    "sci_45": {
+      "promptText": "Welcher Dinosaurier war ein massiger Raubsaurier, größer als der T. rex?",
+      "options": {
+        "A": "Spinosaurus",
+        "B": "Allosaurus",
+        "C": "Utahraptor",
+        "D": "Dilophosaurus"
+      }
+    },
+    "kids_1": {
+      "promptText": "Wie viele Tage hat eine Woche?",
+      "options": {
+        "A": "7",
+        "B": "5",
+        "C": "6",
+        "D": "8"
+      }
+    },
+    "kids_2": {
+      "promptText": "Welche Farbe hat der Himmel an einem klaren Tag?",
+      "options": {
+        "A": "Blau",
+        "B": "Grün",
+        "C": "Rot",
+        "D": "Lila"
+      }
+    },
+    "kids_3": {
+      "promptText": "Welches Tier macht „Miau“?",
+      "options": {
+        "A": "Hund",
+        "B": "Katze",
+        "C": "Kuh",
+        "D": "Schaf"
+      }
+    },
+    "kids_4": {
+      "promptText": "Was stellen Bienen her?",
+      "options": {
+        "A": "Milch",
+        "B": "Honig",
+        "C": "Brot",
+        "D": "Käse"
+      }
+    },
+    "kids_5": {
+      "promptText": "Auf welchem Planeten leben wir?",
+      "options": {
+        "A": "Mars",
+        "B": "Erde",
+        "C": "Jupiter",
+        "D": "Venus"
+      }
+    },
+    "kids_6": {
+      "promptText": "Wie viele Beine hat eine Spinne?",
+      "options": {
+        "A": "6",
+        "B": "8",
+        "C": "10",
+        "D": "12"
+      }
+    },
+    "kids_7": {
+      "promptText": "Welche Form hat drei Seiten?",
+      "options": {
+        "A": "Quadrat",
+        "B": "Dreieck",
+        "C": "Kreis",
+        "D": "Rechteck"
+      }
+    },
+    "kids_8": {
+      "promptText": "Welche Jahreszeit ist die kälteste?",
+      "options": {
+        "A": "Frühling",
+        "B": "Sommer",
+        "C": "Herbst",
+        "D": "Winter"
+      }
+    },
+    "kids_9": {
+      "promptText": "Wie wird H2O im allgemeinen Sprachgebrauch genannt?",
+      "options": {
+        "A": "Salz",
+        "B": "Wasser",
+        "C": "Sauerstoff",
+        "D": "Zucker"
+      }
+    },
+    "kids_10": {
+      "promptText": "Welche Frucht ist gelb und gebogen?",
+      "options": {
+        "A": "Apfel",
+        "B": "Banane",
+        "C": "Orange",
+        "D": "Traube"
+      }
+    },
+    "kids_11": {
+      "promptText": "Welches Tier gilt als König des Dschungels?",
+      "options": {
+        "A": "Elefant",
+        "B": "Löwe",
+        "C": "Giraffe",
+        "D": "Zebra"
+      }
+    },
+    "kids_12": {
+      "promptText": "Was benötigen Pflanzen zum Wachsen?",
+      "options": {
+        "A": "Sonnenlicht",
+        "B": "Süßigkeiten",
+        "C": "Schnee",
+        "D": "Sand"
+      }
+    },
+    "kids_13": {
+      "promptText": "Welcher Monat folgt auf Juni?",
+      "options": {
+        "A": "Mai",
+        "B": "Juli",
+        "C": "August",
+        "D": "April"
+      }
+    },
+    "kids_14": {
+      "promptText": "Wie viele Stunden hat ein Tag?",
+      "options": {
+        "A": "12",
+        "B": "18",
+        "C": "24",
+        "D": "30"
+      }
+    },
+    "kids_15": {
+      "promptText": "Welches Gerät zeigt die Zeit an?",
+      "options": {
+        "A": "Uhr",
+        "B": "Herrscher",
+        "C": "Löffel",
+        "D": "Bürste"
+      }
+    },
+    "kids_16": {
+      "promptText": "Welches Insekt baut einen Bienenstock?",
+      "options": {
+        "A": "Schmetterling",
+        "B": "Biene",
+        "C": "Ameise",
+        "D": "Spinne"
+      }
+    },
+    "kids_17": {
+      "promptText": "Was ist das Gegenteil von heiß?",
+      "options": {
+        "A": "Kalt",
+        "B": "Nass",
+        "C": "Licht",
+        "D": "Weich"
+      }
+    },
+    "kids_18": {
+      "promptText": "Mit welchem Körperteil hörst du?",
+      "options": {
+        "A": "Auge",
+        "B": "Nase",
+        "C": "Ohr",
+        "D": "Hand"
+      }
+    },
+    "kids_19": {
+      "promptText": "Welcher Ozean ist der größte?",
+      "options": {
+        "A": "atlantisch",
+        "B": "indisch",
+        "C": "Pazifik",
+        "D": "Arktis"
+      }
+    },
+    "kids_20": {
+      "promptText": "Welches Tier lebt im Wasser und hat Kiemen?",
+      "options": {
+        "A": "Hund",
+        "B": "Fisch",
+        "C": "Katze",
+        "D": "Vogel"
+      }
+    },
+    "kids_21": {
+      "promptText": "Welche Farbe haben Stoppschilder?",
+      "options": {
+        "A": "Grün",
+        "B": "Gelb",
+        "C": "Rot",
+        "D": "Blau"
+      }
+    },
+    "kids_22": {
+      "promptText": "Welcher Planet ist der Sonne am nächsten?",
+      "options": {
+        "A": "Quecksilber",
+        "B": "Erde",
+        "C": "Mars",
+        "D": "Jupiter"
+      }
+    },
+    "kids_23": {
+      "promptText": "Welches Objekt wird zum Schreiben verwendet?",
+      "options": {
+        "A": "Gabel",
+        "B": "Bleistift",
+        "C": "Platte",
+        "D": "Tasse"
+      }
+    },
+    "kids_24": {
+      "promptText": "Wie viele Kontinente gibt es?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "kids_25": {
+      "promptText": "Welches Tier trägt sein Junges im Beutel?",
+      "options": {
+        "A": "Känguru",
+        "B": "Tiger",
+        "C": "Pferd",
+        "D": "Schaf"
+      }
+    },
+    "kids_26": {
+      "promptText": "Welches Instrument hat schwarze und weiße Tasten?",
+      "options": {
+        "A": "Trommel",
+        "B": "Klavier",
+        "C": "Flöte",
+        "D": "Gitarre"
+      }
+    },
+    "kids_27": {
+      "promptText": "Welcher Feiertag beinhaltet einen Weihnachtsbaum und Geschenke?",
+      "options": {
+        "A": "Ostern",
+        "B": "Weihnachten",
+        "C": "Halloween",
+        "D": "Danksagung"
+      }
+    },
+    "kids_28": {
+      "promptText": "Wie nennt man ein Hundebaby?",
+      "options": {
+        "A": "Kätzchen",
+        "B": "Welpe",
+        "C": "Kalb",
+        "D": "Fohlen"
+      }
+    },
+    "kids_29": {
+      "promptText": "Welche Form ist rund?",
+      "options": {
+        "A": "Kreis",
+        "B": "Dreieck",
+        "C": "Quadrat",
+        "D": "Rechteck"
+      }
+    },
+    "kids_30": {
+      "promptText": "Wie viele Seiten hat ein Quadrat?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "kids_31": {
+      "promptText": "Welches Tier ist das schnellste Landtier?",
+      "options": {
+        "A": "Gepard",
+        "B": "Löwe",
+        "C": "Elefant",
+        "D": "Pferd"
+      }
+    },
+    "kids_32": {
+      "promptText": "Welches Tier gibt uns Milch?",
+      "options": {
+        "A": "Kuh",
+        "B": "Huhn",
+        "C": "Hund",
+        "D": "Katze"
+      }
+    },
+    "kids_33": {
+      "promptText": "Wie nennt man gefrorenes Wasser?",
+      "options": {
+        "A": "Eis",
+        "B": "Dampf",
+        "C": "Sand",
+        "D": "Ton"
+      }
+    },
+    "kids_34": {
+      "promptText": "Welcher Planet ist als der Rote Planet bekannt?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Erde",
+        "D": "Quecksilber"
+      }
+    },
+    "kids_35": {
+      "promptText": "Womit gelangt man in einem Gebäude in die oberen Stockwerke?",
+      "options": {
+        "A": "Aufzug",
+        "B": "Rampe",
+        "C": "Gleiten",
+        "D": "Brücke"
+      }
+    },
+    "kids_36": {
+      "promptText": "Welches Tier hat einen langen Rüssel?",
+      "options": {
+        "A": "Elefant",
+        "B": "Nilpferd",
+        "C": "Nashorn",
+        "D": "Gorilla"
+      }
+    },
+    "kids_37": {
+      "promptText": "Wie nennt man die Person, die in einer Schule unterrichtet?",
+      "options": {
+        "A": "Pilot",
+        "B": "Lehrer",
+        "C": "Bäcker",
+        "D": "Bauer"
+      }
+    },
+    "kids_38": {
+      "promptText": "Welche Art des Bahnreisens ist üblich?",
+      "options": {
+        "A": "Zug",
+        "B": "Boot",
+        "C": "Fahrrad",
+        "D": "Flugzeug"
+      }
+    },
+    "kids_39": {
+      "promptText": "Welches Gemüse ist orange und knackig?",
+      "options": {
+        "A": "Karotte",
+        "B": "Kartoffel",
+        "C": "Kopfsalat",
+        "D": "Pfeffer"
+      }
+    },
+    "kids_40": {
+      "promptText": "Welche Form hat vier gleich lange Seiten?",
+      "options": {
+        "A": "Quadrat",
+        "B": "Dreieck",
+        "C": "Oval",
+        "D": "Pentagon"
+      }
+    },
+    "kids_41": {
+      "promptText": "Welches Tier ist das größte?",
+      "options": {
+        "A": "Giraffe",
+        "B": "Kamel",
+        "C": "Pferd",
+        "D": "Tragen"
+      }
+    },
+    "kids_42": {
+      "promptText": "Welcher Planet hat Ringe?",
+      "options": {
+        "A": "Saturn",
+        "B": "Mars",
+        "C": "Quecksilber",
+        "D": "Erde"
+      }
+    },
+    "kids_43": {
+      "promptText": "Welcher Teil einer Pflanze ist normalerweise grün?",
+      "options": {
+        "A": "Blatt",
+        "B": "Wurzel",
+        "C": "Stängel",
+        "D": "Samen"
+      }
+    },
+    "kids_44": {
+      "promptText": "Mit welchem Gerät werden die Fotos aufgenommen?",
+      "options": {
+        "A": "Kamera",
+        "B": "Hammer",
+        "C": "Laterne",
+        "D": "Pfeife"
+      }
+    },
+    "kids_45": {
+      "promptText": "Welche Frucht ist abgebildet?",
+      "options": {
+        "A": "Apfel",
+        "B": "Orange",
+        "C": "Birne",
+        "D": "Pfirsich"
+      }
+    },
+    "math_1": {
+      "promptText": "Was ist 2 + 3?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "math_2": {
+      "promptText": "Was ist 10 - 4?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_3": {
+      "promptText": "Was ist 6 x 7?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "42",
+        "D": "48"
+      }
+    },
+    "math_4": {
+      "promptText": "Was ist 12 geteilt durch 3?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_5": {
+      "promptText": "Was ist 5 im Quadrat?",
+      "options": {
+        "A": "10",
+        "B": "15",
+        "C": "20",
+        "D": "25"
+      }
+    },
+    "math_6": {
+      "promptText": "Vereinfache 6/12.",
+      "options": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "3/4"
+      }
+    },
+    "math_7": {
+      "promptText": "Welcher Bruch ergibt 0,5?",
+      "options": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "3/4"
+      }
+    },
+    "math_8": {
+      "promptText": "Wie groß ist der Umfang eines Quadrats mit der Seitenlänge 4?",
+      "options": {
+        "A": "8",
+        "B": "12",
+        "C": "16",
+        "D": "20"
+      }
+    },
+    "math_9": {
+      "promptText": "Wie groß ist die Fläche eines Rechtecks mit den Seitenlängen 3 und 5?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "15"
+      }
+    },
+    "math_10": {
+      "promptText": "Wie groß ist die Winkelsumme in einem Dreieck?",
+      "options": {
+        "A": "90",
+        "B": "120",
+        "C": "180",
+        "D": "360"
+      }
+    },
+    "math_11": {
+      "promptText": "Welche Zahl ist eine Primzahl?",
+      "options": {
+        "A": "9",
+        "B": "12",
+        "C": "15",
+        "D": "17"
+      }
+    },
+    "math_12": {
+      "promptText": "Was ist das kleinste gemeinsame Vielfache (kgV) von 4 und 6?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "24"
+      }
+    },
+    "math_13": {
+      "promptText": "Was ist der größte gemeinsame Teiler von 12 und 18?",
+      "options": {
+        "A": "3",
+        "B": "6",
+        "C": "9",
+        "D": "12"
+      }
+    },
+    "math_14": {
+      "promptText": "Löse: x + 5 = 12.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_15": {
+      "promptText": "Löse: 3x = 15.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_16": {
+      "promptText": "Löse: 2x + 3 = 11.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "math_17": {
+      "promptText": "Löse: 5x - 10 = 0.",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_18": {
+      "promptText": "Was ist 2 hoch 3?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "math_19": {
+      "promptText": "Was ist die Quadratwurzel aus 81?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      }
+    },
+    "math_20": {
+      "promptText": "Das Verhältnis ist 2:3 und die Summe ist 25. Wie lautet der 2-te Teil?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "12"
+      }
+    },
+    "math_21": {
+      "promptText": "Was sind 20 % von 50?",
+      "options": {
+        "A": "5",
+        "B": "10",
+        "C": "15",
+        "D": "20"
+      }
+    },
+    "math_22": {
+      "promptText": "Wie hoch ist die Wahrscheinlichkeit, dass bei einer fairen Münze Kopf erscheint?",
+      "options": {
+        "A": "1/4",
+        "B": "1/3",
+        "C": "1/2",
+        "D": "3/4"
+      }
+    },
+    "math_23": {
+      "promptText": "Wie hoch ist die Wahrscheinlichkeit, mit einem fairen Würfel eine 6 zu würfeln?",
+      "options": {
+        "A": "1/2",
+        "B": "1/3",
+        "C": "1/6",
+        "D": "1/12"
+      }
+    },
+    "math_24": {
+      "promptText": "Was ist der Mittelwert von 2, 4, 6, 8?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "math_25": {
+      "promptText": "Was ist der Median von 1, 3, 5, 7, 9?",
+      "options": {
+        "A": "3",
+        "B": "5",
+        "C": "7",
+        "D": "9"
+      }
+    },
+    "math_26": {
+      "promptText": "Was ist der Modalwert von 2, 2, 3, 4?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "Keiner"
+      }
+    },
+    "math_27": {
+      "promptText": "Wandle 3/4 in eine Dezimalzahl um.",
+      "options": {
+        "A": "0,25",
+        "B": "0,5",
+        "C": "0,75",
+        "D": "0,9"
+      }
+    },
+    "math_28": {
+      "promptText": "Vereinfache 12/16.",
+      "options": {
+        "A": "1/2",
+        "B": "3/4",
+        "C": "2/3",
+        "D": "4/5"
+      }
+    },
+    "math_29": {
+      "promptText": "Welche Formel gibt die Fläche eines Kreises an?",
+      "options": {
+        "A": "pi r^2",
+        "B": "2 pi r",
+        "C": "r^2",
+        "D": "pi r"
+      }
+    },
+    "math_30": {
+      "promptText": "Ein Dreieck mit den Seiten 3, 4, 5 ist:",
+      "options": {
+        "A": "gleichschenklig",
+        "B": "gleichseitig",
+        "C": "Rechtwinkliges Dreieck",
+        "D": "Stumpf"
+      }
+    },
+    "math_31": {
+      "promptText": "Wenn a und b positiv sind und a > b, dann ist a - b gleich:",
+      "options": {
+        "A": "Negativ",
+        "B": "Null",
+        "C": "Positiv",
+        "D": "Undefiniert"
+      }
+    },
+    "math_32": {
+      "promptText": "Löse: 2x - 4 = 10.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_33": {
+      "promptText": "Wie lautet 0,25 als Bruch?",
+      "options": {
+        "A": "1/2",
+        "B": "1/3",
+        "C": "1/4",
+        "D": "3/4"
+      }
+    },
+    "math_34": {
+      "promptText": "Was ist log10(100)?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_35": {
+      "promptText": "Wie lautet die Steigung von y = 2x + 3?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      }
+    },
+    "math_36": {
+      "promptText": "Wenn f(x) = x^2, was ist dann f(3)?",
+      "options": {
+        "A": "6",
+        "B": "9",
+        "C": "12",
+        "D": "15"
+      }
+    },
+    "math_37": {
+      "promptText": "Was ist die Summe der ersten 10 natürlichen Zahlen?",
+      "options": {
+        "A": "45",
+        "B": "50",
+        "C": "55",
+        "D": "60"
+      }
+    },
+    "math_38": {
+      "promptText": "Wie viele Grad hat eine gerade Linie?",
+      "options": {
+        "A": "90",
+        "B": "120",
+        "C": "180",
+        "D": "360"
+      }
+    },
+    "math_39": {
+      "promptText": "Welche Zahl ist irrational?",
+      "options": {
+        "A": "3/4",
+        "B": "0,2",
+        "C": "sqrt(2)",
+        "D": "5"
+      }
+    },
+    "math_40": {
+      "promptText": "In einem rechtwinkligen Dreieck gilt: a² + b² = ?",
+      "options": {
+        "A": "c^2",
+        "B": "2c",
+        "C": "ab",
+        "D": "c/2"
+      }
+    },
+    "math_41": {
+      "promptText": "Wenn die Wahrscheinlichkeit 0,2 beträgt, wie viel Prozent sind das?",
+      "options": {
+        "A": "2%",
+        "B": "10%",
+        "C": "20 %",
+        "D": "50%"
+      }
+    },
+    "math_42": {
+      "promptText": "Löse: x^2 = 49.",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "math_43": {
+      "promptText": "Was ist der Erwartungswert eines fairen sechsseitigen Würfels?",
+      "options": {
+        "A": "2,5",
+        "B": "3",
+        "C": "3,5",
+        "D": "4"
+      }
+    },
+    "math_44": {
+      "promptText": "Welcher Winkel ist größer als 90 Grad?",
+      "options": {
+        "A": "Akut",
+        "B": "Rechts",
+        "C": "Stumpf",
+        "D": "Gerade"
+      }
+    },
+    "math_45": {
+      "promptText": "Wie viele Seiten hat ein Sechseck?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      }
+    },
+    "apt_1": {
+      "promptText": "Finde die nächste Zahl: 2, 4, 6, 8, ?",
+      "options": {
+        "A": "9",
+        "B": "10",
+        "C": "11",
+        "D": "12"
+      }
+    },
+    "apt_2": {
+      "promptText": "Finde die nächste Zahl: 1, 1, 2, 3, 5, ?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "apt_3": {
+      "promptText": "Welches Wort gehört nicht dazu?",
+      "options": {
+        "A": "Apfel",
+        "B": "Banane",
+        "C": "Karotte",
+        "D": "Traube"
+      }
+    },
+    "apt_4": {
+      "promptText": "Wähle das Synonym für „glücklich“.",
+      "options": {
+        "A": "Traurig",
+        "B": "Wütend",
+        "C": "Froh",
+        "D": "Müde"
+      }
+    },
+    "apt_5": {
+      "promptText": "Wähle das Antonym von „zunehmen“.",
+      "options": {
+        "A": "Wachsen",
+        "B": "Verringern",
+        "C": "Hinzufügen",
+        "D": "Erheben"
+      }
+    },
+    "apt_6": {
+      "promptText": "Wenn alle Bloops Razzies sind und alle Razzies Lazzies sind, dann sind alle Bloops:",
+      "options": {
+        "A": "Faulpelze",
+        "B": "Razzies",
+        "C": "Zazzies",
+        "D": "Brausegetränke"
+      }
+    },
+    "apt_7": {
+      "promptText": "Finde den nächsten Buchstaben: A, C, E, G, ?",
+      "options": {
+        "A": "H",
+        "B": "ICH",
+        "C": "J",
+        "D": "K"
+      }
+    },
+    "apt_8": {
+      "promptText": "Welches Wort ist ein Palindrom?",
+      "options": {
+        "A": "Ebene",
+        "B": "Apfel",
+        "C": "Brücke",
+        "D": "Haus"
+      }
+    },
+    "apt_9": {
+      "promptText": "Welcher Bruch ist größer?",
+      "options": {
+        "A": "2/3",
+        "B": "3/5",
+        "C": "1/2",
+        "D": "4/9"
+      }
+    },
+    "apt_10": {
+      "promptText": "Wenn 5 Maschinen in 5 Minuten 5 Artikel herstellen, wie viele Artikel können 5 Maschinen in 10 Minuten herstellen?",
+      "options": {
+        "A": "5",
+        "B": "8",
+        "C": "10",
+        "D": "15"
+      }
+    },
+    "apt_11": {
+      "promptText": "Finde die nächste Zahl: 3, 6, 12, 24, ?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "48",
+        "D": "60"
+      }
+    },
+    "apt_12": {
+      "promptText": "Welche Zahl folgt als Nächstes: 10, 20, 40, 80, ?",
+      "options": {
+        "A": "100",
+        "B": "120",
+        "C": "160",
+        "D": "200"
+      }
+    },
+    "apt_13": {
+      "promptText": "Wenn heute Dienstag ist, welcher Tag ist in 3 Tagen?",
+      "options": {
+        "A": "Mittwoch",
+        "B": "Donnerstag",
+        "C": "Freitag",
+        "D": "Samstag"
+      }
+    },
+    "apt_14": {
+      "promptText": "Wähle das Element aus, das nicht dazu passt.",
+      "options": {
+        "A": "Quadrat",
+        "B": "Kreis",
+        "C": "Dreieck",
+        "D": "Blau"
+      }
+    },
+    "apt_15": {
+      "promptText": "Finde die nächste Zahl: 1, 4, 9, 16, ?",
+      "options": {
+        "A": "20",
+        "B": "25",
+        "C": "30",
+        "D": "36"
+      }
+    },
+    "apt_16": {
+      "promptText": "Welches Wort vervollständigt die Analogie: Vogel verhält sich zu Fliegen wie Fisch zu ?",
+      "options": {
+        "A": "Schwimmen",
+        "B": "Laufen",
+        "C": "Springen",
+        "D": "Kriechen"
+      }
+    },
+    "apt_17": {
+      "promptText": "Wenn manche Katzen Haustiere sind und alle Haustiere geliebt werden, dann sind manche Katzen:",
+      "options": {
+        "A": "Geliebt",
+        "B": "Wild",
+        "C": "Hungrig",
+        "D": "Schnell"
+      }
+    },
+    "apt_18": {
+      "promptText": "Wähle das Wort, das dasselbe bedeutet wie „schnell“.",
+      "options": {
+        "A": "Langsam",
+        "B": "Schnell",
+        "C": "Spät",
+        "D": "Faul"
+      }
+    },
+    "apt_19": {
+      "promptText": "Finde die nächste Zahl: 5, 9, 13, 17, ?",
+      "options": {
+        "A": "19",
+        "B": "21",
+        "C": "23",
+        "D": "25"
+      }
+    },
+    "apt_20": {
+      "promptText": "Welche Schlussfolgerung ist korrekt? Alle Quadrate sind Rechtecke. Diese Form ist ein Quadrat.",
+      "options": {
+        "A": "Es ist ein Rechteck.",
+        "B": "Es ist ein Kreis",
+        "C": "Es hat keine Seiten",
+        "D": "Es ist ein Dreieck"
+      }
+    },
+    "apt_21": {
+      "promptText": "Wenn eine Uhr 3:00 Uhr anzeigt, wie groß ist der Winkel zwischen den Zeigern?",
+      "options": {
+        "A": "0 Grad",
+        "B": "30 Grad",
+        "C": "90 Grad",
+        "D": "180 Grad"
+      }
+    },
+    "apt_22": {
+      "promptText": "Wähle das Element aus, das nicht dazu passt.",
+      "options": {
+        "A": "Rot",
+        "B": "Blau",
+        "C": "Grün",
+        "D": "Dreieck"
+      }
+    },
+    "apt_23": {
+      "promptText": "Finde den nächsten Buchstaben: Z, X, V, T, ?",
+      "options": {
+        "A": "R",
+        "B": "S",
+        "C": "U",
+        "D": "Q"
+      }
+    },
+    "apt_24": {
+      "promptText": "Welche Zahl vervollständigt das Muster? 2, 5, 10, 17, ?",
+      "options": {
+        "A": "24",
+        "B": "26",
+        "C": "28",
+        "D": "30"
+      }
+    },
+    "apt_25": {
+      "promptText": "Wenn das Wort „DOG“ als „EPH“ codiert ist, dann ist „CAT“ wie folgt codiert:",
+      "options": {
+        "A": "DBU",
+        "B": "DBT",
+        "C": "DPU",
+        "D": "CBU"
+      }
+    },
+    "apt_26": {
+      "promptText": "Wähle das Wort, das am besten passt: Heiß verhält sich zu Kalt wie Oben zu ?",
+      "options": {
+        "A": "Runter",
+        "B": "Links",
+        "C": "Rechts",
+        "D": "Über"
+      }
+    },
+    "apt_27": {
+      "promptText": "Finde die nächste Zahl: 100, 50, 25, 12,5, ?",
+      "options": {
+        "A": "6,25",
+        "B": "7,5",
+        "C": "8,25",
+        "D": "10"
+      }
+    },
+    "apt_28": {
+      "promptText": "Welches Wort ist ein Substantiv?",
+      "options": {
+        "A": "Laufen",
+        "B": "Blau",
+        "C": "Glück",
+        "D": "Schnell"
+      }
+    },
+    "apt_29": {
+      "promptText": "Wähle die beste Antwort: Wie viele Ecken hat ein Dreieck?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      }
+    },
+    "apt_30": {
+      "promptText": "Finde die nächste Zahl: 7, 14, 28, 56, ?",
+      "options": {
+        "A": "63",
+        "B": "70",
+        "C": "98",
+        "D": "112"
+      }
+    },
+    "apt_31": {
+      "promptText": "Wenn alle Rosen Blumen sind und manche Blumen verwelken, dann verwelken manche Rosen:",
+      "options": {
+        "A": "Verblassen",
+        "B": "Sind blau",
+        "C": "Sind Bäume",
+        "D": "Sind Tiere"
+      }
+    },
+    "apt_32": {
+      "promptText": "Welche ist die nächste gerade Zahl nach 48?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      }
+    },
+    "apt_33": {
+      "promptText": "Wie viele Punkte werden angezeigt?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      }
+    },
+    "apt_34": {
+      "promptText": "Wenn es regnet, ist der Boden nass. Es regnet. Daher:",
+      "options": {
+        "A": "Der Boden ist nass",
+        "B": "Der Boden ist trocken",
+        "C": "Die Sonne scheint",
+        "D": "Es schneit"
+      }
+    },
+    "apt_35": {
+      "promptText": "Wähle das Element aus, das nicht dazu passt.",
+      "options": {
+        "A": "Quadrat",
+        "B": "Rechteck",
+        "C": "Kreis",
+        "D": "Dreieck"
+      }
+    },
+    "apt_36": {
+      "promptText": "Finde die nächste Zahl: 4, 7, 10, 13, ?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "17",
+        "D": "18"
+      }
+    },
+    "apt_37": {
+      "promptText": "Welches Wort ist das Gegenteil von „erweitern“?",
+      "options": {
+        "A": "Wachsen",
+        "B": "Schrumpfen",
+        "C": "Offen",
+        "D": "Zunahme"
+      }
+    },
+    "apt_38": {
+      "promptText": "Wähle die beste Antwort: 3 verhält sich zu 9 wie 4 zu ?",
+      "options": {
+        "A": "12",
+        "B": "14",
+        "C": "16",
+        "D": "18"
+      }
+    },
+    "apt_39": {
+      "promptText": "Wenn a=1, b=2, c=3, was ist dann d?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      }
+    },
+    "apt_40": {
+      "promptText": "Welche Zahl fehlt? 2, 3, 5, 8, 12, ?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "17",
+        "D": "18"
+      }
+    },
+    "apt_41": {
+      "promptText": "Wähle das Wort, das den Satz vervollständigt: Hand verhält sich zu Handschuh wie Fuß zu ?",
+      "options": {
+        "A": "Hut",
+        "B": "Socke",
+        "C": "Ring",
+        "D": "Gürtel"
+      }
+    },
+    "apt_42": {
+      "promptText": "Welcher Buchstabe folgt als Nächstes? B, E, H, K, ?",
+      "options": {
+        "A": "L",
+        "B": "M",
+        "C": "N",
+        "D": "O"
+      }
+    },
+    "apt_43": {
+      "promptText": "Wenn 2 + 2 = 4 und 3 + 3 = 6, dann ist 4 + 4 = ?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      }
+    },
+    "apt_44": {
+      "promptText": "Wähle das Element aus, das nicht dazu passt.",
+      "options": {
+        "A": "Januar",
+        "B": "Februar",
+        "C": "Montag",
+        "D": "Marsch"
+      }
+    },
+    "apt_45": {
+      "promptText": "Finde die nächste Zahl: 11, 22, 33, 44, ?",
+      "options": {
+        "A": "50",
+        "B": "55",
+        "C": "66",
+        "D": "77"
+      }
+    },
+    "job_1": {
+      "promptText": "Welcher Berufsstand ist für die Diagnose von Krankheiten zuständig?",
+      "options": {
+        "A": "Architekt",
+        "B": "Arzt",
+        "C": "Küchenchef",
+        "D": "Pilot"
+      }
+    },
+    "job_2": {
+      "promptText": "Wer entwirft Gebäude und Bauwerke?",
+      "options": {
+        "A": "Ingenieur",
+        "B": "Architekt",
+        "C": "Biologe",
+        "D": "Designer"
+      }
+    },
+    "job_3": {
+      "promptText": "Welcher Beruf beinhaltet das Fliegen von Flugzeugen?",
+      "options": {
+        "A": "Mechaniker",
+        "B": "Pilot",
+        "C": "Seemann",
+        "D": "Treiber"
+      }
+    },
+    "job_4": {
+      "promptText": "Wer schreibt den Code für Software und Apps?",
+      "options": {
+        "A": "Programmierer",
+        "B": "Lehrer",
+        "C": "Krankenschwester",
+        "D": "Küchenchef"
+      }
+    },
+    "job_5": {
+      "promptText": "Welcher Beruf befasst sich mit Pflanzen und Tieren?",
+      "options": {
+        "A": "Geologe",
+        "B": "Biologe",
+        "C": "Astronom",
+        "D": "Historiker"
+      }
+    },
+    "job_6": {
+      "promptText": "Wer ist für die Brandbekämpfung ausgebildet?",
+      "options": {
+        "A": "Polizist",
+        "B": "Feuerwehrmann",
+        "C": "Sanitäter",
+        "D": "Rettungsschwimmer"
+      }
+    },
+    "job_7": {
+      "promptText": "Welcher Beruf hilft Menschen dabei, nach einer Verletzung ihre Bewegungsfähigkeit wiederzuerlangen?",
+      "options": {
+        "A": "Zahnarzt",
+        "B": "Physiotherapeut",
+        "C": "Apotheker",
+        "D": "Chirurg"
+      }
+    },
+    "job_8": {
+      "promptText": "Wer schreibt und redigiert Nachrichtenartikel?",
+      "options": {
+        "A": "Journalist",
+        "B": "Rechtsanwalt",
+        "C": "Buchhalter",
+        "D": "Ingenieur"
+      }
+    },
+    "job_9": {
+      "promptText": "Welcher Beruf schützt die Öffentlichkeit und setzt Gesetze durch?",
+      "options": {
+        "A": "Richter",
+        "B": "Polizist",
+        "C": "Sanitäter",
+        "D": "Detektiv"
+      }
+    },
+    "job_10": {
+      "promptText": "Wer erforscht die Sterne und Planeten?",
+      "options": {
+        "A": "Astronom",
+        "B": "Geograph",
+        "C": "Chemiker",
+        "D": "Physiker"
+      }
+    },
+    "job_11": {
+      "promptText": "Welcher Beruf umfasst die Entwicklung und den Bau von Maschinen?",
+      "options": {
+        "A": "Ingenieur",
+        "B": "Klempner",
+        "C": "Elektriker",
+        "D": "Tischler"
+      }
+    },
+    "job_12": {
+      "promptText": "Wer erstellt den Unterricht und unterrichtet die Schüler?",
+      "options": {
+        "A": "Lehrer",
+        "B": "Trainer",
+        "C": "Trainer",
+        "D": "Tutor"
+      }
+    },
+    "job_13": {
+      "promptText": "Welcher Beruf kümmert sich um die Zähne?",
+      "options": {
+        "A": "Zahnarzt",
+        "B": "Optiker",
+        "C": "Tierarzt",
+        "D": "Kinderarzt"
+      }
+    },
+    "job_14": {
+      "promptText": "Wer bereitet das Essen in Restaurants zu?",
+      "options": {
+        "A": "Bäcker",
+        "B": "Küchenchef",
+        "C": "Server",
+        "D": "Barista"
+      }
+    },
+    "job_15": {
+      "promptText": "Welcher Beruf hat den Schwerpunkt Tiergesundheit?",
+      "options": {
+        "A": "Tierarzt",
+        "B": "Zoologe",
+        "C": "Bauer",
+        "D": "Trainer"
+      }
+    },
+    "job_16": {
+      "promptText": "Wer prüft die Finanzunterlagen auf Richtigkeit?",
+      "options": {
+        "A": "Buchhalter",
+        "B": "Banker",
+        "C": "Analytiker",
+        "D": "Makler"
+      }
+    },
+    "job_17": {
+      "promptText": "Welcher Beruf umfasst den Bau und die Reparatur von elektrischen Anlagen?",
+      "options": {
+        "A": "Elektriker",
+        "B": "Mechaniker",
+        "C": "Klempner",
+        "D": "Tischler"
+      }
+    },
+    "job_18": {
+      "promptText": "Wer hilft Menschen bei der Rechtsberatung?",
+      "options": {
+        "A": "Richter",
+        "B": "Rechtsanwalt",
+        "C": "Sachbearbeiter",
+        "D": "Gerichtsvollzieher"
+      }
+    },
+    "job_19": {
+      "promptText": "Welcher Beruf befasst sich mit der Erforschung von Gesteinen und Mineralien der Erde?",
+      "options": {
+        "A": "Geologe",
+        "B": "Ökologe",
+        "C": "Meteorologe",
+        "D": "Botaniker"
+      }
+    },
+    "job_20": {
+      "promptText": "Wer schafft Kunst mit Farbe oder mit Bildhauerei?",
+      "options": {
+        "A": "Designer",
+        "B": "Künstler",
+        "C": "Schauspieler",
+        "D": "Komponist"
+      }
+    },
+    "job_21": {
+      "promptText": "Welcher Beruf beschäftigt sich mit Fotografie?",
+      "options": {
+        "A": "Fotograf",
+        "B": "Reporter",
+        "C": "Produzent",
+        "D": "Direktor"
+      }
+    },
+    "job_22": {
+      "promptText": "Wer behandelt Patienten in Notfällen?",
+      "options": {
+        "A": "Chirurg",
+        "B": "Sanitäter",
+        "C": "Krankenschwester",
+        "D": "Therapeut"
+      }
+    },
+    "job_23": {
+      "promptText": "Welcher Beruf entwirft Kleidung und Mode?",
+      "options": {
+        "A": "Stylist",
+        "B": "Modedesigner",
+        "C": "Schneider",
+        "D": "Modell"
+      }
+    },
+    "job_24": {
+      "promptText": "Wer führt bei einem Film oder einer Fernsehsendung Regie?",
+      "options": {
+        "A": "Produzent",
+        "B": "Direktor",
+        "C": "Editor",
+        "D": "Drehbuchautor"
+      }
+    },
+    "job_25": {
+      "promptText": "Welcher Beruf befasst sich mit dem Wetter?",
+      "options": {
+        "A": "Astronom",
+        "B": "Meteorologe",
+        "C": "Klimaforscher",
+        "D": "Geograph"
+      }
+    },
+    "job_26": {
+      "promptText": "Wer leitet das Tagesgeschäft eines Unternehmens?",
+      "options": {
+        "A": "CEO",
+        "B": "Manager",
+        "C": "Analytiker",
+        "D": "Berater"
+      }
+    },
+    "job_27": {
+      "promptText": "Welcher Beruf hilft Menschen beim Kauf und Verkauf von Häusern?",
+      "options": {
+        "A": "Makler",
+        "B": "Immobilienmakler",
+        "C": "Buchhalter",
+        "D": "Gutachter"
+      }
+    },
+    "job_28": {
+      "promptText": "Wer stellt Möbel und Konstruktionen aus Holz her?",
+      "options": {
+        "A": "Tischler",
+        "B": "Klempner",
+        "C": "Mason",
+        "D": "Schweißer"
+      }
+    },
+    "job_29": {
+      "promptText": "Welcher Beruf erzeugt Musik?",
+      "options": {
+        "A": "Komponist",
+        "B": "Maler",
+        "C": "Schriftsteller",
+        "D": "Schauspieler"
+      }
+    },
+    "job_30": {
+      "promptText": "Wer kümmert sich in Krankenhäusern um die Patienten?",
+      "options": {
+        "A": "Krankenschwester",
+        "B": "Apotheker",
+        "C": "Therapeut",
+        "D": "Zahnarzt"
+      }
+    },
+    "job_31": {
+      "promptText": "Welcher Beruf befasst sich mit menschlichem Verhalten und Geist?",
+      "options": {
+        "A": "Psychologe",
+        "B": "Soziologe",
+        "C": "Anthropologe",
+        "D": "Neurologe"
+      }
+    },
+    "job_32": {
+      "promptText": "Wer entwirft Logos und visuelle Markenelemente?",
+      "options": {
+        "A": "Grafikdesigner",
+        "B": "Fotograf",
+        "C": "Editor",
+        "D": "Schriftsteller"
+      }
+    },
+    "job_33": {
+      "promptText": "Welcher Berufsstand stellt Medikamente her?",
+      "options": {
+        "A": "Apotheker",
+        "B": "Krankenschwester",
+        "C": "Chirurg",
+        "D": "Zahnarzt"
+      }
+    },
+    "job_34": {
+      "promptText": "Wer repariert Autos und Motoren?",
+      "options": {
+        "A": "Mechaniker",
+        "B": "Ingenieur",
+        "C": "Treiber",
+        "D": "Pilot"
+      }
+    },
+    "job_35": {
+      "promptText": "Welcher Beruf ist für das Training von Athleten zuständig?",
+      "options": {
+        "A": "Trainer",
+        "B": "Trainer",
+        "C": "Schiedsrichter",
+        "D": "Erkunden"
+      }
+    },
+    "job_36": {
+      "promptText": "Wer erforscht vergangene Ereignisse und Zivilisationen?",
+      "options": {
+        "A": "Historiker",
+        "B": "Linguist",
+        "C": "Archäologe",
+        "D": "Soziologe"
+      }
+    },
+    "job_37": {
+      "promptText": "Welcher Berufsstand schreibt Bücher und Geschichten?",
+      "options": {
+        "A": "Schriftsteller",
+        "B": "Dichter",
+        "C": "Editor",
+        "D": "Herausgeber"
+      }
+    },
+    "job_38": {
+      "promptText": "Wer unterstützt Menschen mit Hörverlust?",
+      "options": {
+        "A": "Audiologe",
+        "B": "Optiker",
+        "C": "Dermatologe",
+        "D": "Diätassistentin"
+      }
+    },
+    "job_39": {
+      "promptText": "Welcher Beruf umfasst die Planung und den Bau von Straßen und Brücken?",
+      "options": {
+        "A": "Bauingenieur",
+        "B": "Landvermesser",
+        "C": "Architekt",
+        "D": "Auftragnehmer"
+      }
+    },
+    "job_40": {
+      "promptText": "Wer nutzt Karten und GPS zur Reiseplanung?",
+      "options": {
+        "A": "Navigator",
+        "B": "Pilot",
+        "C": "Treiber",
+        "D": "Führung"
+      }
+    },
+    "job_41": {
+      "promptText": "Welcher Beruf arbeitet mit Weltraummissionen?",
+      "options": {
+        "A": "Astronaut",
+        "B": "Pilot",
+        "C": "Ingenieur",
+        "D": "Wissenschaftler"
+      }
+    },
+    "job_42": {
+      "promptText": "Wer ist Spezialist für Hautgesundheit?",
+      "options": {
+        "A": "Dermatologe",
+        "B": "Kardiologe",
+        "C": "Orthopäde",
+        "D": "Neurologe"
+      }
+    },
+    "job_43": {
+      "promptText": "Welcher Job beinhaltet die Planung von Veranstaltungen und Zeitplänen?",
+      "options": {
+        "A": "Koordinator",
+        "B": "Planer",
+        "C": "Veranstalter",
+        "D": "Alle diese"
+      }
+    },
+    "job_44": {
+      "promptText": "Wer entwirft Videospiele und interaktive Medien?",
+      "options": {
+        "A": "Spieledesigner",
+        "B": "Animator",
+        "C": "Programmierer",
+        "D": "Produzent"
+      }
+    },
+    "job_45": {
+      "promptText": "Welcher Beruf verwaltet Geld und Budgets?",
+      "options": {
+        "A": "Finanzanalyst",
+        "B": "Trainer",
+        "C": "Editor",
+        "D": "Wissenschaftler"
+      }
+    },
+    "obj_1": {
+      "promptText": "Welches Objekt wird zur Zeitanzeige verwendet?",
+      "options": {
+        "A": "Kompass",
+        "B": "Uhr",
+        "C": "Thermometer",
+        "D": "Barometer"
+      }
+    },
+    "obj_2": {
+      "promptText": "Welches Fahrzeug nutzt Flügel zum Fliegen?",
+      "options": {
+        "A": "Boot",
+        "B": "Zug",
+        "C": "Flugzeug",
+        "D": "Auto"
+      }
+    },
+    "obj_3": {
+      "promptText": "Was tragen Räder zur Reduzierung bei?",
+      "options": {
+        "A": "Reibung",
+        "B": "Hitze",
+        "C": "Licht",
+        "D": "Klang"
+      }
+    },
+    "obj_4": {
+      "promptText": "Welcher Gegenstand wird benötigt, um einen Fluss sicher zu überqueren?",
+      "options": {
+        "A": "Brücke",
+        "B": "Tunnel",
+        "C": "Leiter",
+        "D": "Zaun"
+      }
+    },
+    "obj_5": {
+      "promptText": "Welcher Gegenstand wird zum Schreiben auf Papier verwendet?",
+      "options": {
+        "A": "Löffel",
+        "B": "Stift",
+        "C": "Herrscher",
+        "D": "Hammer"
+      }
+    },
+    "obj_6": {
+      "promptText": "Womit wird ein herkömmliches Fahrrad angetrieben?",
+      "options": {
+        "A": "Kraftstoff",
+        "B": "Strom",
+        "C": "Menschliches Pedalieren",
+        "D": "Wind"
+      }
+    },
+    "obj_7": {
+      "promptText": "Welcher Gegenstand wird zum Erhitzen von Speisen verwendet?",
+      "options": {
+        "A": "Ofen",
+        "B": "Gefrierschrank",
+        "C": "Lüfter",
+        "D": "Vakuum"
+      }
+    },
+    "obj_8": {
+      "promptText": "Welcher Gegenstand hilft Ihnen, in die Ferne zu sehen?",
+      "options": {
+        "A": "Mikroskop",
+        "B": "Teleskop",
+        "C": "Thermometer",
+        "D": "Kompass"
+      }
+    },
+    "obj_9": {
+      "promptText": "Welcher Gegenstand dient dem Schutz des Kopfes beim Radfahren?",
+      "options": {
+        "A": "Helm",
+        "B": "Handschuhe",
+        "C": "Stiefel",
+        "D": "Kap"
+      }
+    },
+    "obj_10": {
+      "promptText": "Welches städtische Gebäude dient der Ausleihe von Büchern?",
+      "options": {
+        "A": "Bibliothek",
+        "B": "Bäckerei",
+        "C": "Krankenhaus",
+        "D": "Museum"
+      }
+    },
+    "obj_11": {
+      "promptText": "Welches Werkzeug wird zum Festziehen von Schrauben verwendet?",
+      "options": {
+        "A": "Hammer",
+        "B": "Schlüssel",
+        "C": "Gesehen",
+        "D": "Bürste"
+      }
+    },
+    "obj_12": {
+      "promptText": "Welches Fahrzeug fährt in einer Stadt auf Schienen?",
+      "options": {
+        "A": "Tram",
+        "B": "Boot",
+        "C": "Fahrrad",
+        "D": "LKW"
+      }
+    },
+    "obj_13": {
+      "promptText": "Wozu dienen Flügel Vögeln?",
+      "options": {
+        "A": "Schwimmen",
+        "B": "Fliegen",
+        "C": "Graben",
+        "D": "Verstecken"
+      }
+    },
+    "obj_14": {
+      "promptText": "Welcher Gegenstand gibt die Richtung an?",
+      "options": {
+        "A": "Uhr",
+        "B": "Kompass",
+        "C": "Kamera",
+        "D": "Skala"
+      }
+    },
+    "obj_15": {
+      "promptText": "Welcher Ort in der Stadt wird zur Behandlung von Kranken genutzt?",
+      "options": {
+        "A": "Schule",
+        "B": "Krankenhaus",
+        "C": "Stadion",
+        "D": "Postamt"
+      }
+    },
+    "obj_16": {
+      "promptText": "Welches Objekt wird zum Fotografieren verwendet?",
+      "options": {
+        "A": "Kamera",
+        "B": "Radio",
+        "C": "Lautsprecher",
+        "D": "Drucker"
+      }
+    },
+    "obj_17": {
+      "promptText": "Welches Fahrzeug wird von einem Motor angetrieben und befördert Fahrgäste in einer Stadt?",
+      "options": {
+        "A": "Bus",
+        "B": "Roller",
+        "C": "Fahrrad",
+        "D": "Skateboard"
+      }
+    },
+    "obj_18": {
+      "promptText": "Welches Objekt wird zur Temperaturmessung verwendet?",
+      "options": {
+        "A": "Thermometer",
+        "B": "Herrscher",
+        "C": "Skala",
+        "D": "Kompass"
+      }
+    },
+    "obj_19": {
+      "promptText": "Welches Werkzeug wird zum Holzschneiden verwendet?",
+      "options": {
+        "A": "Gesehen",
+        "B": "Schlüssel",
+        "C": "Schraubendreher",
+        "D": "Zange"
+      }
+    },
+    "obj_20": {
+      "promptText": "Wo kann man in der Stadt Lebensmittel kaufen?",
+      "options": {
+        "A": "Bäckerei",
+        "B": "Supermarkt",
+        "C": "Bibliothek",
+        "D": "Postamt"
+      }
+    },
+    "obj_21": {
+      "promptText": "Welcher Gegenstand hilft Autos beim Bremsen?",
+      "options": {
+        "A": "Bremsen",
+        "B": "Pedale",
+        "C": "Spiegel",
+        "D": "Sitze"
+      }
+    },
+    "obj_22": {
+      "promptText": "Welcher Gegenstand wird zum Versenden von Briefen verwendet?",
+      "options": {
+        "A": "Briefkasten",
+        "B": "Schließfach",
+        "C": "Schornstein",
+        "D": "Schublade"
+      }
+    },
+    "obj_23": {
+      "promptText": "Welche Maschine hilft bei der Bodenreinigung?",
+      "options": {
+        "A": "Vakuum",
+        "B": "Mikrowelle",
+        "C": "Toaster",
+        "D": "Lüfter"
+      }
+    },
+    "obj_24": {
+      "promptText": "Welcher Gegenstand dient zum Entriegeln von Türen?",
+      "options": {
+        "A": "Schlüssel",
+        "B": "Stift",
+        "C": "Clip",
+        "D": "Zeichenkette"
+      }
+    },
+    "obj_25": {
+      "promptText": "Von welcher Stelle in der Stadt werden Briefe und Pakete versandt?",
+      "options": {
+        "A": "Bank",
+        "B": "Postamt",
+        "C": "Fitnessstudio",
+        "D": "Theater"
+      }
+    },
+    "obj_26": {
+      "promptText": "Welcher Gegenstand wird zum Abspielen von Musik verwendet?",
+      "options": {
+        "A": "Lautsprecher",
+        "B": "Mixer",
+        "C": "Drucker",
+        "D": "Toaster"
+      }
+    },
+    "obj_27": {
+      "promptText": "Welches Fahrzeug ist für den unterirdischen Verkehr in Städten konzipiert?",
+      "options": {
+        "A": "U-Bahn",
+        "B": "Bus",
+        "C": "Fähre",
+        "D": "Taxi"
+      }
+    },
+    "obj_28": {
+      "promptText": "Welcher Gegenstand wird zum Anheben schwerer Gegenstände verwendet?",
+      "options": {
+        "A": "Kran",
+        "B": "Mop",
+        "C": "Eimer",
+        "D": "Besen"
+      }
+    },
+    "obj_29": {
+      "promptText": "Welcher Gegenstand dient zur Beleuchtung eines Raumes?",
+      "options": {
+        "A": "Lampe",
+        "B": "Lüfter",
+        "C": "Uhr",
+        "D": "Radio"
+      }
+    },
+    "obj_30": {
+      "promptText": "Welcher Ort in der Stadt wird für Sportveranstaltungen genutzt?",
+      "options": {
+        "A": "Stadion",
+        "B": "Museum",
+        "C": "Bibliothek",
+        "D": "Theater"
+      }
+    },
+    "obj_31": {
+      "promptText": "Welches Werkzeug wird zum Eindrehen von Schrauben verwendet?",
+      "options": {
+        "A": "Schraubendreher",
+        "B": "Hammer",
+        "C": "Zange",
+        "D": "Schlüssel"
+      }
+    },
+    "obj_32": {
+      "promptText": "Welcher Gegenstand dient zur Aufbewahrung von kalten Lebensmitteln?",
+      "options": {
+        "A": "Ofen",
+        "B": "Kühlschrank",
+        "C": "Toaster",
+        "D": "Wasserkocher"
+      }
+    },
+    "obj_33": {
+      "promptText": "Welches Fahrzeug wird durch Windkraft auf dem Wasser angetrieben?",
+      "options": {
+        "A": "Segelboot",
+        "B": "U-Boot",
+        "C": "Fähre",
+        "D": "Kanu"
+      }
+    },
+    "obj_34": {
+      "promptText": "Welcher Gegenstand hilft Ihnen, eine Straße sicher zu überqueren?",
+      "options": {
+        "A": "Fußgängerüberweg",
+        "B": "Auffahrt",
+        "C": "Garage",
+        "D": "Gasse"
+      }
+    },
+    "obj_35": {
+      "promptText": "Welches Objekt wird zum Bezahlen von Artikeln verwendet?",
+      "options": {
+        "A": "Geldbörse",
+        "B": "Notizbuch",
+        "C": "Rucksack",
+        "D": "Helm"
+      }
+    },
+    "obj_36": {
+      "promptText": "Wo in der Stadt kann man Geld abheben?",
+      "options": {
+        "A": "Bank",
+        "B": "Klinik",
+        "C": "Schule",
+        "D": "Park"
+      }
+    },
+    "obj_37": {
+      "promptText": "Welche Maschine wird zum Wäschewaschen verwendet?",
+      "options": {
+        "A": "Waschmaschine",
+        "B": "Spülmaschine",
+        "C": "Trockner",
+        "D": "Mischer"
+      }
+    },
+    "obj_38": {
+      "promptText": "Welches Objekt benutzt man, um sein Spiegelbild zu sehen?",
+      "options": {
+        "A": "Spiegel",
+        "B": "Fenster",
+        "C": "Bildschirm",
+        "D": "Linse"
+      }
+    },
+    "obj_39": {
+      "promptText": "Welche städtische Einrichtung steuert den Verkehrsfluss?",
+      "options": {
+        "A": "Ampel",
+        "B": "Straßenschild",
+        "C": "Geschwindigkeitsbegrenzung",
+        "D": "Gehweg"
+      }
+    },
+    "obj_40": {
+      "promptText": "Welcher Gegenstand schützt Ihren Kopf vor Regen?",
+      "options": {
+        "A": "Regenschirm",
+        "B": "Schal",
+        "C": "Stiefel",
+        "D": "Gürtel"
+      }
+    },
+    "obj_41": {
+      "promptText": "Wo in der Stadt werden Filme gezeigt?",
+      "options": {
+        "A": "Kino",
+        "B": "Museum",
+        "C": "Bibliothek",
+        "D": "Fitnessstudio"
+      }
+    },
+    "obj_42": {
+      "promptText": "Welcher Gegenstand hilft Ihnen, hohe Orte zu erklimmen?",
+      "options": {
+        "A": "Leiter",
+        "B": "Seil",
+        "C": "Netto",
+        "D": "Rampe"
+      }
+    },
+    "obj_43": {
+      "promptText": "Welcher Gegenstand wird zum Transportieren von Lebensmitteln verwendet?",
+      "options": {
+        "A": "Korb",
+        "B": "Umschlag",
+        "C": "Geldbörse",
+        "D": "Buch"
+      }
+    },
+    "obj_44": {
+      "promptText": "Welches Fahrzeug wird für die schnelle Paketzustellung in der Stadt eingesetzt?",
+      "options": {
+        "A": "Lieferwagen",
+        "B": "Segelboot",
+        "C": "Zug",
+        "D": "Seilbahn"
+      }
+    },
+    "obj_45": {
+      "promptText": "Welcher Ort in der Stadt hilft den Menschen beim Lernen?",
+      "options": {
+        "A": "Schule",
+        "B": "Cafe",
+        "C": "Stadion",
+        "D": "Garage"
+      }
+    }
+  }
+}
