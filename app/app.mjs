@@ -544,7 +544,10 @@ function getTranslatedPack(pack) {
     ?? (translatedCategory ? `${baseTitle} • ${translatedCategory.title}` : pack.title);
   const packDescription = translated?.description
     ?? (translatedCategory ? translatedCategory.subtitle : pack.description);
-  const lifelineOverrides = translated?.lifelines || {};
+  const lifelineOverrides = {
+    ...(basePackOverride?.lifelines || {}),
+    ...(translated?.lifelines || {})
+  };
   const baseMessages = pack.id.startsWith(defaultPack.id) && basePackOverride?.messages
     ? basePackOverride.messages
     : {};
