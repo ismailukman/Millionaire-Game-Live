@@ -1853,7 +1853,7 @@ async function startAdminUsersListener() {
     (error) => {
       console.warn("Admin users listener failed", error);
       if (dom.adminUserTable) {
-        dom.adminUserTable.innerHTML = `<div class="subtext">Unable to load users (${error.code || "error"}). Check Firestore rules and login state.</div>`;
+        dom.adminUserTable.innerHTML = `<div class="subtext">${t("admin.load_error", { code: error.code || "error" })}</div>`;
       }
     }
   );
@@ -1986,7 +1986,7 @@ function renderLeaderboard(filterBy = "totalWinnings") {
       scoreValue = formatMoney("$", user.stats.totalWinnings || 0);
     } else if (filterBy === "fastestWin") {
       if (user.stats.fastestWin === null) {
-        scoreValue = "N/A";
+        scoreValue = t("leaderboard.na");
       } else {
         const minutes = Math.floor(user.stats.fastestWin / 60000);
         const seconds = Math.floor((user.stats.fastestWin % 60000) / 1000);
@@ -2007,7 +2007,7 @@ function renderLeaderboard(filterBy = "totalWinnings") {
       <td class="player-name">${user.displayName}</td>
       <td class="score-value">${scoreValue}</td>
       <td>${user.stats.gamesPlayed || 0}</td>
-      <td class="achievement-badges">${achievementBadges}${user.achievements.length > 3 ? "..." : ""}</td>
+      <td class="achievement-badges">${achievementBadges}${user.achievements.length > 3 ? t("leaderboard.more_badges") : ""}</td>
     `;
 
     dom.leaderboardBody.appendChild(row);
@@ -2021,7 +2021,7 @@ function renderLeaderboard(filterBy = "totalWinnings") {
 
 function renderAchievements() {
   if (!state.user) {
-    dom.achievementsGrid.innerHTML = "<p style='text-align: center; color: var(--muted);'>Login to track your achievements</p>";
+    dom.achievementsGrid.innerHTML = `<p style='text-align: center; color: var(--muted);'>${t("achievements.login_prompt")}</p>`;
     return;
   }
 
@@ -2059,8 +2059,8 @@ function renderAchievements() {
 
     card.innerHTML = `
       <span class="achievement-icon">${achievement.icon}</span>
-      <div class="achievement-name">${achievement.name}</div>
-      <div class="achievement-description">${achievement.description}</div>
+      <div class="achievement-name">${t(`achievement.${achievement.id}.name`)}</div>
+      <div class="achievement-description">${t(`achievement.${achievement.id}.desc`)}</div>
     `;
 
     dom.achievementsGrid.appendChild(card);
@@ -2134,8 +2134,8 @@ function updateGameStats(type, sessionId) {
         setTimeout(() => {
           alert(t("alerts.achievement_unlocked", {
             icon: achievement.icon,
-            name: achievement.name,
-            description: achievement.description
+            name: t(`achievement.${achievement.id}.name`),
+            description: t(`achievement.${achievement.id}.desc`)
           }));
         }, index * 500);
       });
@@ -3189,7 +3189,7 @@ function showGameOverDialog(type, prize, currencySymbol) {
     if (prize > 0) {
       prizeDiv.textContent = `Safe prize: ${formatMoney(currencySymbol, prize)}`;
     } else {
-      prizeDiv.textContent = "No prize won";
+      prizeDiv.textContent = t("gameover.no_prize");
     }
   }
 
@@ -3203,10 +3203,10 @@ function showGameOverDialog(type, prize, currencySymbol) {
     manualApply.onclick = () => {
       const val = (manualInput.value || "").trim().toUpperCase();
       if (!["A", "B", "C", "D"].includes(val)) {
-        messageDiv.textContent = "Enter A, B, C, or D.";
+        messageDiv.textContent = t("status.invalid_letter");
         return;
       }
-      messageDiv.textContent = `"I'm leaning toward ${val}. Good luck!"`;
+      messageDiv.textContent = t("status.phone_hint_short", { answer: val });
     };
   }
 }

@@ -58,7 +58,7 @@
   "classic.sound_on": "🔊 تشغيل الصوت",
   "classic.sound_off": "🔇 عبّر عن رأيك",
   "classic.round_title": "الجولة الكلاسيكية",
-  "classic.walk_away": "🚪 ابتعد",
+  "classic.walk_away": "🚪 انسحب",
   "classic.ladder_title": "سلم الجوائز",
   "classic.timer_label": "المؤقت: {ثواني}",
   "classic.timer_label_compact": "المؤقت: {ثواني}",
@@ -153,7 +153,7 @@
   "status.phone_thinking": "صديقك يفكر...",
   "status.phone_time_up": "انتهى الوقت!",
   "status.phone_hint": "أنا متأكد بنسبة {confidence}% أن الإجابة هي {answer}. بالتوفيق!",
-  "status.phone_hint_short": "أميل إلى الخيار {answer}. بالتوفيق!",
+  "status.phone_hint_short": "أميل إلى الإجابة {answer}. بالتوفيق!",
   "status.invalid_letter": "أدخل A أو B أو C أو D.",
   "alerts.no_pack_selected": "لم يتم اختيار أي باقة. يرجى اختيار باقة من لوحة التحكم.",
   "alerts.firebase_config_missing": "لم يتم إعداد Firebase. أضف ملف firebaseConfig في ملف index.html.",
@@ -211,7 +211,7 @@
   "builder.walk_message": "رسالة الانسحاب",
   "builder.walk_message_placeholder": "خرجتَ من هنا بـ:",
   "builder.import_csv": "استيراد ملف CSV",
-  "builder.lifelines_title": "خطوط النجاة",
+  "builder.lifelines_title": "المساعدات",
   "builder.lifeline_fifty_label": "50:50",
   "builder.lifeline_audience_label": "اسأل الجمهور",
   "builder.lifeline_phone_label": "اتصل بصديق",
@@ -278,16 +278,21 @@
   "admin.table_actions": "الإجراءات",
   "admin.action_save": "يحفظ",
   "admin.action_remove": "يزيل",
+  "admin.load_error": "تعذر تحميل المستخدمين ({code}). يرجى مراجعة قواعد Firestore وحالة تسجيل الدخول.",
   "leaderboard.col_rank": "رتبة",
   "leaderboard.col_player": "اللاعب",
   "leaderboard.col_score": "نتيجة",
   "leaderboard.col_games": "ألعاب",
   "leaderboard.col_achievements": "الإنجازات",
+  "leaderboard.empty": "لا يوجد لاعبون حتى الآن. العب لعبة لتظهر على لوحة المتصدرين!",
+  "leaderboard.na": "غير متوفر",
+  "leaderboard.more_badges": "...",
   "achievements.stat_games_played": "الألعاب التي تم لعبها",
   "achievements.stat_games_won": "مباريات تم الفوز بها",
   "achievements.stat_total_winnings": "إجمالي الأرباح",
   "achievements.stat_highest_level": "أعلى مستوى",
   "achievements.progress_summary": "{مفتوح} من {إجمالي} مفتوح ({النسبة المئوية}%)",
+  "achievements.login_prompt": "سجّل الدخول لتتبع إنجازاتك",
   "account.label_display_name": "اسم العرض",
   "account.display_name_placeholder": "اسم المضيف",
   "account.label_email": "بريد إلكتروني",
@@ -311,10 +316,10 @@
   "account.meta_expires": "تاريخ الانتهاء",
   "account.billing_note": "تتم إدارة تفاصيل الدفع من خلال مزود خدمة الفوترة الخاص بك.",
   "lifeline.audience_title": "📊 اسأل الجمهور",
-  "lifeline.audience_prompt": "لقد صوّت الجمهور:",
+  "lifeline.audience_prompt": "صوّت الجمهور:",
   "lifeline.apply_votes": "تطبيق الأصوات",
   "lifeline.phone_title": "📞 اتصل بصديق",
-  "lifeline.phone_prompt": "الاتصال بصديقك...",
+  "lifeline.phone_prompt": "جارٍ الاتصال بصديقك...",
   "lifeline.phone_suggested": "الإجابة المقترحة",
   "lifeline.phone_placeholder": "إعلان",
   "lifeline.phone_apply": "تطبيق الاقتراح",
@@ -328,8 +333,7 @@
   "footer.link_contrast": "تباين عالٍ",
   "footer.link_terms": "شروط الخدمة",
   "footer.link_privacy": "سياسة الخصوصية",
-  "leaderboard.empty": "لا يوجد لاعبون حتى الآن. العب لعبة لتظهر على لوحة المتصدرين!",
-  "contact.support_subtext": "المشاكل، والمساعدة في الحساب، واستكشاف أخطاء الجلسة المباشرة وإصلاحها.",
+  "contact.support_subtext": "المشاكل، والمساعدة في الحساب، وحل مشاكل الجلسات المباشرة.",
   "contact.support_email_label": "بريد إلكتروني:",
   "contact.support_response": "مدة الاستجابة: من يوم إلى يومي عمل",
   "contact.support_include": "يتضمن: رمز الجلسة، والمتصفح، وملخصًا موجزًا",
@@ -348,9 +352,31 @@
   "contact.form_message_placeholder": "كيف يمكننا المساعدة؟",
   "contact.form_submit": "إرسال الطلب",
   "landing.level_label": "المستوى {level}",
+  "classic.level_meta": "المستوى {level} من {total}",
+  "gameover.no_prize": "لم يتم الفوز بأي جائزة",
   "pack.no_description": "لا يوجد وصف",
   "pack.edit": "حزمة التحرير",
   "pack.upgrade_suffix": "يرقي",
+  "achievement.first_win.name": "النصر الأول",
+  "achievement.first_win.desc": "اربح مباراتك الأولى",
+  "achievement.millionaire.name": "مليونير",
+  "achievement.millionaire.desc": "الوصول إلى السؤال الأخير (المستوى 15)",
+  "achievement.perfect_game.name": "لعبة مثالية",
+  "achievement.perfect_game.desc": "اربح دون استخدام أي وسائل مساعدة",
+  "achievement.speed_demon.name": "شيطان السرعة",
+  "achievement.speed_demon.desc": "اربح مباراة في أقل من 5 دقائق",
+  "achievement.safe_player.name": "لاعب آمن",
+  "achievement.safe_player.desc": "اربح 5 أضعاف أرباحك",
+  "achievement.high_roller.name": "المقامر المحترف",
+  "achievement.high_roller.desc": "جمع مليون دولار أمريكي كأرباح إجمالية",
+  "achievement.social_butterfly.name": "فراشة اجتماعية",
+  "achievement.social_butterfly.desc": "استخدم خيار \"الاتصال بصديق\" 10 مرات",
+  "achievement.crowd_pleaser.name": "مُرضٍ للجمهور",
+  "achievement.crowd_pleaser.desc": "استخدم عبارة \"اسأل الجمهور\" 10 مرات",
+  "achievement.calculated.name": "محسوب",
+  "achievement.calculated.desc": "استخدم خط المساعدة \"50:50\" عشر مرات",
+  "achievement.veteran.name": "محارب قديم",
+  "achievement.veteran.desc": "العب 50 لعبة",
   "session.status.waiting": "منتظر",
   "session.status.live": "يعيش",
   "session.status.ended": "نهاية",

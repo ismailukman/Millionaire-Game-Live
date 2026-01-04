@@ -13,8 +13,8 @@
       },
       "lifelines": {
         "fifty_fifty": "50:50",
-        "ask_audience": "Fragen Sie das Publikum",
-        "phone_friend": "Einen Freund anrufen"
+        "ask_audience": "Publikum fragen",
+        "phone_friend": "Telefonjoker"
       }
     }
   },

@@ -13,8 +13,8 @@
       },
       "lifelines": {
         "fifty_fifty": "50:50",
-        "ask_audience": "Seyircilere Sorun",
-        "phone_friend": "Bir Arkadaşını Ara"
+        "ask_audience": "Seyirciye Sor",
+        "phone_friend": "Arkadaşı Ara"
       }
     }
   },
