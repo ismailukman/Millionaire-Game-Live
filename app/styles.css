@@ -272,6 +272,31 @@ dialog {
   justify-self: center;
 }
 
+@media (max-width: 700px) {
+  #classic-layout:fullscreen {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+    padding: 16px;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  #classic-layout:fullscreen .classic-board,
+  #classic-layout:fullscreen .ladder-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #classic-layout:fullscreen .question {
+    font-size: 18px;
+  }
+
+  #classic-layout:fullscreen .options button {
+    font-size: 14px;
+  }
+}
+
 body.classic-light #screen-classic {
   background: #f7f7fb;
   color: #0b1020;
@@ -1043,7 +1068,7 @@ button:hover::after {
 }
 
 .options button.correct {
-  animation: correctPulse 1.5s ease-in-out 3;
+  animation: correctBlink 0.6s ease-in-out 4;
   border: 2px solid var(--success);
   color: var(--success);
 }
@@ -1070,6 +1095,12 @@ button:hover::after {
   text-decoration: line-through;
   background: rgba(100, 100, 100, 0.1);
   transform: scale(0.95);
+}
+
+.options button.correct:disabled {
+  text-decoration: none;
+  opacity: 1;
+  transform: none;
 }
 
 .options button.readonly:disabled {
@@ -1452,6 +1483,17 @@ button:hover::after {
     background: rgba(52, 211, 153, 0.3);
     box-shadow: 0 0 40px rgba(52, 211, 153, 0.6), 0 0 80px rgba(52, 211, 153, 0.3);
     transform: scale(1.02);
+  }
+}
+
+@keyframes correctBlink {
+  0%, 100% {
+    background: rgba(52, 211, 153, 0.1);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+  }
+  50% {
+    background: rgba(52, 211, 153, 0.35);
+    box-shadow: 0 0 24px rgba(52, 211, 153, 0.7);
   }
 }
 
